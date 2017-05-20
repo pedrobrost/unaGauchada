@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'bootstrap/bootstrap';
+
+@import 'variables';
+@import 'bootstrap/bootstrap';
+
+.publication-list .card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
