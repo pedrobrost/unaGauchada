@@ -1,0 +1,3 @@
+publication_homepage:
+    path:     /
+    defaults: { _controller: PublicationBundle:Publication:index }
