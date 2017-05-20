@@ -29,7 +29,7 @@ gulp.task("js", () =>
   gulp.src(jsDirs).pipe(uglyfly()).pipe(gulp.dest(`${buildSrc}/js`))
 )
 
-gulp.task("sass:watch", () => gulp.watch(sassSrc, ["sass"]))
+gulp.task("sass:watch", () => gulp.watch("./client/sass/**/*.scss", ["sass"]))
 gulp.task("js:watch", () => gulp.watch(jsSrc, ["js"]))
 
 gulp.task("watch", ["sass:watch", "js:watch"])
