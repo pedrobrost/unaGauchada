@@ -1,0 +1,23 @@
+{% import 'ClientBundle:Header:navItem.html.twig' as navbar %}
+
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Una Gauchada
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav mr-auto"></div>
+        <ul class="navbar-nav">
+
+            {{ navbar.item('Gauchadas', '#', 'Gauchadas') }}
+            {{ navbar.item('Créditos', '#') }}
+            {{ navbar.item('Contacto', '#') }}
+
+        </ul>
+
+    </div>
+</nav>
