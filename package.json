@@ -14,12 +14,12 @@
     "type": "git",
     "url": "git+https://github.com/matias-pierobon/unaGauchada.git"
   },
-  "author": "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io/)",
+  "author": "Pedro Brost <pedro.brost97@gmail.com>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/matias-pierobon/unaGauchada/issues"
+    "url": "https://github.com/pedrobrost/unaGauchada/issues"
   },
-  "homepage": "https://github.com/matias-pierobon/unaGauchada#readme",
+  "homepage": "https://github.com/pedrobrost/unaGauchada#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
