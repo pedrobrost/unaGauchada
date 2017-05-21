@@ -1,0 +1,33 @@
+{
+  "name": "unagauchada",
+  "version": "1.0.0",
+  "description": "una Gauchada system",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matias-pierobon/unaGauchada.git"
+  },
+  "author": "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io/)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/matias-pierobon/unaGauchada/issues"
+  },
+  "homepage": "https://github.com/matias-pierobon/unaGauchada#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglyfly": "^1.4.2"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "tether": "^1.4.0"
+  }
+}

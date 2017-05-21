@@ -1,5 +1,5 @@
-client:
-    resource: "@ClientBundle/Resources/config/routing.yml"
+publication:
+    resource: "@PublicationBundle/Resources/config/routing.yml"
     prefix:   /
 
 

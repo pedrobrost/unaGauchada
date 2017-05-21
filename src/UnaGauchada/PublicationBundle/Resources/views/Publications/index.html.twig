@@ -1,0 +1,35 @@
+{% extends 'ClientBundle::base.html.twig' %}
+
+{% block body %}
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Gauchadas</h1>
+            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <div class="card-columns publication-list">
+
+            {% for publication in publications %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset(publication.description)}}" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">{{ publication.title }}</h4>
+                        <p class="card-text">
+                            <a class="btn btn-primary" href="#">Descripción</a>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
