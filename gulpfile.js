@@ -2,7 +2,7 @@ const gulp = require("gulp")
 const sass = require("gulp-sass")
 const uglyfly = require("gulp-uglyfly")
 
-const webApp = "./client"
+const webApp = "./app/Resources/public"
 const sassSrc = `${webApp}/sass/**/main.scss`
 const jsSrc = `${webApp}/js/**/*.js`
 const buildSrc = `./web/dist`
@@ -29,7 +29,7 @@ gulp.task("js", () =>
   gulp.src(jsDirs).pipe(uglyfly()).pipe(gulp.dest(`${buildSrc}/js`))
 )
 
-gulp.task("sass:watch", () => gulp.watch("./client/sass/**/*.scss", ["sass"]))
+gulp.task("sass:watch", () => gulp.watch("./app/Resources/public/sass/**/*.scss", ["sass"]))
 gulp.task("js:watch", () => gulp.watch(jsSrc, ["js"]))
 
 gulp.task("watch", ["sass:watch", "js:watch"])
