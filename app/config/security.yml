@@ -20,5 +20,9 @@ security:
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
 
+            form_login:
+                login_path: login
+                check_path: login
+
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
