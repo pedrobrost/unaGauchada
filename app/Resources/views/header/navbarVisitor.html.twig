@@ -1,0 +1,27 @@
+ {% import 'header/navItem.html.twig' as navbar %} {{ navbar.item('Registrarse', '#', 'Gauchadas') }}
+
+
+<li class="dropdown">
+    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Iniciar Sesión
+                </a>
+    <ul class="dropdown-menu sign-in" role="menu">
+        <li>
+            <div class="card">
+                <div class="card-block card-inverse card-primary text-center">
+                    <h4 class="card-title">Iniciar Sesión</h4>
+                </div>
+                <div class="card-block">
+                    <form>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="remember-me"> Remember me </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+
+                </div>
+        </li>
+    </ul>
+</li>

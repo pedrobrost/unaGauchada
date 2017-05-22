@@ -1,0 +1,21 @@
+
+
+nav.navbar{
+    ul.sign-in{
+        background-color: transparent;
+        border: none;
+        left: -145px;
+
+        .card{
+            margin: 0 auto;
+            min-width: 300px;
+            max-width: 500px;
+            .card-title {
+                margin: 0;
+            }
+            @media (max-width: 400px) {
+                min-width: initial;
+            }
+        }
+    }
+}
