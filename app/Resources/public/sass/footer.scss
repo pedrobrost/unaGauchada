@@ -1,15 +1,15 @@
-.footer {
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
-  background-color: #eceeef;
-  text-align: right;
-
-  .container{
-    padding-right: 0;
-    padding-left: 0;
-  }
+.blog-footer {
+    padding: 2.5rem 0;
+    margin-top: 50px;
+    color: black;
+    text-align: center;
+    background-color: #eceeef;
+    border-top: .05rem solid #e5e5e5;
+    span.footer-text {
+        padding: 3px;
+    }
 }
 
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}
