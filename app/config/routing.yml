@@ -2,4 +2,18 @@ publication:
     resource: "@PublicationBundle/Resources/config/routing.yml"
     prefix:   /
 
+credit:
+    resource: "@CreditBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    pattern:   /login
+    defaults:  { _controller: UserBundle:Login:login }
+
+login_check:
+    pattern:   /login_check
 

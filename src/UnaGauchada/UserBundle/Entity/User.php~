@@ -1,0 +1,134 @@
+<?php
+
+namespace UnaGauchada\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="UnaGauchada\UserBundle\Repository\UserRepository")
+ */
+class User implements UserInterface
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthday", type="datetime")
+     */
+    private $birthday;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array", nullable=true)
+     */
+    private $roles;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="blob", nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photoMime", type="string", length=64, nullable=true)
+     */
+    private $photoMime;
+
+    private $plainPassword;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\CreditBundle\Entity\Transaction", mappedBy="user")
+     */
+    private $transactions;
+
+
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        $this->plainPassword = null;
+    }
+
+    public function __toString()
+    {
+        return "";
+    }
+
+    public function getCredits(): integer{
+        return 0;
+    }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getPassword()
+    {
+        // TODO: Implement getPassword() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+
+}
+

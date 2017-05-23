@@ -1,0 +1,38 @@
+<?php
+
+namespace UnaGauchada\CreditBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TransactionReason
+ *
+ * @ORM\Table(name="transaction_reason")
+ * @ORM\Entity(repositoryClass="UnaGauchada\CreditBundle\Repository\TransactionReasonRepository")
+ */
+class TransactionReason
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     */
+    private $name;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="Transaction", mappedBy="reason")
+     */
+    private $transactions;
+
+}
+
