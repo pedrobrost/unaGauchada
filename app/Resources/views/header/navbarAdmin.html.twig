@@ -1,25 +1,26 @@
- {% import 'header/navItem.html.twig' as navbar %} 
+{% import 'header/navItem.html.twig' as navbar %}
  
  {{ navbar.item('Publicar Gauchada', '#', '') }}
 
 <div class="dropdown">
-    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Franco Borrelli
-                </a>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">
-        <span> <i class="fa fa-bar-chart" aria-hidden="true"></i> </span>
-        <span>Reportes Estadísticos</span>
+    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+       aria-expanded="false">
+        {{ app.user.name }} {{ app.user.lastname }}
     </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">
+            <span> <i class="fa fa-bar-chart" aria-hidden="true"></i> </span>
+            <span>Reportes Estadísticos</span>
+        </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
-        <span><i class="fa fa-cog" aria-hidden="true"></i></span>
-        <span>Configuración</span>
-    </a>
+            <span><i class="fa fa-cog" aria-hidden="true"></i></span>
+            <span>Configuración</span>
+        </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
-        <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
-        <span>Cerrar Sesión</span>
-     </a>
-  </div>
+            <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+            <span>Cerrar Sesión</span>
+        </a>
+    </div>
 </div>
