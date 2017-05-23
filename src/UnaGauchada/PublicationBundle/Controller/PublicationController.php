@@ -8,6 +8,7 @@ class PublicationController extends Controller
 {
     public function indexAction()
     {
+
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => array()));
     }
 }
