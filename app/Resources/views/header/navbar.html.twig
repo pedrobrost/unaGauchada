@@ -11,10 +11,14 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      {{ navbar.item('Gauchadas', '#', 'Gauchadas') }} {{ navbar.item('Buscar', '#') }} {{ navbar.item('Ayuda', '#') }}
+      {{ navbar.item('Gauchadas', '#', 'Gauchadas') }} {{ navbar.item('Ayuda', '#') }}
+      <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
     </ul>
     <ul class="navbar-nav">
-     {% include 'header/navbarVisitor.html.twig' %}
+     {% include 'header/navbarAdmin.html.twig' %}
     </ul>
     </div>
   </div>

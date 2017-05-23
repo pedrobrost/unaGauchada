@@ -4,8 +4,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Gauchadas</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+            <h1 class="jumbotron-heading">Últimas gauchadas</h1>
         </div>
     </section>
 
@@ -19,17 +18,37 @@
                     <img class="card-img-top" src="{{ asset(publication.description)}}" alt="Card image cap">
                     <div class="card-block">
                         <h4 class="card-title">{{ publication.title }}</h4>
-                        <p class="card-text">
-                            <a class="btn btn-primary" href="#">Descripción</a>
-                        </p>
+                        <div class= "row">
+                        <div class="card-text col">
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                        </div>
+                        <div class="card-text col">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                        </div>
+                        </div>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                        <a class=" btn btn-primary" href="#">Descripción</a>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 {% endblock %}
