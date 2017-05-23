@@ -5,6 +5,13 @@ login:
 logout:
     path:   /logout
 
-#signup:
-#    path:   /signup
-#    defaults:  { _controller: SecurityBundle:Security:signup }
+register:
+    path:   /signup
+    defaults:  { _controller: UGSecurityBundle:Security:register }
+    methods:  [GET]
+
+signup:
+    path:   /signup
+    defaults:  { _controller: UGSecurityBundle:Security:signup }
+    methods:  [POST]
+
