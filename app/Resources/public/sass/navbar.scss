@@ -1,11 +1,11 @@
-
-
-nav.navbar{
-    ul.sign-in{
+nav.navbar {
+    .dropdown-toggle {
+        cursor: pointer;
+    }
+    ul.sign-in {
         background-color: transparent;
         border: none;
-
-        .card{
+        .card {
             margin: 0 auto;
             min-width: 300px;
             max-width: 500px;

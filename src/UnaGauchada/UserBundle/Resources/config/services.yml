@@ -2,3 +2,13 @@ services:
 #    user.example:
 #        class: UnaGauchada\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    api.users.password_updater:
+        class:     UnaGauchada\UserBundle\Service\PasswordUpdaterService
+        arguments: ['@security.encoder_factory']
+
+    api.users.user_listener:
+        class:     UnaGauchada\UserBundle\EventListener\UserListener
+        arguments: ['@api.users.password_updater']
+        tags:
+            - { name: doctrine.event_subscriber }

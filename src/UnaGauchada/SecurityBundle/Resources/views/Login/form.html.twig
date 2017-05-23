@@ -6,16 +6,17 @@
         {% endif %}
 
         <form action="{{ path('login') }}" method="post">
-            <div class="form-group"><input type="email" class="form-control" id="formGroupExampleInput"
+            <div class="form-group"><input type="email" name="_username" class="form-control" id="formGroupExampleInput"
                                            placeholder="Dirección de email"
                                            value="{% if lastUsername is defined %}{{ lastUsername }}{% endif %}"></div>
-            <div class="form-group"><input type="password" class="form-control" id="formGroupExampleInput2"
+            <div class="form-group"><input type="password" name="_password" class="form-control" id="formGroupExampleInput2"
                                            placeholder="Contraseña"></div>
             <div class="checkbox">
                 <label class="form-group"><input type="checkbox" value="remember-me"> Recordarme </label>
             </div>
             <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
             <div class="text-center"><a href="">No me acuerdo mi contraseña</a></div>
+
         </form>
     {% endblock %}
 {% endembed %}

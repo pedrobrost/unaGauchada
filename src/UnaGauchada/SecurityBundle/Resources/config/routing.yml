@@ -1,0 +1,17 @@
+login:
+    path:   /login
+    defaults:  { _controller: UGSecurityBundle:Security:login }
+
+logout:
+    path:   /logout
+
+register:
+    path:   /signup
+    defaults:  { _controller: UGSecurityBundle:Security:register }
+    methods:  [GET]
+
+signup:
+    path:   /signup
+    defaults:  { _controller: UGSecurityBundle:Security:signup }
+    methods:  [POST]
+
