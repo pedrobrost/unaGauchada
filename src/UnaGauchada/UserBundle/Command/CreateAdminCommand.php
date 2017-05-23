@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class CreateUserCommand extends Command {
+class CreateAdminCommand extends Command {
 
     protected function configure(){
         $this
