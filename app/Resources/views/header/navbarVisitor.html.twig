@@ -1,11 +1,13 @@
- {% import 'header/navItem.html.twig' as navbar %} {{ navbar.item('Registrarse', '#', 'Gauchadas') }}
+ {% import 'header/navItem.html.twig' as navbar %} 
+ 
+ {{ navbar.item('Registrarse', '#', 'Gauchadas') }}
 
 
 <li class="dropdown">
     <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Iniciar Sesión
                 </a>
-    <ul class="dropdown-menu sign-in" role="menu">
+    <ul class="dropdown-menu dropdown-menu-right sign-in" role="menu">
         <li>
 
                 {% include 'signIn/form.html.twig' %}

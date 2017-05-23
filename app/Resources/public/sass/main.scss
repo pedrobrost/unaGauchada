@@ -2,18 +2,17 @@
 @import "bootstrap/scss/bootstrap";
 
 
-
-@import "publication-list";
 @import "navbar";
+@import "footer";
 @import "signIn";
 @import "signUp";
+@import "publication-list";
 
 
 /* Change the white to any color ;) */
 
 body{
     padding-top: 56px;
-    padding-bottom: 60px;
 }
 
 input:-webkit-autofill {
