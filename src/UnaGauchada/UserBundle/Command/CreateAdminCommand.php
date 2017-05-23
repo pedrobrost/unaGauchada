@@ -16,11 +16,6 @@ class CreateAdminCommand extends Command {
             ->setHelp('This command creates a new administrator');
     }
 
-    protected function interact(InputInterface $input, OutputInterface $output)
-    {
-
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
