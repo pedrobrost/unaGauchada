@@ -392,10 +392,13 @@ class User implements UserInterface
 
     /**
      * @param mixed $plainPassword
+     *
+     * @return self
      */
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+        return $this;
     }
 
     /**
@@ -408,10 +411,14 @@ class User implements UserInterface
 
     /**
      * @param bool $isAdmin
+     *
+     *
+     * @return self
      */
     public function setIsAdmin($isAdmin)
     {
         $this->isAdmin = $isAdmin;
+        return $this;
     }
 
 }
