@@ -57,10 +57,6 @@ class CreateAdminCommand extends ContainerAwareCommand
             }
         });
 
-
-        $io->text($email);
-        $io->text($password);
-
         // create the user
         $user = new User();
         $user
@@ -69,6 +65,8 @@ class CreateAdminCommand extends ContainerAwareCommand
             ->setEmail($email)
             ->setIsAdmin(true)
             ->setPlainPassword($password)
+            ->setPassword('cunk')
+            ->setSalt('cunk')
             ->setBirthday(new \DateTime());
 
         $em = $this->getManager();
