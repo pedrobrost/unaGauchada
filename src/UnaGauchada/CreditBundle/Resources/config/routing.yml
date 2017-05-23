@@ -1,0 +1,3 @@
+credit_homepage:
+    path:     /
+    defaults: { _controller: CreditBundle:Default:index }
