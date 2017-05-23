@@ -14,4 +14,8 @@ login:
     path:   /login
     defaults:  { _controller: UserBundle:Login:login }
 
+logout:
+    path:   /logout
+
+
 

@@ -92,6 +92,11 @@ class User implements UserInterface
      */
     private $photoMime;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plain_password", type="string", length=255, nullable=true)
+     */
     private $plainPassword;
 
     /**
@@ -137,7 +142,7 @@ class User implements UserInterface
 
     public function getSalt()
     {
-        return null;
+        return $this->salt;
     }
 
 
