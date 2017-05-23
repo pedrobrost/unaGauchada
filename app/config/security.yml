@@ -14,11 +14,10 @@ security:
 
     firewalls:
         main:
-            pattern: ^/
             anonymous: ~
             form_login:
                 login_path: login
-                check_path: login_check
+                check_path: login
                 default_target_path: /admin
 
     access_control:
