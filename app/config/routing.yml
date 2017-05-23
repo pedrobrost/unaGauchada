@@ -1,9 +1,17 @@
-client_test:
-    resource: "@ClientTestBundle/Resources/config/routing.yml"
-    prefix:   /
-
 publication:
     resource: "@PublicationBundle/Resources/config/routing.yml"
     prefix:   /
+
+credit:
+    resource: "@CreditBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    path:   /login
+    defaults:  { _controller: UserBundle:Login:login }
 
 

@@ -1,3 +1,0 @@
-client_test_homepage:
-    path:     /login
-    defaults: { _controller: ClientTestBundle:Default:index }
