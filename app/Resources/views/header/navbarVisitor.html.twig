@@ -7,22 +7,9 @@
                 </a>
     <ul class="dropdown-menu sign-in" role="menu">
         <li>
-            <div class="card">
-                <div class="card-block card-inverse card-primary text-center">
-                    <h4 class="card-title">Iniciar Sesión</h4>
-                </div>
-                <div class="card-block">
-                    <form>
-                        <div class="form-group"> <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Dirección de email"> </div>
-                        <div class="form-group"> <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">                            </div>
-                        <div class="checkbox">
-                            <label class="form-group"><input type="checkbox" value="remember-me"> Recordarme </label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
-                        <div class="form-group"><a href="">No me acuerdo mi contraseña</a></div>
-                    </form>
 
-                </div>
+                {% include 'signIn/form.html.twig' %}
+               
         </li>
     </ul>
 </li>

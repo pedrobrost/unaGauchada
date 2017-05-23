@@ -1,3 +1,7 @@
+client_test:
+    resource: "@ClientTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 publication:
     resource: "@PublicationBundle/Resources/config/routing.yml"
     prefix:   /
