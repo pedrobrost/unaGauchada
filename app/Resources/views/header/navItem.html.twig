@@ -1,7 +1,7 @@
 {% macro item(name, route, active) %}
 
     <li class="nav-item">
-        <a class="nav-link {% if active == name %} active {% endif %}" href="{{ route }}">{{ name }}</a>
+        <a class="nav-link {% if active == name %} active {% endif %}" href="{{ path(route) }}">{{ name }}</a>
     </li>
 
 {% endmacro %}

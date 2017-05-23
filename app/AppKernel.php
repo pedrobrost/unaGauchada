@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new UnaGauchada\PublicationBundle\PublicationBundle(),
             new UnaGauchada\UserBundle\UserBundle(),
             new UnaGauchada\CreditBundle\CreditBundle(),
+            new UnaGauchada\SecurityBundle\UGSecurityBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

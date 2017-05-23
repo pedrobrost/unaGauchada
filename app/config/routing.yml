@@ -8,10 +8,11 @@ credit:
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+security:
+    resource: "@UGSecurityBundle/Resources/config/routing.yml"
     prefix:   /
 
-login:
-    path:   /login
-    defaults:  { _controller: UserBundle:Login:login }
 
 

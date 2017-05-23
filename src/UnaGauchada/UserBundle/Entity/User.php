@@ -92,6 +92,11 @@ class User implements UserInterface
      */
     private $photoMime;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plain_password", type="string", length=255, nullable=true)
+     */
     private $plainPassword;
 
     /**
@@ -109,7 +114,7 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        $this->plainPassword = null;
+        $this->plainPassword = "";
     }
 
     public function __toString()
@@ -148,6 +153,7 @@ class User implements UserInterface
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
+        $this->plainPassword = "";
     }
 
     /**
