@@ -10,12 +10,9 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /user
 
-login:
-    path:   /login
-    defaults:  { _controller: UserBundle:Login:login }
-
-logout:
-    path:   /logout
+security:
+    resource: "@UGSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
 
 
 
