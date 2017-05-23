@@ -6,13 +6,14 @@
 @import "publication-list";
 @import "navbar";
 @import "signIn";
-
+@import "signUp";
 
 
 /* Change the white to any color ;) */
 
 body{
     padding-top: 56px;
+    padding-bottom: 60px;
 }
 
 input:-webkit-autofill {

@@ -1,0 +1,22 @@
+.signUp {
+    .card {
+        margin: 80px auto 0;
+        width: 700px;
+        .card-title {
+            margin: 0;
+        }
+        .form-group.btn {
+            width: 250px;
+            float: right;
+        }
+        @media (max-width: 800px) {
+            width: initial;
+            .col-xs-12:nth-child(odd) {
+                padding-bottom: 15px;
+            }
+            .form-group.btn {
+                width: 100%;
+            }
+        }
+    }
+}
