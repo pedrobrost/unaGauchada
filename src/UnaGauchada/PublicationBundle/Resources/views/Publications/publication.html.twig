@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <img class="card-img-top publication" src="" alt="Card image cap">
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">{{publication.title}}</h4>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">Descripción</h4>
+                <p class="card-text">{{publication.description}}</p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>
+                  <small>{{publication.??}}</small>
+                  </div>
+                <div class="col">
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  <small>{{publication.limitDate}}</small>
+                </div>
+                <div class="col">
+                  <i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+                  <small>{{publication.category}}</small>
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}
