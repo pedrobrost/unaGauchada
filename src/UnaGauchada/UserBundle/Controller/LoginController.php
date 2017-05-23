@@ -15,4 +15,17 @@ class LoginController extends Controller
         $lastUsername = $authUtils->getLastUsername();
         return $this->render('UserBundle:Login:login.html.twig', array('error' => $error, 'lastUsername' => $lastUsername));
     }
+
+    public function testAction(){
+
+        $passwordUpdater = $this->container->get('api.users.password_updater');
+
+        $user= $this->getDoctrine()->getRepository('UserBundle:User')->find(1);
+
+        $encoded = $passwordUpdater->encodePassword($user, '1234');
+
+        return var_dump(array('1' => $user->getPassword(),
+        '2' => $encoded));
+    }
+
 }

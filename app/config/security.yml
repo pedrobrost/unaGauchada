@@ -4,9 +4,8 @@ security:
 
     encoders:
         UnaGauchada\UserBundle\Entity\User:
-            algorithm:        sha512
-            encode_as_base64: false
-            iterations:       7
+            algorithm: bcrypt
+            cost: 12
 
     providers:
         users:

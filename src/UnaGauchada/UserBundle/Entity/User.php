@@ -109,7 +109,7 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        $this->plainPassword = null;
+        $this->plainPassword = "";
     }
 
     public function __toString()
@@ -137,7 +137,7 @@ class User implements UserInterface
 
     public function getSalt()
     {
-        return $this->salt;
+        return null;
     }
 
 
@@ -148,6 +148,7 @@ class User implements UserInterface
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
+        $this->plainPassword = "";
     }
 
     /**
