@@ -5,10 +5,17 @@
 
 @import "publication-list";
 @import "navbar";
-
+@import "signIn";
+@import "signUp";
 
 
 /* Change the white to any color ;) */
+
+body{
+    padding-top: 56px;
+    padding-bottom: 60px;
+}
+
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #E0E0E0 inset;
 }

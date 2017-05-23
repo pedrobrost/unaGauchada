@@ -1,0 +1,12 @@
+.signIn {
+    .card {
+        margin:  100px auto 0;
+        width: 400px;
+        .card-title {
+            margin: 0;
+        }
+        @media (max-width: 450px) {
+            width: initial;
+        }
+    }
+}
