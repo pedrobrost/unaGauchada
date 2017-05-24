@@ -16,8 +16,9 @@
 
   <header>{% include 'header/navbar.html.twig' %}</header>
 
+  <div class="content">
     {% block body %}{% endblock %}
-
+  </div>
   {% include 'footer/footer.html.twig' %}
 
   <script src="{{ asset('dist/js/jquery.js') }}"></script>

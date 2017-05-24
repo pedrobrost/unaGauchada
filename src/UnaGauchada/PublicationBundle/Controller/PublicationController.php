@@ -12,8 +12,8 @@ class PublicationController extends Controller
 
         $publications = array(
             new Publication(
-                'Busco acompañante de viaje',
-                'http://lorempixel.com/600/337/?time=',
+                'Una milanga para los pi',
+                'http://www.pasqualinonet.com.ar/Images5/Milanesa-napo-1920w.jpg?a=',
                 new \DateTime()
             ),
             new Publication(
@@ -32,7 +32,7 @@ class PublicationController extends Controller
                 new \DateTime()
             ),
             new Publication(
-                'Mila para Luis',
+                'Busco acompañante de viaje',
                 'http://lorempixel.com/600/337/?time=',
                 new \DateTime()
             ),
@@ -45,4 +45,9 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
 
     }
+
+    public function publicationAction()
+    {
+    return $this->render('PublicationBundle:Publications:publication.html.twig');
+}
 }

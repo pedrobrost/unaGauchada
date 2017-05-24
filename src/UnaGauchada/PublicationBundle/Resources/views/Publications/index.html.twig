@@ -15,7 +15,7 @@
 
             {% for publication in publications %}
                 <div class="card">
-                    <img class="card-img-top" src="{{ asset(publication.description) ~ random(100)}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset(publication.description) ~ random(1000)}}" alt="Card image cap">
                     <div class="card-block">
                         <h4 class="card-title">{{ publication.title }}</h4>
                         <div class= "row">
@@ -25,12 +25,12 @@
                         </div>
                         <div class="card-text col">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                            <small class="text-muted">La Plata</small>
                         </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a class=" btn btn-primary" href="#">Descripción</a>
+                        <a class=" btn btn-primary" href="/publication">Ver detalle</a>
                     </div>
                 </div>
             {% endfor %}
@@ -40,13 +40,13 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <a class="page-link" href="#" tabindex="-1">Ant</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
-      <a class="page-link" href="#">Next</a>
+      <a class="page-link" href="#">Sig</a>
     </li>
   </ul>
 </nav>
