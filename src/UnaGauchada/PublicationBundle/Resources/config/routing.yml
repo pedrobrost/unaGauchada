@@ -1,3 +1,8 @@
 publication_homepage:
     path:     /
     defaults: { _controller: PublicationBundle:Publication:index }
+
+
+publication:
+    path:     /publication
+    defaults: { _controller: PublicationBundle:Publication:publication }
