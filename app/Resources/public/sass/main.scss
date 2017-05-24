@@ -7,6 +7,7 @@
 @import "signIn";
 @import "signUp";
 @import "publication-list";
+@import "publication";
 
 
 /* Change the white to any color ;) */
@@ -21,12 +22,14 @@ body{
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
    cursor: default;
-
    .container.content{
        background-color: white;
    }
 }
 
+.content{
+    margin-top: 20px;
+}
 
 button{
     cursor: pointer
