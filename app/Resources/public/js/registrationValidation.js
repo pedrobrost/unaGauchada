@@ -64,7 +64,6 @@ $('#registration_form').validate({
                 },
                 confirmPass: {
                     required: true,
-                    equalTo: "#password",
                     minlength: 6,
                 },
                 birthday: {
@@ -112,12 +111,12 @@ $('#registration_form').validate({
             },
 
             highlight: function (element) {
-                $(element).closest('.form-group').addClass('has-danger');
-                $(element).addClass('form-control-danger');
+                $(element).closest('.form-group').addClass('has-warning');
+                $(element).addClass('form-control-warning');
             },
             unhighlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-danger');
-                $(element).removeClass('form-control-danger');
+                $(element).closest('.form-group').removeClass('has-warning');
+                $(element).removeClass('form-control-warning');
                 $(element).closest('.form-group').addClass('has-success');
             },
             // Make sure the form is submitted to the destination defined

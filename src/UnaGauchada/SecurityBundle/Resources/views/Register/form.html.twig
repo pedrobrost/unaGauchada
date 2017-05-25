@@ -11,7 +11,10 @@
             </div>
         </div>
         <label for="exampleInputEmail1">Email</label>
-        <div class="form-group"><input type="email" class="form-control" id="email" placeholder="Dirección de email " name="email">
+        <div class="form-group {% if emailUsed %}has-danger{% endif %}"><input type="email" class="form-control {% if emailUsed %}form-control-danger{% endif %}" id="email" placeholder="Dirección de email " name="email">
+            {% if emailUsed %}
+            <div class="form-control-feedback">El email que ingresó ya fue utilizado</div>
+            {% endif %}
         </div>
         <label for="exampleInputEmail1">Contraseña</label>
         <div class="row">
