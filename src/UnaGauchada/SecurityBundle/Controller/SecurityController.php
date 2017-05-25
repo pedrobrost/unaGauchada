@@ -2,8 +2,10 @@
 
 namespace UnaGauchada\SecurityBundle\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\UserBundle\Entity\User;
 
 class SecurityController extends Controller
@@ -17,7 +19,7 @@ class SecurityController extends Controller
     }
 
     public function registerAction(){
-        return $this->render('UGSecurityBundle:Register:register.html.twig');
+        return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => false));
     }
 
     public function signupAction(Request $request){
@@ -32,13 +34,18 @@ class SecurityController extends Controller
             ->setPlainPassword($request->get('password'))
             ->setPassword('chunk')
             ->setSalt('chunk')
-            ->setBirthday(new \DateTime($request->get('birthday')));
+            ->setBirthday(new \DateTime($request->get('birthday')))
+            ->setPhone($request->get('phone'));
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
 
-        return $this->redirectToRoute('publication_homepage');
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('publication_homepage');
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+            return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
+        }
     }
 
 }
