@@ -52,7 +52,7 @@ class Submission
 
     public function getState(){
         if(!$this->acceptedState){
-            return new WaitingState();
+            return new WaitingState($this);
         }else{
             return $this->getAcceptedState();
         }

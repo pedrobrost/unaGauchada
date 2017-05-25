@@ -12,4 +12,11 @@ namespace UnaGauchada\PublicationBundle\Model;
 class WaitingState extends SubmissionState
 {
 
+    private $submission;
+
+
+    public function __construct($submission){
+        $this->submission = $submission;
+    }
+
 }
