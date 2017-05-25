@@ -4,18 +4,11 @@ $.validator.addMethod("check_date_of_birth", function (value, element) {
     }
 
     var dateOfBirth = value;
-    var arr_dateText = dateOfBirth.split("/");
-    day = arr_dateText[0];
-    month = arr_dateText[1];
-    year = arr_dateText[2];
-
-    var mydate = new Date();
-    mydate.setFullYear(year, month - 1, day);
 
     var maxDate = new Date();
-    maxDate.setYear(maxDate.getYear() - 18);
+    maxDate.setFullYear(maxDate.getFullYear() - 18);
 
-    if (maxDate < mydate) {
+    if (maxDate < dateOfBirth) {
         return false;
     }
     return true;
@@ -36,10 +29,6 @@ $.validator.addMethod("max_date_limit", function (value, element) {
     return true;
 }, 'Ingrese una fecha válida');
 
-
-function isPasswordPresent() {
-    return $('#accountpassword1').val().length > 0;
-}
 
 $.validator.addMethod("nonNumeric", function (value, element) {
             return this.optional(element) || isNaN(Number(value));
@@ -79,8 +68,9 @@ $('#registration_form').validate({
                     minlength: 6,
                 },
                 birthday: {
-                    check_date_of_birth: true,
+
                     required: true,
+                    check_date_of_birth: true,
                     max_date_limit: true,
                 },
                 phone: {
@@ -116,7 +106,8 @@ $('#registration_form').validate({
                     required: "Por favor ingrese su telefono"
                 },
                 birthday: {
-                    required: "Por favor ingrese su fecha de nacimiento"
+                    required: "Por favor ingrese su fecha de nacimiento",
+                    min: "Por favor ingrese una fecha mayor al 01/01/1950"
                 },
             },
 
