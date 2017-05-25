@@ -1,9 +1,11 @@
 {% embed 'utils/card.html.twig' with {'title': 'Iniciar Sesión'} %} 
 
-{% block content %} 
+{% block content %}
 
 {% if error is defined and error%}
-    <div>{{ error.message }}</div>
+    <div class="alert alert-danger" role="alert">
+        <strong>Ups!</strong> El email y la contraseña con coinciden.
+    </div>
 {% endif %}
 
 <form id="signInForm" action="{{ path('login') }}" method="post">
