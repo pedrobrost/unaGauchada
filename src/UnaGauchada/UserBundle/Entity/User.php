@@ -58,6 +58,13 @@ class User implements UserInterface
     private $salt;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=64)
+     */
+    private $phone;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="datetime")
@@ -105,6 +112,11 @@ class User implements UserInterface
      */
     private $transactions;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Submission", mappedBy="user")
+     */
+    private $submissions;
 
 
     public function getUsername()
@@ -152,6 +164,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
         $this->plainPassword = "";
     }
@@ -427,4 +440,68 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return self
+     */
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Add submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return User
+     */
+    public function addSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions[] = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Remove submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     */
+    public function removeSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions->removeElement($submission);
+    }
+
+    /**
+     * Get submissions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubmissions()
+    {
+        return $this->submissions;
+    }
 }
