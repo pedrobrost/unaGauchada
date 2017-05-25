@@ -100,5 +100,28 @@ class Rate
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set score
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Score $score
+     *
+     * @return Rate
+     */
+    public function setScore(\UnaGauchada\PublicationBundle\Entity\Score $score = null)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Score
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+}

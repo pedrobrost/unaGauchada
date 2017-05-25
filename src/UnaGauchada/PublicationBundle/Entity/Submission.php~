@@ -3,6 +3,7 @@
 namespace UnaGauchada\PublicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UnaGauchada\PublicationBundle\Model\WaitingState;
 
 /**
  * Submission
@@ -42,6 +43,22 @@ class Submission
      */
     private $publication;
 
+    /**
+     * One Customer has One Cart.
+     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission")
+     */
+    private $acceptedState;
+
+    private $state;
+
+
+    public function getState(){
+        if(!$this->acceptedState){
+            return new WaitingState();
+        }else{
+
+        }
+    }
 
     /**
      * Get id

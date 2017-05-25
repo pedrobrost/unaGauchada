@@ -3,14 +3,15 @@
 namespace UnaGauchada\PublicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UnaGauchada\PublicationBundle\Model\SubmissionState;
 
 /**
- * Accepted
+ * AcceptedState
  *
  * @ORM\Table(name="accepted")
  * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\AcceptedRepository")
  */
-class Accepted
+class AcceptedState extends SubmissionState
 {
     /**
      * @var int
@@ -35,6 +36,13 @@ class Accepted
      */
     private $rate;
 
+    /**
+     * One Cart has One Customer.
+     * @ORM\OneToOne(targetEntity="Submission", inversedBy="acceptedState")
+     * @ORM\JoinColumn(name="submission_id", referencedColumnName="id")
+     */
+    private $submission;
+
 
     /**
      * Get id
@@ -51,7 +59,7 @@ class Accepted
      *
      * @param \DateTime $date
      *
-     * @return Accepted
+     * @return AcceptedState
      */
     public function setDate($date)
     {
@@ -75,7 +83,7 @@ class Accepted
      *
      * @param \UnaGauchada\PublicationBundle\Entity\Rate $rate
      *
-     * @return Accepted
+     * @return AcceptedState
      */
     public function setRate(\UnaGauchada\PublicationBundle\Entity\Rate $rate = null)
     {
@@ -92,5 +100,29 @@ class Accepted
     public function getRate()
     {
         return $this->rate;
+    }
+
+    /**
+     * Set submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return AcceptedState
+     */
+    public function setSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission = null)
+    {
+        $this->submission = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Get submission
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Submission
+     */
+    public function getSubmission()
+    {
+        return $this->submission;
     }
 }
