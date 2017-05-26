@@ -11,18 +11,6 @@
     <div class="form-group">
         <textarea class="form-control" id="description" maxlength="40" placeholder="Descripcion" name="description"></textarea>
     </div>
-    <label for="exampleInputEmail1">Subir Imagen</label>
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-btn">
-                <span class="btn btn-secondary btn-file">
-                    Buscar… <input type="file" id="imgInp">
-                </span>
-            </span>
-            <input type="text" class="form-control" readonly>
-        </div>
-        <img id='img-upload' class="text-center"/>
-    </div>
    <div class="form-group">
         <label class="col-xs-3 control-label">Categoria</label>
         <div class="col-xs-5 selectContainer">
@@ -56,6 +44,18 @@
     <label for="exampleInputEmail1">Fecha Limite</label>
     <div class="form-group">
         <input type="date" min="2017-01-01" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
+    </div>
+        <label for="exampleInputEmail1">Subir Imagen</label>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-secondary btn-file">
+                    Buscar… <input type="file" id="imgInp">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload' class="card-img-bottom"/>
     </div>
 
     <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Crear</button>
