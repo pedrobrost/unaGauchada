@@ -1,30 +1,88 @@
 nav.navbar {
-    .nav-link.publish:hover::before{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .1);
+}
+
+.bgfaded {
+    background-color: #ffffff;
+}
+
+.nav-link.publish:hover::before {
     content: "Publicar gauchada  ";
-    }
+}
+
+
 /*
     .fa.fa-pencil-square-o::before {
         color: #FB8C00;
+    }
+*/
 
-    }
-*/    
-    .dropdown-toggle {
-        cursor: pointer;
-    }
-    ul.sign-in {
-        background-color: transparent;
-        border: none;
-        .card {
-            margin: 0 auto;
-            min-width: 300px;
-            max-width: 500px;
-            .card-title {
-                margin: 0;
-            }
-            @media (max-width: 400px) {
-                min-width: initial;
-            }
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+ul.sign-in {
+    background-color: transparent;
+    border: none;
+    .card {
+        margin: 0 auto;
+        min-width: 300px;
+        max-width: 500px;
+        .card-title {
+            margin: 0;
+        }
+        @media (max-width: 400px) {
+            min-width: initial;
         }
     }
 }
 
+nav.navbar {
+    // Animation
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+nav a {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+}
+
+nav.navbar.shrink {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+    min-height: 35px;
+}
+
+nav.shrink a {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+nav.shrink .navbar-brand {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+nav.shrink .navbar-toggle {
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+    padding: 4px 5px;
+    margin: 8px 15px 8px 0;
+}
