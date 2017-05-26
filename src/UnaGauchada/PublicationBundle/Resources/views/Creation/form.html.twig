@@ -1,13 +1,8 @@
-{% embed 'utils/card.html.twig' with {'title': 'Registrarme'} %} {% block content %}
-<div class="container">
+{% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} 
 
-    {% if emailUsed %}
-    <div class="alert alert-danger text-center" role="alert">
-        <strong>Ups!</strong> El email que ingresaste ya esta registrado en el sistema.
-    </div>
-    {% endif %}
+{% block content %}
 
-    <form method="post" id="registration_form" action="{{ path('signup') }}">
+<form id="createPublication">
         <label for="exampleInputEmail1">Nombre</label>
         <div class="row">
             <div class="form-group col-xs-12 col-md-6">
@@ -36,7 +31,6 @@
         <div class="form-group"><input type="tel" class="form-control" id="phone" placeholder="teléfono" name="phone"></div>
         <div class="form-group">
         </div>
-        <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Registrame</button>
-    </form>
-</div>
-{% endblock %} {% endembed %}
+        <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Crear</button>
+</form>
+{% endblock %}
