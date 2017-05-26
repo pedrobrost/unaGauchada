@@ -106,7 +106,7 @@ $('#registration_form').validate({
                 birthday: {
                     required: "Por favor ingrese su fecha de nacimiento",
                     min: "Por favor ingrese una fecha mayor al 01/01/1950",
-                    max: "Por favor ingrese una fecha menor al 01/01/3000"
+                    max: "Lo siento, debes tener más de 18 años para registrarte"
                 },
             },
 
