@@ -1,0 +1,23 @@
+<?php
+
+namespace UnaGauchada\PublicationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PublicationComment
+ *
+ * @ORM\Table(name="publication_comment")
+ * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\PublicationCommentRepository")
+ */
+class PublicationComment extends Comment
+{
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToOne(targetEntity="Response")
+     * @ORM\JoinColumn(name="response_id", referencedColumnName="id")
+     */
+    private $response;
+
+}
+

@@ -1,0 +1,49 @@
+<?php
+
+namespace UnaGauchada\PublicationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comment
+ *
+ * @ORM\Table(name="comment")
+ * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\CommentRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"question" = "PublicationComment", "answer" = "Response"})
+ */
+abstract class Comment
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    protected $text;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    protected $date;
+
+    /**
+     * Many Users have One Address.
+     * @ORM\ManyToOne(targetEntity="UnaGauchada\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+}
+

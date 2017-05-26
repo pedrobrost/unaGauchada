@@ -16,13 +16,15 @@
 
   <header>{% include 'header/navbar.html.twig' %}</header>
 
-  {% block body %}{% endblock %}
-
+  <div class="content">
+    {% block body %}{% endblock %}
+  </div>
   {% include 'footer/footer.html.twig' %}
 
   <script src="{{ asset('dist/js/jquery.js') }}"></script>
   <script src="{{ asset('assets/tether/js/tether.min.js') }}"></script>
   <script src="{{ asset('dist/js/bootstrap.js') }}"></script>
+  
   {% block javascripts %}{% endblock %}
 </body>
 

@@ -17,9 +17,15 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                require_previous_session: false
             logout:
                 path: /logout
                 target: /
+            remember_me:
+                secret: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/publish, roles: ROLE_USER }

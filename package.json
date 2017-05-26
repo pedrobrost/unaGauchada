@@ -28,6 +28,7 @@
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
     "jquery": "^3.2.1",
+    "jquery-validation": "^1.16.0",
     "tether": "^1.4.0"
   }
 }

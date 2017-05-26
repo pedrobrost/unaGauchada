@@ -56,5 +56,134 @@ class Transaction
      */
     private $reason;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Transaction
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set amountOfCredits
+     *
+     * @param integer $amountOfCredits
+     *
+     * @return Transaction
+     */
+    public function setAmountOfCredits($amountOfCredits)
+    {
+        $this->amountOfCredits = $amountOfCredits;
+
+        return $this;
+    }
+
+    /**
+     * Get amountOfCredits
+     *
+     * @return integer
+     */
+    public function getAmountOfCredits()
+    {
+        return $this->amountOfCredits;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return Transaction
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UnaGauchada\UserBundle\Entity\User $user
+     *
+     * @return Transaction
+     */
+    public function setUser(\UnaGauchada\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UnaGauchada\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set reason
+     *
+     * @param \UnaGauchada\CreditBundle\Entity\TransactionReason $reason
+     *
+     * @return Transaction
+     */
+    public function setReason(\UnaGauchada\CreditBundle\Entity\TransactionReason $reason = null)
+    {
+        $this->reason = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Get reason
+     *
+     * @return \UnaGauchada\CreditBundle\Entity\TransactionReason
+     */
+    public function getReason()
+    {
+        return $this->reason;
+    }
+}

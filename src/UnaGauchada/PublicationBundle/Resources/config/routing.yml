@@ -1,3 +1,18 @@
 publication_homepage:
     path:     /
     defaults: { _controller: PublicationBundle:Publication:index }
+
+
+publication_show:
+    path:     /publication/{id}
+    defaults: { _controller: PublicationBundle:Publication:publication }
+
+publish_new:
+    path:     /publish
+    defaults: { _controller: PublicationBundle:Publication:publish }
+    methods:  [GET]
+
+publish_create:
+    path:     /publish
+    defaults: { _controller: PublicationBundle:Publication:publishCreate }
+    methods:  [POST]

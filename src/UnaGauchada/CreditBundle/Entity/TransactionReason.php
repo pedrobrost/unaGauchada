@@ -29,6 +29,20 @@ class TransactionReason
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+
+    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="Transaction", mappedBy="reason")
      */
@@ -109,4 +123,88 @@ class TransactionReason
     {
         return $this->transactions;
     }
+
+    /**
+     * Set amountOfCredits
+     *
+     * @param integer $amount
+     *
+     * @return TransactionReason
+     */
+    public function setAmountOfCredits($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get $amount
+     *
+     * @return integer
+     */
+    public function getAmountOfCredits()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return TransactionReason
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+
+
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return TransactionReason
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    public function newTransactionFor($user){
+        $transaction = new Transaction($this, $user);
+        $transaction->setPrice($this->getPrice())
+                    ->setAmountOfCredits($this->getAmount());
+        $user->addTransaction($transaction);
+        return $transaction;
+    }
+
 }

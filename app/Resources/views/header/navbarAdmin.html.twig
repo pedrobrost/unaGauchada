@@ -1,7 +1,5 @@
 {% import 'header/navItem.html.twig' as navbar %}
  
- {{ navbar.item('Publicar Gauchada', 'publication_homepage', '') }}
-
 <div class="dropdown">
     <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
        aria-expanded="false">
@@ -9,17 +7,32 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="#">
-            <span> <i class="fa fa-bar-chart" aria-hidden="true"></i> </span>
+            <span> <i class="fa fa-bar-chart" aria-hidden="true"></i></span>&nbsp
             <span>Reportes Estadísticos</span>
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
-            <span><i class="fa fa-cog" aria-hidden="true"></i></span>
+            <span><i class="fa fa-trophy" aria-hidden="true"></i></span>&nbsp
+            <span>Logros</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+            <span><i class="fa fa-bookmark" aria-hidden="true"></i></span>&nbsp
+            <span>Categoria</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+            <span><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>&nbsp
+            <span>Creditos</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+            <span><i class="fa fa-cog" aria-hidden="true"></i></span>&nbsp
             <span>Configuración</span>
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ path('logout') }}">
-            <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+            <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp
             <span>Cerrar Sesión</span>
         </a>
     </div>

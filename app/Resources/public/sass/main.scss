@@ -7,20 +7,15 @@
 @import "signIn";
 @import "signUp";
 @import "publication-list";
+@import "publication";
+@import "publish";
 
 
 /* Change the white to any color ;) */
 
 body{
     padding-top: 56px;
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #E0E0E0 inset;
-}
-
-body {
-  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Firefox */
@@ -28,6 +23,17 @@ body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
    cursor: default;
+   .container.content{
+       background-color: white;
+   }
+}
+
+.content{
+    margin-top: 20px;
+}
+
+.jumbotron{
+    margin-top: -20px
 }
 
 button{
