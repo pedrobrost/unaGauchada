@@ -1,9 +1,13 @@
 nav.navbar {
-
+    .nav-link.publish:hover::before{
+    content: "Publicar gauchada  ";
+    }
+/*
     .fa.fa-pencil-square-o::before {
         color: #FB8C00;
 
     }
+*/    
     .dropdown-toggle {
         cursor: pointer;
     }
@@ -24,18 +28,3 @@ nav.navbar {
     }
 }
 
-.numberCircle {
-    border-radius: 50%;
-    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
-    text-align: center;
-
-    font: 32px Arial, sans-serif;
-}

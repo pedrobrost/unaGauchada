@@ -1,13 +1,12 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
-    <a class="nav-link primary" href="publish"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+    <a class="nav-link primary publish" href="publish"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
 
 
 
 <div class="dropdown">
     <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         {{ app.user.name }} {{ app.user.lastname
-        }}
+         {{ app.user.name }} {{ app.user.lastname}}
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="#">

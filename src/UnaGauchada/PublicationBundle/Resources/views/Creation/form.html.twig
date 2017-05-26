@@ -1,5 +1,12 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
+{% if error is defined and error%}
+{% if app.user.credits < 1 %}
+    <div class="alert alert-danger text-center" role="alert">
+        <strong>Ups!</strong> No tienes creditos
+    </div>
+{% endif %}
+{% endif %}
 
 <form id="createPublication" method="post" action="{{ path('publish_create') }}">
 <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
