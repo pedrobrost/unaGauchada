@@ -1,34 +1,6 @@
-$.validator.addMethod("check_date_of_birth", function (value, element) {
-    if (this.optional(element)) {
-        return true;
-    }
-
-    var dateOfBirth = value;
-
-    var maxDate = new Date();
-    maxDate.setFullYear(maxDate.getFullYear() - 18);
-
-    if (maxDate < dateOfBirth) {
-        return false;
-    }
-    return true;
-}, 'Perdon, debes tener más de 18 años');
-
-$.validator.addMethod("max_date_limit", function (value, element) {
-    if (this.optional(element)) {
-        return true;
-    }
-
-    var date = value;
-
-    var maxDate = new Date();
-
-    if (maxDate < date) {
-        return false;
-    }
-    return true;
-}, 'Ingrese una fecha válida');
-
+$.validator.addMethod("equal", function (value, element) {
+            return element == $document.getElementById('password');
+        });
 
 $.validator.addMethod("nonNumeric", function (value, element) {
             return this.optional(element) || isNaN(Number(value));
@@ -58,13 +30,12 @@ $('#registration_form').validate({
                     // by the built-in "email" rule
                     email: true
                 },
-                password: {
-                    required: true,
+                pass: {
                     minlength: 6,
                 },
                 confirmPass: {
                     minlength: 6,
-                    equalTo: '#password'
+                    equalTo: '#pass',
                 },
                 birthday: {
                     required: true,
@@ -91,9 +62,9 @@ $('#registration_form').validate({
                     minlength: "Su contraseña debe tener al menos 6 caracteres"
                 },
                 confirmPass: {
-                    required: "Por favor re-ingrese contraseña",
+                    required: "Por favor re-ingrese su contraseña",
                     minlength: "Su contraseña debe tener al menos 6 caracteres",
-                    equalTo: "La contraseña no coincide"
+                    equal: "La contraseña no coincide"
                 },
                 email: {
                     email: "Por favor ingrese un email valido",
