@@ -91,11 +91,8 @@ class Publication
     private $user;
 
 
-    public function __construct($title, $description, $limitDate){
+    public function __construct(){
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->title = $title;
-        $this->description = $description;
-        $this->limitDate = $limitDate;
         $this->sysDate = new \DateTime();
     }
 
