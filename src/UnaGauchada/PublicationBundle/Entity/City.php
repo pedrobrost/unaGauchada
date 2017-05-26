@@ -109,4 +109,10 @@ class City
     {
         return $this->publications;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }

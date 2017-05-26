@@ -108,4 +108,10 @@ class Category
     {
         return $this->publications;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
