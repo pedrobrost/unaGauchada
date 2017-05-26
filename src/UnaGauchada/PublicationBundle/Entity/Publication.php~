@@ -359,4 +359,28 @@ class Publication
     {
         return $this->city;
     }
+
+    /**
+     * Set user
+     *
+     * @param \UnaGauchada\UserBundle\Entity\User $user
+     *
+     * @return Publication
+     */
+    public function setUser(\UnaGauchada\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UnaGauchada\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
