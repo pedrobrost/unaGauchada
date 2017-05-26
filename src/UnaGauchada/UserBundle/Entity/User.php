@@ -138,7 +138,7 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return "";
+        return $this->getName(). ' '. $this->getLastName();
     }
 
     public function getCredits(){
@@ -546,4 +546,5 @@ class User implements UserInterface
     {
         return $this->publications;
     }
+
 }

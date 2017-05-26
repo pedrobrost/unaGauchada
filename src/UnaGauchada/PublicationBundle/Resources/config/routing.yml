@@ -19,4 +19,5 @@ publication_image:
 
 publication_show:
     path:     /publication/{id}
-    defaults: { _controller: PublicationBundle:Publication:publication }
+    defaults: { _controller: PublicationBundle:Publication:show }
+    methods:  [GET]

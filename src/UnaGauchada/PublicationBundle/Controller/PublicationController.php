@@ -16,8 +16,8 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
     }
 
-    public function publicationAction(){
-        return $this->render('PublicationBundle:Publications:publication.html.twig');
+    public function showAction(Publication $publication){
+        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
     public function publishAction(){
@@ -36,6 +36,7 @@ class PublicationController extends Controller
 
             $publication = new Publication();
             $publication
+                ->setUser($this->getUser())
                 ->setTitle($request->get('title'))
                 ->setDescription($request->get('description'))
                 ->setLimitDate(new \DateTime($request->get('limitDate')))
