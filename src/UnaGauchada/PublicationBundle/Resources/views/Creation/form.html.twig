@@ -31,14 +31,14 @@
     </div>      
     <label for="exampleInputEmail1"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp Fecha Limite</label>
     <div class="form-group">
-        <input type="date" min="2017-05-01" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
+        <input type="date" min="{{ "now"|date("Y-m-d") }}" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
     </div>
         <label for="exampleInputEmail1"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp Subir Imagen</label>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-secondary btn-file">
-                    Buscar… <input type="file" id="imgInp" name="image">
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i> Buscar… <input type="file" id="imgInp" name="image" accept="image/*">
                 </span>
             </span>
             <input type="text" class="form-control" readonly>
