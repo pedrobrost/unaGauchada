@@ -1,3 +1,11 @@
+.badge.credits{
+    float: right;
+    font-weight: initial;
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;
