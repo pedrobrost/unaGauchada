@@ -59,12 +59,12 @@ $('#registration_form').validate({
                     email: true
                 },
                 password: {
-                    minlength: 6,
                     required: true,
+                    minlength: 6,
                 },
                 confirmPass: {
                     minlength: 6,
-                    required: true,
+                    equalTo: '#password'
                 },
                 birthday: {
                     required: true,
@@ -100,13 +100,13 @@ $('#registration_form').validate({
                     required: "Por favor ingrese su email"
                 },
                 phone: {
-                    number: "Por favor ingrese un email valido",
-                    required: "Por favor ingrese su telefono"
+                    number: "Por favor ingrese un teléfono valido",
+                    required: "Por favor ingrese su teléfono"
                 },
                 birthday: {
                     required: "Por favor ingrese su fecha de nacimiento",
                     min: "Por favor ingrese una fecha mayor al 01/01/1950",
-                    max: "Por favor ingrese una fecha menor al 01/01/3000"
+                    max: "Lo siento, debes tener más de 18 años para registrarte"
                 },
             },
 

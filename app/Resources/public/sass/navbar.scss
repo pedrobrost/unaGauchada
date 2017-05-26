@@ -1,4 +1,13 @@
 nav.navbar {
+    .nav-link.publish:hover::before{
+    content: "Publicar gauchada  ";
+    }
+/*
+    .fa.fa-pencil-square-o::before {
+        color: #FB8C00;
+
+    }
+*/    
     .dropdown-toggle {
         cursor: pointer;
     }
@@ -18,3 +27,4 @@ nav.navbar {
         }
     }
 }
+

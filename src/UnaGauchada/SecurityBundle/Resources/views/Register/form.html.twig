@@ -26,11 +26,11 @@
                 <input type="password" minlength="6" class="form-control" id="password" placeholder="Contraseña" name="password">
             </div>
             <div class="form-group col-xs-12 col-md-6">
-                <input type="password" minlength="6" class="form-control" id="confirmPass" placeholder="Confirmar Contraseña" name="confirmPass">
+                <input type="password" minlength="6" class="form-control" id="confirmPass" placeholder="Confirmar Contraseña" name="confirmPass" required>
             </div>
         </div>
         <label for="exampleInputEmail1">Fecha de Nacimiento</label>
-        <div class="form-group"><input type="date" min="1900-01-01" max="3000-01-01" class="form-control" id="birthday" placeholder="Fecha de Nacimiento" name="birthday"></div>
+        <div class="form-group"><input type="date" min="1900-01-01" max="{{ "now" |date_modify("-18 year")|date("Y-m-d") }}" class="form-control" id="birthday" placeholder="Fecha de Nacimiento" name="birthday"></div>
 
         <label for="exampleInputEmail1">Teléfono</label>
         <div class="form-group"><input type="tel" class="form-control" id="phone" placeholder="teléfono" name="phone"></div>

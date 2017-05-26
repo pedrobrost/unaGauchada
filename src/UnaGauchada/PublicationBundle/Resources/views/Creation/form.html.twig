@@ -1,43 +1,44 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
+
 <form id="createPublication" method="post" action="{{ path('publish_create') }}" enctype="application/x-www-form-urlencoded">
-    <label for="exampleInputEmail1">Nombre</label>
+    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
     <div class="form-group">
         <div>
             <input type="text" class="form-control" id="title" maxlength="40" placeholder="Titulo" name="title">
         </div>
     </div>
-    <label for="exampleInputEmail1">Descripción</label>
+    <label for="exampleInputEmail1"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp Descripción</label>
     <div class="form-group">
-        <textarea class="form-control" id="description" maxlength="40" placeholder="Descripcion" name="description"></textarea>
+        <textarea class="form-control" id="description" placeholder="Descripción" name="description"></textarea>
     </div>
    <div class="form-group">
-        <label class="col-xs-3 control-label">Categoria</label>
+        <label class="col-xs-3 control-label"><i class="fa fa-hashtag" aria-hidden="true"></i>&nbspCategoria</label>
         <div class="col-xs-5 selectContainer">
-            <select name="category" class="form-control" title="Choose 2-4 colors">
+            <select name="category" id="category" class="form-control">
                 {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-xs-3 control-label">Ciudad</label>
+        <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select name="city" class="form-control">
+            <select name="city" id="city" class="form-control">
                 {{ render(controller('PublicationBundle:City:list')) }}
             </select>
         </div>
     </div>      
-    <label for="exampleInputEmail1">Fecha Limite</label>
+    <label for="exampleInputEmail1"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp Fecha Limite</label>
     <div class="form-group">
-        <input type="date" min="2017-01-01" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
+        <input type="date" min="{{ "now"|date("Y-m-d") }}" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
     </div>
-        <label for="exampleInputEmail1">Subir Imagen</label>
+        <label for="exampleInputEmail1"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp Subir Imagen</label>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-secondary btn-file">
-                    Buscar… <input type="file" id="imgInp" name="image">
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i> Buscar… <input type="file" id="imgInp" name="image" accept="image/*">
                 </span>
             </span>
             <input type="text" class="form-control" readonly>
