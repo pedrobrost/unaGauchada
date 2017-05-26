@@ -7,7 +7,7 @@ $('#createPublication').validate({
                 // on the right side
                 title: {
                     required: true,
-                    max: 40
+                    maxlength: 50,
                 },
                 description: {
                     required: true,
@@ -26,7 +26,7 @@ $('#createPublication').validate({
             messages: {
                 title: {
                     required: "Por favor ingrese el título",
-                    max: "El título no puede tener más de 40 letras"
+                    maxlength: "El título no puede tener más de 40 letras"
                 },
                 description: {
                     required: "Por favor ingrese una descripción",
