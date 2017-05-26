@@ -19,7 +19,7 @@ class SecurityController extends Controller
     }
 
     public function registerAction(){
-        return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => false));
+        return $this->render('UGSecurityBundle:Register:register.html.twig');
     }
 
     public function signupAction(Request $request){
