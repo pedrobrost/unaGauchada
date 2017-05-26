@@ -2,11 +2,6 @@ publication_homepage:
     path:     /
     defaults: { _controller: PublicationBundle:Publication:index }
 
-
-publication_show:
-    path:     /publication/{id}
-    defaults: { _controller: PublicationBundle:Publication:publication }
-
 publish_new:
     path:     /publish
     defaults: { _controller: PublicationBundle:Publication:publish }
@@ -16,3 +11,12 @@ publish_create:
     path:     /publish
     defaults: { _controller: PublicationBundle:Publication:publishCreate }
     methods:  [POST]
+
+publication_image:
+    path:     /publication/{id}/image
+    defaults: { _controller: PublicationBundle:Publication:image }
+    methods:  [GET]
+
+publication_show:
+    path:     /publication/{id}
+    defaults: { _controller: PublicationBundle:Publication:publication }
