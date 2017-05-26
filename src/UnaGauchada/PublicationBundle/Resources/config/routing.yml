@@ -6,3 +6,7 @@ publication_homepage:
 publication:
     path:     /publication
     defaults: { _controller: PublicationBundle:Publication:publication }
+
+publish:
+    path:     /publish
+    defaults: { _controller: PublicationBundle:Publication:publish }

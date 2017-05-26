@@ -2,11 +2,15 @@
 
 {% block body %}
 <div class = "signUp">
+
     {% include 'PublicationBundle:Creation:form.html.twig' %}
+    
 </div>
 {% endblock %}
 
   {% block javascripts %}
+
+  <script src="{{ asset('dist/js/publish.js') }}"></script>
 
   <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
   <script src="{{ asset('dist/js/registrationValidation.js') }}"></script>
