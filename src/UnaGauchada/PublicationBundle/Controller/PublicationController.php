@@ -56,29 +56,27 @@ class PublicationController extends Controller
        return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
 
-    public function publishCreate(Request $request){
+    public function publishCreateAction(Request $request){
 
         $em = $this->getDoctrine()->getManager();
+        $cityRepository = $this->getDoctrine()->getRepository('PublicationBundle:City');
+        $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
+
+        $city = $cityRepository->findOneById($request->get('city'));
+        $category = $categoryRepository->findOneById($request->get('category'));
 
         // create the user
-        $user = new Publication();
-        $user
+        $publication = new Publication();
+        $publication
             ->setTitle($request->get('title'))
-            ->setLastName($request->get('description'))
-            ->setLimitDate(new \DateTime($request->get('limitDate')));
+            ->setDescription($request->get('description'))
+            ->setLimitDate(new \DateTime($request->get('limitDate')))
+            ->setCategory($category)
+            ->setCity($city);
 
-        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
-        $reason = $repository->findOneByName('Initial');
-        $reason->newTransactionFor($user);
-
-        try {
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('publication_homepage');
-        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
-            return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
-        }
-
+        $em->persist($publication);
+        $em->flush();
+        return $this->redirectToRoute('publication_homepage');
     }
 
 }

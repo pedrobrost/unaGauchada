@@ -1,7 +1,8 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
-<form id="createPublication">
-    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
+
+<form id="createPublication" method="post" action="{{ path('publish_create') }}">
+<label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
     <div class="form-group">
         <div>
             <input type="text" class="form-control" id="title" maxlength="40" placeholder="Titulo" name="title">
@@ -14,10 +15,8 @@
    <div class="form-group">
         <label class="col-xs-3 control-label"><i class="fa fa-hashtag" aria-hidden="true"></i>&nbspCategoria</label>
         <div class="col-xs-5 selectContainer">
-            <select class="form-control" id="category" name="category">
-                <option value=""></option>
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
+            <select name="category" id="category" class="form-control">
+                {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
         </div>
     </div>
@@ -25,9 +24,8 @@
     <div class="form-group">
         <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select class="form-control"  id="city" name="city">
-                <option value=""></option>
-                <option value="arabic">Arabic</option>
+            <select name="city" id="city" class="form-control">
+                {{ render(controller('PublicationBundle:City:list')) }}
             </select>
         </div>
     </div>      
