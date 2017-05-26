@@ -9,21 +9,14 @@
     </div>
     <label for="exampleInputEmail1">Descripción</label>
     <div class="form-group">
-        <textarea class="form-control" id="description" maxlength="40" placeholder="Descripcion" name="description"></textarea>
+        <textarea class="form-control" id="description" placeholder="Descripción" name="description"></textarea>
     </div>
    <div class="form-group">
         <label class="col-xs-3 control-label">Categoria</label>
         <div class="col-xs-5 selectContainer">
-            <select name="colors" class="form-control" title="Choose 2-4 colors">
-               <option disabled>──────────</option>
+            <select class="form-control" name="category">
                 <option value="black">Black</option>
-              </optgroup>
                 <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="yellow">Yellow</option>
-                <option value="white">White</option>
             </select>
         </div>
     </div>
@@ -31,13 +24,9 @@
     <div class="form-group">
         <label class="col-xs-3 control-label">Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select name="language" class="form-control">
+            <select class="form-control"  name="city">
                 <option value=""></option>
                 <option value="arabic">Arabic</option>
-                <option value="english">English</option>
-                <option value="french">French</option>
-                <option value="german">German</option>
-                <option value="other">Other</option>
             </select>
         </div>
     </div>      
@@ -50,7 +39,7 @@
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-secondary btn-file">
-                    Buscar… <input type="file" id="imgInp">
+                    Buscar… <input type="file" id="imgInp" name="image">
                 </span>
             </span>
             <input type="text" class="form-control" readonly>
