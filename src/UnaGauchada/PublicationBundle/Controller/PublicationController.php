@@ -3,6 +3,7 @@
 namespace UnaGauchada\PublicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\PublicationBundle\Entity\Publication;
 
@@ -47,13 +48,37 @@ class PublicationController extends Controller
 
     }
 
-    public function publicationAction()
-    {
-    return $this->render('PublicationBundle:Publications:publication.html.twig');
-}
+    public function publicationAction(){
+        return $this->render('PublicationBundle:Publications:publication.html.twig');
+    }
 
-    public function publishAction()
-    {
-    return $this->render('PublicationBundle:Creation:creation.html.twig');
-}
+    public function publishAction(){
+       return $this->render('PublicationBundle:Creation:creation.html.twig');
+    }
+
+    public function publishCreate(Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+
+        // create the user
+        $user = new Publication();
+        $user
+            ->setTitle($request->get('title'))
+            ->setLastName($request->get('description'))
+            ->setLimitDate(new \DateTime($request->get('limitDate')));
+
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Initial');
+        $reason->newTransactionFor($user);
+
+        try {
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('publication_homepage');
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+            return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
+        }
+
+    }
+
 }

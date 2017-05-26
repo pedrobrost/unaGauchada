@@ -29,29 +29,16 @@ class City
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="province", type="string", length=255)
-     */
-    private $province;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="postalCode", type="integer")
-     */
-    private $postalCode;
-
-    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="Publication", mappedBy="city")
      */
     private $publications;
 
 
-    public function __construct()
+    public function __construct($name)
     {
         $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->name = $name;
     }
 
 
@@ -87,54 +74,6 @@ class City
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set province
-     *
-     * @param string $province
-     *
-     * @return City
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * Get province
-     *
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
-     * Set postalCode
-     *
-     * @param integer $postalCode
-     *
-     * @return City
-     */
-    public function setPostalCode($postalCode)
-    {
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    /**
-     * Get postalCode
-     *
-     * @return int
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
     }
 
     /**
