@@ -63,11 +63,10 @@ $('#registration_form').validate({
                     required: true,
                 },
                 confirmPass: {
-                    required: true,
                     minlength: 6,
+                    required: true,
                 },
                 birthday: {
-
                     required: true,
                     check_date_of_birth: true,
                     max_date_limit: true,
