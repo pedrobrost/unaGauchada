@@ -1,7 +1,7 @@
 {% embed 'utils/card.html.twig' with {'title': 'Registrarme'} %} {% block content %}
 <div class="container">
 
-    {% if emailUsed %}
+    {% if emailUsed is defined %}
     <div class="alert alert-danger text-center" role="alert">
         <strong>Ups!</strong> El email que ingresaste ya esta registrado en el sistema.
     </div>
