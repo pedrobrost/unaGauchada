@@ -1,6 +1,6 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
-<form id="createPublication">
+<form id="createPublication" method="post" action="{{ path('publish_create') }}">
     <label for="exampleInputEmail1">Nombre</label>
     <div class="form-group">
         <div>
@@ -14,7 +14,7 @@
    <div class="form-group">
         <label class="col-xs-3 control-label">Categoria</label>
         <div class="col-xs-5 selectContainer">
-            <select name="colors" class="form-control" title="Choose 2-4 colors">
+            <select name="category" class="form-control" title="Choose 2-4 colors">
                 {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
         </div>
@@ -23,7 +23,7 @@
     <div class="form-group">
         <label class="col-xs-3 control-label">Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select name="language" class="form-control">
+            <select name="city" class="form-control">
                 {{ render(controller('PublicationBundle:City:list')) }}
             </select>
         </div>
