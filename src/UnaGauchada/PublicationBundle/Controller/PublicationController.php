@@ -14,7 +14,6 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
-
     }
 
     public function publicationAction(){
@@ -35,7 +34,7 @@ class PublicationController extends Controller
             $city = $cityRepository->findOneById($request->get('city'));
             $category = $categoryRepository->findOneById($request->get('category'));
 
-            // create the user
+
             $publication = new Publication();
             $publication
                 ->setTitle($request->get('title'))
@@ -44,6 +43,7 @@ class PublicationController extends Controller
                 ->setCategory($category)
                 ->setCity($city)
                 ->setImageBlob($request->files->get('image'));
+
 
             $em->persist($publication);
             $em->flush();

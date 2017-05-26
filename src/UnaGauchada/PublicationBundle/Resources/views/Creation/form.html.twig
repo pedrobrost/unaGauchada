@@ -1,7 +1,7 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
 
-<form id="createPublication" method="post" action="{{ path('publish_create') }}" enctype="application/x-www-form-urlencoded">
+<form id="createPublication" method="post" action="{{ path('publish_create') }}" enctype="multipart/form-data">
     <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
     <div class="form-group">
         <div>
@@ -28,7 +28,7 @@
                 {{ render(controller('PublicationBundle:City:list')) }}
             </select>
         </div>
-    </div>      
+    </div>
     <label for="exampleInputEmail1"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp Fecha Limite</label>
     <div class="form-group">
         <input type="date" min="{{ "now"|date("Y-m-d") }}" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
