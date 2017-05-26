@@ -5,7 +5,6 @@ namespace UnaGauchada\SecurityBundle\Controller;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\UserBundle\Entity\User;
 
 class SecurityController extends Controller
@@ -24,8 +23,15 @@ class SecurityController extends Controller
 
     public function signupAction(Request $request){
 
+        $em = $this->getDoctrine()->getManager();
+
         // create the user
-        $user = new User();
+
+        // ver mati
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Initial');
+
+        $user = new User($reason);
         $user
             ->setName($request->get('name'))
             ->setLastName($request->get('lastName'))
@@ -37,9 +43,7 @@ class SecurityController extends Controller
             ->setBirthday(new \DateTime($request->get('birthday')))
             ->setPhone($request->get('phone'));
 
-
         try {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('publication_homepage');

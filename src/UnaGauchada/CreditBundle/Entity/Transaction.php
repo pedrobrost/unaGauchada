@@ -57,6 +57,14 @@ class Transaction
     private $reason;
 
 
+    public function __construct($amount, $reason, $user){
+        $this->amountOfCredits = $amount;
+        $this->reason = $reason;
+        $this->date = new \DateTime();
+        $this->price = $reason->getPrice();
+        $this->user = $user;
+    }
+
     /**
      * Get id
      *
