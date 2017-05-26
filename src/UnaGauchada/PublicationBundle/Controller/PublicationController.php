@@ -16,8 +16,8 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
     }
 
-    public function publicationAction(){
-        return $this->render('PublicationBundle:Publications:publication.html.twig');
+    public function showAction(Publication $publication){
+        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
     public function publishAction(){
@@ -26,7 +26,7 @@ class PublicationController extends Controller
 
     public function publishCreateAction(Request $request){
 
-        if(!$this->get('security.token_storage')->getToken()->getUser()->getCredits()==0){
+        if(!$this->getUser()->getCredits()==0){
             $em = $this->getDoctrine()->getManager();
             $cityRepository = $this->getDoctrine()->getRepository('PublicationBundle:City');
             $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
@@ -34,9 +34,9 @@ class PublicationController extends Controller
             $city = $cityRepository->findOneById($request->get('city'));
             $category = $categoryRepository->findOneById($request->get('category'));
 
-
             $publication = new Publication();
             $publication
+                ->setUser($this->getUser())
                 ->setTitle($request->get('title'))
                 ->setDescription($request->get('description'))
                 ->setLimitDate(new \DateTime($request->get('limitDate')))
@@ -44,8 +44,12 @@ class PublicationController extends Controller
                 ->setCity($city)
                 ->setImageBlob($request->files->get('image'));
 
-
             $em->persist($publication);
+
+            $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+            $reason = $repository->findOneByName('Publication');
+            $reason->newTransactionFor($this->getUser());
+
             $em->flush();
             return $this->redirectToRoute('publication_homepage');
         }else{
