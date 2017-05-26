@@ -1,20 +1,21 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
 <form id="createPublication">
-    <label for="exampleInputEmail1">Nombre</label>
+    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Titulo</label>
     <div class="form-group">
         <div>
             <input type="text" class="form-control" id="title" maxlength="40" placeholder="Titulo" name="title">
         </div>
     </div>
-    <label for="exampleInputEmail1">Descripción</label>
+    <label for="exampleInputEmail1"><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp Descripción</label>
     <div class="form-group">
         <textarea class="form-control" id="description" placeholder="Descripción" name="description"></textarea>
     </div>
    <div class="form-group">
-        <label class="col-xs-3 control-label">Categoria</label>
+        <label class="col-xs-3 control-label"><i class="fa fa-hashtag" aria-hidden="true"></i>&nbspCategoria</label>
         <div class="col-xs-5 selectContainer">
-            <select class="form-control" name="category">
+            <select class="form-control" id="category" name="category">
+                <option value=""></option>
                 <option value="black">Black</option>
                 <option value="blue">Blue</option>
             </select>
@@ -22,19 +23,19 @@
     </div>
 
     <div class="form-group">
-        <label class="col-xs-3 control-label">Ciudad</label>
+        <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select class="form-control"  name="city">
+            <select class="form-control"  id="city" name="city">
                 <option value=""></option>
                 <option value="arabic">Arabic</option>
             </select>
         </div>
     </div>      
-    <label for="exampleInputEmail1">Fecha Limite</label>
+    <label for="exampleInputEmail1"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp Fecha Limite</label>
     <div class="form-group">
-        <input type="date" min="2017-01-01" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
+        <input type="date" min="2017-05-01" max="3000-01-01" class="form-control" id="limitDate" placeholder="Fecha Limite" name="limitDate">
     </div>
-        <label for="exampleInputEmail1">Subir Imagen</label>
+        <label for="exampleInputEmail1"><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp Subir Imagen</label>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-btn">
