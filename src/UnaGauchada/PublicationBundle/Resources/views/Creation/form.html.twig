@@ -1,6 +1,6 @@
 {% embed 'utils/card.html.twig' with {'title': 'Publicar Gauchada'} %} {% block content %}
 
-<form id="createPublication" method="post" action="{{ path('publish_create') }}">
+<form id="createPublication" method="post" action="{{ path('publish_create') }}" enctype="application/x-www-form-urlencoded">
     <label for="exampleInputEmail1">Nombre</label>
     <div class="form-group">
         <div>
@@ -37,7 +37,7 @@
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-secondary btn-file">
-                    Buscar… <input type="file" id="imgInp">
+                    Buscar… <input type="file" id="imgInp" name="image">
                 </span>
             </span>
             <input type="text" class="form-control" readonly>

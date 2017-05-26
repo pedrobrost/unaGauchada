@@ -72,11 +72,16 @@ class PublicationController extends Controller
             ->setDescription($request->get('description'))
             ->setLimitDate(new \DateTime($request->get('limitDate')))
             ->setCategory($category)
-            ->setCity($city);
+            ->setCity($city)
+            ->setImageBlob($request->files->get('image'));
 
         $em->persist($publication);
         $em->flush();
         return $this->redirectToRoute('publication_homepage');
+    }
+
+    public function imageAction(Publication $publication){
+        return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
 }
