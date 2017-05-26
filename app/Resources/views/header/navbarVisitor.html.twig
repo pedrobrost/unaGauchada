@@ -1,10 +1,14 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
     {{ navbar.item('Ayuda', 'publication_homepage') }}
- {{ navbar.item('Registrarse', 'register', 'Gauchadas') }}
+
+    <li class="nav-item">
+        <a class="nav-link" id="signup-nav" href="signup">Registrarse</a>
+    </li>
+
 
 <li class="dropdown">
-    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+    <a class="dropdown-toggle nav-link" id="login-nav" data-toggle="dropdown" aria-haspopup="true"
        aria-expanded="false">
         Iniciar Sesión
     </a>
