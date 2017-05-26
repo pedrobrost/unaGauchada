@@ -2,6 +2,21 @@
         padding: 2rem 2rem;
     }
 
+@media (max-width: 780px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (max-width: 540px) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
 
 .publication-list {
     .card {
