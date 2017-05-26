@@ -15,15 +15,7 @@
         <label class="col-xs-3 control-label">Categoria</label>
         <div class="col-xs-5 selectContainer">
             <select name="colors" class="form-control" title="Choose 2-4 colors">
-               <option disabled>──────────</option>
-                <option value="black">Black</option>
-              </optgroup>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="yellow">Yellow</option>
-                <option value="white">White</option>
+                {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
         </div>
     </div>
@@ -32,15 +24,7 @@
         <label class="col-xs-3 control-label">Ciudad</label>
         <div class="col-xs-5 selectContainer">
             <select name="language" class="form-control">
-
-                
-
-                <option value=""></option>
-                <option value="arabic">Arabic</option>
-                <option value="english">English</option>
-                <option value="french">French</option>
-                <option value="german">German</option>
-                <option value="other">Other</option>
+                {{ render(controller('PublicationBundle:City:list')) }}
             </select>
         </div>
     </div>      

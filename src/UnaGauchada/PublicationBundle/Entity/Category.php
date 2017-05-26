@@ -35,9 +35,10 @@ class Category
     private $publications;
 
 
-    public function __construct()
+    public function __construct($name)
     {
         $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->name = $name;
     }
 
     /**
