@@ -5,6 +5,7 @@ namespace UnaGauchada\SecurityBundle\Controller;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\UserBundle\Entity\User;
 
 class SecurityController extends Controller
@@ -18,7 +19,7 @@ class SecurityController extends Controller
     }
 
     public function registerAction(){
-        return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => false));
+        return $this->render('UGSecurityBundle:Register:register.html.twig');
     }
 
     public function signupAction(Request $request){
@@ -26,12 +27,7 @@ class SecurityController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // create the user
-
-        // ver mati
-        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
-        $reason = $repository->findOneByName('Initial');
-
-        $user = new User($reason);
+        $user = new User();
         $user
             ->setName($request->get('name'))
             ->setLastName($request->get('lastName'))
@@ -43,6 +39,10 @@ class SecurityController extends Controller
             ->setBirthday(new \DateTime($request->get('birthday')))
             ->setPhone($request->get('phone'));
 
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Initial');
+        $reason->newTransactionFor($user);
+
         try {
             $em->persist($user);
             $em->flush();
@@ -50,6 +50,7 @@ class SecurityController extends Controller
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
             return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
         }
+
     }
 
 }

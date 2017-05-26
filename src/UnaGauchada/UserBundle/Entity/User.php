@@ -168,16 +168,13 @@ class User implements UserInterface
     /**
      * Constructor
      */
-    public function __construct($reason)
+    public function __construct()
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
         $this->plainPassword = "";
-
-        $transaction = new Transaction(1, $reason, $this);
-        $this->addTransaction($transaction);
     }
 
     /**
