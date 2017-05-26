@@ -11,15 +11,15 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use UnaGauchada\CreditBundle\Entity\TransactionReason;
 use UnaGauchada\UserBundle\Entity\User;
 
-class CreateTransactionReasonCommand extends ContainerAwareCommand
+class LoadTransactionReasonsCommand extends ContainerAwareCommand
 {
 
     protected function configure()
     {
         $this
-            ->setName('app:create:reason')
-            ->setDescription('Create a new Transaction Reason')
-            ->setHelp('This command creates a new transaction reason');
+            ->setName('app:load:reasons')
+            ->setDescription('Load Transaction Reasons')
+            ->setHelp('This command loads transaction reasons');
     }
 
     protected function getDoctrine()
@@ -37,22 +37,24 @@ class CreateTransactionReasonCommand extends ContainerAwareCommand
 
         $io = new SymfonyStyle($input, $output);
         $io->newLine();
-        $io->block('Welcome to the UnaGauchada transaction reason creator', null, 'bg=blue;fg=white', ' ', true);
+        $io->block('Welcome to the UnaGauchada transaction reasons loader', null, 'bg=blue;fg=white', ' ', true);
         $io->newLine();
 
-        // create the user
-        $reason = new TransactionReason();
-        $reason
-            ->setName($io->ask('Name'))
-            ->setAmount($io->ask('Amount'))
-            ->setPrice($io->ask('Price'));
 
         $em = $this->getManager();
-        $em->persist($reason);
+        $em->persist((new TransactionReason())
+            ->setName('Initial')
+            ->setAmount(1)
+            ->setPrice(0));
+        $em->persist((new TransactionReason())
+            ->setName('Publication')
+            ->setAmount(-1)
+            ->setPrice(0));
+
         $em->flush();
 
         $io->newLine();
-        $io->success('Reason has been created');
+        $io->success('Reasons has been loaded');
         $io->newLine();
     }
 

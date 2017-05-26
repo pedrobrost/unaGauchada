@@ -64,7 +64,6 @@ $('#registration_form').validate({
                 },
                 confirmPass: {
                     minlength: 6,
-                    equalTo: '#password'
                 },
                 birthday: {
                     required: true,

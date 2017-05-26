@@ -26,14 +26,13 @@ class PublicationController extends Controller
 
     public function publishCreateAction(Request $request){
 
-        if(!$this->get('security.token_storage')->getToken()->getUser()->getCredits()==0){
+        if(!$this->getUser()->getCredits()==0){
             $em = $this->getDoctrine()->getManager();
             $cityRepository = $this->getDoctrine()->getRepository('PublicationBundle:City');
             $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
 
             $city = $cityRepository->findOneById($request->get('city'));
             $category = $categoryRepository->findOneById($request->get('category'));
-
 
             $publication = new Publication();
             $publication
@@ -44,8 +43,12 @@ class PublicationController extends Controller
                 ->setCity($city)
                 ->setImageBlob($request->files->get('image'));
 
-
             $em->persist($publication);
+
+            $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+            $reason = $repository->findOneByName('Publication');
+            $reason->newTransactionFor($this->getUser());
+
             $em->flush();
             return $this->redirectToRoute('publication_homepage');
         }else{
