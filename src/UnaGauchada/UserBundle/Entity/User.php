@@ -4,6 +4,7 @@ namespace UnaGauchada\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UnaGauchada\CreditBundle\Entity\Transaction;
 
 /**
  * User
@@ -108,7 +109,7 @@ class User implements UserInterface
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="UnaGauchada\CreditBundle\Entity\Transaction", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UnaGauchada\CreditBundle\Entity\Transaction", mappedBy="user", cascade={"persist", "remove"})
      */
     private $transactions;
 
@@ -117,6 +118,12 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Submission", mappedBy="user")
      */
     private $submissions;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Publication", mappedBy="user")
+     */
+    private $publications;
 
 
     public function getUsername()
@@ -134,7 +141,7 @@ class User implements UserInterface
         return "";
     }
 
-    public function getCredits(): integer{
+    public function getCredits(){
         $credits = 0;
         foreach ($this->transactions as $transaction) {
             $credits+= $transaction->getAmountOfCredits();
@@ -165,6 +172,7 @@ class User implements UserInterface
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
         $this->plainPassword = "";
     }
@@ -503,5 +511,39 @@ class User implements UserInterface
     public function getSubmissions()
     {
         return $this->submissions;
+    }
+
+    /**
+     * Add publication
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
+     *
+     * @return User
+     */
+    public function addPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
+    {
+        $this->publications[] = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Remove publication
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
+     */
+    public function removePublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
+    {
+        $this->publications->removeElement($publication);
+    }
+
+    /**
+     * Get publications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublications()
+    {
+        return $this->publications;
     }
 }

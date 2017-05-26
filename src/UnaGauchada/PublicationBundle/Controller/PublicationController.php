@@ -3,6 +3,7 @@
 namespace UnaGauchada\PublicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\PublicationBundle\Entity\Publication;
 
 class PublicationController extends Controller

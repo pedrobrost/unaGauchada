@@ -83,6 +83,13 @@ class Publication
      */
     private $city;
 
+    /**
+     * Many Transactions have One User.
+     * @ORM\ManyToOne(targetEntity="UnaGauchada\UserBundle\Entity\User", inversedBy="publications")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
 
     public function __construct($title, $description, $limitDate){
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
@@ -351,5 +358,29 @@ class Publication
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UnaGauchada\UserBundle\Entity\User $user
+     *
+     * @return Publication
+     */
+    public function setUser(\UnaGauchada\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UnaGauchada\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

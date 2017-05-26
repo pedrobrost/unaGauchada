@@ -101,4 +101,28 @@ class AcceptedState extends SubmissionState
     {
         return $this->rate;
     }
+
+    /**
+     * Set submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return AcceptedState
+     */
+    public function setSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission = null)
+    {
+        $this->submission = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Get submission
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Submission
+     */
+    public function getSubmission()
+    {
+        return $this->submission;
+    }
 }

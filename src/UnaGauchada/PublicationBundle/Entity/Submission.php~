@@ -49,14 +49,12 @@ class Submission
      */
     private $acceptedState;
 
-    private $state;
-
 
     public function getState(){
         if(!$this->acceptedState){
-            return new WaitingState();
+            return new WaitingState($this);
         }else{
-
+            return $this->getAcceptedState();
         }
     }
 
@@ -140,5 +138,29 @@ class Submission
     public function getPublication()
     {
         return $this->publication;
+    }
+
+    /**
+     * Set acceptedState
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\AcceptedState $acceptedState
+     *
+     * @return Submission
+     */
+    public function setAcceptedState(\UnaGauchada\PublicationBundle\Entity\AcceptedState $acceptedState = null)
+    {
+        $this->acceptedState = $acceptedState;
+
+        return $this;
+    }
+
+    /**
+     * Get acceptedState
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\AcceptedState
+     */
+    public function getAcceptedState()
+    {
+        return $this->acceptedState;
     }
 }

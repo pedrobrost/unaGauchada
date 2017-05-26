@@ -198,4 +198,13 @@ class TransactionReason
     {
         return $this->amount;
     }
+
+    public function newTransactionFor($user){
+        $transaction = new Transaction($this, $user);
+        $transaction->setPrice($this->getPrice())
+                    ->setAmountOfCredits($this->getAmount());
+        $user->addTransaction($transaction);
+        return $transaction;
+    }
+
 }
