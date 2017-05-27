@@ -43,6 +43,12 @@ class Achievement
     private $min;
 
 
+    public function __construct($name, $min, $max){
+        $this->name = $name;
+        $this->min = $min;
+        $this->max = $max;
+    }
+
     /**
      * Get id
      *
@@ -123,5 +129,10 @@ class Achievement
     public function getMin()
     {
         return $this->min;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

@@ -125,4 +125,13 @@ class AcceptedState extends SubmissionState
     {
         return $this->submission;
     }
+
+    public function getCalification(){
+        if(!$this->getRate()){
+            return $this->getRate()->getPoints();
+        }else{
+            return 0;
+        }
+    }
+
 }
