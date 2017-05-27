@@ -20,4 +20,6 @@ class UserController extends Controller
         return new Response(stream_get_contents($user->getPhoto()), 200, array('Content-Type' => $user->getPhotoMime()));
     }
 
+
+
 }

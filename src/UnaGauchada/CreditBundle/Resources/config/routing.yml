@@ -1,3 +1,9 @@
-credit_homepage:
-    path:     /
-    defaults: { _controller: CreditBundle:Default:index }
+credits_purchase:
+    path:     /buy
+    defaults: { _controller: CreditBundle:Credit:purchase }
+    methods: [GET]
+
+credits_buy:
+    path:     /buy
+    defaults: { _controller: CreditBundle:Credit:buy }
+    methods: [POST]

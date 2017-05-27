@@ -1,0 +1,15 @@
+ {% embed 'utils/card.html.twig' with {'title': 'Comprar creditos'} %} {% block content %}
+
+<form id="createPublication" method="post" action="{{ path('credits_buy') }}">
+    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Cantidad de Créditos</label>
+    <div class="form-group">
+        <div>
+            <input type="text" class="form-control" id="title" placeholder="Créditos" name="amount">
+        </div>
+    </div>
+        <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Comprar</button>
+    </div>
+</form>
+
+
+{% endblock %}{% endembed %}

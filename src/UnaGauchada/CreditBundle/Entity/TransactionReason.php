@@ -199,10 +199,10 @@ class TransactionReason
         return $this->amount;
     }
 
-    public function newTransactionFor($user){
+    public function newTransactionFor($user, $amount = 1){
         $transaction = new Transaction($this, $user);
         $transaction->setPrice($this->getPrice())
-                    ->setAmountOfCredits($this->getAmount());
+                    ->setAmountOfCredits($this->getAmount()*$amount);
         $user->addTransaction($transaction);
         return $transaction;
     }

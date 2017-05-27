@@ -42,14 +42,23 @@ class LoadTransactionReasonsCommand extends ContainerAwareCommand
 
 
         $em = $this->getManager();
+
+
         $em->persist((new TransactionReason())
             ->setName('Initial')
             ->setAmount(1)
             ->setPrice(0));
+
         $em->persist((new TransactionReason())
             ->setName('Publication')
             ->setAmount(-1)
             ->setPrice(0));
+
+
+        $em->persist((new TransactionReason())
+            ->setName('Purchase')
+            ->setAmount(1)
+            ->setPrice(50));
 
         $em->flush();
 
