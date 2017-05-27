@@ -1,6 +1,7 @@
 <?php
 
 namespace UnaGauchada\PublicationBundle\Repository;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * AchievementRepository
@@ -10,4 +11,15 @@ namespace UnaGauchada\PublicationBundle\Repository;
  */
 class AchievementRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findFor(User $user){
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.min <= :calification')
+            ->andWhere('a.max >= :calification')
+            ->setParameter('calification', $user->getCalification())
+            ->getQuery();
+
+        return $qb->getSingleResult();
+    }
+
 }

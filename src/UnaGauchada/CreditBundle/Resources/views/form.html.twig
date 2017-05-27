@@ -1,0 +1,34 @@
+ {% embed 'utils/card.html.twig' with {'title': 'Comprar creditos'} %} {% block content %}
+
+<form id="createPublication" method="post" action="{{ path('credits_buy') }}">
+
+
+<div class="stepwizard">
+    <div class="stepwizard-row">
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle">1</button>
+            <p>Cart</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-primary btn-circle">2</button>
+            <p>Shipping</p>
+        </div>
+        <div class="stepwizard-step">
+            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button>
+            <p>Payment</p>
+        </div> 
+    </div>
+</div>
+
+    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Cantidad de Créditos</label>
+    <div class="form-group">
+        <div>
+            <input type="text" class="form-control" id="title" placeholder="Créditos" name="amount">
+        </div>
+    </div>
+        <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Comprar</button>
+    </div>
+</form>
+
+
+{% endblock %}{% endembed %}

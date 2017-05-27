@@ -2,3 +2,7 @@ services:
 #    publication.example:
 #        class: UnaGauchada\PublicationBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    publication.achievements:
+        class: UnaGauchada\PublicationBundle\Service\AchievementService
+        arguments: ["@doctrine.orm.entity_manager"]
