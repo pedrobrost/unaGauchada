@@ -19,4 +19,8 @@ class WaitingState extends SubmissionState
         $this->submission = $submission;
     }
 
+    public function getCalification(){
+        return 0;
+    }
+
 }

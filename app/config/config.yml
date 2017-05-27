@@ -38,6 +38,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        achievement_service: '@publication.achievements'
 
 # Doctrine Configuration
 doctrine:

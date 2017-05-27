@@ -163,4 +163,9 @@ class Submission
     {
         return $this->acceptedState;
     }
+
+    public function getCalification(){
+        $this->getState()->getCalification();
+    }
+
 }

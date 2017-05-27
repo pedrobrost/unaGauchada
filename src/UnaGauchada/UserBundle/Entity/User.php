@@ -565,4 +565,12 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getCalification(){
+        $calificaion = 1;
+        foreach ($this->getSubmissions() as $submission) {
+            $calificaion += $submission->getCalification();
+        }
+        return $calificaion;
+    }
+
 }
