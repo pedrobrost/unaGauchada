@@ -36,6 +36,17 @@ ul.sign-in {
         }
     }
 }
+@media(max-width: 991px){
+#search-navbar{
+    width: 71%;
+}
+#btn-search-navbar{
+    width: 27%;
+}
+}
+.nav-link.btn-outline-primary {
+    border-radius: 6px;
+}
 
 nav.navbar {
     // Animation
@@ -71,7 +82,7 @@ nav.shrink a {
     padding-bottom: 5px !important;
 }
 
-.dropdown-item{
+.dropdown-item {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
 }

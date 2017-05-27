@@ -547,4 +547,22 @@ class User implements UserInterface
         return $this->publications;
     }
 
+    public function setImageBlob($file)
+    {
+        if (!$file){
+            $this->setPhoto(null);
+            $this->setPhotoMime(null);
+            return $this;
+        }
+        if(!$file->isValid()){
+            throw new FileException("Invalid File");
+        }
+        $imageFile    = fopen($file->getRealPath(), 'r');
+        $imageContent = fread($imageFile, $file->getClientSize());
+        fclose($imageFile);
+        $this->setPhoto($imageContent);
+        $this->setPhotoMime($file->getMimeType());
+        return $this;
+    }
+
 }
