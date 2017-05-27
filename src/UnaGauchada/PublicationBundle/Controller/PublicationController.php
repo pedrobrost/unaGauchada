@@ -3,6 +3,7 @@
 namespace UnaGauchada\PublicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\PublicationBundle\Entity\Publication;
@@ -58,6 +59,9 @@ class PublicationController extends Controller
     }
 
     public function imageAction(Publication $publication){
+        if(!$publication->getImage()){
+            $file = new File(__DIR__.'');
+        }
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
