@@ -60,7 +60,7 @@ class PublicationController extends Controller
 
     public function imageAction(Publication $publication){
         if(!$publication->getImage()){
-            $file = new File(__DIR__.'/../Resources/public/logocard.jpg');
+            $file = new File(__DIR__.'/../Resources/public/image/logocard.jpg');
             $imageFile = fopen($file->getRealPath(), 'r');
             $imageContent = fread($imageFile, $file->getSize());
             fclose($imageFile);
