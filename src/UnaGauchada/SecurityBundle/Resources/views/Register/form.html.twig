@@ -23,7 +23,7 @@
         <label for="exampleInputEmail1">Contraseña</label>
         <div class="row">
             <div class="form-group col-xs-12 col-md-6">
-                <input type="password" minlength="6" class="form-control" id="password" placeholder="Contraseña" name="password">
+                <input type="password" minlength="6" class="form-control" id="pass" placeholder="Contraseña" name="password" required>
             </div>
             <div class="form-group col-xs-12 col-md-6">
                 <input type="password" minlength="6" class="form-control" id="confirmPass" placeholder="Confirmar Contraseña" name="confirmPass" required>
@@ -33,7 +33,7 @@
         <div class="form-group"><input type="date" min="1900-01-01" max="{{ "now" |date_modify("-18 year")|date("Y-m-d") }}" class="form-control" id="birthday" placeholder="Fecha de Nacimiento" name="birthday"></div>
 
         <label for="exampleInputEmail1">Teléfono</label>
-        <div class="form-group"><input type="tel" class="form-control" id="phone" placeholder="teléfono" name="phone"></div>
+        <div class="form-group"><input type="tel" class="form-control" id="phone" placeholder="Teléfono" name="phone"></div>
         <div class="form-group">
         </div>
         <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Registrame</button>
