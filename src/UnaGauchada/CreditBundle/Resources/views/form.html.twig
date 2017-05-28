@@ -24,35 +24,71 @@
     <div class="row setup-content" id="step-1">
         <div class="col">
             <div class="col">
-                <h3> Step 1</h3>
+                <h3> Cantidad de creditos</h3>
                 <div class="form-group">
-                    <label class="control-label">Nombre</label>
-                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name">
+                    <label class="control-label">Creditos</label>
+                    <input maxlength="2" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Apellido</label>
-                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Address</label>
-                    <textarea required="required" class="form-control" placeholder="Enter your address"></textarea>
-                </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
             </div>
         </div>
     </div>
     <div class="row setup-content" id="step-2">
         <div class="col">
             <div class="col">
-                <h3> Step 2</h3>
+                <h3> Información personal</h3>
                 <div class="form-group">
-                    <label class="control-label">Company Name</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
+                    <label class="control-label">Nombre</label>
+                    <input maxlength="10" type="text" required="required" class="form-control" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Company Address</label>
-                    <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
+                    <label class="control-label">Apellido</label>
+                    <input maxlength="15" type="text" required="required" class="form-control" placeholder="Apellido">
                 </div>
+                <div class="form-group">
+                    <label class="control-label">DNI</label>
+                    <input maxlength="8" type="number" required="required" class="form-control" placeholder="DNI">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Numero de tarjeta</label>
+                    <input maxlength="16" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">PIN</label>
+                    <input maxlength="3" type="number" required="required" class="form-control" placeholder="PIN">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Apellido</label>
+                    <input maxlength="15" type="text" required="required" class="form-control" placeholder="Apellido">
+                </div>
+           <div class="form-group row" id="expiration_date">
+                <label>Vencimiento</label>
+                <select>
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero </option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                <select>
+                    <option value="16"> 2017</option>
+                    <option value="17"> 2018</option>
+                    <option value="18"> 2019</option>
+                    <option value="19"> 2020</option>
+                    <option value="20"> 2021</option>
+                    <option value="21"> 2022</option>
+                    <option value="21"> 2023</option>
+                    <option value="21"> 2024</option>
+                    <option value="21"> 2025</option>
+                </select>
+            </div>
                 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
             </div>
@@ -61,7 +97,7 @@
     <div class="row setup-content" id="step-3">
         <div class="col">
             <div class="col">
-                <h3> Step 3</h3>
+                <h3> Confirmación </h3>
                 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
                 <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
             </div>
