@@ -1,10 +1,10 @@
-.jumbotron.gauchadas {
-    padding: 80px;
-    background-color: #FB8C00;
+section.gauchadas {
+    padding: 80px 0 40px;
+    background-color: $brand-primary;
     border-radius: 0;
-    .jumbotron-heading {
+    margin-bottom: 20px;
+    .display-3 {
         color: white;
-        margin-top: 27px;
     }
 }
 
@@ -27,17 +27,13 @@
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            padding-bottom: 15px;
         }
         .card-block {
             text-align: center;
-        }
-        .card-footer {
-            padding: 0;
             .btn {
-                width: 100%;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
                 height: 40px;
+                margin-top: 10px;
             }
         }
     }

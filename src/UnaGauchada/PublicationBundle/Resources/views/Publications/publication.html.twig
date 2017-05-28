@@ -7,12 +7,7 @@
                 <div class="card-block">
                     <h4 class="card-title">{{ publication.title }}</h4>
                     <p class="card-text"><i class="fa fa-calendar" aria-hidden="true"></i><small class="text-muted">  {{ publication.sysDate | date("d-m-Y") }} </small>  | <i class="fa fa-clock-o" aria-hidden="true"></i></i><small class="text-muted">                {% set difference = date((publication.limitDate  | date('d/m/Y'))).diff(date("now"|date("m/d/Y"))) %}
-                            {% set leftDays = difference.days %}
-                            {% if leftDays == 1 %}
-                                1 día restante
-                            {% else %}
-                               {{ leftDays }} días restantes
-                            {% endif %} </small> | <small> {{ publication.category }} </small> </p>
+</small> | <small> {{ publication.category }} </small> </p>
                 </div>
                 <img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}" alt="Card image cap">
                 <div class="card-block">
@@ -39,7 +34,7 @@
                             <div class="media-body">
                                 <h5 class="mt-0">Matias Pierobon</h5> ¿Es necesario que este caliente?
                                 <div class="media mt-3">
-                                    <a class="d-flex pr-3" href="#">
+                                    <a class="d-flex" href="#">
                                         <img class="comment d-flex mr-3 rounded" src="https://pbs.twimg.com/profile_images/829792458988982274/Jmc0f4Fb.jpg" alt="Generic placeholder image">                                        </a>
                                     <div class="media-body">
                                         <h5 class="mt-0"> Franco Borrelli

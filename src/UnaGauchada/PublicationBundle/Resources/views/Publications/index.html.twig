@@ -1,66 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block body %}
 
-{% block body %}
-
-    <section class="jumbotron text-center gauchadas">
-        <div class="container">
-            <h1 class="jumbotron-heading">Últimas gauchadas</h1>
-        </div>
-    </section>
-
-
+<section class="gauchadas">
     <div class="container">
+        <h1 class="display-3">Últimas Gauchadas</h1>
+    </div>
+</section>
 
-        <div class="publication-list">
 
-            {% for publication in publications %}
-                <div class="card">
-                {% if publication.image is defined %}
-                    <img class="card-img-top" src="{{ url('publication_image', {'id': publication.id}) }}" alt="Card image cap">
-                {% else %}
-                    <img class="card-img-top" src="{{dist/img/logocard.jpg}}" alt="Card image cap">
-                {% endif %}
-                    <div class="card-block">
-                        <h4 class="card-title">{{ publication.title }}</h4>
-                        <div class= "row">
-                        <div class="card-text col">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <small class="text-muted">
-                            {# endDate and startDate are strings or DateTime objects #}
-                            {% set difference = date((publication.limitDate  | date('d/m/Y'))).diff(date("now"|date("m/d/Y"))) %}
-                            {% set leftDays = difference.days %}
-                            {% if leftDays == 1 %}
-                                1 día restante
-                            {% else %}
-                               {{ leftDays }} días restantes
-                            {% endif %}</small>
-                        </div>
-                        <div class="card-text col">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <small class="text-muted"> {{ publication.city }} </small>
-                        </div>
+<div class="container">
+
+    <div class="publication-list">
+
+        {% for publication in publications %}
+        <div class="card">
+            {% if publication.image is defined %}
+            <img class="card-img-top" src="{{ url('publication_image', {'id': publication.id}) }}" alt="Card image cap">            {% else %}
+            <img class="card-img-top" src="{{dist/img/logocard.jpg}}" alt="Card image cap"> {% endif %}
+            <div class="card-block">
+                <h4 class="card-title">{{ publication.title }}</h4>
+                <div class="row">
+                    <div class="col text-left">
+                        <div class="row">
+                            <div class="col-12">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <small class="text-muted">{{ publication.limitDate | date("d/m/Y") }}</small>
+                            </div>
+                            <div class="col-12">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <small class="text-muted">{{ publication.city }}</small>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
+                    <div class="col text-right">
                         <a class=" btn btn-primary" href="{{ path('publication_show', {'id': publication.id}) }}">Ver detalle</a>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
+        {% endfor %}
     </div>
+</div>
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item {% if page == 1 %} disabled {% endif %}">
-      <a class="page-link" href="{{ path('publication_page', {'page': page - 1}) }}" tabindex="-1">Ant</a>
-    </li>
-      {% for i in 1..pages %}
-          <li class="page-item {% if i == page %} active {% endif %}"><a class="page-link" href="{{ path('publication_page', {'page': i}) }}">{{ i }}</a></li>
-      {% endfor %}
-    <li class="page-item {% if page == pages %} disabled {% endif %}">
-      <a class="page-link" href="{{ path('publication_page', {'page': page + 1}) }}">Sig</a>
-    </li>
-  </ul>
+    <ul class="pagination justify-content-center">
+        <li class="page-item {% if page == 1 %} disabled {% endif %}">
+            <a class="page-link" href="{{ path('publication_page', {'page': page - 1}) }}" tabindex="-1">Ant</a>
+        </li>
+        {% for i in 1..pages %}
+        <li class="page-item {% if i == page %} active {% endif %}"><a class="page-link" href="{{ path('publication_page', {'page': i}) }}">{{ i }}</a></li>
+        {% endfor %}
+        <li class="page-item {% if page == pages %} disabled {% endif %}">
+            <a class="page-link" href="{{ path('publication_page', {'page': page + 1}) }}">Sig</a>
+        </li>
+    </ul>
 </nav>
 
 {% endblock %}

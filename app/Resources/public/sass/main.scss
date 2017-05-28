@@ -16,22 +16,17 @@
 /* Change the white to any color ;) */
 
 body{
-   padding-top: 80px;
    cursor: default;
    color: #444;
    background-color: #1c1c1c;
-
-   .container.content{
-       background-color: #fafafa;
-   }
 
    [type="button"], [type="reset"], [type="submit"] {
         -webkit-appearance: initial;
     }
 
     .content{
-       background: #f8f8f8;
-       padding: 30px 0 70px;
+       background: #fafafa;
+       padding: 80px 0 70px;
     }
 
     .jumbotron{
