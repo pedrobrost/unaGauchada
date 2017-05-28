@@ -12,9 +12,7 @@ class PublicationController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
-        $publications = $repository->findAll();
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
+        return $this->redirectToRoute('page', array('page' => 1));
     }
 
     public function pageAction($page){
