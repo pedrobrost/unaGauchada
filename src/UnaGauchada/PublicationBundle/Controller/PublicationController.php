@@ -2,6 +2,8 @@
 
 namespace UnaGauchada\PublicationBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +19,19 @@ class PublicationController extends Controller
 
     public function pageAction($page){
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
-        $publications = $repository->findBy(array(), array('sysDate' => 'DESC'));
-        $size = ceil(count($publications) / 9);
-        $publications = array_slice($publications, (($page-1)*9), 9*$page);
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $size));
+        $publications = $repository->findAll();
+        $publications = new ArrayCollection($publications);
+        $count = ceil($publications->count() / 6);
+        $publications = $publications->matching(Criteria::create()
+                                ->orderBy(array('sysDate' => Criteria::ASC))
+                                ->setFirstResult(($page-1) * 6)
+                                ->setMaxResults(6)
+                        );
+        //return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $size));
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $count));
     }
-
     public function showAction(Publication $publication){
+
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
