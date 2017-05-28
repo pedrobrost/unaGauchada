@@ -28,7 +28,7 @@ class LoadCitiesCommand extends ContainerAwareCommand
         return $this->getContainer()->get('doctrine');
     }
 
-    protected function getManager(): EntityManager
+    protected function getManager()
     {
         return $this->getDoctrine()->getManager();
     }

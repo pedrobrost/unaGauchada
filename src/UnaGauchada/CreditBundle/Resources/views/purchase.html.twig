@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class = "signUp">
+<div class="container form">
 
     {% include 'CreditBundle::form.html.twig' %}
     
 </div>
 {% endblock %}
+
+{% block javascripts %}
+
+  <script src="{{ asset('dist/js/credits.js') }}"></script>
+
+  <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+
+  {% endblock %}
