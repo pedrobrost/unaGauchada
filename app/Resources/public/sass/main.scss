@@ -10,6 +10,7 @@
 @import "publication";
 @import "publish";
 @import "credits";
+@import "errors";
 
 
 /* Change the white to any color ;) */
@@ -17,6 +18,8 @@
 body{
     padding-top: 80px;
    cursor: default;
+   color: #333;
+
    .container.content{
        background-color: #fafafa;
    }
@@ -26,7 +29,7 @@ body{
     }
 
     .content{
-        margin-top: 20px;
+       // margin-top: 20px;
     }
 
     .jumbotron{
