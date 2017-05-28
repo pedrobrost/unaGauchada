@@ -12,12 +12,7 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 
 class PublicationController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->redirectToRoute('page', array('page' => 1));
-    }
-
-    public function pageAction($page){
+    public function indexAction($page){
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
