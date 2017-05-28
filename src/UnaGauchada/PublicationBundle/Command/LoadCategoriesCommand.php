@@ -49,6 +49,7 @@ class LoadCategoriesCommand extends ContainerAwareCommand
         $em->persist(new Category("Comida"));
         $em->persist(new Category("Plantas"));
         $em->persist(new Category("Autos"));
+        $em->persist(new Category("Otros"));
         $em->flush();
 
         $io->newLine();
