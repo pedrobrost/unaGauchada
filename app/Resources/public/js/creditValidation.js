@@ -6,25 +6,20 @@ $.validator.addMethod("nonNumeric", function (value, element) {
         // Initialize form validation on the registration form.
         // It has the name attribute "registration"
 
-$('#createPublication').validate({
+$('#credits_buy').validate({
             // Specify validation rules
             rules: {
                 // The key name on the left side is the name attribute
                 // of an input field. Validation rules are defined
                 // on the right side
                 name: {
-                    required: true,
                     nonNumeric: true,
                 },
                 lastName: {
-                    required: true,
                     nonNumeric: true,
                 },
-                email: {
-                    required: true,
-                    // Specify that email should be validated
-                    // by the built-in "email" rule
-                    email: true
+                dni: {
+                    
                 },
                 pass: {
                     minlength: 6,
@@ -45,15 +40,15 @@ $('#createPublication').validate({
             },
             // Specify validation error messages
             messages: {
-                name: {
-                    required: "Por favor ingrese su nombre",
-                    nonNumeric: "Por favor ingrese un nombre valido",
+                amount: {
+                    min: "Ingrese un número mayor a 0",
+                    max: "Ingrese un número menor a 100"
                 },
                 lastName: {
                     required: "Por favor ingrese su apellido",
                     nonNumeric: "Por favor ingrese un apellido valido",
                 },
-                password: {
+                pass: {
                     required: "Por favor ingrese su contraseña",
                     minlength: "Su contraseña debe tener al menos 6 caracteres"
                 },

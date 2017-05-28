@@ -17,7 +17,7 @@
 </div>
 
 <div class="container">
-<form id="createPublication" method="post" action="{{ path('credits_buy') }}">
+<form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
     <div class="row setup-content" id="step-1">
         <div class="col">
             <div class="col">
@@ -36,27 +36,23 @@
                 <h3> Información personal</h3>
                 <div class="form-group">
                     <label class="control-label">Nombre</label>
-                    <input maxlength="10" type="text" required="required" class="form-control" placeholder="Nombre">
+                    <input maxlength="40" id="name" type="text" required="required" class="form-control" placeholder="Nombre">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Apellido</label>
-                    <input maxlength="15" type="text" required="required" class="form-control" placeholder="Apellido">
+                    <input maxlength="40" id="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
                 </div>
                 <div class="form-group">
                     <label class="control-label">DNI</label>
-                    <input maxlength="8" type="number" required="required" class="form-control" placeholder="DNI">
+                    <input maxlength="9" minlength="8" id="dni" type="number" required="required" class="form-control" placeholder="DNI">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Numero de tarjeta</label>
-                    <input maxlength="16" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                    <input maxlength="16" id="creditCard" type="number" required="required" class="form-control" placeholder="Tarjeta">
                 </div>
                 <div class="form-group">
                     <label class="control-label">PIN</label>
-                    <input maxlength="3" type="number" required="required" class="form-control" placeholder="PIN">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Apellido</label>
-                    <input maxlength="15" type="text" required="required" class="form-control" placeholder="Apellido">
+                    <input maxlength="3" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
                 </div>
            <div class="form-group row" id="expiration_date">
                 <label>Vencimiento</label>
@@ -86,8 +82,8 @@
                     <option value="21"> 2025</option>
                 </select>
             </div>
-                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
             </div>
         </div>
     </div>
@@ -95,8 +91,8 @@
         <div class="col">
             <div class="col">
                 <h3> Confirmación </h3>
-                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
+                <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
             </div>
         </div>
     </div>    
