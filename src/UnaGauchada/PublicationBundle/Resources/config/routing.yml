@@ -2,6 +2,11 @@ publication_homepage:
     path:     /
     defaults: { _controller: PublicationBundle:Publication:index }
 
+page:
+    path:     /page/{page}
+    defaults: { _controller: PublicationBundle:Publication:page }
+    methods: [GET]
+
 publish_new:
     path:     /publish
     defaults: { _controller: PublicationBundle:Publication:publish }

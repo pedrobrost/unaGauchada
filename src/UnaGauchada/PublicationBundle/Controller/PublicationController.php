@@ -17,6 +17,14 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
     }
 
+    public function pageAction($page){
+        $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
+        $publications = $repository->findBy(array(), array('sysDate' => 'DESC'));
+        $size = ceil(count($publications) / 6);
+        $publications = array_slice($publications, (($page-1)*6), 6*$page);
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $size));
+    }
+
     public function showAction(Publication $publication){
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
