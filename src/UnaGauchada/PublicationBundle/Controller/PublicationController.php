@@ -18,7 +18,7 @@ class PublicationController extends Controller
         $publications = new ArrayCollection($publications);
         $count = ceil($publications->count() / 9);
         $publications = $publications->matching(Criteria::create()
-                                ->orderBy(array('sysDate' => Criteria::ASC))
+                                ->orderBy(array('sysDate' => Criteria::DESC))
                                 ->setFirstResult(($page-1) * 9)
                                 ->setMaxResults(9)
                         );
