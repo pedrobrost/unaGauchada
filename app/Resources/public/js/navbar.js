@@ -5,3 +5,7 @@ $(window).scroll(function() {
     $('nav').removeClass('shrink');
   }
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
