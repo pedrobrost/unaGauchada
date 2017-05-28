@@ -25,7 +25,15 @@
                         <div class= "row">
                         <div class="card-text col">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
+                            <small class="text-muted">
+                            {# endDate and startDate are strings or DateTime objects #}
+                            {% set difference = date((publication.limitDate  | date('d/m/Y'))).diff(date("now"|date("m/d/Y"))) %}
+                            {% set leftDays = difference.days %}
+                            {% if leftDays == 1 %}
+                                1 día restante
+                            {% else %}
+                               {{ leftDays }} días restantes
+                            {% endif %}</small>
                         </div>
                         <div class="card-text col">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>

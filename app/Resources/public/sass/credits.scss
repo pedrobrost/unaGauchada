@@ -42,7 +42,13 @@
   padding: 6px 0;
   font-size: 12px;
   line-height: 1.428571429;
-  border-radius: 15px;
+  border: 1px solid;
+  border-radius: 100%;
+  background-color: #fff;
+
+    &.btn-primary{
+        background-color: $brand-primary;
+    }
  }
 
 .container.form{

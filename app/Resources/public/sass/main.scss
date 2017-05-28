@@ -20,15 +20,21 @@ body{
    .container.content{
        background-color: #fafafa;
    }
+
+   [type="button"], [type="reset"], [type="submit"] {
+        -webkit-appearance: initial;
+    }
+
+    .content{
+        margin-top: 20px;
+    }
+
+    .jumbotron{
+        margin-top: -45px
+    }
+
 }
 
-.content{
-    margin-top: 20px;
-}
-
-.jumbotron{
-    margin-top: -45px
-}
 
 button{
     cursor: pointer

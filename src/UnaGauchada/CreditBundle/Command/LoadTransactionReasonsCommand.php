@@ -1,7 +1,5 @@
 <?php
-
 namespace UnaGauchada\CreditBundle\Command;
-
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -34,7 +32,6 @@ class LoadTransactionReasonsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $io = new SymfonyStyle($input, $output);
         $io->newLine();
         $io->block('Welcome to the UnaGauchada transaction reasons loader', null, 'bg=blue;fg=white', ' ', true);
