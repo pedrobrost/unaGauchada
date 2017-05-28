@@ -6,10 +6,6 @@ nav.navbar {
     background-color: #ffffff;
 }
 
-.nav-link.publish:hover::before {
-    content: "Publicar gauchada  ";
-}
-
 
 /*
     .fa.fa-pencil-square-o::before {
@@ -54,6 +50,7 @@ nav.navbar {
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     transition: 0.5s;
+    background-color: #fff;
 }
 
 nav a {
