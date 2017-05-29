@@ -16,13 +16,14 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
-        $count = ceil($publications->count() / 9);
+        $pages = ceil($publications->count() / 9);
+        $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
                                 ->orderBy(array('sysDate' => Criteria::ASC))
                                 ->setFirstResult(($page-1) * 9)
                                 ->setMaxResults(9)
                         );
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $count));
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
     }
     public function showAction(Publication $publication){
 
