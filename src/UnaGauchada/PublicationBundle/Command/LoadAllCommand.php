@@ -10,16 +10,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
 use UnaGauchada\PublicationBundle\Entity\Category;
+use UnaGauchada\CreditBundle\Entity\TransactionReason;
 
-class LoadAchievementsCommand extends ContainerAwareCommand
+class LoadAllCommand extends ContainerAwareCommand
 {
 
     protected function configure()
     {
         $this
-            ->setName('app:load:achievements')
-            ->setDescription('Load achievements')
-            ->setHelp('This command loads achievements');
+            ->setName('app:load:all')
+            ->setDescription('Load all')
+            ->setHelp('This command loads all');
     }
 
     protected function getDoctrine()
@@ -37,10 +38,12 @@ class LoadAchievementsCommand extends ContainerAwareCommand
 
         $io = new SymfonyStyle($input, $output);
         $io->newLine();
-        $io->block('Welcome to the UnaGauchada achievements loader', null, 'bg=blue;fg=white', ' ', true);
+        $io->block('Welcome to the UnaGauchada all loader', null, 'bg=blue;fg=white', ' ', true);
         $io->newLine();
 
         $em = $this->getManager();
+
+        //Achievements
         $em->persist(new Achievement('Observador', 0, 0));
         $em->persist(new Achievement("Irresponsable", PHP_INT_MIN, -1));
         $em->persist(new Achievement("Buen Tipo", 1, 1));
@@ -49,10 +52,39 @@ class LoadAchievementsCommand extends ContainerAwareCommand
         $em->persist(new Achievement("Héroe", 11, 20));
         $em->persist(new Achievement("Nobleza Gaucha", 21, 50));
         $em->persist(new Achievement("Dios", 51, PHP_INT_MAX));
+
+        //Categories
+        $em->persist(new Category("Viajes"));
+        $em->persist(new Category("Animales"));
+        $em->persist(new Category("Comida"));
+        $em->persist(new Category("Plantas"));
+        $em->persist(new Category("Autos"));
+        $em->persist(new Category("Otros"));
+
+        //Reasons
+        $em->persist((new TransactionReason())
+            ->setName('Initial')
+            ->setAmount(1)
+            ->setPrice(0));
+
+        $em->persist((new TransactionReason())
+            ->setName('Publication')
+            ->setAmount(-1)
+            ->setPrice(0));
+
+
+        $em->persist((new TransactionReason())
+            ->setName('Purchase')
+            ->setAmount(1)
+            ->setPrice(50));
+
+        //Cities
+        //mysql -u user -p < departmentsLoader.sql
+
         $em->flush();
 
         $io->newLine();
-        $io->success('Achievements has been created');
+        $io->success('All has been created');
         $io->newLine();
     }
 
