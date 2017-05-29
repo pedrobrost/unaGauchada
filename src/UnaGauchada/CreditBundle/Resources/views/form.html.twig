@@ -1,34 +1,104 @@
  {% embed 'utils/card.html.twig' with {'title': 'Comprar creditos'} %} {% block content %}
-
-<form id="createPublication" method="post" action="{{ path('credits_buy') }}">
-
-
 <div class="stepwizard">
-    <div class="stepwizard-row">
+    <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
-            <button type="button" class="btn btn-default btn-circle">1</button>
-            <p>Cart</p>
+            <a href="#step-1" type="button" class="btn btn-primary btn-circle"><i class="fa fa-usd" aria-hidden="true"></i></a>
+            <p>Paso 1</p>
         </div>
         <div class="stepwizard-step">
-            <button type="button" class="btn btn-primary btn-circle">2</button>
-            <p>Shipping</p>
+            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="fa fa-credit-card" aria-hidden="true"></i></a>
+            <p>Paso 2</p>
         </div>
         <div class="stepwizard-step">
-            <button type="button" class="btn btn-default btn-circle" disabled="disabled">3</button>
-            <p>Payment</p>
-        </div> 
+            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="fa fa-check" aria-hidden="true"></i></a>
+            <p>Paso 3</p>
+        </div>
     </div>
 </div>
 
-    <label for="exampleInputEmail1"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp Cantidad de Créditos</label>
-    <div class="form-group">
-        <div>
-            <input type="text" class="form-control" id="title" placeholder="Créditos" name="amount">
+<div class="container">
+<form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
+    <div class="row setup-content" id="step-1">
+        <div class="col">
+            <div class="col">
+                <h3>Paso uno</h3>
+                <div class="form-group">
+                    <label class="control-label">Ingrese la cantidad de creditos</label>
+                    <input maxlength="2" id="amount" min="1" max="99" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
+                </div>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" id="firstbutton" type="button">Siguiente</button>
+            </div>
         </div>
     </div>
-        <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Comprar</button>
+    <div class="row setup-content" id="step-2">
+        <div class="col">
+            <div class="col">
+                <h3> Información personal</h3>
+                <div class="form-group">
+                    <label class="control-label">Nombre</label>
+                    <input maxlength="40" id="name" type="text" required="required" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Apellido</label>
+                    <input maxlength="40" id="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">DNI</label>
+                    <input maxlength="9" minlength="8" id="dni" type="number" required="required" class="form-control" placeholder="DNI">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Numero de tarjeta</label>
+                    <input maxlength="16" id="creditCard" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">PIN</label>
+                    <input maxlength="3" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
+                </div>
+           <div class="form-group row" id="expiration_date">
+                <label>Vencimiento</label>
+                <select>
+                    <option value="01">Enero</option>
+                    <option value="02">Febrero </option>
+                    <option value="03">Marzo</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Mayo</option>
+                    <option value="06">Junio</option>
+                    <option value="07">Julio</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                <select>
+                    <option value="16"> 2017</option>
+                    <option value="17"> 2018</option>
+                    <option value="18"> 2019</option>
+                    <option value="19"> 2020</option>
+                    <option value="20"> 2021</option>
+                    <option value="21"> 2022</option>
+                    <option value="21"> 2023</option>
+                    <option value="21"> 2024</option>
+                    <option value="21"> 2025</option>
+                </select>
+            </div>
+                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
+            </div>
+        </div>
     </div>
+    <div class="row setup-content" id="step-3">
+        <div class="col">
+            <div class="col">
+                <h3> Confirmación </h3>
+                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
+                <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
+            </div>
+        </div>
+    </div>    
 </form>
+</div>
+
 
 
 {% endblock %}{% endembed %}

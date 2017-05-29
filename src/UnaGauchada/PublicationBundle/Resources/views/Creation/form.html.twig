@@ -15,6 +15,7 @@
         <label class="col-xs-3 control-label"><i class="fa fa-tag" aria-hidden="true"></i>&nbspCategoria</label>
         <div class="col-xs-5 selectContainer">
             <select name="category" id="category" class="form-control">
+            <option value="">Seleccionar categoria</option>
                 {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
         </div>
@@ -23,8 +24,9 @@
     <div class="form-group">
         <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select name="city" id="city" class="form-control">
-                {{ render(controller('PublicationBundle:City:list')) }}
+            <select placeholder="Ciudad" name="city" id="city" class="form-control">
+            <option value="">Seleccionar ciudad</option>
+                {{ render(controller('PublicationBundle:Department:list')) }}
             </select>
         </div>
     </div>
@@ -58,7 +60,14 @@
             disabled
             {% endif %}" {% if app.user.credits < 1 %} disabled {% endif %} type="submit">Crear</button>
     </div>
+
 </form>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#city").select2();
+});
+</script>
 
 {% endblock %}{% endembed %}

@@ -10,25 +10,31 @@
 @import "publication";
 @import "publish";
 @import "credits";
+@import "errors";
 
 
 /* Change the white to any color ;) */
 
 body{
-    padding-top: 80px;
    cursor: default;
-   .container.content{
-       background-color: #fafafa;
-   }
+   color: #444;
+   background-color: #1c1c1c;
+
+   [type="button"], [type="reset"], [type="submit"] {
+        -webkit-appearance: initial;
+    }
+
+    .content{
+       background: #fafafa;
+       padding: 80px 0 70px;
+    }
+
+    .jumbotron{
+        margin-top: -45px
+    }
+
 }
 
-.content{
-    margin-top: 20px;
-}
-
-.jumbotron{
-    margin-top: -45px
-}
 
 button{
     cursor: pointer

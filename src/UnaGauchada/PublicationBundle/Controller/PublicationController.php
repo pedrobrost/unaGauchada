@@ -2,6 +2,8 @@
 
 namespace UnaGauchada\PublicationBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,14 +12,21 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 
 class PublicationController extends Controller
 {
-    public function indexAction()
-    {
+    public function indexAction($page){
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications));
+        $publications = new ArrayCollection($publications);
+        $pages = ceil($publications->count() / 9);
+        $pages = ($pages == 0) ? 1 : $pages;
+        $publications = $publications->matching(Criteria::create()
+                                ->orderBy(array('sysDate' => Criteria::ASC))
+                                ->setFirstResult(($page-1) * 9)
+                                ->setMaxResults(9)
+                        );
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
     }
-
     public function showAction(Publication $publication){
+
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
@@ -29,10 +38,10 @@ class PublicationController extends Controller
 
         if(!$this->getUser()->getCredits()==0){
             $em = $this->getDoctrine()->getManager();
-            $cityRepository = $this->getDoctrine()->getRepository('PublicationBundle:City');
+            $departmentRepository = $this->getDoctrine()->getRepository('PublicationBundle:Department');
             $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
 
-            $city = $cityRepository->findOneById($request->get('city'));
+            $department = $departmentRepository->findOneById($request->get('city'));
             $category = $categoryRepository->findOneById($request->get('category'));
 
             $publication = new Publication();
@@ -42,7 +51,7 @@ class PublicationController extends Controller
                 ->setDescription($request->get('description'))
                 ->setLimitDate(new \DateTime($request->get('limitDate')))
                 ->setCategory($category)
-                ->setCity($city)
+                ->setDepartment($department)
                 ->setImageBlob($request->files->get('image'));
 
             $em->persist($publication);

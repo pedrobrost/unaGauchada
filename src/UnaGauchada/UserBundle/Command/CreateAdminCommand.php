@@ -67,6 +67,7 @@ class CreateAdminCommand extends ContainerAwareCommand
             ->setPlainPassword($password)
             ->setPassword('cunk')
             ->setSalt('cunk')
+            ->setPhone(12345)
             ->setBirthday($io->ask('User birthdate', null, function ($date) {
                 return new \DateTime($date);
             }));

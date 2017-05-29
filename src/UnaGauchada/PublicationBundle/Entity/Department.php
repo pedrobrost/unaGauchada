@@ -5,12 +5,12 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Department
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="department")
+ * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\DepartmentRepository")
  */
-class Category
+class Department
 {
     /**
      * @var int
@@ -24,22 +24,21 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=64, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Province")
+     * @ORM\JoinColumn(name="province_id", referencedColumnName="id")
+     */
+    private $province;
+
+    /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Publication", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Publication", mappedBy="department")
      */
     private $publications;
-
-
-    public function __construct($name)
-    {
-        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->name = $name;
-    }
 
     /**
      * Get id
@@ -56,7 +55,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return Department
      */
     public function setName($name)
     {
@@ -76,11 +75,48 @@ class Category
     }
 
     /**
+     * Set province
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Province $province
+     *
+     * @return Department
+     */
+    public function setProvince(\UnaGauchada\PublicationBundle\Entity\Province $province = null)
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    /**
+     * Get province
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Province
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Add publication
      *
      * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
      *
-     * @return Category
+     * @return Department
      */
     public function addPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
     {
@@ -108,10 +144,4 @@ class Category
     {
         return $this->publications;
     }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
 }

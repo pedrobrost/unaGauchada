@@ -124,4 +124,9 @@ class Rate
     {
         return $this->score;
     }
+
+    public function getPoints(){
+        return $this->getScore()->getPoints();
+    }
+
 }
