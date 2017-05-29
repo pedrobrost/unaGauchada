@@ -5,12 +5,12 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * City
+ * Department
  *
- * @ORM\Table(name="city")
- * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\CityRepository")
+ * @ORM\Table(name="department")
+ * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\DepartmentRepository")
  */
-class City
+class Department
 {
     /**
      * @var int
@@ -29,18 +29,16 @@ class City
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Province")
+     * @ORM\JoinColumn(name="province_id", referencedColumnName="id")
+     */
+    private $province;
+
+    /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Publication", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="Publication", mappedBy="department")
      */
     private $publications;
-
-
-    public function __construct($name)
-    {
-        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->name = $name;
-    }
-
 
     /**
      * Get id
@@ -57,7 +55,7 @@ class City
      *
      * @param string $name
      *
-     * @return City
+     * @return Department
      */
     public function setName($name)
     {
@@ -77,11 +75,48 @@ class City
     }
 
     /**
+     * Set province
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Province $province
+     *
+     * @return Department
+     */
+    public function setProvince(\UnaGauchada\PublicationBundle\Entity\Province $province = null)
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    /**
+     * Get province
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Province
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    public function __toString()
+    {
+        return $this->getName(). ' '. $this->getLastName();
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Add publication
      *
      * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
      *
-     * @return City
+     * @return Department
      */
     public function addPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
     {
@@ -109,10 +144,4 @@ class City
     {
         return $this->publications;
     }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
 }

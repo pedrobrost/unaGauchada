@@ -1,0 +1,25 @@
+use unaGauchadaDB;
+
+INSERT INTO province (id,name) VALUES(1,'BUENOS AIRES');
+INSERT INTO province (id,name) VALUES(2,'CATAMARCA');
+INSERT INTO province (id,name) VALUES(3,'CHACO');
+INSERT INTO province (id,name) VALUES(4,'CHUBUT');
+INSERT INTO province (id,name) VALUES(5,'CORDOBA');
+INSERT INTO province (id,name) VALUES(6,'CORRIENTES');
+INSERT INTO province (id,name) VALUES(7,'ENTRE RIOS');
+INSERT INTO province (id,name) VALUES(8,'FORMOSA');
+INSERT INTO province (id,name) VALUES(9,'JUJUY');
+INSERT INTO province (id,name) VALUES(10,'LA PAMPA');
+INSERT INTO province (id,name) VALUES(11,'LA RIOJA');
+INSERT INTO province (id,name) VALUES(12,'MENDOZA');
+INSERT INTO province (id,name) VALUES(13,'MISIONES');
+INSERT INTO province (id,name) VALUES(14,'NEUQUEN');
+INSERT INTO province (id,name) VALUES(15,'RIO NEGRO');
+INSERT INTO province (id,name) VALUES(16,'SALTA');
+INSERT INTO province (id,name) VALUES(17,'SAN JUAN');
+INSERT INTO province (id,name) VALUES(18,'SAN LUIS');
+INSERT INTO province (id,name) VALUES(19,'SANTA CRUZ');
+INSERT INTO province (id,name) VALUES(20,'SANTA FE');
+INSERT INTO province (id,name) VALUES(21,'SANTIAGO DEL ESTERO');
+INSERT INTO province (id,name) VALUES(22,'TIERRA DEL FUEGO');
+INSERT INTO province (id,name) VALUES(23,'TUCUMAN');

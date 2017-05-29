@@ -7,15 +7,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\PublicationBundle\Entity\Publication;
 
-class CityController extends Controller{
+class DepartmentController extends Controller{
 
     public function listAction(){
 
         $repository = $this->getDoctrine()
-            ->getRepository('PublicationBundle:City');
+            ->getRepository('PublicationBundle:Department');
 
-        $cities = $repository->findAll();
+        $departments = $repository->findAll();
 
-        return $this->render('PublicationBundle:Cities:list.html.twig', array('cities' => $cities));
+        return $this->render('PublicationBundle:Cities:list.html.twig', array('departments' => $departments));
     }
 }

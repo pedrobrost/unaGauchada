@@ -5,12 +5,12 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Locality
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="locality")
+ * @ORM\Entity(repositoryClass="UnaGauchada\PublicationBundle\Repository\LocalityRepository")
  */
-class Category
+class Locality
 {
     /**
      * @var int
@@ -24,22 +24,22 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=64, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Department")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    private $department;
+
+    /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Publication", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Publication", mappedBy="locality")
      */
     private $publications;
 
-
-    public function __construct($name)
-    {
-        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->name = $name;
-    }
 
     /**
      * Get id
@@ -56,7 +56,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return Locality
      */
     public function setName($name)
     {
@@ -74,13 +74,44 @@ class Category
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set department
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Department $department
+     *
+     * @return Locality
+     */
+    public function setDepartment(\UnaGauchada\PublicationBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
 
     /**
      * Add publication
      *
      * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
      *
-     * @return Category
+     * @return Locality
      */
     public function addPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
     {
@@ -108,10 +139,4 @@ class Category
     {
         return $this->publications;
     }
-
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
 }
