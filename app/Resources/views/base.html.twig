@@ -7,7 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}"> {% block stylesheets %}{% endblock %}
+  <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}"> 
+  <script src="{{ asset('dist/js/jquery.js') }}"></script>
+  {% block stylesheets %}{% endblock %}
+  
 
   <title>Una Gauchada</title>
 </head>
@@ -21,7 +24,6 @@
   </div>
   {% include 'footer/footer.html.twig' %}
 
-  <script src="{{ asset('dist/js/jquery.js') }}"></script>
   <script src="{{ asset('assets/tether/js/tether.min.js') }}"></script>
   <script src="{{ asset('dist/js/bootstrap.js') }}"></script>
   <script src="{{ asset('dist/js/navbar.js') }}"></script>

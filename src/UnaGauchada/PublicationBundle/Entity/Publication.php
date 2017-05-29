@@ -80,10 +80,10 @@ class Publication
 
     /**
      * Many Transactions have One User.
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="publications")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="publications")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      */
-    private $city;
+    private $department;
 
     /**
      * Many Transactions have One User.
@@ -355,30 +355,6 @@ class Publication
     }
 
     /**
-     * Set city
-     *
-     * @param \UnaGauchada\PublicationBundle\Entity\City $city
-     *
-     * @return Publication
-     */
-    public function setCity(\UnaGauchada\PublicationBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \UnaGauchada\PublicationBundle\Entity\City
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
      * Set user
      *
      * @param \UnaGauchada\UserBundle\Entity\User $user
@@ -400,5 +376,30 @@ class Publication
     public function getUser()
     {
         return $this->user;
+    }
+
+
+    /**
+     * Set department
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Department $department
+     *
+     * @return Publication
+     */
+    public function setDepartment(\UnaGauchada\PublicationBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
     }
 }

@@ -16,13 +16,14 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
-        $count = ceil($publications->count() / 9);
+        $pages = ceil($publications->count() / 9);
+        $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
                                 ->orderBy(array('sysDate' => Criteria::DESC))
                                 ->setFirstResult(($page-1) * 9)
                                 ->setMaxResults(9)
                         );
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $count));
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
     }
     public function showAction(Publication $publication){
 
@@ -37,10 +38,10 @@ class PublicationController extends Controller
 
         if(!$this->getUser()->getCredits()==0){
             $em = $this->getDoctrine()->getManager();
-            $cityRepository = $this->getDoctrine()->getRepository('PublicationBundle:City');
+            $departmentRepository = $this->getDoctrine()->getRepository('PublicationBundle:Department');
             $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
 
-            $city = $cityRepository->findOneById($request->get('city'));
+            $department = $departmentRepository->findOneById($request->get('city'));
             $category = $categoryRepository->findOneById($request->get('category'));
 
             $publication = new Publication();
@@ -50,7 +51,7 @@ class PublicationController extends Controller
                 ->setDescription($request->get('description'))
                 ->setLimitDate(new \DateTime($request->get('limitDate')))
                 ->setCategory($category)
-                ->setCity($city)
+                ->setDepartment($department)
                 ->setImageBlob($request->files->get('image'));
 
             $em->persist($publication);
