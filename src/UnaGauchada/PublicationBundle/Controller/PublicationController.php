@@ -19,14 +19,13 @@ class PublicationController extends Controller
         $pages = ceil($publications->count() / 9);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
-                                ->orderBy(array('sysDate' => Criteria::ASC))
+                                ->orderBy(array('sysDate' => Criteria::DESC))
                                 ->setFirstResult(($page-1) * 9)
                                 ->setMaxResults(9)
                         );
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
     }
     public function showAction(Publication $publication){
-
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 

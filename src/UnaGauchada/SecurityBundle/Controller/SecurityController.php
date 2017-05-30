@@ -5,6 +5,7 @@ namespace UnaGauchada\SecurityBundle\Controller;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\UserBundle\Entity\User;
 
@@ -46,11 +47,15 @@ class SecurityController extends Controller
         try {
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('publication_homepage');
+            //return $this->redirectToRoute('publication_homepage');
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
             return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
         }
 
+        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+        $this->get('security.token_storage')->setToken($token);
+        $this->get('session')->set('_security_main', serialize($token));
+        return $this->redirectToRoute('publication_homepage');
     }
 
 }
