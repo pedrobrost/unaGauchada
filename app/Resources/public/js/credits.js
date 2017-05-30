@@ -46,6 +46,7 @@ $(document).ready(function () {
       if (isValid)
           nextStepWizard.removeAttr('disabled').trigger('click');
   });
+          isValid = true;
 
   $('div.setup-panel div a.btn-primary').trigger('click');
 });
