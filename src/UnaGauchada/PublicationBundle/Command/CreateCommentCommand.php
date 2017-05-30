@@ -13,6 +13,7 @@ use UnaGauchada\PublicationBundle\Entity\Achievement;
 use UnaGauchada\PublicationBundle\Entity\Category;
 use UnaGauchada\PublicationBundle\Entity\Publication;
 use UnaGauchada\PublicationBundle\Entity\PublicationComment;
+use UnaGauchada\PublicationBundle\Entity\Response;
 use UnaGauchada\UserBundle\Entity\User;
 
 class CreateCommentCommand extends ContainerAwareCommand
@@ -79,6 +80,15 @@ class CreateCommentCommand extends ContainerAwareCommand
 
 
         $publication->addPublicationsComment($comment);
+
+        if($io->confirm('Agregar respuesta')){
+            $response = new Response();
+            $response->setUser($publication->getUser())
+                ->setDate(new \DateTime())
+                ->setText($io->ask('Comment text'));
+             $comment->setResponse($response);
+        }
+
 
         $em = $this->getManager();
         $em->persist($publication);
