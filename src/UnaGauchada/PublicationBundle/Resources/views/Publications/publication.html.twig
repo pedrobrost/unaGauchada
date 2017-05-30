@@ -36,7 +36,7 @@
                             <a href="#" class="card-link">Comentar</a>
                         {% endif %}
                         {% if is_granted('submit', publication) %}
-                            <a href="#" class="card-link btn btn-primary">Postularme</a>
+                            <button id="postularseBtn" class="card-link btn btn-primary" onclick="change()">Postularme</button>
                         {% endif %}
                         {% if is_granted('unsubmit', publication) %}
                             <a href="#" class="card-link btn btn-primary">Despostularme</a>
@@ -119,4 +119,17 @@
     </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function change()
+        {
+            if(document.getElementById("postularseBtn").innerHTML == "Despostularse"){
+                document.getElementById("postularseBtn").innerHTML = "Postularse";
+            }else{
+                document.getElementById("postularseBtn").innerHTML = "Despostularse";
+            }
+        }
+    </script>
 {% endblock %}
