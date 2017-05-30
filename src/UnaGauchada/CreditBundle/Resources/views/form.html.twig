@@ -17,85 +17,141 @@
 </div>
 
 <div class="container">
-<form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
-    <div class="row setup-content" id="step-1">
-        <div class="col">
+    <form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
+        <div class="row setup-content" id="step-1">
             <div class="col">
-                <h3>Paso uno</h3>
-                <div class="form-group">
-                    <label class="control-label">Ingrese la cantidad de creditos</label>
-                    <input maxlength="2" id="amount" min="1" max="99" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
+                <div class="col">
+                    <h3>Paso uno</h3>
+                    <div class="form-group">
+                        <label class="control-label">Ingrese la cantidad de creditos</label>
+                        <input maxlength="2" id="amount" min="1" max="99" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
+                    </div>
+                    <button class="btn btn-primary nextBtn btn-lg pull-right" id="firstbutton" type="button">Siguiente</button>
                 </div>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" id="firstbutton" type="button">Siguiente</button>
             </div>
         </div>
-    </div>
-    <div class="row setup-content" id="step-2">
-        <div class="col">
+        <div class="row setup-content" id="step-2">
             <div class="col">
-                <h3> Información personal</h3>
-                <div class="form-group">
-                    <label class="control-label">Nombre</label>
-                    <input maxlength="40" id="name" type="text" required="required" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Apellido</label>
-                    <input maxlength="40" id="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
-                </div>
-                <div class="form-group">
-                    <label class="control-label">DNI</label>
-                    <input maxlength="9" minlength="8" id="dni" type="number" required="required" class="form-control" placeholder="DNI">
-                </div>
-                <div class="form-group">
+                <div class="col">
+                    <h3> Información personal</h3>
+                    <div class="form-group">
+                        <label class="control-label">Nombre</label>
+                        <input maxlength="40" id="name" type="text" required="required" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Apellido</label>
+                        <input maxlength="40" id="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">DNI</label>
+                        <input maxlength="9" minlength="8" id="dni" type="number" required="required" class="form-control" placeholder="DNI">
+                    </div>
                     <label class="control-label">Numero de tarjeta</label>
-                    <input maxlength="16" id="creditCard" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                    <div class="form-group">
+
+                        <input maxlength="16" id="creditCard" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <label class="control-label col">PIN</label>
+                            <input maxlength="3" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
+                        </div>
+                        <div class="col">
+                            <label class="" for="inlineFormCustomSelect">Vencimiento:</label>
+                            <div class="form-group row" id="expiration_date">
+                                <div class="col">
+                                    <select class="custom-select" id="mesVenc" name="mesVenc">
+                                        <option value="">Mes</option>
+                                        <option value="01">Enero</option>
+                                        <option value="02">Febrero </option>
+                                        <option value="03">Marzo</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Mayo</option>
+                                        <option value="06">Junio</option>
+                                        <option value="07">Julio</option>
+                                        <option value="08">Agosto</option>
+                                        <option value="09">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                      </select>
+
+
+                                    <select class="custom-select" id="anioVenc" name="anioVenc">
+                                    <option> Año </option>
+                                    <option value="2017"> 2017</option>
+                                    <option value="2018"> 2018</option>
+                                    <option value="2019"> 2019</option>
+                                    <option value="2020"> 2020</option>
+                                    <option value="2021"> 2021</option>
+                                    <option value="2022"> 2022</option>
+                                    <option value="2023"> 2023</option>
+                                    <option value="2024"> 2024</option>
+                                    <option value="2024"> 2025</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
+                    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">PIN</label>
-                    <input maxlength="3" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
-                </div>
-           <div class="form-group row" id="expiration_date">
-                <label>Vencimiento</label>
-                <select>
-                    <option value="01">Enero</option>
-                    <option value="02">Febrero </option>
-                    <option value="03">Marzo</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Mayo</option>
-                    <option value="06">Junio</option>
-                    <option value="07">Julio</option>
-                    <option value="08">Agosto</option>
-                    <option value="09">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Noviembre</option>
-                    <option value="12">Diciembre</option>
-                </select>
-                <select>
-                    <option value="16"> 2017</option>
-                    <option value="17"> 2018</option>
-                    <option value="18"> 2019</option>
-                    <option value="19"> 2020</option>
-                    <option value="20"> 2021</option>
-                    <option value="21"> 2022</option>
-                    <option value="21"> 2023</option>
-                    <option value="21"> 2024</option>
-                    <option value="21"> 2025</option>
-                </select>
-            </div>
-                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
-                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
             </div>
         </div>
-    </div>
-    <div class="row setup-content" id="step-3">
-        <div class="col">
-            <div class="col">
-                <h3> Confirmación </h3>
-                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
-                <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
+        <div class="row setup-content" id="step-3">
+            <div class="well" style="margin: 40px;">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Recibo</h1>
+                    </div>
+                    </div>
+                    </span>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Compra</th>
+                                <th>#</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-9"><em>Creditos</em></h4>
+                                </td>
+                                <td class="col-md-1" style="text-align: center"> 2 </td>
+                                <td class="col-md-1 text-center">$13</td>
+                                <td class="col-md-1 text-center">$26</td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right">
+                                    <h4><strong>Total: </strong></h4>
+                                </td>
+                                <td class="text-center text-danger">
+                                    <h4><strong>$31.53</strong></h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table></td>
+                </div>
+<button class="btn btn-primary prevBtn btn-lg pull-left type=" button"="" style="
+    margin-right: auto;
+">Anterior</button>
+        <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
             </div>
         </div>
-    </div>    
+</div>
 </form>
 </div>
 
