@@ -1,24 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} 
 
-
-{% block body %}
-
-
-<div class="container form">
-
-    {% include 'CreditBundle::buyCredits.html.twig' %}
-    
-</div>
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/jquery-ui/jquery-ui.css') }}"> 
 {% endblock %}
 
-{% block javascripts %}
+{% block body %}
+<div class="container form">
+  {% include 'CreditBundle::buyCredits.html.twig' %}
+</div>
 
- 
+{% endblock %} {% block javascripts %}
 
-
-
-  <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
-  <script src="{{ asset('dist/js/credits.js') }}"></script>
-    <script src="{{ asset('assets/jquery-ui/jquery-ui.min.js') }}"></script>
-   <script src="{{ asset('dist/js/creditsValidation.js') }}"></script>
-  {% endblock %}
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/credits.js') }}"></script>
+<script src="{{ asset('assets/jquery-ui/css/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('dist/js/creditsValidation.js') }}"></script>
+{% endblock %}
