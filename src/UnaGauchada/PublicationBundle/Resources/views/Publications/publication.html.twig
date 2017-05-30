@@ -17,14 +17,18 @@
                                 {% endif %}
                             </div>
                         </h4>
-                        <p class="card-text"><i class="fa fa-calendar" aria-hidden="true"></i>
-                            <small class="text-muted">  {{ publication.sysDate | date("d-m-Y") }} </small>
-                            | <i class="fa fa-clock-o" aria-hidden="true"></i></i>
-                            <small class="text-muted">                {% set difference = date((publication.limitDate  | date('d/m/Y'))).diff(date("now"|date("m/d/Y"))) %}
+                        &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
+                            <small class="text-muted">
+                                {{ publication.limitDate | date('d/m/Y') }}
                             </small>
-                            |
-                            <small> {{ publication.category }} </small>
-                        </p>
+                        &nbsp<i class="fa fa-tag" aria-hidden="true"></i>
+                            <small>
+                                {{ publication.category }}
+                            </small>
+                        &nbsp<i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <small>
+                                {{ publication.department.name | title }}
+                            </small>
                     </div>
                     <img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}"
                          alt="Card image cap">
