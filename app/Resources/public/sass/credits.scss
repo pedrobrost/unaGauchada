@@ -1,52 +1,139 @@
-.stepwizard-step p {
-    margin-top: 10px;
-}
-
-.stepwizard-row {
-    display: table-row;
-}
-
-.stepwizard {
-    display: table;
-    width: 55%;
-    position: relative;
+.price-box {
     margin: 0 auto;
+    background: #E9E9E9;
+    border-radius: 10px;
+    padding: 40px 15px;
+    width: 500px;
 }
 
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
+.ui-widget-content {
+    border: 1px solid #bdc3c7;
+    background: #e1e1e1;
+    color: #222222;
+    margin-top: 4px;
 }
 
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
+.ui-slider .ui-slider-handle {
+    position: absolute !important;
+    z-index: 2 !important;
+    width: 3.2em !important;
+    height: 2.2em !important;
+    cursor: default !important;
+    margin: 0 -20px auto !important;
+    text-align: center !important;
+    line-height: 30px !important;
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+}
+
+.ui-corner-all {
+    /*border-radius: 20px;*/
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -3em !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default {
+    background: #393a40 !important;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    margin-left: -0.5em !important;
+}
+
+.ui-slider .ui-slider-handle {
+    cursor: pointer;
+}
+
+.ui-slider a,
+.ui-slider a:focus {
+    cursor: pointer;
+    outline: none;
+}
+
+.price,
+.lead p {
+    font-weight: 600;
+    font-size: 32px;
+    display: inline-block;
+    line-height: 60px;
+}
+
+h4.great {
+    background: #ff7043;
+    ;
+    margin: 0 0 55px -60px;
+    padding: 7px 15px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    display: inline-block;
+    -moz-box-shadow: 2px 4px 5px 0 #ccc;
+    -webkit-box-shadow: 2px 4px 5px 0 #ccc;
+    box-shadow: 2px 4px 5px 0 #ccc;
+}
+
+.price-slider {
+    margin-bottom: 70px;
+}
+
+.form-pricing {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.price-form {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 20px;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group span.price {
+    font-weight: 200;
+    display: inline-block;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.help-text {
+    display: block;
+    margin-top: 32px;
+    margin-bottom: 10px;
+    color: #737373;
     position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
+    font-weight: 200;
+    text-align: right;
 }
 
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
+.price-form label {
+    font-weight: 200;
+    font-size: 21px;
 }
 
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border: 1px solid;
-    border-radius: 100%;
-    background-color: #fff;
-    &.btn-primary {
-        background-color: $brand-primary;
-    }
+.ui-slider-range-min {
+    background: #2980b9;
+}
+
+.ui-slider-label-inner {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #393a40;
+    display: block;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    top: 100%;
+    z-index: 99;
 }
 
 .container.form {
@@ -66,16 +153,26 @@ btn.btn-primary.prevBtn.btn-lg.pull-left {
     margin-right: auto;
 }
 
-
-.card.success{
+.card.success {
     max-width: 500px;
-    .card-block{
-        .alert{
-             min-height: 100px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
+    .card-block {
+        .alert {
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
         }
     }
+}
+
+#nextstep {
+    display: block;
+    margin-right: 0 auto;
+    right: 0;
+    margin: auto;
+    display: inline-block;
+    overflow: auto;
+    white-space: nowrap;
+    margin: 0px auto;
 }
