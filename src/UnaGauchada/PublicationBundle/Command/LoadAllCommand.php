@@ -79,7 +79,7 @@ class LoadAllCommand extends ContainerAwareCommand
             ->setPrice(50));
 
         //Cities
-        //mysql -u user -p < departmentsLoader.sql
+        //mysql -u root -p < departmentsLoader.sql
 
         $em->flush();
 

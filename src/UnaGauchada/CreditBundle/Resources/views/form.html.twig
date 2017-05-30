@@ -18,18 +18,23 @@
 
 <div class="container">
     <form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
+    <h3></h3>
+    <fieldset>
         <div class="row setup-content" id="step-1">
             <div class="col">
                 <div class="col">
                     <h3>Paso uno</h3>
                     <div class="form-group">
                         <label class="control-label">Ingrese la cantidad de creditos</label>
-                        <input maxlength="2" id="amount" min="1" max="99" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
+                        <input maxlength="2" id="amount" min="1" max="999" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
                     </div>
                     <button class="btn btn-primary nextBtn btn-lg pull-right" id="firstbutton" type="button">Siguiente</button>
                 </div>
             </div>
         </div>
+        </fieldset>
+        <h3></h3>
+        <fieldset>
         <div class="row setup-content" id="step-2">
             <div class="col">
                 <div class="col">
@@ -97,11 +102,13 @@
 
 
 
-                    <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Anterior</button>
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Siguiente</button>
+                    <button class="btn btn-primary prevBtn btn-lg pull-left" id="secondbutton" type="button">Anterior</button>
+                    <button class="btn btn-primary nextBtn btn-lg pull-right" id="thirdbutton" type="button">Siguiente</button>
                 </div>
             </div>
         </div>
+        </fieldset>
+        <fieldset>
         <div class="row setup-content" id="step-3">
             <div class="well" style="margin: 40px;">
                 <div class="row">
@@ -145,11 +152,13 @@
                         </tbody>
                     </table></td>
                 </div>
-<button class="btn btn-primary prevBtn btn-lg pull-left type=" button"="" style="
+<button class="btn btn-primary prevBtn btn-lg pull-left id="fourthbutton" type=" button"="" style="
     margin-right: auto;
 ">Anterior</button>
+
         <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
             </div>
+        <fieldset>
         </div>
 </div>
 </form>

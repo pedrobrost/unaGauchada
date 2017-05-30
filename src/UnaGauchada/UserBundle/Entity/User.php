@@ -2,9 +2,11 @@
 
 namespace UnaGauchada\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use UnaGauchada\CreditBundle\Entity\Transaction;
+use UnaGauchada\PublicationBundle\Entity\Submission;
 
 /**
  * User
@@ -571,6 +573,15 @@ class User implements UserInterface
             $calificaion += $submission->getCalification();
         }
         return $calificaion;
+    }
+
+    public function hasSubmission($publication){
+        foreach ($publication->getSubmissions() as $submission) {
+            if($submission->getPublication() == $publication){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
