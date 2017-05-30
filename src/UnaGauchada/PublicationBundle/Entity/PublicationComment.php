@@ -14,69 +14,19 @@ class PublicationComment extends Comment
 {
     /**
      * One Product has One Shipment.
-     * @ORM\OneToOne(targetEntity="Response")
+     * @ORM\OneToOne(targetEntity="Response", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="response_id", referencedColumnName="id")
      */
     private $response;
 
-
     /**
-     * Get id
-     *
-     * @return integer
+     * Many Features have One Product.
+     * @ORM\ManyToOne(targetEntity="Publication", inversedBy="publicationsComments")
+     * @ORM\JoinColumn(name="publication_id", referencedColumnName="id")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $publication;
 
-    /**
-     * Set text
-     *
-     * @param string $text
-     *
-     * @return PublicationComment
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
 
-        return $this;
-    }
-
-    /**
-     * Get text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return PublicationComment
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set response
@@ -103,26 +53,26 @@ class PublicationComment extends Comment
     }
 
     /**
-     * Set user
+     * Set publication
      *
-     * @param \UnaGauchada\UserBundle\Entity\User $user
+     * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
      *
      * @return PublicationComment
      */
-    public function setUser(\UnaGauchada\UserBundle\Entity\User $user = null)
+    public function setPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication = null)
     {
-        $this->user = $user;
+        $this->publication = $publication;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get publication
      *
-     * @return \UnaGauchada\UserBundle\Entity\User
+     * @return \UnaGauchada\PublicationBundle\Entity\Publication
      */
-    public function getUser()
+    public function getPublication()
     {
-        return $this->user;
+        return $this->publication;
     }
 }

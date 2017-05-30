@@ -92,6 +92,12 @@ class Publication
      */
     private $user;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication", cascade={"persist", "remove"})
+     */
+    private $publicationsComments;
+
 
     public function __construct(){
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
@@ -401,5 +407,39 @@ class Publication
     public function getDepartment()
     {
         return $this->department;
+    }
+
+    /**
+     * Add publicationsComment
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment
+     *
+     * @return Publication
+     */
+    public function addPublicationsComment(\UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment)
+    {
+        $this->publicationsComments[] = $publicationsComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove publicationsComment
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment
+     */
+    public function removePublicationsComment(\UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment)
+    {
+        $this->publicationsComments->removeElement($publicationsComment);
+    }
+
+    /**
+     * Get publicationsComments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublicationsComments()
+    {
+        return $this->publicationsComments;
     }
 }

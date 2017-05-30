@@ -12,6 +12,7 @@ class PublicationVoter extends Voter
 // these strings are just invented: you can use anything
     const VIEW = 'view';
     const EDIT = 'edit';
+    const DELETE = 'delete';
     const SUBMIT = 'submit';
     const UNSUBMIT = 'unsubmit';
     const COMMENT = 'comment';
@@ -19,7 +20,7 @@ class PublicationVoter extends Voter
     protected function supports($attribute, $subject)
     {
 // if the attribute isn't one we support, return false
-        if (!in_array($attribute, array(self::VIEW, self::EDIT, self::SUBMIT, self::UNSUBMIT, self::COMMENT))) {
+        if (!in_array($attribute, array(self::VIEW, self::EDIT, self::SUBMIT, self::UNSUBMIT, self::COMMENT, self::DELETE))) {
             return false;
         }
 
@@ -49,6 +50,8 @@ class PublicationVoter extends Voter
                 return $this->canView($publication, $user);
             case self::EDIT:
                 return $this->canEdit($publication, $user);
+            case self::DELETE:
+                return $this->canDelete($publication, $user);
             case self::SUBMIT:
                 return $this->canSubmit($publication, $user);
             case self::UNSUBMIT:
@@ -77,6 +80,13 @@ class PublicationVoter extends Voter
 // this assumes that the data object has a getOwner() method
 // to get the entity of the user who owns this data object
         return $user === $publication->getUser();
+    }
+
+    private function canDelete(Publication $publication, User $user)
+    {
+// this assumes that the data object has a getOwner() method
+// to get the entity of the user who owns this data object
+        return ($user === $publication->getUser() || $user->isAdmin());
     }
 
     private function canSubmit(Publication $publication, User $user)
