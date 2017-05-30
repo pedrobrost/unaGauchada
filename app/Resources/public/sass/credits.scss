@@ -65,3 +65,17 @@
 btn.btn-primary.prevBtn.btn-lg.pull-left {
     margin-right: auto;
 }
+
+
+.card.success{
+    max-width: 500px;
+    .card-block{
+        .alert{
+             min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+        }
+    }
+}

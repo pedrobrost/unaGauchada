@@ -1,71 +1,50 @@
  {% embed 'utils/card.html.twig' with {'title': 'Comprar creditos'} %} {% block content %}
-<div class="stepwizard">
-    <div class="stepwizard-row setup-panel">
-        <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn btn-primary btn-circle"><i class="fa fa-usd" aria-hidden="true"></i></a>
-            <p>Paso 1</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="fa fa-credit-card" aria-hidden="true"></i></a>
-            <p>Paso 2</p>
-        </div>
-        <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled"><i class="fa fa-check" aria-hidden="true"></i></a>
-            <p>Paso 3</p>
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <form id="credits_buy" method="post" action="{{ path('credits_buy') }}">
     <h3></h3>
-    <fieldset>
         <div class="row setup-content" id="step-1">
             <div class="col">
                 <div class="col">
-                    <h3>Paso uno</h3>
                     <div class="form-group">
                         <label class="control-label">Ingrese la cantidad de creditos</label>
-                        <input maxlength="2" id="amount" min="1" max="999" type="number" required="required" class="form-control" placeholder="Ingrese una cantidad">
+                        <input min="1" id="amount" name="amount" type="number" class="form-control" placeholder="Cantidad de créditos">
                     </div>
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" id="firstbutton" type="button">Siguiente</button>
                 </div>
             </div>
         </div>
-        </fieldset>
         <h3></h3>
-        <fieldset>
         <div class="row setup-content" id="step-2">
             <div class="col">
                 <div class="col">
                     <h3> Información personal</h3>
                     <div class="form-group">
                         <label class="control-label">Nombre</label>
-                        <input maxlength="40" id="name" type="text" required="required" class="form-control" placeholder="Nombre">
+                        <input maxlength="40" id="name" name="name" type="text" required="required" class="form-control" placeholder="Nombre">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Apellido</label>
-                        <input maxlength="40" id="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
+                        <input maxlength="40" id="lastName" name="lastName" type="text" required="required" class="form-control" placeholder="Apellido">
                     </div>
                     <div class="form-group">
                         <label class="control-label">DNI</label>
-                        <input maxlength="9" minlength="8" id="dni" type="number" required="required" class="form-control" placeholder="DNI">
+                        <input maxlength="9" min="0"  minlength="8" id="dni" name="dni" type="number" required="required" class="form-control" placeholder="DNI">
                     </div>
                     <label class="control-label">Numero de tarjeta</label>
                     <div class="form-group">
 
-                        <input maxlength="16" id="creditCard" type="number" required="required" class="form-control" placeholder="Tarjeta">
+                        <input minlength="5" min="0"  maxlength="16" id="creditCard" type="number" name="creditCard" required="required" class="form-control" placeholder="Tarjeta">
                     </div>
                     <div class="form-group row">
                         <div class="col">
                             <label class="control-label col">PIN</label>
-                            <input maxlength="3" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
+                            <input min="0" max="999" minlength="3" maxlength="3" name="pin" id="pin" type="number" required="required" class="form-control" placeholder="PIN">
                         </div>
                         <div class="col">
                             <label class="" for="inlineFormCustomSelect">Vencimiento:</label>
                             <div class="form-group row" id="expiration_date">
                                 <div class="col">
-                                    <select class="custom-select" id="mesVenc" name="mesVenc">
+                                    <select class="custom-select" name="mes" id="mesVenc" name="mesVenc">
                                         <option value="">Mes</option>
                                         <option value="01">Enero</option>
                                         <option value="02">Febrero </option>
@@ -82,8 +61,8 @@
                                       </select>
 
 
-                                    <select class="custom-select" id="anioVenc" name="anioVenc">
-                                    <option> Año </option>
+                                    <select class="custom-select" name="anio" id="anioVenc" name="anioVenc">
+                                    <option value=""> Año </option>
                                     <option value="2017"> 2017</option>
                                     <option value="2018"> 2018</option>
                                     <option value="2019"> 2019</option>
@@ -99,16 +78,9 @@
                         </div>
 
                     </div>
-
-
-
-                    <button class="btn btn-primary prevBtn btn-lg pull-left" id="secondbutton" type="button">Anterior</button>
-                    <button class="btn btn-primary nextBtn btn-lg pull-right" id="thirdbutton" type="button">Siguiente</button>
                 </div>
             </div>
         </div>
-        </fieldset>
-        <fieldset>
         <div class="row setup-content" id="step-3">
             <div class="well" style="margin: 40px;">
                 <div class="row">
@@ -116,49 +88,9 @@
                     </div>
 
                 </div>
-                <div class="row">
-                    <div class="text-center">
-                        <h1>Recibo</h1>
-                    </div>
-                    </div>
-                    </span>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Compra</th>
-                                <th>#</th>
-                                <th class="text-center">Precio</th>
-                                <th class="text-center">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-md-9"><em>Creditos</em></h4>
-                                </td>
-                                <td class="col-md-1" style="text-align: center"> 2 </td>
-                                <td class="col-md-1 text-center">$13</td>
-                                <td class="col-md-1 text-center">$26</td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td class="text-right">
-                                    <h4><strong>Total: </strong></h4>
-                                </td>
-                                <td class="text-center text-danger">
-                                    <h4><strong>$31.53</strong></h4>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table></td>
-                </div>
-<button class="btn btn-primary prevBtn btn-lg pull-left id="fourthbutton" type=" button"="" style="
-    margin-right: auto;
-">Anterior</button>
 
         <button class="btn btn-default btn-lg pull-right" type="submit">Confirmar</button>
             </div>
-        <fieldset>
         </div>
 </div>
 </form>
