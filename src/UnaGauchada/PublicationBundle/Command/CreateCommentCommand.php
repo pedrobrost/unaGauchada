@@ -3,6 +3,7 @@
 namespace UnaGauchada\PublicationBundle\Command;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,7 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
 use UnaGauchada\PublicationBundle\Entity\Category;
+use UnaGauchada\PublicationBundle\Entity\Publication;
 use UnaGauchada\PublicationBundle\Entity\PublicationComment;
+use UnaGauchada\UserBundle\Entity\User;
 
 class CreateCommentCommand extends ContainerAwareCommand
 {
@@ -41,15 +44,37 @@ class CreateCommentCommand extends ContainerAwareCommand
         $io->block('Welcome to the UnaGauchada comment creator', null, 'bg=blue;fg=white', ' ', true);
         $io->newLine();
 
-        $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneById('2');
+        $users = new ArrayCollection($this->getManager()->getRepository('UserBundle:User')->findAll());
+        $io->table(
+            array('id', 'Name', 'Lastname', 'Email', 'Role' , 'sysDate'),
+            $users->map(function (User $user){
+                return array(
+                    $user->getId(),
+                    $user->getEmail()
+                );
+            })->toArray()
+        );
 
-        $publication = $this->getDoctrine()->getRepository('PublicationBundle:Publication')->findOneById('1');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneById($io->ask('User id'));
+
+        $publications = new ArrayCollection($this->getManager()->getRepository('PublicationBundle:Publication')->findAll());
+        $io->table(
+            array('id', 'Name', 'Lastname', 'Email', 'Role' , 'sysDate'),
+            $publications->map(function (Publication $publication){
+                return array(
+                    $publication->getId(),
+                    $publication->getTitle()
+                );
+            })->toArray()
+        );
+
+        $publication = $this->getDoctrine()->getRepository('PublicationBundle:Publication')->findOneById($io->ask('Publication id'));
 
         $comment = new PublicationComment();
         $comment
             ->setUser($user)
             ->setDate(new \DateTime())
-            ->setText("Esto es un comentario de prueba")
+            ->setText($io->ask('Comment text'))
             ->setPublication($publication);
 
 
