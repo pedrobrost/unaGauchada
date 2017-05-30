@@ -100,7 +100,7 @@ class Department
 
     public function __toString()
     {
-        return $this->getName(). ' '. $this->getLastName();
+        return $this->getName();
     }
 
     /**
