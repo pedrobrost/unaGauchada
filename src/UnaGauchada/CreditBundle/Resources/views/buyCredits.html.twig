@@ -1,33 +1,42 @@
 <div class="container form">
 
-    
-<div class="container">
-    <div class="price-box">
-        <form class="form-horizontal form-pricing" role="form" style="
-">
-     <div class="price-slider">
-                <h4 class="great">Cantidad de créditos</h4>
 
-                <div class="col-sm-12">
-                    <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"><label>1</label><div class="ui-slider-label-inner"></div></a></div>
+    <div class="container">
+        <div class="price-box">
+            <form class="form-horizontal form-pricing" role="form" method="post" action="{{ path('credits_purchase_info') }}">
+                <div class="price-slider">
+                    <h4 class="great">Cantidad de créditos</h4>
+
+                    <div class="col-sm-12">
+                        <div id="slider"
+                             class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                             aria-disabled="false">
+                            <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"
+                                 style="width: 0%;"></div>
+                            <a class="ui-slider-handle ui-state-default ui-corner-all" href="#"
+                               style="left: 0%;"><label>1</label>
+                                <div class="ui-slider-label-inner"></div>
+                            </a></div>
+                    </div>
+                    <span class="help-text">Seleccione la cantidad de créditos a comprar</span>
                 </div>
-                                    <span class="help-text">Seleccione la cantidad de créditos a comprar</span>
-            </div>
             <div class="price-form">
                 <div class="form-group">
                     <label for="amount" class="col-sm-6 control-label">Total a Pagar ($): </label>
+                        <div class="col-sm-6">
+                            <input type="hidden" id="amount" class="form-control" value="34" name="amount">
 
-                    <div class="col-sm-6">
-                        <input type="hidden" id="amount" class="form-control" value="34">
-
-                        <p class="price lead" id="amount-label">1700</p>
-                        <span class="price">.00</span>
+                            <p class="price lead" id="amount-label">1700</p>
+                            <span class="price">.00</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-  
-        <div class="col text-right" style=""><button class="btn btn-primary my-2 my-sm-0" id="nextstep" type="submit">Seguir</button></div></form>
+
+                <div class="col text-right" style="">
+                    <button class="btn btn-primary my-2 my-sm-0" id="nextstep" type="submit">Seguir</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-    
+
 </div>

@@ -7,13 +7,20 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CreditController extends Controller
 {
-    public function purchaseAction()
+    public function selectAmountAction()
     {
-        return $this->render('CreditBundle::purchase.html.twig');
+        return $this->render('CreditBundle::amount.html.twig');
+    }
+
+    public function userInfoAction(Request $request)
+    {
+        return $this->render('CreditBundle::userInfo.html.twig', array('amount' => $request->get('amount')));
     }
 
     public function buyAction(Request $request){
-
+        if($request->get('creditCard') != '123456'){
+            return $this->render('CreditBundle::success.html.twig', array('success' => false));
+        }
         $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
         $reason = $repository->findOneByName('Purchase');
         $reason->newTransactionFor($this->getUser(), $request->get('amount'));
@@ -21,7 +28,7 @@ class CreditController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($this->getUser());
         $em->flush();
-        return $this->render('CreditBundle::success.html.twig');
+        return $this->render('CreditBundle::success.html.twig', array('success' => true));
     }
 
 }

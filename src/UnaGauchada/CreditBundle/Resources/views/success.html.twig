@@ -4,12 +4,17 @@
     <div class="card success">
         <div class="card-block">
 
-            <div class="alert alert-danger" role="alert">
-            <strong>¡Lo siento!</strong> La tarjeta que has introducido no ha podido ser validada. </div>
-            <div class="alert alert-success" role="alert">
-                <strong>¡Compra exitosa!</strong> <br> Ahora posees 15 créditos.
-            </div>
-            <a href="#" class="btn btn-outline-primary my-2 my-sm-0">Volver a inicio</a>
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    <strong>¡Compra exitosa!</strong> <br> Ahora posees {{ app.user.credits }} créditos.
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>¡Lo siento!</strong> La tarjeta que has introducido no ha podido ser validada. </div>
+            {% endif %}
+
+            <a href="{{ path('publication_homepage') }}" class="btn btn-outline-primary my-2 my-sm-0">Volver a inicio</a>
+
         </div>
     </div>
 </div>
