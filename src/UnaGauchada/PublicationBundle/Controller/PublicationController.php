@@ -26,7 +26,6 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
     }
     public function showAction(Publication $publication){
-
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 

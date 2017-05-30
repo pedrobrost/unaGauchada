@@ -5,7 +5,14 @@
         <div class="col col-md-9">
             <div class="card">
                 <div class="card-block">
-                    <h4 class="card-title">{{ publication.title }}</h4>
+                    <h4 class="card-title">{{ publication.title }}
+                        {% if is_granted('edit', publication) %}
+                            <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </div>
+                        {% endif %}
+                    </h4>
                     <p class="card-text"><i class="fa fa-calendar" aria-hidden="true"></i><small class="text-muted">  {{ publication.sysDate | date("d-m-Y") }} </small>  | <i class="fa fa-clock-o" aria-hidden="true"></i></i><small class="text-muted">                {% set difference = date((publication.limitDate  | date('d/m/Y'))).diff(date("now"|date("m/d/Y"))) %}
 </small> | <small> {{ publication.category }} </small> </p>
                 </div>
@@ -14,8 +21,19 @@
                     <p class="card-text"> {{ publication.description }} </p>
                 </div>
                 <div class="card-block text-right">
-                    <a href="#" class="card-link">Comentar</a>
-                    <a href="#" class="card-link btn btn-primary">Postularme</a>
+                    {% if is_granted('comment', publication) %}
+                        <a href="#" class="card-link">Comentar</a>
+                    {% endif %}
+                    {% if is_granted('submit', publication) %}
+                        <a href="#" class="card-link btn btn-primary">Postularme</a>
+                    {% endif %}
+                    {% if is_granted('unsubmit', publication) %}
+                        <a href="#" class="card-link btn btn-primary">Despostularme</a>
+                    {% endif %}
+                    {% if is_granted('edit', publication) %}
+                        <a href="#" class="card-link btn btn-primary">Ver Postulados</a>
+                    {% endif %}
+
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
