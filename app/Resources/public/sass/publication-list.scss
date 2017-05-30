@@ -11,6 +11,20 @@ section.gauchadas {
         color: white;
     }
 }
+.container.alert-warning.alert-dismissible.fade.show{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: 0 auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 13px;
+    height: 50px;
+    width: 531px;
+}
 
 .publication-list {
     display: flex;
