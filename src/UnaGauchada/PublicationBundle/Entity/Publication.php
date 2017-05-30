@@ -94,7 +94,7 @@ class Publication
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication")
+     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication", cascade={"persist", "remove"})
      */
     private $publicationsComments;
 

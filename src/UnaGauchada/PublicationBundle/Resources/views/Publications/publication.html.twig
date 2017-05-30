@@ -46,61 +46,28 @@
                         {% endif %}
 
                     </div>
+
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="media">
-                                <img class="comment d-flex mr-3 rounded" src="{{ asset('img/pedro.jpg') }}"
-                                     alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h5 class="mt-0">Pedro Brost
-                                        <a href="#" class="btn btn-sm btn-info pull-right"><i class="fa fa-reply"
-                                                                                              aria-hidden="true"></i></a>
-                                    </h5> Eu yo no dije que queria una milanesa!
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="media">
-                                <img class="comment d-flex mr-3 rounded"
-                                     src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/017/170/21df0e6.jpg"
-                                     alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h5 class="mt-0">Matias Pierobon</h5> ¿Es necesario que este caliente?
-                                    <div class="media mt-3">
-                                        <a class="d-flex" href="#">
-                                            <img class="comment d-flex mr-3 rounded"
-                                                 src="https://pbs.twimg.com/profile_images/829792458988982274/Jmc0f4Fb.jpg"
-                                                 alt="Generic placeholder image"> </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0"> Franco Borrelli
-                                                <div class="btn-group pull-right" role="group"
-                                                     aria-label="Basic example">
-                                                    <button type="button" class="btn btn-sm btn-warning"><i
-                                                                class="fa fa-pencil" aria-hidden="true"></i></button>
-                                                    <button type="button" class="btn btn-sm btn-danger"><i
-                                                                class="fa fa-trash" aria-hidden="true"></i></button>
-                                                </div>
-                                            </h5>
-                                            Nono, de lo posible se la espera fria.
-                                        </div>
+
+                        {% for comment in publication.publicationsComments %}
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}"
+                                         alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }}
+                                            <a href="#" class="btn btn-sm btn-info pull-right"><i class="fa fa-reply"
+                                                                                                  aria-hidden="true"></i></a>
+                                        </h5> {{ comment.text }}
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="media">
-                                <img class="comment d-flex mr-3 rounded"
-                                     src="https://yt3.ggpht.com/-6MTwGaBNbvk/AAAAAAAAAAI/AAAAAAAAAAA/Sap-NPkQlvc/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
-                                     alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h5 class="mt-0">Julieta Calabrese
-                                        <a href="#" class="btn btn-sm btn-info pull-right"><i class="fa fa-reply"
-                                                                                              aria-hidden="true"></i></a>
-                                    </h5> ¿De Carne o de pollo?
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        {% endfor %}
+
+
                     </ul>
+
+
                 </div>
             </div>
 
