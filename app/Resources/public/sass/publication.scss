@@ -1,3 +1,6 @@
+.container.publication {
+    padding-top: 40px;
+}
 
 .card-img-top.publication {
     width: 100%;
@@ -13,17 +16,16 @@ img.comment {
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
-    
     .card {
         height: 100%;
     }
 }
 
-
-.card-header,.card-footer{
-  text-align: center;
+.card-header,
+.card-footer {
+    text-align: center;
 }
 
-.media{
+.media {
     width: 100%;
 }
