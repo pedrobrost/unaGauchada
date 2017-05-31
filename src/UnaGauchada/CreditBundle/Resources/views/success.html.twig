@@ -6,14 +6,15 @@
 
             {% if success %}
                 <div class="alert alert-success" role="alert">
-                    <strong>¡Compra exitosa!</strong> <br> Ahora posees {{ app.user.credits }} créditos.
+                    <strong>¡Compra exitosa!</strong> <br> Ahora tienes {{ app.user.credits }} créditos.
                 </div>
             {% else %}
                 <div class="alert alert-danger" role="alert">
-                    <strong>¡Lo siento!</strong> La tarjeta que has introducido no ha podido ser validada. </div>
+                    <strong>¡Lo siento!</strong> La tarjeta que has introducido no es válida. </div>
+                    <a href="{{ path('credits_purchase_amount') }}" id="successbtnTry" class="btn btn-outline-primary my-2 my-sm-0">Intentar de nuevo</a>
             {% endif %}
 
-            <a href="{{ path('publication_homepage') }}" class="btn btn-outline-primary my-2 my-sm-0">Volver a inicio</a>
+            <a href="{{ path('publication_homepage') }}" id="successbtnHome" class="btn btn-outline-primary my-2 my-sm-0">Volver a inicio</a>
 
         </div>
     </div>
