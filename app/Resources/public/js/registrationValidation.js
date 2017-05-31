@@ -39,8 +39,7 @@ $('#registration_form').validate({
                 },
                 birthday: {
                     required: true,
-                    check_date_of_birth: true,
-                    max_date_limit: true,
+
                 },
                 phone: {
                     required: true,
