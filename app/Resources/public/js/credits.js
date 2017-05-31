@@ -25,7 +25,7 @@ $(document).ready(function () {
         var $amount = slider == 1 ? val : $("#amount").val();
 
         $("#amount").val($amount);
-        $("#amount-label").text(($amount)*50);
+        $("#amount-label").text(($amount)*price);
 
         $('#slider a').html('<label>' + $amount + '</label><div class="ui-slider-label-inner"></div>');
     }

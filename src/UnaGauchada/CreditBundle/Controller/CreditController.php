@@ -9,7 +9,9 @@ class CreditController extends Controller
 {
     public function selectAmountAction()
     {
-        return $this->render('CreditBundle::amount.html.twig');
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Purchase');
+        return $this->render('CreditBundle::amount.html.twig', array('price' => $reason->getPrice()));
     }
 
     public function userInfoAction(Request $request)
@@ -19,7 +21,9 @@ class CreditController extends Controller
 
     public function summaryAction()
     {
-        return $this->render('CreditBundle::summary.html.twig');
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Purchase');
+        return $this->render('CreditBundle::summary.html.twig', array('price' => $reason->getPrice()));
     }
 
     public function buyAction(Request $request){
