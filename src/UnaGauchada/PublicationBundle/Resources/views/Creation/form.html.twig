@@ -24,7 +24,7 @@
     <div class="form-group">
         <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
         <div class="col-xs-5 selectContainer">
-            <select placeholder="Ciudad" name="city" id="city" class="form-control">
+            <select placeholder="Ciudad" name="city" id="city" class="form-control" required>
             <option value="">Seleccionar ciudad</option>
                 {{ render(controller('PublicationBundle:Department:list')) }}
             </select>
