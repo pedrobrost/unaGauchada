@@ -12,7 +12,7 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 
 class PublicationController extends Controller
 {
-    public function indexAction($page){
+    public function indexAction(Request $request, $page){
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
@@ -23,7 +23,10 @@ class PublicationController extends Controller
                                 ->setFirstResult(($page-1) * 9)
                                 ->setMaxResults(9)
                         );
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages));
+
+        $publicationCreated = $request->getSession()->get('publicationCreated', false);
+        $request->getSession()->remove('publicationCreated');
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
     }
     public function showAction(Publication $publication){
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
@@ -59,7 +62,7 @@ class PublicationController extends Controller
             $reason = $repository->findOneByName('Publication');
             $reason->newTransactionFor($this->getUser());
 
-            $em->flush();
+            $request->getSession()->set('publicationCreated', true);
             return $this->redirectToRoute('publication_homepage');
         }else{
             return $this->redirectToRoute('publish_new');
