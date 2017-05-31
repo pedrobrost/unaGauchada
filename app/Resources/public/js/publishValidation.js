@@ -39,7 +39,7 @@ $('#createPublication').validate({
                 },
                 limitDate: {
                     required: "Por favor ingrese la fecha limite",
-                    min: "Por favor ingrese una fecha mayor o igual al día de hoy",
+                    min: "Por favor ingrese una fecha mayor al día de hoy",
                     max: "Por favor ingrese una fecha menor al 01/01/3000"
                 },
             },
