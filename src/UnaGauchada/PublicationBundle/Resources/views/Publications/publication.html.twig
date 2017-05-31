@@ -17,9 +17,9 @@
                                 {% endif %}
                             </div>
                         </h4>
-                        &nbsp<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                        &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
                             <small class="text-muted">
-                                {{ publication.limitDate | date('d/m/Y') }}
+                                {{ publication.sysDate | date('d/m/Y') }}
                             </small>
                         &nbsp<i class="fa fa-tag" aria-hidden="true"></i>
                             <small>
@@ -34,6 +34,9 @@
                          alt="Card image cap">
                     <div class="card-block">
                         <p class="card-text"> {{ publication.description }} </p>
+                    </div>
+                    <div class="card-block text-left">
+                        Fecha límite: {{ publication.limitDate | date('d/m/Y') }}
                     </div>
                     <div class="card-block text-right">
                         {% if is_granted('comment', publication) %}
@@ -71,7 +74,7 @@
                                                                 class="fa fa-trash" aria-hidden="true"></i></button>
                                                 </div>
                                             {% endif %}
-                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small> {{ comment.date | date('d/m/Y') }} </small> </h5>
+                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small> </h5>
                                             {{ comment.text }}
                                             <div class="media mt-3">
                                                 <a class="d-flex" href="#">
@@ -79,7 +82,7 @@
                                                          src="{{ path('user_photo', {'id': comment.response.user.id}) }}"
                                                          alt="Generic placeholder image"> </a>
                                                 <div class="media-body">
-                                                    <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }} <small> {{ comment.date | date('d/m/Y') }} </small>
+                                                    <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
                                                         <div class="btn-group pull-right" role="group"
                                                              aria-label="Basic example">
                                                             {% if app.user == comment.response.user %}
@@ -102,7 +105,7 @@
                                              src="{{ path('user_photo', {'id': comment.user.id}) }}"
                                              alt="Generic placeholder image">
                                         <div class="media-body">
-                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small> {{ comment.date | date('d/m/Y') }} </small>
+                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
                                                 <div class="btn-group pull-right" role="group"
                                                      aria-label="Basic example">
                                                 {% if is_granted('edit', publication) %}
