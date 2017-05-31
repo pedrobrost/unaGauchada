@@ -2,6 +2,8 @@
 
 {% set amount = app.request.get('amount') %}
 {% set creditCard = app.request.get('creditCard') %}
+{% set year = app.request.get('anio') %}
+{% set month = app.request.get('mes') %}
 
 <div class="container">
     <div class="row">
@@ -57,7 +59,7 @@
                 </table>
             </div>
                <a href="{{ path('credits_purchase_amount') }}" class="btn btn-primary btn-lg pull-left">Anular</a>
-                            <form method="post" action="{{ path('credits_buy', {'amount': amount, 'creditCard': creditCard}) }}">
+                            <form method="post" action="{{ path('credits_buy', {'amount': amount, 'creditCard': creditCard, 'year': year, 'month': month}) }}">
                     <button class="btn btn-primary btn-lg pull-right" type="submit">Confirmar</button>
                 </form>
         </div>
