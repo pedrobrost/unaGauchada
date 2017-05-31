@@ -1,6 +1,11 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
-    <a id="publish-nav" class="nav-link" href="{{ path('publish_new') }}"> Publicar Gauchada </a>
+    <a id="shop" class="nav-link" href="/publish"> {{ app.user.credits }} <div class="msg"> {% if app.user.credits == 1 %}
+    Credito disponible {% else %} Creditos disponibles {% endif %}
+    </div>
+     <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+
+    <a id="publish" class="nav-link" href="{{ path('publish_new') }}"> Publicar Gauchada </a>
 
 {#}
     <a class="nav-link primary publish" href="publish"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
