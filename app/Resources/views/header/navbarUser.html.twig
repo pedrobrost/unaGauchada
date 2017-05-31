@@ -1,6 +1,6 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
-    <a id="shop" class="nav-link" href="/publish"> {{ app.user.credits }} <div class="msg"> {% if app.user.credits == 1 %}
+    <a id="shop" class="nav-link" href="{{ path('credits_purchase_amount') }}"> {{ app.user.credits }} <div class="msg"> {% if app.user.credits == 1 %}
     Credito disponible {% else %} Creditos disponibles {% endif %}
     </div>
      <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>

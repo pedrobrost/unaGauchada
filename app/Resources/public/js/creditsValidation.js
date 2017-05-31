@@ -88,10 +88,10 @@ $('#credits_buy').validate({
                     min: "Ingrese un número válido",
                  }, 
                 anio: {
-                    required:  "Ingrese una fecha valida",
+                    required:  "",
                  }, 
                 mes: {
-                    required:  "Ingrese una fecha valida",
+                    required:  "",
                  }, 
             },
 
