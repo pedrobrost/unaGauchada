@@ -64,7 +64,7 @@ $('#registration_form').validate({
                 confirmPass: {
                     required: "Por favor re-ingrese su contraseña",
                     minlength: "Su contraseña debe tener al menos 6 caracteres",
-                    equal: "La contraseña no coincide"
+                    equalTo: "La contraseña no coincide"
                 },
                 email: {
                     email: "Por favor ingrese un email valido",
