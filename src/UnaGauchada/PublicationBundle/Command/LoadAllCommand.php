@@ -79,7 +79,7 @@ class LoadAllCommand extends ContainerAwareCommand
             ->setPrice(50));
 
         //Cities
-        //mysql -u root -p < departmentsLoader.sql
+        //mysql -u root -p < src/UnaGauchada/PublicationBundle/Resources/db/departmentsLoader.sql 
 
         $em->flush();
 
