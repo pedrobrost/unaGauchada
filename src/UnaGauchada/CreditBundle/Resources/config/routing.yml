@@ -8,6 +8,11 @@ credits_purchase_info:
     defaults: { _controller: CreditBundle:Credit:userInfo }
     methods: [POST]
 
+credits_purchase_summary:
+    path:     /buy/summary
+    defaults: { _controller: CreditBundle:Credit:summary }
+    methods: [POST]
+
 credits_buy:
     path:     /buy
     defaults: { _controller: CreditBundle:Credit:buy }

@@ -1,7 +1,7 @@
  {% embed 'utils/card.html.twig' with {'title': 'Comprar creditos'} %} {% block content %}
 
 <div class="container">
-    <form id="credits_buy" method="post" action="{{ path('credits_buy', {'amount': amount}) }}">
+    <form id="credits_buy" method="post" action="{{ path('credits_purchase_summary', {'amount': amount}) }}">
         <div class="row setup-content">
             <div class="col">
                 <div class="col">

@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %} {% block body %}
+{% set amount = app.request.get('amount') %}
+{% set creditCard = app.request.get('creditCard') %}
 
 <div class="container">
     <div class="row">
@@ -83,9 +85,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-success btn-lg btn-block">
-                    Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
-                </button></td>
+                <form method="post" action="{{ path('credits_buy', {'amount': amount, 'creditCard': creditCard}) }}">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                        Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button></td>
+                </form>
             </div>
         </div>
     </div>

@@ -17,6 +17,11 @@ class CreditController extends Controller
         return $this->render('CreditBundle::userInfo.html.twig', array('amount' => $request->get('amount')));
     }
 
+    public function summaryAction(Request $request)
+    {
+        return $this->render('CreditBundle::summary.html.twig');
+    }
+
     public function buyAction(Request $request){
         if($request->get('creditCard') != '123456'){
             return $this->render('CreditBundle::success.html.twig', array('success' => false));
