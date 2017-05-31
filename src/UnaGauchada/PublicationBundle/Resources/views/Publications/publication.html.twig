@@ -35,10 +35,10 @@
                     <div class="card-block">
                         <p class="card-text"> {{ publication.description }} </p>
                     </div>
-                    <div class="card-block text-left">
-                        Fecha límite: {{ publication.limitDate | date('d/m/Y') }}
-                    </div>
                     <div class="card-block text-right">
+                                        <div class="text-left" style=" position: absolute; font-size: 13px; padding-top: 20px;">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>    Fecha límite:   {{ publication.limitDate | date('d/m/Y') }}
+                    </div>
                         {% if is_granted('comment', publication) %}
                             <a href="#" class="card-link">Comentar</a>
                         {% endif %}
