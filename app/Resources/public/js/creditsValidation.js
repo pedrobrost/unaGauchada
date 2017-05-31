@@ -5,8 +5,6 @@ $(document).ready(function () {
         });
     });
 
-
-
 $.validator.addMethod("nonNumeric", function (value, element) {
             return this.optional(element) || isNaN(Number(value));
         });
