@@ -81,8 +81,8 @@ $('#credits_buy').validate({
                 pin: {
                     required: "Ingrese el pin de la tarjeta",
                     number:"Ingrese un número válido",
-                    minlength: "El pin debe tener 3 dígitos",
-                    maxlength: "El pin debe tener 3 dígitos",
+                    minlength: "El pin debe tener entre 3 y 4 dígitos",
+                    maxlength: "El pin debe tener entre 3 y 4 dígitos",
                     min: "Ingrese un número válido",
                  }, 
                 anio: {
