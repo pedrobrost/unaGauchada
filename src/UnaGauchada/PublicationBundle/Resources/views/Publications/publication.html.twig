@@ -17,9 +17,9 @@
                                 {% endif %}
                             </div>
                         </h4>
-                        &nbsp<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                        &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
                             <small class="text-muted">
-                                {{ publication.limitDate | date('d/m/Y') }}
+                                {{ publication.sysDate | date('d/m/Y') }}
                             </small>
                         &nbsp<i class="fa fa-tag" aria-hidden="true"></i>
                             <small>
@@ -34,6 +34,9 @@
                          alt="Card image cap">
                     <div class="card-block">
                         <p class="card-text"> {{ publication.description }} </p>
+                    </div>
+                    <div class="card-block text-left">
+                        Fecha límite: {{ publication.limitDate | date('d/m/Y') }}
                     </div>
                     <div class="card-block text-right">
                         {% if is_granted('comment', publication) %}
