@@ -27,8 +27,10 @@ class CreditController extends Controller
     }
 
     public function buyAction(Request $request){
-        if($request->get('creditCard') != '123456' | $this->invalidDate($request->get('month'), $request->get('year'))){
-            return $this->render('CreditBundle::success.html.twig', array('success' => false));
+        if($request->get('creditCard') == '654321'){
+            return $this->render('CreditBundle::success.html.twig', array('success' => array('creditCard' => true, 'bank' => false)));
+        }else if($request->get('creditCard') != '123456' | $this->invalidDate($request->get('month'), $request->get('year'))){
+            return $this->render('CreditBundle::success.html.twig', array('success' => array('creditCard' => false, 'bank' => true)));
         }
         $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
         $reason = $repository->findOneByName('Purchase');
@@ -38,8 +40,7 @@ class CreditController extends Controller
         $em->persist($this->getUser());
         $em->flush();
 
-
-        return $this->render('CreditBundle::success.html.twig', array('success' => true));
+        return $this->render('CreditBundle::success.html.twig', array('success' => array('creditCard' => true, 'bank' => true)));
     }
 
     public function invalidDate($month, $year){
