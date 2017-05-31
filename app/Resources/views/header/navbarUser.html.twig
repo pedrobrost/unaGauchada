@@ -1,9 +1,7 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
-    <a id="shop" class="nav-link" href="{{ path('credits_purchase_amount') }}"> {{ app.user.credits }} <div class="msg"> {% if app.user.credits == 1 %}
-    Credito disponible {% else %} Creditos disponibles {% endif %}
-    </div>
-     <i class="fa fa-shopping-cart" aria-hidden="true"></i> </a>
+<a class="nav-link" href="{{ path('credits_purchase_amount') }}" data-toggle="tooltip" data-placement="bottom" title="Creditos disponibles">{{ app.user.credits }}   <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+
 
     <a id="publish" class="nav-link" href="{{ path('publish_new') }}"> Publicar Gauchada </a>
 
@@ -27,7 +25,7 @@
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ path('credits_purchase_amount') }}">
-            <span><i class="fa fa-credit-card" aria-hidden="true"></i></span>&nbsp
+            <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>&nbsp
             <span>Comprar Créditos</span>
         </a>
         <div class="dropdown-divider"></div>
