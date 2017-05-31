@@ -2,7 +2,7 @@
 
     <div class="container publication">
         <div class="row">
-            <div class="col col-md-9">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-block">
                         <h4 class="card-title">{{ publication.title }}
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="col col-md-3">
+            <div class="col col-md-3 profilePic">
                 <div class="card">
                     <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': publication.user.id}) }}"
                          alt="Card image cap">
