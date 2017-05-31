@@ -97,3 +97,11 @@ header {
         margin: 8px 15px 8px 0;
     }
 }
+
+#shop .msg{
+    display: none;
+}
+
+#shop:hover .msg{
+        display: inline-block;
+}
