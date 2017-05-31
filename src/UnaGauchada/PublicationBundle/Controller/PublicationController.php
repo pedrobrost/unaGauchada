@@ -57,10 +57,10 @@ class PublicationController extends Controller
                 ->setImageBlob($request->files->get('image'));
 
             $em->persist($publication);
-
             $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
             $reason = $repository->findOneByName('Publication');
             $reason->newTransactionFor($this->getUser());
+            $em->flush();
 
             $request->getSession()->set('publicationCreated', true);
             return $this->redirectToRoute('publication_homepage');
