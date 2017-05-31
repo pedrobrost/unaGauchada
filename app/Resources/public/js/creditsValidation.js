@@ -6,6 +6,7 @@ $(document).ready(function () {
     });
 
 
+
 $.validator.addMethod("nonNumeric", function (value, element) {
             return this.optional(element) || isNaN(Number(value));
         });
@@ -39,15 +40,18 @@ $('#credits_buy').validate({
                     required: true,
                     number:true,
                  }, 
-                mes: {
-                    required: true,
-                    number:true,
-                 }, 
                 anio: {
                     required: true,
                     number:true,
                  }, 
+                mes: {
+                    required: true,
+                    number:true,
+                 }, 
             },
+            groups: {
+            inputGroup: "anio mes",          
+        },
             // Specify validation error messages
             messages: {
                 amount: {
@@ -83,12 +87,11 @@ $('#credits_buy').validate({
                     maxlength: "El pin debe tener 3 dígitos",
                     min: "Ingrese un número válido",
                  }, 
-                mes: {
-                    required: "",
-                 }, 
                 anio: {
-                    required:  "",
-
+                    required:  "Ingrese una fecha valida",
+                 }, 
+                mes: {
+                    required:  "Ingrese una fecha valida",
                  }, 
             },
 
