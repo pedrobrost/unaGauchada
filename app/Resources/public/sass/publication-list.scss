@@ -11,6 +11,7 @@ section.gauchadas {
         color: white;
     }
 }
+
 #popUpSuccess{
     position: absolute;
     margin-left: auto;
@@ -22,7 +23,7 @@ section.gauchadas {
     display: block;
     margin: 0 auto;
     margin-top: 13px;
-    height: 50px;
+    max-width: 600px;
 }
 
 .publication-list {
