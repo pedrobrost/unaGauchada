@@ -39,6 +39,7 @@ $('#registration_form').validate({
                 },
                 birthday: {
                     required: true,
+
                 },
                 phone: {
                     required: true,
