@@ -1,5 +1,5 @@
 nav.navbar {
-    box-shadow:0 0 3px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.22);
 }
 
 .bgfaded {
@@ -32,71 +32,68 @@ ul.sign-in {
         }
     }
 }
-@media(max-width: 991px){
-#search-navbar{
-    width: 71%;
+
+@media(max-width: 991px) {
+    #search-navbar {
+        width: 71%;
+    }
+    #btn-search-navbar {
+        width: 27%;
+    }
 }
-#btn-search-navbar{
-    width: 27%;
-}
-}
+
 .nav-link.btn-outline-primary {
     border-radius: 6px;
 }
 
-nav.navbar {
-    // Animation
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-    background-color: #fff;
-}
-
-nav a {
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-    padding-top: 17px !important;
-    padding-bottom: 17px !important;
-}
-
-nav.navbar.shrink {
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-    min-height: 35px;
-}
-
-nav.shrink a {
-
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}
-
-.dropdown-item {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}
-
-nav.shrink .navbar-brand {
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-}
-
-nav.shrink .navbar-toggle {
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s;
-    padding: 4px 5px;
-    margin: 8px 15px 8px 0;
+header {
+    nav.navbar {
+        // Animation
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+        background-color: #fff;
+    }
+    nav a {
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+        padding-top: 17px !important;
+        padding-bottom: 17px !important;
+    }
+    nav.navbar.shrink {
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+        min-height: 35px;
+    }
+    nav.shrink a {
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .dropdown-item {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+    nav.shrink .navbar-brand {
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+    }
+    nav.shrink .navbar-toggle {
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        transition: 0.5s;
+        padding: 4px 5px;
+        margin: 8px 15px 8px 0;
+    }
 }
