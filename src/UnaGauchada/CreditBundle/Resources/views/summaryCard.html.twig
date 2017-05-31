@@ -59,7 +59,7 @@
                 </table>
             </div>
                <a href="{{ path('credits_purchase_amount') }}" class="btn btn-primary btn-lg pull-left">Anular</a>
-                            <form method="post" action="/credits/buy?amount=23&amp;creditCard=23232323">
+                            <form method="post" action="{{ path('credits_buy', {'amount': amount, 'creditCard': creditCard}) }}">
                     <button class="btn btn-primary btn-lg pull-right" type="submit">Confirmar</button>
                 </form>
         </div>
