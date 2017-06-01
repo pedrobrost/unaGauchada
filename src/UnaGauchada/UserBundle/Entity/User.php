@@ -2,8 +2,11 @@
 
 namespace UnaGauchada\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UnaGauchada\CreditBundle\Entity\Transaction;
+use UnaGauchada\PublicationBundle\Entity\Submission;
 
 /**
  * User
@@ -58,6 +61,13 @@ class User implements UserInterface
     private $salt;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=64)
+     */
+    private $phone;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="datetime")
@@ -101,10 +111,21 @@ class User implements UserInterface
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="UnaGauchada\CreditBundle\Entity\Transaction", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="UnaGauchada\CreditBundle\Entity\Transaction", mappedBy="user", cascade={"persist", "remove"})
      */
     private $transactions;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Submission", mappedBy="user")
+     */
+    private $submissions;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Publication", mappedBy="user")
+     */
+    private $publications;
 
 
     public function getUsername()
@@ -119,10 +140,10 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return "";
+        return $this->getName(). ' '. $this->getLastName();
     }
 
-    public function getCredits(): integer{
+    public function getCredits(){
         $credits = 0;
         foreach ($this->transactions as $transaction) {
             $credits+= $transaction->getAmountOfCredits();
@@ -152,6 +173,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
         $this->plainPassword = "";
     }
@@ -425,6 +448,140 @@ class User implements UserInterface
     {
         $this->isAdmin = $isAdmin;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return self
+     */
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Add submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return User
+     */
+    public function addSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions[] = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Remove submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     */
+    public function removeSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions->removeElement($submission);
+    }
+
+    /**
+     * Get submissions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubmissions()
+    {
+        return $this->submissions;
+    }
+
+    /**
+     * Add publication
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
+     *
+     * @return User
+     */
+    public function addPublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
+    {
+        $this->publications[] = $publication;
+
+        return $this;
+    }
+
+    /**
+     * Remove publication
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Publication $publication
+     */
+    public function removePublication(\UnaGauchada\PublicationBundle\Entity\Publication $publication)
+    {
+        $this->publications->removeElement($publication);
+    }
+
+    /**
+     * Get publications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublications()
+    {
+        return $this->publications;
+    }
+
+    public function setImageBlob($file)
+    {
+        if (!$file){
+            $this->setPhoto(null);
+            $this->setPhotoMime(null);
+            return $this;
+        }
+        if(!$file->isValid()){
+            throw new FileException("Invalid File");
+        }
+        $imageFile    = fopen($file->getRealPath(), 'r');
+        $imageContent = fread($imageFile, $file->getClientSize());
+        fclose($imageFile);
+        $this->setPhoto($imageContent);
+        $this->setPhotoMime($file->getMimeType());
+        return $this;
+    }
+
+    public function getCalification(){
+        $calificaion = 1;
+        foreach ($this->getSubmissions() as $submission) {
+            $calificaion += $submission->getCalification();
+        }
+        return $calificaion;
+    }
+
+    public function hasSubmission($publication){
+        foreach ($publication->getSubmissions() as $submission) {
+            if($submission->getPublication() == $publication){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

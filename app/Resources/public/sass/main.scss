@@ -8,27 +8,31 @@
 @import "signUp";
 @import "publication-list";
 @import "publication";
+@import "publish";
+@import "credits";
+@import "errors";
 
 
 /* Change the white to any color ;) */
 
 body{
-    padding-top: 56px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
    cursor: default;
-   .container.content{
-       background-color: white;
-   }
-}
+   color: #444;
+   background-color: #1c1c1c;
 
-.content{
-    margin-top: 20px;
+   [type="button"], [type="reset"], [type="submit"] {
+        -webkit-appearance: initial;
+    }
+
+    .content{
+       background: #fafafa;
+        padding: 80px 0 70px;
+    }
+
+    .jumbotron{
+        margin-top: -45px
+    }
+
 }
 
 button{

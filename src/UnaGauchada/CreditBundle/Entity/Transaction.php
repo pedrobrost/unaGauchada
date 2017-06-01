@@ -57,6 +57,12 @@ class Transaction
     private $reason;
 
 
+    public function __construct($reason, $user){
+        $this->reason = $reason;
+        $this->date = new \DateTime();
+        $this->user = $user;
+    }
+
     /**
      * Get id
      *

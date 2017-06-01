@@ -58,6 +58,13 @@ class User implements UserInterface
     private $salt;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=64)
+     */
+    private $phone;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="datetime")
@@ -65,11 +72,18 @@ class User implements UserInterface
     private $birthday;
 
     /**
-     * @var array
+     * @var \DateTime
      *
-     * @ORM\Column(name="roles", type="array", nullable=true)
+     * @ORM\Column(name="sysDate", type="datetime")
      */
-    private $roles;
+    private $sysDate;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isAdmin", type="boolean", nullable=true)
+     */
+    private $isAdmin;
 
     /**
      * @var string
@@ -85,6 +99,11 @@ class User implements UserInterface
      */
     private $photoMime;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plain_password", type="string", length=255, nullable=true)
+     */
     private $plainPassword;
 
     /**
@@ -93,6 +112,17 @@ class User implements UserInterface
      */
     private $transactions;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Submission", mappedBy="user")
+     */
+    private $submissions;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Publication", mappedBy="user")
+     */
+    private $publications;
 
 
     public function getUsername()
@@ -102,7 +132,7 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-        $this->plainPassword = null;
+        $this->plainPassword = "";
     }
 
     public function __toString()
@@ -111,24 +141,374 @@ class User implements UserInterface
     }
 
     public function getCredits(): integer{
-        return 0;
+        $credits = 0;
+        foreach ($this->transactions as $transaction) {
+            $credits+= $transaction->getAmountOfCredits();
+        }
+        return $credits;
     }
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return array(($this->isAdmin) ? 'ROLE_ADMIN' : 'ROLE_USER');
     }
 
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->password;
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return $this->salt;
     }
 
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sysDate = new \DateTime();
+        $this->plainPassword = "";
+    }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Set birthday
+     *
+     * @param \DateTime $birthday
+     *
+     * @return User
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return User
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set photoMime
+     *
+     * @param string $photoMime
+     *
+     * @return User
+     */
+    public function setPhotoMime($photoMime)
+    {
+        $this->photoMime = $photoMime;
+
+        return $this;
+    }
+
+    /**
+     * Get photoMime
+     *
+     * @return string
+     */
+    public function getPhotoMime()
+    {
+        return $this->photoMime;
+    }
+
+    /**
+     * Add transaction
+     *
+     * @param \UnaGauchada\CreditBundle\Entity\Transaction $transaction
+     *
+     * @return User
+     */
+    public function addTransaction(\UnaGauchada\CreditBundle\Entity\Transaction $transaction)
+    {
+        $this->transactions[] = $transaction;
+
+        return $this;
+    }
+
+    /**
+     * Remove transaction
+     *
+     * @param \UnaGauchada\CreditBundle\Entity\Transaction $transaction
+     */
+    public function removeTransaction(\UnaGauchada\CreditBundle\Entity\Transaction $transaction)
+    {
+        $this->transactions->removeElement($transaction);
+    }
+
+    /**
+     * Get transactions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransactions()
+    {
+        return $this->transactions;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSysDate(): \DateTime
+    {
+        return $this->sysDate;
+    }
+
+    /**
+     * @param \DateTime $sysDate
+     */
+    public function setSysDate(\DateTime $sysDate)
+    {
+        $this->sysDate = $sysDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     *
+     * @return self
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @param bool $isAdmin
+     *
+     *
+     * @return self
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return self
+     */
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * Add submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return User
+     */
+    public function addSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions[] = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Remove submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     */
+    public function removeSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions->removeElement($submission);
+    }
+
+    /**
+     * Get submissions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubmissions()
+    {
+        return $this->submissions;
+    }
+}

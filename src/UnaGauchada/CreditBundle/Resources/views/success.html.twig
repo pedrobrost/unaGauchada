@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %} {% block body %}
+    <div class="container signUp text-center">
+
+        <div class="card success">
+            <div class="card-block">
+
+                {% if success.bank %}
+                    {% if success.creditCard %}
+                        <div class="alert alert-success" role="alert">
+                            <strong>¡Compra exitosa!</strong> <br> Ahora tienes {{ app.user.credits }} créditos.
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger" role="alert">
+                            <strong>¡Lo siento!</strong> La tarjeta que has introducido no es válida.
+                        </div>
+                        <a href="{{ path('credits_purchase_amount') }}" id="successbtnTry"
+                           class="btn btn-outline-primary my-2 my-sm-0">Intentar de nuevo</a>
+                    {% endif %}
+                {% else %}
+                        <div class="alert alert-danger" role="alert">
+                            <strong>¡Lo siento!</strong> El sistema de compra de créditos no se encuentra disponible en este momento, por favor reintente más tarde.
+                        </div>
+                {% endif %}
+
+                <a href="{{ path('publication_homepage') }}" id="successbtnHome"
+                   class="btn btn-outline-primary my-2 my-sm-0">Volver a inicio</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

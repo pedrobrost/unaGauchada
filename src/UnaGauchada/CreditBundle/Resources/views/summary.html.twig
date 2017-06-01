@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %} 
+
+
+{% block body %}
+
+
+<div class="container summary">
+  {% include 'CreditBundle::summaryCard.html.twig' %}
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/creditsDisabled.js') }}"></script>
+{% endblock %}

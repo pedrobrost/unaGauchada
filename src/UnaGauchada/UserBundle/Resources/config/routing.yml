@@ -1,0 +1,4 @@
+user_photo:
+    path:     /{id}/photo
+    defaults: { _controller: UserBundle:User:photo }
+    methods: [GET]

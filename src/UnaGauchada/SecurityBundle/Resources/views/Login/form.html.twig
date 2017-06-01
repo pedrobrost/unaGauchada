@@ -1,22 +1,18 @@
-{% embed 'utils/card.html.twig' with {'title': 'Iniciar Sesión'} %}
-    {% block content %}
+{% embed 'utils/card.html.twig' with {'title': 'Iniciar Sesión'} %} 
 
-        {% if error is defined and error %}
-            <div>{{ error.message }}</div>
-        {% endif %}
+{% block content %}
 
-        <form action="{{ path('login') }}" method="post">
-            <div class="form-group"><input type="email" name="_username" class="form-control" id="formGroupExampleInput"
-                                           placeholder="Dirección de email"
-                                           value="{% if lastUsername is defined %}{{ lastUsername }}{% endif %}"></div>
-            <div class="form-group"><input type="password" name="_password" class="form-control" id="formGroupExampleInput2"
-                                           placeholder="Contraseña"></div>
-            <div class="checkbox">
-                <label class="form-group"><input type="checkbox" value="remember-me"> Recordarme </label>
-            </div>
-            <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
-            <div class="text-center"><a href="">No me acuerdo mi contraseña</a></div>
+{% if error is defined and error%}
+    <div class="alert alert-danger text-center" role="alert">
+        El email y/o la contraseña son incorrectos.
+    </div>
+{% endif %}
 
-        </form>
-    {% endblock %}
-{% endembed %}
+<form id="signInForm" action="{{ path('login') }}" method="post">
+    <div class="form-group"><input type="email" id="_username" name="_username" class="form-control" placeholder="Dirección de email" required></input></div>
+    <div class="form-group"><input type="password" id="_password" name="_password" class="form-control" placeholder="Contraseña" required></div>
+    <button class="form-group btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
+    <div class="text-center"><a href="">No me acuerdo mi contraseña</a></div>
+
+</form>
+{% endblock %} {% endembed %}
