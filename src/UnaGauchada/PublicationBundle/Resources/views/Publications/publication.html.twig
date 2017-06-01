@@ -1,131 +1,123 @@
 {% extends 'base.html.twig' %} {% block body %}
 
-    <div class="container publication">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">{{ publication.title }}
-                            <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                                {% if is_granted('edit', publication) %}
-                                    <button type="button" class="btn btn-warning"><i class="fa fa-pencil"
-                                                                                     aria-hidden="true"></i></button>
-                                {% endif %}
-                                {% if is_granted('delete', publication) %}
-                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"
-                                                                                    aria-hidden="true"></i></button>
-                                {% endif %}
-                            </div>
-                        </h4>
-                        &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <small class="text-muted">
+<div class="container publication">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">{{ publication.title }}
+                        <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                            {% if is_granted('edit', publication) %}
+                            <button type="button" class="btn btn-warning"><i class="fa fa-pencil"
+                                                                                     aria-hidden="true"></i></button>                            {% endif %} {% if is_granted('delete', publication) %}
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"
+                                                                                    aria-hidden="true"></i></button>                            {% endif %}
+                        </div>
+                    </h4>
+                    &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <small class="text-muted">
                                 {{ publication.sysDate | date('d/m/Y') }}
-                            </small>
-                        &nbsp<i class="fa fa-tag" aria-hidden="true"></i>
-                            <small>
+                            </small> &nbsp
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                    <small>
                                 {{ publication.category }}
-                            </small>
-                        &nbsp<i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <small>
+                            </small> &nbsp
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <small>
                                 {{ publication.department.name | title }}
                             </small>
+                </div>
+                <img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}" alt="Card image cap">
+                <div class="card-block">
+                    <p class="card-text"> {{ publication.description }} </p>
+                </div>
+                <div class="card-block text-right">
+                    <div class="text-left" style=" position: absolute; font-size: 13px; padding-top: 20px;">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: {{ publication.limitDate | date('d/m/Y')
+                        }}
                     </div>
-                    <img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}"
-                         alt="Card image cap">
-                    <div class="card-block">
-                        <p class="card-text"> {{ publication.description }} </p>
-                    </div>
-                    <div class="card-block text-right">
-                                        <div class="text-left" style=" position: absolute; font-size: 13px; padding-top: 20px;">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>    Fecha límite:   {{ publication.limitDate | date('d/m/Y') }}
-                    </div>
-                        {% if is_granted('comment', publication) %}
-                            <a href="#" class="card-link">Comentar</a>
-                        {% endif %}
-                        {% if is_granted('submit', publication) %}
-                            <button id="postularseBtn" class="card-link btn btn-primary" onclick="change()">Postularme
-                            </button>
-                        {% endif %}
-                        {% if is_granted('unsubmit', publication) %}
-                            <a href="#" class="card-link btn btn-primary">Despostularme</a>
-                        {% endif %}
-                        {% if is_granted('edit', publication) %}
-                            <a href="#" class="card-link btn btn-primary">Ver Postulados</a>
-                        {% endif %}
+                    {% if is_granted('comment', publication) %}
+                    <a href="#" id="comment" class="card-link">Comentar</a> {% endif %} {% if is_granted('submit', publication) %}
+                    <button id="postularseBtn" class="card-link btn btn-primary" onclick="change()">Postularme
+                            </button> {% endif %} {% if is_granted('unsubmit', publication) %}
+                    <a href="#" class="card-link btn btn-primary">Despostularme</a> {% endif %} {% if is_granted('edit',
+                    publication) %}
+                    <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
 
-                    </div>
+                </div>
 
-                    <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush">
 
-                        {% for comment in publication.publicationsComments %}
 
-                            {% if comment.response %}
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img class="comment d-flex mr-3 rounded"
-                                             src="{{ path('user_photo', {'id': comment.user.id}) }}"
-                                             alt="Generic placeholder image">
-                                        <div class="media-body">
+                    <li class="list-group-item writecomment">
+                        <div class="media">
+                            <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Generic placeholder image">
+                                <div class="media-body">
+                                <h5 class="mt-0"><small>Ana Maria </small>
+                                    <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                    </div>
+                                </h5> <textarea id="writeComment"> </textarea><a href="#" class="btn btn-primary card-link" style=" float: right; ">Comentar</a> 
+                                &nbsp; <a href="#" class="btn btn-danger card-link" style="float: right;margin-right: 10px;">Cancelar</a>
+                            </div>
+                    </li>
 
-                                            {% if app.user == comment.user %}
-                                                <div class="btn-group pull-right" role="group"
-                                                     aria-label="Basic example">
-                                                    <button type="button" class="btn btn-sm btn-danger"><i
+
+
+
+                    {% for comment in publication.publicationsComments %} {% if comment.response %}
+                    <li class="list-group-item">
+                        <div class="media">
+                            <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
+                            <div class="media-body">
+
+                                {% if app.user == comment.user %}
+                                <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-sm btn-danger"><i
                                                                 class="fa fa-trash" aria-hidden="true"></i></button>
-                                                </div>
-                                            {% endif %}
-                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small> </h5>
-                                            {{ comment.text }}
-                                            <div class="media mt-3">
-                                                <a class="d-flex" href="#">
-                                                    <img class="comment d-flex mr-3 rounded"
-                                                         src="{{ path('user_photo', {'id': comment.response.user.id}) }}"
-                                                         alt="Generic placeholder image"> </a>
-                                                <div class="media-body">
-                                                    <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
-                                                        <div class="btn-group pull-right" role="group"
-                                                             aria-label="Basic example">
-                                                            {% if app.user == comment.response.user %}
-                                                                <button type="button" class="btn btn-sm btn-danger"><i
+                                </div>
+                                {% endif %}
+                                <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>                                    </h5>
+                                {{ comment.text }}
+                                <div class="media mt-3">
+                                    <a class="d-flex" href="#">
+                                        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Generic placeholder image">                                        </a>
+                                    <div class="media-body">
+                                        <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
+                                            <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                                {% if app.user == comment.response.user %}
+                                                <button type="button" class="btn btn-sm btn-danger"><i
                                                                             class="fa fa-trash" aria-hidden="true"></i>
-                                                                </button>
-                                                            {% endif %}
-                                                        </div>
-                                                    </h5>
-                                                    {{ comment.response.text }}
-                                                </div>
+                                                                </button>                                                {% endif %}
                                             </div>
-                                        </div>
+                                        </h5>
+                                        {{ comment.response.text }}
                                     </div>
-                                </li>
-                            {% else %}
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <img class="comment d-flex mr-3 rounded"
-                                             src="{{ path('user_photo', {'id': comment.user.id}) }}"
-                                             alt="Generic placeholder image">
-                                        <div class="media-body">
-                                            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
-                                                <div class="btn-group pull-right" role="group"
-                                                     aria-label="Basic example">
-                                                {% if is_granted('edit', publication) %}
-                                                    <button type="button" class="btn btn-sm btn-warning"><i
-                                                                class="fa fa-reply" aria-hidden="true"></i></button>
-                                                    {% endif %}
-                                                    {% if app.user == comment.user %}
-                                                        <button type="button" class="btn btn-sm btn-danger"><i
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="list-group-item">
+                        <div class="media">
+                            <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }} <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
+                                    <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                                        {% if is_granted('edit', publication) %}
+                                        <button type="button" class="btn btn-sm btn-warning"><i
+                                                                class="fa fa-reply" aria-hidden="true"></i></button>                                        {% endif %} {% if app.user == comment.user %}
+                                        <button type="button" class="btn btn-sm btn-danger"><i
                                                                     class="fa fa-trash" aria-hidden="true"></i></button>
-                                                </div>
-                                                {% endif %}
-                                            </h5> {{ comment.text }}
-                                        </div>
                                     </div>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
+                                    {% endif %}
+                                </h5> {{ comment.text }}
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %} {% endfor %}
 
 
-                    </ul>
+                </ul>
 
 
                 </div>
@@ -133,8 +125,7 @@
 
             <div class="col col-md-3 profilePic">
                 <div class="card">
-                    <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': publication.user.id}) }}"
-                         alt="Card image cap">
+                    <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': publication.user.id}) }}" alt="Card image cap">
                     <div class="card-block">
                         <h4 class="card-title">{{ publication.user }}</h4>
                         <small><i class="fa fa-thumbs-o-up"
@@ -144,18 +135,16 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        function change() {
-            if (document.getElementById("postularseBtn").innerHTML == "Despostularse") {
-                document.getElementById("postularseBtn").innerHTML = "Postularse";
-            } else {
-                document.getElementById("postularseBtn").innerHTML = "Despostularse";
-            }
+{% endblock %} {% block javascripts %}
+<script>
+    function change() {
+        if (document.getElementById("postularseBtn").innerHTML == "Despostularse") {
+            document.getElementById("postularseBtn").innerHTML = "Postularse";
+        } else {
+            document.getElementById("postularseBtn").innerHTML = "Despostularse";
         }
-    </script>
+    }
+</script>
 {% endblock %}
