@@ -32,7 +32,7 @@
                     <p class="card-text"> {{ publication.description }} </p>
                 </div>
                 <div class="card-block text-right">
-                    <div class="text-left" style=" position: absolute; font-size: 13px; padding-top: 20px;">
+                    <div class="text-left">
                         <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: {{ publication.limitDate | date('d/m/Y')
                         }}
                     </div>
@@ -47,22 +47,6 @@
                 </div>
 
                 <ul class="list-group list-group-flush">
-
-
-                    <li class="list-group-item writecomment">
-                        <div class="media">
-                            <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Generic placeholder image">
-                                <div class="media-body">
-                                <h5 class="mt-0"><small>Ana Maria </small>
-                                    <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                                    </div>
-                                </h5> <textarea id="writeComment"> </textarea><a href="#" class="btn btn-primary card-link" style=" float: right; ">Comentar</a> 
-                                &nbsp; <a href="#" class="btn btn-danger card-link" style="float: right;margin-right: 10px;">Cancelar</a>
-                            </div>
-                    </li>
-
-
-
 
                     {% for comment in publication.publicationsComments %} {% if comment.response %}
                     <li class="list-group-item">
