@@ -1,78 +1,12 @@
 {% extends 'base.html.twig' %} {% block body %}
 
-    <div class="container publication">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">{{ publication.title }}
-                            <div class="btn-group pull-right" role="group" aria-label="Basic example">
-                                {% if is_granted('edit', publication) %}
-                                    <button type="button" class="btn btn-warning"><i class="fa fa-pencil"
-                                                                                     aria-hidden="true"></i>
-                                    </button>                            {% endif %} {% if is_granted('delete', publication) %}
-                                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"
-                                                                                    aria-hidden="true"></i>
-                                    </button>                            {% endif %}
-                            </div>
-                        </h4>
-                        &nbsp<i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <small class="text-muted">
-                            {{ publication.sysDate | date('d/m/Y') }}
-                        </small>
-                        &nbsp
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                        <small>
-                            {{ publication.category }}
-                        </small>
-                        &nbsp
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <small>
-                            {{ publication.department.name | title }}
-                        </small>
-                    </div>
-                    <img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}"
-                         alt="Card image cap">
-                    <div class="card-block">
-                        <p class="card-text"> {{ publication.description }} </p>
-                    </div>
-                    <div class="card-block text-right">
-                        <div class="text-left">
-                            <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha
-                            límite: {{ publication.limitDate | date('d/m/Y') }}
-                        </div>
-                        {% if is_granted('comment', publication) %}
-                            <a href="#" id="comment"
-                               class="card-link">Comentar</a> {% endif %} {% if is_granted('submit', publication) %}
-                            <button id="postularseBtn" class="card-link btn btn-primary" onclick="change()">Postularme
-                            </button> {% endif %} {% if is_granted('unsubmit', publication) %}
-                            <a href="#"
-                               class="card-link btn btn-primary">Despostularme</a> {% endif %} {% if is_granted('edit',
-                        publication) %}
-                            <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
-
-                    </div>
-
-
-                    {% include 'PublicationBundle:Publications:comments.html.twig' %}
-
-
-                </div>
-            </div>
-
-            <div class="col col-md-3 profilePic">
-                <div class="card">
-                    <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': publication.user.id}) }}"
-                         alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">{{ publication.user }}</h4>
-                        <small><i class="fa fa-thumbs-o-up"
-                                  aria-hidden="true"></i> {{ achievement_service.getFor(publication.user) }} </small>
-                    </div>
-                </div>
-            </div>
+<div class="container publication">
+    <div class="row">
+        <div class="col-md-9">
+        {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %}      
         </div>
+        {% include 'PublicationBundle:Publications:profile.html.twig' %}
     </div>
-    </div>
+</div>
 
 {% endblock %}
