@@ -1,5 +1,11 @@
+{% if publication.publicationsComments is not empty %}
+
+    <li class="list-group-item header"><h6>Comentarios</h6></li>
+   
     {% for comment in publication.publicationsComments %}
 
         {% include 'PublicationBundle:Publications:comment.html.twig' %}
 
     {% endfor %}
+
+{% endif %}
