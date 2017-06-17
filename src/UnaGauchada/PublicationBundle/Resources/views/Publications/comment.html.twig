@@ -1,4 +1,3 @@
-{% macro comment(comment) %}
 <li class="list-group-item">
     <div class="media">
         <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
@@ -34,4 +33,3 @@
         </div>
     </div>
 </li>
-{% endmacro %}

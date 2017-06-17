@@ -1,10 +1,8 @@
-{% import 'PublicationBundle:Publications:comment.html.twig' as item %}
-
 <ul class="list-group list-group-flush">
 
     {% for comment in publication.publicationsComments %}
 
-            {{ item.comment(comment) }}
+        {% include 'PublicationBundle:Publications:comment.html.twig' %}
 
     {% endfor %}
 
