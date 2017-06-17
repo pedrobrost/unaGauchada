@@ -1,0 +1,23 @@
+{% import 'header/navItem.html.twig' as navbar %}
+
+<div class="dropdown">
+
+    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{ app.user.name }} {{ app.user.lastname}}
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+
+    {% block elements %}{% endblock %}
+
+    <div class="dropdown-divider"></div>
+
+    {{ navbar.dropdownItem('Configuración', 'fa-cog') }}
+
+    <div class="dropdown-divider"></div>
+
+    {{ navbar.dropdownItem('Cerrar Sesión', 'fa-sign-out', 'logout') }}
+
+    </div>
+    
+</div>
