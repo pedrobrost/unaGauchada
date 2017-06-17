@@ -12,6 +12,7 @@ $("#cancelComment").click(function(){
     $(".writecomment").hide();
     $("#comment").show();
     $('textarea').val('');
+    $("#commentForm").validate().resetForm();
 });
 
 

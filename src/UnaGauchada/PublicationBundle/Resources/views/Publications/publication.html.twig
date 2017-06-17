@@ -22,7 +22,9 @@
 {% endblock %} 
 
 {% if is_granted('comment', publication) %}
-    {% block javascripts %}
-        <script src="{{ asset('dist/js/comment.js') }}"></script>
+    {% block javascripts %}    
+    <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+    <script src="{{ asset('dist/js/comment.js') }}"></script>
+    <script src="{{ asset('dist/js/commentsValidation.js') }}"></script>
     {% endblock %} 
 {% endif %}
