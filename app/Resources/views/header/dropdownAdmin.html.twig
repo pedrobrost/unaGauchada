@@ -1,0 +1,23 @@
+{% import 'header/navItem.html.twig' as navbar %}
+
+{% embed "header/dropdown.html.twig" %}
+
+    {% block elements %} 
+
+        {{ navbar.dropdownItem('Reportes Estadísticos', 'fa-bar-chart') }}
+
+        <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Logros', 'fa-trophy') }}
+
+        <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Categoria', 'fa-bookmark') }}
+
+        <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Creditos', 'fa-shopping-cart') }}
+
+    {% endblock %}
+
+{% endembed %}
