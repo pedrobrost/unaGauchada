@@ -1,22 +1,17 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %} {% block body %}
 
     {% if publicationCreated %}
-        <div class="container" id="popUpSuccess">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <strong>¡Felicitaciones!</strong> Tu publicación ha sido creada exitosamente.
-            </div>
-        </div>
+
+        {{popUp.success('¡Felicitaciones!','Tu publicación ha sido creada exitosamente.')}}
+
     {% endif %}
 
-    <section class="gauchadas">
-    <div class="container">
-        <h1 class="display-3">Últimas Gauchadas</h1>
-    </div>
+    <section class="gauchadas">   
+        <div class="container">
+            <h1 class="display-3">Últimas Gauchadas</h1>
+        </div>
     </section>
-
 
     <div class="container">
 
