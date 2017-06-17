@@ -26,3 +26,8 @@ publication_show:
     path:     /publication/{id}
     defaults: { _controller: PublicationBundle:Publication:show }
     methods:  [GET]
+
+publication_search:
+    path:     /search
+    defaults: { _controller: PublicationBundle:Publication:search }
+    methods:  [GET]
