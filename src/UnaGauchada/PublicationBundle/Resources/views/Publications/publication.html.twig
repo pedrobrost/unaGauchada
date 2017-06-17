@@ -6,11 +6,13 @@
             <div class="card">
                 {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %} 
 
-                {% if is_granted('comment', publication) %} 
-                  {% include'PublicationBundle:Publications:addComment.html.twig' %} 
-                {% endif %} 
+                <ul class="list-group list-group-flush">
+                    {% if is_granted('comment', publication) %} 
+                    {% include'PublicationBundle:Publications:addComment.html.twig' %} 
+                    {% endif %} 
 
-                {% include 'PublicationBundle:Publications:comments.html.twig'%}
+                    {% include 'PublicationBundle:Publications:comments.html.twig'%}
+                </ul>
             </div>
         </div>
         {% include 'PublicationBundle:Publications:profile.html.twig' %}
