@@ -7,6 +7,11 @@
                 <button type="button" class="btn btn-sm btn-danger"><i
                                         class="fa fa-trash" aria-hidden="true"></i></button>
             </div>
+            {% elseif app.user == publication.user and not comment.response %}
+            <div class="btn-group pull-right" role="group">
+                <button type="button" class="btn btn-sm btn-info">
+                <i class="fa fa-reply" aria-hidden="true"></i></button>
+            </div>
             {% endif %}
             <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }}
                 <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
