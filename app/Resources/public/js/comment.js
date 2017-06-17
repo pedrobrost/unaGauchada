@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $(".writecomment").hide();
+});    
+
 $("#comment").click(function(){
-    $(".list-group-item.writecomment").hide();
+    $(".writecomment").toggle();
 });

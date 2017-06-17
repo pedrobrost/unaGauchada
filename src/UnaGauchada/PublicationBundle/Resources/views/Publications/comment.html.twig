@@ -1,6 +1,6 @@
 <li class="list-group-item">
     <div class="media">
-        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
+        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Imagen del usuario que comenta">
         <div class="media-body">
             {% if app.user == comment.user %}
             <div class="btn-group pull-right" role="group">
@@ -13,7 +13,7 @@
             </h5>
             {{ comment.text }} {% if comment.response %}
             <div class="media mt-3">
-                <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Generic placeholder image">
+                <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Imagen de perfil del publicante">
                 <div class="media-body">
                     <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }}
                         <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>

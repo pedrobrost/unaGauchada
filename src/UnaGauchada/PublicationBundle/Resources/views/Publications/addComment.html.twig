@@ -1,0 +1,21 @@
+<ul class="list-group list-group-flush writecomment">
+    <li class="list-group-item header">
+        <h6>Agregue un comentario</h6>
+    </li>
+
+    <li class="list-group-item">
+        <div class="media">
+            <img class="comment d-flex mr-3 rounded" {# src=" {{ path('user_photo', {'id': comment.user.id}) }}" #} alt="imagen del usuario">
+            <div class="media-body">
+                <div class="btn-group pull-right" role="group">
+                    <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+                <h5 class="mt-0"> Franco Borrelli {# {{ comment.user.name }} {{ comment.user.lastName }} #}
+                </h5>
+                <textarea name="" id=""></textarea>
+            </div>
+        </div>
+    </li>
+
+</ul>

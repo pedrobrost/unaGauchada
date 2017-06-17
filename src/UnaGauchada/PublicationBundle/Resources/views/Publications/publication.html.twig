@@ -3,10 +3,24 @@
 <div class="container publication">
     <div class="row">
         <div class="col-md-9">
-        {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %}      
+            <div class="card">
+                {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %} 
+
+                {% if is_granted('comment', publication) %} 
+                  {% include'PublicationBundle:Publications:addComment.html.twig' %} 
+                {% endif %} 
+
+                {% include 'PublicationBundle:Publications:comments.html.twig'%}
+            </div>
         </div>
         {% include 'PublicationBundle:Publications:profile.html.twig' %}
     </div>
 </div>
 
-{% endblock %}
+{% endblock %} 
+
+{% if is_granted('comment', publication) %}
+    {% block javascripts %}
+        <script src="{{ asset('dist/js/comment.js') }}"></script>
+    {% endblock %} 
+{% endif %}

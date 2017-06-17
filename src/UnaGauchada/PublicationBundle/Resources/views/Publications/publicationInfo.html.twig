@@ -1,4 +1,3 @@
-<div class="card">
     <div class="card-block">
         <h4 class="card-title">{{ publication.title }}
             <div class="btn-group pull-right" role="group">
@@ -50,7 +49,3 @@
         {% if is_granted('edit', publication)%}
         <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
     </div>
-
-    {% include 'PublicationBundle:Publications:comments.html.twig' %}
-
-</div>

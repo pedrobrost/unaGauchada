@@ -26,13 +26,9 @@ img.comment {
     text-align: center;
 }
 
-.media {
-    width: 100%;
-}
-
-.select2-selection .select2-selection--single{
+.select2-selection .select2-selection--single {
     height: 34px !important;
-    border: 1px solid rgba(0,0,0,0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
 }
 
 .date-small {
@@ -42,5 +38,29 @@ img.comment {
 @media (max-width: 767px) {
     .profilePic {
         padding-top: 25px;
+    }
+}
+
+.list-group {
+    .header {
+                background-color: #FAFAFA;
+                height: 45px;
+
+                h6 {
+                    margin: 0;
+                }
+            }
+    .list-group-item {
+        .media {
+            width: 100%;
+        }
+        .media-body {
+            textarea {
+                width: 90%;
+                height: auto;
+                resize: none;
+                outline: none;
+            }
+        }
     }
 }
