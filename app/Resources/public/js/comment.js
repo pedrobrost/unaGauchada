@@ -4,13 +4,22 @@ $(document).ready(function() {
 
 
 $("#comment").click(function(){
-    $(".writecomment").toggle();
+    $(".writecomment").show();
+    $("#comment").hide();
 });
+
+$("#cancelComment").click(function(){
+    $(".writecomment").hide();
+    $("#comment").show();
+    $('textarea').val('');
+});
+
 
 $(function() {
    $('textarea').autogrow();
 });
 
+//Declaracion de la funcion autogrow.
 
 (function($)
 {

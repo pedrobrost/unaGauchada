@@ -35,7 +35,7 @@
         </div>
 
         {% if is_granted('comment', publication) %}
-            <a href="#" id="comment" class="card-link">Comentar</a> 
+            <button id="comment" class="card-link btn btn-outline-primary">Comentar</button> 
         {% endif %} 
 
         {% if is_granted('submit', publication) %}
