@@ -5,11 +5,14 @@
     }
     .list-group {
         .list-group-item {
-            img {
-                border-radius: 3px;
-            }
-            a.detalle {
-                float: right;
+            .row {
+                width: 100%;
+                img {
+                    border-radius: 3px;
+                }
+                a.detalle {
+                    float: right;
+                }
             }
         }
     }

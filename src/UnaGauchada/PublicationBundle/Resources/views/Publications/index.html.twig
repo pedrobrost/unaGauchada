@@ -27,7 +27,7 @@
                     {% if publication.image is defined %}
                         <img class="card-img-top" src="{{ url('publication_image', {'id': publication.id}) }}"
                              alt="Card image cap">            {% else %}
-                        <img class="card-img-top" src="{{ dist/img/logocard.jpg }}" alt="Card image cap"> {% endif %}
+                        <img class="card-img-top" src="{{ dist/img/logocard.jpg }}" alt="Logo de UnaGauchada"> {% endif %}
                     <div class="card-block">
                         <h5 class="card-title">{{ publication.title }}</h5>
                         <div class="row">
