@@ -1,34 +1,73 @@
 {% extends 'base.html.twig' %} {% block body %}
 
-
-<div class="container search">
-    <div class="card">
-        <div class="card-header">
-            <h1>Resultados de busqueda</h1>
-            <h2 class="lead"><strong class="text-primary">3</strong> publicaciones fueron encontradas con la palabra <strong class="text-primary">Perro</strong></h2>
-        </div>
-        <div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100">
+<div class="container publication">
+    <div class="row">
+  <div class="col-md-4">
+    <div class=" card">
+                
+                <div class="card-header">
+                    <h4>Buscar por:</h4>
+                </div><div class="card-block">
+                    <form class="form-horizontal">
+                    <div class="form-group">
+                            <label for="location1" class="control-label">Palabra:</label>
+                            <input type="text" class="form-control">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-block">
-                                <h4 class="card-title">Lorem ipsum dolor sit amet</h4>
-                                <small>
-                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp <span>02/15/2014</span>
-                                    <br>
-                                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp<span>People</span>
-                                </small>
-                            </div>
-                            <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                     <div class="form-group">
+                            <label for="location1" class="control-label">Título:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="location1" class="control-label">Ciudad:</label>
+                            <select class="form-control">
+              <option value="">Todas las ciudades</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="type1" class="control-label">Categorias:</label>
+                            <select class="form-control">
+              <option value="">Todas las categorias</option>
+              <option value="">1</option>
+              <option value="">2</option>
+            </select>
+                        </div>
+                        <p class="text-center"><a href="#" class="btn btn-primary" role="button">Aplicar</a></p>
+                    </form>
+                </div>
+            </div>
+        
     </div>
+<div class="col-md-8 container search ">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Resultados de busqueda</h1>
+                    <h2 class="lead"><strong class="text-primary">3</strong> publicaciones fueron encontradas con la palabra <strong class="text-primary">Perro</strong></h2>
+                </div>
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-block">
+                                        <h4 class="card-title">Lorem ipsum dolor sit amet</h4>
+                                        <small>
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
+                                    <br>
+                                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
+                                </small>
+                                    </div>
+                                    <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div></div>
 </div>
 
 {% endblock %}
