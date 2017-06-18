@@ -19,9 +19,7 @@ $(document).ready(function () {
         update();
     });
 
-    //changed. now with parameter
     function update(slider, val) {
-        //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
         var $amount = slider == 1 ? val : $("#amount").val();
 
         $("#amount").val($amount);
