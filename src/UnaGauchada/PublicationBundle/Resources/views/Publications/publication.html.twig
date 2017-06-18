@@ -1,6 +1,11 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% import 'utils/popUpMessage.html.twig' as popUp %}
+
+{% extends 'base.html.twig' %} 
+
+{% block body %}
 
 <div class="container publication">
+        {{popUp.success('¡Felicitaciones!','Tu comentario se ha creado exitosamente.')}}
     <div class="row">
         <div class="col-md-9">
             <div class="card">
