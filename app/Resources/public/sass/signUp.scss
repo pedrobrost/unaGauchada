@@ -9,6 +9,10 @@
             width: 250px;
             float: right;
         }
+        .detailedInfo {
+            padding-top: 48px;
+            display: block;
+        }
         @media (max-width: 800px) {
             width: initial;
             .col-xs-12:nth-child(odd) {
