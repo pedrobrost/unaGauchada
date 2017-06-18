@@ -1,0 +1,72 @@
+<div class="container editProfile">
+    <h1>Editar Perfil</h1>
+  	<hr>
+
+    <form class="form-horizontal" role="form">
+	<div class="row">
+
+   <div class="col col-md-3 profilePic">
+                <div class="card">
+                    <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Imagen de Perfil">
+                    <div class="card-block">
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+        </div>
+      <div class="col-md-9 personal-info">
+        <h3>Información Personal</h3>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Nombre:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="text" value="{{app.user.name}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Apellido:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="text" value="{{app.user.lastname}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Email:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="text" value="{{app.user.email}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Contraseña:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="password" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Confirmar Contraseña:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="password" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Fecha de Nacimiento:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="date" value="{{app.user.birthday|date("Y-m-d")}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-5 control-label">Teléfono:</label>
+            <div class="col-lg-11">
+              <input class="form-control" type="text" value="{{app.user.phone}}">
+            </div>
+          </div>        
+          <div class="form-group">
+            <label class="col-lg-5 control-label"></label>
+            <div class="col-lg-11">
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+              &nbsp
+              <button type="reset" class="btn btn-default">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+ 
