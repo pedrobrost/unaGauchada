@@ -1,5 +1,8 @@
-   {% extends 'base.html.twig' %} {% block body %}
-   <div class="container postulantes">  
+ {% extends 'base.html.twig' %} 
+ 
+ {% block body %}
+
+<div class="container postulantes">
     <div class="row">
         <div class="submissions col-xs-12 col-sm-offset-3 col-sm-8">
             <div class=" card panel panel-default">
@@ -9,16 +12,13 @@
                         <li><a href="#" class="hide-search" data-command="toggle-search"><i class="fa fa-ellipsis-v"></i></a></li>
                     </ul>
                 </div>
-                                                    <div class="search" style="display: none;">
+                <div class="search" style="display: none;">
                     <div class="col-xs-12">
                         <div class="input-group c-search">
                             <input type="text" placeholder="Ingrese el nombre del postulante" class="form-control" id="contact-list-search">
-                {#            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                            </span> #}
                         </div>
                     </div>
-                </div>  
+                </div>
                 <ul class="list-group" id="contact-list">
                     <li class="list-group-item">
                         <div class="col-xs-12 col-sm-3">
@@ -35,22 +35,22 @@
                 </ul>
             </div>
         </div>
-            <div class="col col-md-3 profilePic">
-    <div class="card">
-        <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title"></h4>
+        <div class="col col-md-3 profilePic">
+            <div class="card">
+                <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title"></h4>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-	</div>
 
 </div>
- </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+<script src="dist/js/Publication/Submissions/jquery.searchable.js"></script>
+<script src="{{ asset('dist/js/Publication/Submissions/list.js') }}"></script>
 {% endblock %}
-
-  {% block javascripts %}
-
-      <script src="dist/js/Publication/Submissions/jquery.searchable.js"></script>
-      <script src="{{ asset('dist/js/Publication/Submissions/list.js') }}"></script>
-  {% endblock %}
