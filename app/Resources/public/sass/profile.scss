@@ -1,0 +1,21 @@
+.container.publication {
+    .row {
+        .col.col-md-2 {
+            margin-bottom: 15px;
+            .list-group-item-primary {
+                background-color: #FF7007;
+                color: white;
+            }
+            a {
+                font-size: 14px;
+            }
+            @media(max-width: 767px){
+                    padding-right: 0px;
+                }
+        }
+        .col-md-10.container.editProfile {
+            margin-top: 0px;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+    }
+}

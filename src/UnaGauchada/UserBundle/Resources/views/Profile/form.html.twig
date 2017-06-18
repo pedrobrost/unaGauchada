@@ -1,5 +1,12 @@
-<div class="container editProfile">
- <div class="btn-group pull-right" role="group">
+<div class="container publication">
+    <div class="row">
+            <div class="col col-md-2  list-group">
+  <li class="list-group-item list-group-item-primary">Historial</li>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-bookmark " aria-hidden="true"></i>&nbsp; Mis Publicaciones</a>
+  <a href="#" class="list-group-item list-group-item-action"><i class="fa fa-users" aria-hidden="true"></i>&nbsp Mis Ayudas</a> 
+</div>
+<div class="col-md-10 container editProfile">
+        <div class="btn-group pull-right" role="group">
                     <button type="button" class="btn btn-primary">
                         <i class="fa fa-pencil"  aria-hidden="true"></i>
                     </button> 
@@ -14,8 +21,7 @@
             <img id='img-upload' src="{{ path('user_photo', {'id': app.user.id}) }}" class="card-img-bottom" />
           </div>
            <div class="card-block">
-            <small><i class="fa fa-thumbs-o-up"
-                                  aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }} </small>
+            <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }} </small>
         </div>
         </div>
       </div>
@@ -39,5 +45,8 @@
           </div>
         </div>
   </div>
-  </div>
+  </div>    
+        </div>
+    </div>
+</div>
 </div>
