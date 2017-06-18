@@ -1,3 +1,7 @@
+$("#cancelform").click(function(){
+    $("#editProfile_form").validate().resetForm();
+});
+
 $.validator.addMethod("nonNumeric", function (value, element) {
             return this.optional(element) || isNaN(Number(value));
         });
@@ -72,7 +76,6 @@ $('#editProfile_form').validate({
             unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-warning');
                 $(element).removeClass('form-control-warning');
-                $(element).closest('.form-group').addClass('has-success');
             },
             submitHandler: function (form) {
                 form.submit();
