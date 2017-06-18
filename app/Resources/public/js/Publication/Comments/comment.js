@@ -3,6 +3,11 @@ $(document).ready(function() {
 });    
 
 
+$(".close").click(function(){
+    $("#popUpSuccess").hide();
+});
+
+
 $("#comment").click(function(){
     $(".writecomment").show();
     $("#comment").hide();

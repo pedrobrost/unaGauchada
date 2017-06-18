@@ -1,5 +1,5 @@
 .container.publication {
-    padding-top: 40px;
+
 }
 
 .card-img-top.publication {
@@ -41,35 +41,34 @@ img.comment {
     }
 }
 
-.container.publication{
-#popUpSuccess{
-    position: relative;
-    margin-top: -20px;
-}
-
-.list-group {
-    .header {
-                background-color: #FAFAFA;
-                height: 45px;
-
-                h6 {
-                    margin: 0;
-                }
+.container.publication {
+    padding-top: 40px;
+    #popUpSuccess {
+        position: relative;
+        margin-top: -20px;
+    }
+    .list-group {
+        .header {
+            background-color: #FAFAFA;
+            height: 45px;
+            h6 {
+                margin: 0;
             }
-    .list-group-item {
-        .media {
-            width: 100%;
         }
-        .media-body {
-            textarea {
-                width: 90%;
-                height: auto;
-                resize: none;
-                outline: none;
-                border-radius: 3px;
-                font-size: 15px;
+        .list-group-item {
+            .media {
+                width: 100%;
+            }
+            .media-body {
+                textarea {
+                    width: 90%;
+                    height: auto;
+                    resize: none;
+                    outline: none;
+                    border-radius: 3px;
+                    font-size: 15px;
+                }
             }
         }
     }
-}
 }
