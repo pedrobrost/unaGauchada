@@ -1,4 +1,5 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %} {% block stylesheets %}
+<link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet" /> {% endblock %} {% block body %}
 
 <div class="container publication">
     <div class="row">
@@ -18,21 +19,27 @@
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="location1" class="control-label">Ciudad:</label>
-                            <select class="form-control">
-              <option value="">Todas las ciudades</option>
-              <option value="">1</option>
-              <option value="">2</option>
+                            <label class="col-xs-3 control-label">Categoria:</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select name="category" id="category" class="form-control">
+            <option value="">Todas las categorias</option>
+                {{ render(controller('PublicationBundle:Category:list')) }}
             </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="type1" class="control-label">Categorias:</label>
-                            <select class="form-control">
-              <option value="">Todas las categorias</option>
-              <option value="">1</option>
-              <option value="">2</option>
+                            <label class="col-xs-3 control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp Ciudad</label>
+                            <div class="col-xs-5 selectContainer">
+                                <select placeholder="Ciudad" name="city" id="city" class="form-control" required>
+            <option value="">Seleccionar ciudad</option>
+                {{ render(controller('PublicationBundle:Department:list')) }}
             </select>
+                                <label for="city" class="error" generated="true"></label>
+                            </div>
                         </div>
+
+
+
                         <p class="text-center"><a href="#" class="btn btn-primary" role="button">Aplicar</a></p>
                     </form>
                 </div>
@@ -70,4 +77,8 @@
     </div>
 </div>
 
+{% endblock %} {% block javascripts %}
+<script src="{{ asset('dist/js/publish.js') }}"></script>
+<script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('dist/js/createForm.select2.js') }}"></script>
 {% endblock %}
