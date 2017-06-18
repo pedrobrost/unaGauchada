@@ -38,7 +38,7 @@ class PublicationController extends Controller
 
 
    public function publishAction(){
-      return $this->render('UserBundle:EditProfile:editProfile.html.twig');
+      return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig');
    }
 
     public function publishCreateAction(Request $request){
