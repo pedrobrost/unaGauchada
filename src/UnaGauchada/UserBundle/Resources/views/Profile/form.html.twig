@@ -1,0 +1,43 @@
+<div class="container editProfile">
+ <div class="btn-group pull-right" role="group">
+                    <button type="button" class="btn btn-primary">
+                        <i class="fa fa-pencil"  aria-hidden="true"></i>
+                    </button> 
+      </div>
+  <h1>{{app.user.name}} {{app.user.lastname}}</h1>
+  <hr>
+        <h3>Información Personal</h3>
+    <div class="row">
+      <div class="col col-md-3 profilePic">
+        <div class="card">
+          <div>
+            <img id='img-upload' src="{{ path('user_photo', {'id': app.user.id}) }}" class="card-img-bottom" />
+          </div>
+           <div class="card-block">
+            <small><i class="fa fa-thumbs-o-up"
+                                  aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }} </small>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Email:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="text" value="{{app.user.email}}" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Fecha de Nacimiento:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="date" value="{{app.user.birthday|date("Y-m-d")}}" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Teléfono:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="tel" value="{{app.user.phone}}" readonly>
+          </div>
+        </div>
+  </div>
+  </div>
+</div>
