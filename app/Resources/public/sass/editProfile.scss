@@ -7,9 +7,15 @@
     border-radius: 9px;
 
     .row{
+        margin-top: 15px;
         .profilePic{
                 width: 100%;
                 margin-top: 5px;
+                margin-bottom: 10px;
+                @media(max-width: 767px){
+                        margin-left: 15px;
+                        margin-right: 14px;
+                }
                 h6{
                     font-size: 14px;
                 }
