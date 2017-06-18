@@ -1,6 +1,4 @@
- {% extends 'base.html.twig' %} 
- 
- {% block body %}
+ {% extends 'base.html.twig' %} {% block body %}
 
 <div class="container postulantes">
     <div class="row">
@@ -40,24 +38,23 @@
                 <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Publicación">
                 <div class="card-block">
                     <h4 class="card-title">Perdi a mi gato</h4>
-                                            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                        <small class="text-muted">24/02/2018</small> <br>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <small class="text-muted">Animales</small>
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                    <small class="text-muted">24/02/2018</small> <br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <small class="text-muted">Animales</small>
                 </div>
             </div>
-                </div>
-                
-            </div>
+            <a href="#" class="btn btn-primary text-right">Volver a la Publicación</a>
         </div>
+
     </div>
+</div>
+</div>
 
 </div>
 </div>
 
-{% endblock %} 
-
-{% block javascripts %}
-<script src="dist/js/Publication/Submissions/jquery.searchable.js"></script>
+{% endblock %} {% block javascripts %}
+<script src="dist/js/Publication/Submissions/searchable.js"></script>
 <script src="{{ asset('dist/js/Publication/Submissions/list.js') }}"></script>
 {% endblock %}

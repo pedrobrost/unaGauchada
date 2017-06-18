@@ -1,10 +1,3 @@
-/*!
- * jQuery Searchable Plugin v1.0.0
- * https://github.com/stidges/jquery-searchable
- *
- * Copyright 2014 Stidges
- * Released under the MIT license
- */
 ;(function( $, window, document, undefined ) {
 
     var pluginName = 'searchable',
