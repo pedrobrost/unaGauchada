@@ -1,0 +1,9 @@
+<ul class="list-group list-group-flush">
+
+    {% for comment in publication.publicationsComments %}
+
+        {% include 'PublicationBundle:Publications:comment.html.twig' %}
+
+    {% endfor %}
+
+</ul>

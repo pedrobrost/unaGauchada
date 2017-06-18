@@ -2,10 +2,6 @@
 
     {{ navbar.item('Ayuda', 'publication_homepage') }}
 
-    <li class="nav-item">
-        <a class="nav-link" id="signup-nav" href="{{ path('signup') }}">Registrarse</a>
-    </li>
+    {{ navbar.item('Registrarse', 'signup', 'signup-nav') }}
 
-    <li class="nav-item">
-        <a class="nav-link" id="login-nav" href="{{ path('login') }}">Iniciar Sesión</a>
-    </li>
+    {{ navbar.item('Iniciar Sesión', 'login', 'login-nav') }}
