@@ -1,43 +1,9 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
-<a class="nav-link" href="{{ path('credits_purchase_amount') }}" data-toggle="tooltip" data-placement="bottom" title="Creditos disponibles">{{ app.user.credits }}   <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<a class="nav-link" href="{{ path('credits_purchase_amount') }}" data-toggle="tooltip" data-placement="bottom" title="Creditos disponibles">{{ app.user.credits }}   
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</a>
 
+{{ navbar.item('Publicar Gauchada', 'publish_new', 'publish-nav') }} 
 
-    <a id="publish-nav" class="nav-link" href="{{ path('publish_new') }}"> Publicar Gauchada </a>
-
-<div class="dropdown">
-    <a class="dropdown-toggle nav-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         {{ app.user.name }} {{ app.user.lastname}}
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">
-            <span> <i class="fa fa-user-circle" aria-hidden="true"></i> </span>&nbsp
-            <span>Mi Perfil</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-            <span><i class="fa fa-bookmark" aria-hidden="true"></i></span>&nbsp
-            <span>Mi Historial</span>
-        </a>
-        <div id="creditsBar"class="dropdown-divider"></div>
-        <a id="creditsPurchase" class="dropdown-item" href="{{ path('credits_purchase_amount') }}">
-            <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>&nbsp
-            <span>Comprar Créditos</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-            <span><i class="fa fa-cog" aria-hidden="true"></i></span>&nbsp
-            <span>Configuración</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-            <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp
-            <span>Ayuda</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{{ path('logout') }}">
-            <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp
-            <span>Cerrar Sesión</span>
-        </a>
-    </div>
-</div>
+{% include 'header/dropdownUser.html.twig' %}

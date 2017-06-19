@@ -1,11 +1,35 @@
-{% macro item(name, profileImg, text) %}
+<li class="list-group-item">
+    <div class="media">
+        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
+        <div class="media-body">
+            {% if app.user == comment.user %}
+            <div class="btn-group pull-right" role="group">
+                <button type="button" class="btn btn-sm btn-danger"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+            {% endif %}
+            <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }}
+                <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
+            </h5>
+            {{ comment.text }} {% if comment.response %}
+            <div class="media mt-3">
+                <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }}
+                        <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
+                        <div class="btn-group pull-right" role="group">
+                            {% if app.user == comment.response.user %}
+                            <button type="button" class="btn btn-sm btn-danger"><i
+                                                        class="fa fa-trash" aria-hidden="true"></i>
+                                            </button> {% endif %}
+                        </div>
+                    </h5>
 
-<div class="media">
-    <img class="comment d-flex align-self-start mr-3 rounded" src="{{ profileImg }}" alt="Profile Image">
-    <div class="media-body">
-        <h4 class="mt-0">{{ name }}</h4>
-        <p>{{ text }}</p>
+                    {{ comment.response.text }}
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
     </div>
-</div>
-
-{% endmacro %}
+</li>
