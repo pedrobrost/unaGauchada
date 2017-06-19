@@ -1,8 +1,10 @@
-{% import 'utils/popUpMessage.html.twig' as popUp %}
+{% import 'utils/modal.html.twig' as modal %}
 
 {% extends 'base.html.twig' %} 
 
 {% block body %}
+
+{{  modal.item('Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?') }} 
 
 <div class="container publication">
         {{popUp.success('¡Felicitaciones!','Tu comentario se ha creado exitosamente.')}}
