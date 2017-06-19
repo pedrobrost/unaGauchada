@@ -38,3 +38,10 @@ body{
 button{
     cursor: pointer
 }
+
+.modal-open {
+  padding-right: 0 !important;
+}
+html {
+  overflow-y: scroll !important;
+}
