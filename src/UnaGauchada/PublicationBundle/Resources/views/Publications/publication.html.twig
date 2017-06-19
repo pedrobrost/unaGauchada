@@ -1,4 +1,10 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% import 'utils/modal.html.twig' as modal %}
+
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+
+{{  modal.item('Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?') }} 
 
 <div class="container publication">
     <div class="row">
