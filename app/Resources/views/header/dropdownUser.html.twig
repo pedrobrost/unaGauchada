@@ -1,0 +1,28 @@
+{% import 'header/navItem.html.twig' as navbar %}
+
+{% embed "header/dropdown.html.twig" %}
+
+    {% block elements %} 
+
+        {{ navbar.dropdownItem('Mi Perfil', 'fa-user-circle') }}
+
+        <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Mis Publicaciones', 'fa-bookmark') }}
+
+        <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Mis Ayudas', 'fa-users') }}
+
+       <div class="dropdown-divider"></div>
+
+        {{ navbar.dropdownItem('Comprar Créditos', 'fa-shopping-cart', 'credits_purchase_amount', 'creditsPurchase') }}
+
+        <div id="creditsBar"class="dropdown-divider"></div>
+
+
+        {{ navbar.dropdownItem('Ayuda', 'fa-info-circle') }}
+
+    {% endblock %}
+
+{% endembed %}

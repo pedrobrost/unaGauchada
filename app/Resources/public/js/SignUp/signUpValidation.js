@@ -46,7 +46,6 @@ $('#registration_form').validate({
                     number: true,
                 },
             },
-            // Specify validation error messages
             messages: {
                 name: {
                     required: "Por favor ingrese su nombre",
@@ -89,8 +88,6 @@ $('#registration_form').validate({
                 $(element).removeClass('form-control-warning');
                 $(element).closest('.form-group').addClass('has-success');
             },
-            // Make sure the form is submitted to the destination defined
-            // in the "action" attribute of the form when valid
             submitHandler: function (form) {
                 form.submit();
             },
