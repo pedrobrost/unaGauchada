@@ -4,16 +4,16 @@
         .col.col-md-3.profilePic {
             margin-left: 25px;
             margin-bottom: 25px;
-            @media(max-width: 767px ){
-            margin-left: 0;
+            @media(max-width: 767px) {
+                margin-left: 0;
                 padding-left: 0;
                 padding-right: 0;
             }
-            .col-md-8{
-                    border: 1px solid rgba(0,0,0,0.125);
-    border-radius: .25rem;
-    padding-top: 20px;
-    padding-bottom: 20px;
+            .col-md-8 {
+                border: 1px solid rgba(0, 0, 0, 0.125);
+                border-radius: .25rem;
+                padding-top: 20px;
+                padding-bottom: 20px;
             }
         }
         .col-md-8.container.editProfile {
