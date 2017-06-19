@@ -20,7 +20,8 @@
                 margin-bottom: 10px;
                 #img-upload{
                   border-bottom-right-radius: 0px;
-                  border-bottom-left-radius: 0px;  
+                  border-bottom-left-radius: 0px; 
+                  max-height: 400px; 
                 }
                 @media(max-width: 767px) {
                     margin-left: 15px;
