@@ -18,6 +18,10 @@
                 width: 100%;
                 margin-top: 5px;
                 margin-bottom: 10px;
+                #img-upload{
+                  border-bottom-right-radius: 0px;
+                  border-bottom-left-radius: 0px;  
+                }
                 @media(max-width: 767px) {
                     margin-left: 15px;
                     margin-right: 14px;
