@@ -1,0 +1,21 @@
+    .col-md-4{
+            margin-bottom: 25px;
+    }
+.container.search {
+    .card-header {
+        text-align: left;
+    }
+    .list-group {
+        .list-group-item {
+            .row {
+                width: 100%;
+                img {
+                    border-radius: 3px;
+                }
+                a.detalle {
+                    float: right;
+                }
+            }
+        }
+    }
+}

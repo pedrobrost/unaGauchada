@@ -40,6 +40,8 @@ class PublicationController extends Controller
        return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
     }
 
+
+
     public function publishCreateAction(Request $request){
 
         if(!$this->getUser()->getCredits()==0){
@@ -83,5 +85,11 @@ class PublicationController extends Controller
         }
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
+
+
+  public function searchAction(){
+       return $this->render('PublicationBundle:Search:advancedSearch.html.twig');
+    }
+
 
 }
