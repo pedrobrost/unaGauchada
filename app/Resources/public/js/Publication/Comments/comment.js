@@ -9,12 +9,12 @@ $(".close").click(function(){
 
 
 $("#comment").click(function(){
-    $(".writecomment").show();
+    $(".writecomment").fadeIn("500");
     $("#comment").hide();
 });
 
 $("#cancelComment").click(function(){
-    $(".writecomment").hide();
+    $(".writecomment").fadeOut("10");
     $("#comment").show();
     $('textarea').val('');
     $("#commentForm").validate().resetForm();
