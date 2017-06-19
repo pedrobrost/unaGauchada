@@ -1,3 +1,12 @@
 .btn-filter,.btn-filter:active, .btn-filter:hover{
    outline: none !important;
 }
+
+.list-group-item{
+    .col-md-4{
+        margin-bottom: 0px;
+        img{
+            margin-top: 10px;
+        }
+    }
+}
