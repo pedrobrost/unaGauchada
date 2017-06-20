@@ -10,7 +10,26 @@ $(".close").click(function(){
 var last=null;
 var isActive=false;
 
+$("#postularseBtn").click(function(){
+        if((last != null) && (isActive)){
+      $('#' + last).hide();
+      $('button[data-target="' + last + '"]').fadeIn('10');
+      $('textarea').val('');
+      $("#form" + last).validate().resetForm();
+    }
+    $("#postularse").fadeIn("10");
+      $(this).hide();
+      last=$(this).data('target');
+      isActive = true;
+});
+
 $("#comment").click(function(){
+    if((last != null) && (isActive)){
+      $('#' + last).hide();
+      $('button[data-target="' + last + '"]').fadeIn('10');
+      $('textarea').val('');
+      $("#form" + last).validate().resetForm();
+    }
     $("#writecomment").fadeIn("500");
       $(this).hide();
       last=$(this).data('target');
@@ -19,8 +38,8 @@ $("#comment").click(function(){
 
 $('.replyButton').on('click', function () {
     if((last != null) && (isActive)){
-      $('#' + last).hide();
-      $('button[data-target="' + last + '"]').fadeIn('slow');
+      $('#' + last).fadeOut('50');
+      $('button[data-target="' + last + '"]').fadeIn('10');
       $('textarea').val('');
       $("#form" + last).validate().resetForm();
     }
@@ -34,7 +53,7 @@ $('.replyButton').on('click', function () {
 $('.cancelComment').on('click', function () {
       var $target = $(this).data('target');
       $('#' + $target).hide();
-      $('button[data-target="' + $target + '"]').fadeIn('slow');
+      $('button[data-target="' + $target + '"]').show();
       $('textarea').val('');
       $("#form" + last).validate().resetForm();
       isActive = false;

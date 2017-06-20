@@ -16,8 +16,10 @@
                 <ul class="list-group list-group-flush">
                     {% if is_granted('comment', publication) %} 
                         {{ create.comment('Agregue su comentario', 'writecomment') }} 
-                    {% endif %} 
-
+                    {% endif %}
+                    {% if is_granted('submit', publication) %}
+                        {{ create.submission('Postularse en "'~ publication.title ~ '"', 'postularse') }} 
+                    {% endif %}  
                     {% include 'PublicationBundle:Publications:comments.html.twig'%}
                 </ul>
             </div>
