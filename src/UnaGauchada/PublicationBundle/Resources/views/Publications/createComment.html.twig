@@ -1,10 +1,12 @@
 {% macro comment(name, id) %}
 
-<div id="{{id}}" class="escribirComentario">
+<div id="{{id}}" class="escribirComentario" >
     <li class="list-group-item header">
         <h6>{{name}}</h6>
     </li>
-    <li class="list-group-item">
+    <li class="list-group-item" style="
+    background-color: #FAFAFA;
+">
         <div class="media">
             <img class="comment d-flex mr-3 rounded" src=" {{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del usuario">
             <div class="media-body">
