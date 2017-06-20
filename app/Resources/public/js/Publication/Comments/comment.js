@@ -7,14 +7,15 @@ $(".close").click(function(){
     $("#popUpSuccess").hide();
 });
 
+var last=null;
+var isActive=false;
 
 $("#comment").click(function(){
     $("#writecomment").fadeIn("500");
-    $("#comment").hide();
+      $(this).hide();
+      last=$(this).data('target');
+      isActive = true;
 });
-
-var last=null;
-var isActive=false;
 
 $('.replyButton').on('click', function () {
     if((last != null) && (isActive)){
