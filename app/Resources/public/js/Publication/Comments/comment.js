@@ -21,7 +21,7 @@ $('.replyButton').on('click', function () {
       $('#' + last).hide();
       $('button[data-target="' + last + '"]').fadeIn('slow');
       $('textarea').val('');
-      $("#commentForm").validate().resetForm();
+      $("#form" + last).validate().resetForm();
     }
       var $target = $(this).data('target');
       $('#' + $target).fadeIn('slow');
@@ -35,7 +35,7 @@ $('.cancelComment').on('click', function () {
       $('#' + $target).hide();
       $('button[data-target="' + $target + '"]').fadeIn('slow');
       $('textarea').val('');
-      $("#commentForm").validate().resetForm();
+      $("#form" + last).validate().resetForm();
       isActive = false;
 });
 

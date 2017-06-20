@@ -1,7 +1,7 @@
-$('#commentForm').validate({
+$('.commentForm').each(function() {  // attach to all form elements on page
+        $(this).validate({
             rules: {
                 message: {
-                    required: true,
                 },
             },
             messages: {
@@ -24,3 +24,4 @@ $('#commentForm').validate({
                 form.submit();
             },
         });
+              });
