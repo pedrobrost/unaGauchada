@@ -1,3 +1,5 @@
+{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
+
 <li class="list-group-item">
     <div class="media">
         <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Imagen del usuario que comenta">
@@ -9,7 +11,7 @@
             </div>
             {% elseif app.user == publication.user and not comment.response %}
             <div class="btn-group pull-right" role="group">
-                <button type="button" class="btn btn-sm btn-info">
+                <button type="button" id="" class="replyButton btn btn-sm btn-default" data-target={{'response' ~ comment.id}}>
                 <i class="fa fa-reply" aria-hidden="true"></i></button>
             </div>
             {% endif %}
@@ -34,7 +36,9 @@
                 </div>
             </div>
             {% endif %}
-
         </div>
     </div>
 </li>
+{% if app.user == publication.user and not comment.response %}
+{{ create.comment("Responde a " ~ comment.user.name ~ " " ~ comment.user.lastname, 'response' ~ comment.id) }} 
+ {% endif %}

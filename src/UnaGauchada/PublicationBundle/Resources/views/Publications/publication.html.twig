@@ -1,4 +1,5 @@
 {% import 'utils/modal.html.twig' as modal %}
+{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
 {% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %} 
 
@@ -12,10 +13,9 @@
         <div class="col-md-9">
             <div class="card">
                 {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %} 
-
-                <ul class="list-group list-group-flush writecomment">
+                <ul class="list-group list-group-flush">
                     {% if is_granted('comment', publication) %} 
-                        {% include'PublicationBundle:Publications:addComment.html.twig' %} 
+                        {{ create.comment('Agregue su comentario', 'writecomment') }} 
                     {% endif %} 
 
                     {% include 'PublicationBundle:Publications:comments.html.twig'%}

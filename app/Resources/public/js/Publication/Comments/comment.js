@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(".writecomment").hide();
+    $(".escribirComentario").hide();
 });    
 
 
@@ -9,16 +9,36 @@ $(".close").click(function(){
 
 
 $("#comment").click(function(){
-    $(".writecomment").fadeIn("500");
+    $("#writecomment").fadeIn("500");
     $("#comment").hide();
 });
 
-$("#cancelComment").click(function(){
-    $(".writecomment").fadeOut("10");
-    $("#comment").show();
-    $('textarea').val('');
-    $("#commentForm").validate().resetForm();
+var last=null;
+var isActive=false;
+
+$('.replyButton').on('click', function () {
+    if((last != null) && (isActive)){
+      $('#' + last).hide();
+      $('button[data-target="' + last + '"]').fadeIn('slow');
+      $('textarea').val('');
+      $("#commentForm").validate().resetForm();
+    }
+      var $target = $(this).data('target');
+      $('#' + $target).fadeIn('slow');
+      $(this).hide();
+      last=$target;
+      isActive = true;
 });
+
+$('.cancelComment').on('click', function () {
+      var $target = $(this).data('target');
+      $('#' + $target).hide();
+      $('button[data-target="' + $target + '"]').fadeIn('slow');
+      $('textarea').val('');
+      $("#commentForm").validate().resetForm();
+      isActive = false;
+});
+
 
 
 $(function() {
