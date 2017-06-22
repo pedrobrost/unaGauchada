@@ -22,7 +22,9 @@
         }
         .col-md-8.container.editProfile {
             margin-top: 0px;
-            border: 1px solid rgba(0, 0, 0, 0.125);
+            border: 1px solid rgba(0, 0, 0, 0.125);    
+            border-radius: 6px;
+            padding-top: 15px;
         }
     }
 }
