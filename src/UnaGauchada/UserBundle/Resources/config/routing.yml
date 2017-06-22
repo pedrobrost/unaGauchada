@@ -2,3 +2,19 @@ user_photo:
     path:     /{id}/photo
     defaults: { _controller: UserBundle:User:photo }
     methods: [GET]
+<<<<<<< HEAD
+=======
+
+user_profile:
+  path:       /profile
+  defaults: { _controller: UserBundle:User:profile }
+
+user_profile_edit:
+  path:       /profile/edit
+  defaults: { _controller: UserBundle:User:edit }
+
+user_submissions:
+  path:       /submissions
+  defaults: { _controller: UserBundle:User:submissions }
+
+>>>>>>> routing
