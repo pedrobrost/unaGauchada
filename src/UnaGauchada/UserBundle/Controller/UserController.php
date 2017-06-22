@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     public function profileAction(){
-
+        return $this->render('UserBundle:Profile:profile.html.twig');
     }
 
     public function editAction(){
