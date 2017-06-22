@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     public function editAction(){
-
+        return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig');
     }
 
     public function submissionsAction(){
