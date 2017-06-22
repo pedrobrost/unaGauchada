@@ -82,10 +82,12 @@ class PublicationController extends Controller
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
-
-  public function searchAction(){
-       return $this->render('PublicationBundle:Search:advancedSearch.html.twig');
+    public function searchAction(){
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig');
     }
 
+    public function submissionsAction(Publication $publication){
+
+    }
 
 }
