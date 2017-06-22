@@ -29,7 +29,7 @@ class UserController extends Controller
     }
 
     public function submissionsAction(){
-
+        return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
     }
 
 

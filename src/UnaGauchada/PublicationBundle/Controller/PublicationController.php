@@ -85,7 +85,7 @@ class PublicationController extends Controller
     }
 
     public function submissionsAction(Publication $publication){
-        return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
+
     }
 
 }
