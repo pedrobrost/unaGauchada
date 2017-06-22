@@ -34,3 +34,41 @@ $(function () {
         }
     })
 });
+
+$(document).ready(function() {
+    $("#calificar").hide();
+});    
+
+var last=null;
+var isActive=false;
+
+
+$("#calificarButton").click(function(){
+    $("#calificar").fadeIn("500");
+    $(this).attr('style', 'visibility: hidden;');
+});
+
+$("#puntuar").click(function(){
+    $("#calificar").hide();
+    $("#calificarButton").attr('style', 'visibility: visible;');
+});
+
+$("#cancelar").click(function(){
+    $("#calificar").hide();
+    $("#calificarButton").attr('style', 'visibility: visible;');
+});
+
+
+$('.replyButton').on('click', function () {
+    if((last != null) && (isActive)){
+      $('#' + last).fadeOut('50');
+      $('button[data-target="' + last + '"]').fadeIn('10');
+      $('textarea').val('');
+      $("#form" + last).validate().resetForm();
+    }
+      var $target = $(this).data('target');
+      $('#' + $target).fadeIn('slow');
+      $(this).hide();
+      last=$target;
+      isActive = true;
+});
