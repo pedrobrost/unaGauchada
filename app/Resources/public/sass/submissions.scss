@@ -36,7 +36,8 @@
                         }
                     }
                 }
-                #contact-list, #chosenUser {
+                #contact-list,
+                #chosenUser {
                     .name {
                         font-size: 1.7em;
                         font-weight: 700;
@@ -62,15 +63,29 @@
                 }
             }
         }
-        .profilePic{
-        .btn {
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            float: middle;
-            margin-top: 10px;
+        .profilePic {
+            .btn {
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                float: middle;
+                margin-top: 10px;
+            }
         }
-        }
+    }
+}
+
+#calificar {
+    textarea {
+        width: 99%;
+        margin: 0 auto;
+        height: auto;
+        resize: none;
+        outline: none;
+        border-radius: 3px;
+        font-size: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.190);
+        margin-bottom: 15px;
     }
 }
 
