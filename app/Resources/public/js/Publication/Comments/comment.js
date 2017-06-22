@@ -25,13 +25,13 @@ $("#comment").click(function(){
 
 $('.replyButton').on('click', function () {
     if((last != null) && (isActive)){
-      $('#' + last).fadeOut('50');
+      $('#' + last).hide();
       $('button[data-target="' + last + '"]').fadeIn('10');
       $('textarea').val('');
       $("#form" + last).validate().resetForm();
     }
       var $target = $(this).data('target');
-      $('#' + $target).fadeIn('slow');
+      $('#' + $target).fadeIn('250');
       $(this).hide();
       last=$target;
       isActive = true;
