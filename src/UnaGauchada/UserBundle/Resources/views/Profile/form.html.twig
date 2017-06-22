@@ -9,6 +9,8 @@
           </div>
            <div class="card-block">
             <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }} </small>
+            <br>
+            <small> <i class="fa fa-line-chart" aria-hidden="true"></i> {% if app.user.calification == 1 %} 1 punto {% else %} {{app.user.calification}} puntos {% endif %} </small>
         </div>
         </div>
       </div><div class="col-md-8 container editProfile ">
@@ -20,7 +22,6 @@
   <h1>{{app.user.name}} {{app.user.lastname}}</h1>
   <hr>
     <div class="row">
-      
       <div class="col-md-12 personal-info">
         <div class="form-group">
           <label class="col-lg-5 control-label">Email:</label>
@@ -38,6 +39,12 @@
           <label class="col-lg-5 control-label">Teléfono:</label>
           <div class="col-lg-11">
             <input class="form-control" type="tel" value="{{app.user.phone}}" readonly="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Creditos disponibles:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="tel" value="{{app.user.credits}}" readonly="">
           </div>
         </div>
   </div>
