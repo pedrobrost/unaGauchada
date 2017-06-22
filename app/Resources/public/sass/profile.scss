@@ -4,6 +4,10 @@
         .col.col-md-3.profilePic {
             margin-left: 25px;
             margin-bottom: 25px;
+            #img-upload{
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
             @media(max-width: 767px) {
                 margin-left: 0;
                 padding-left: 0;
