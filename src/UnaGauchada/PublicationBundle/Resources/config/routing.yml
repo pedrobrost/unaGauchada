@@ -13,6 +13,11 @@ publish_create:
     defaults: { _controller: PublicationBundle:Publication:publishCreate }
     methods:  [POST]
 
+publication_search:
+    path:     /search
+    defaults: { _controller: PublicationBundle:Publication:search }
+    methods:  [GET]
+
 publication_image:
     path:     /{id}/image
     defaults: { _controller: PublicationBundle:Publication:image }
@@ -21,11 +26,6 @@ publication_image:
 publication_show:
     path:     /{id}
     defaults: { _controller: PublicationBundle:Publication:show }
-    methods:  [GET]
-
-publication_search:
-    path:     /search
-    defaults: { _controller: PublicationBundle:Publication:search }
     methods:  [GET]
 
 publication_submissions:
