@@ -48,7 +48,7 @@
         {% endif %} 
 
         {% if is_granted('edit', publication)%}
-        <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
+        <a href="{{ path('publication_submissions', {'id': publication.id}) }}" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
     </div>
 
     {% include 'PublicationBundle:Publications:comments.html.twig' %}

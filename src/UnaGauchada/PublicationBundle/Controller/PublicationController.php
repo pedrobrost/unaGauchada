@@ -32,14 +32,9 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
-    //public function publishAction(){
-    //  return $this->render('PublicationBundle:Creation:creation.html.twig');
-    //}
-
     public function publishAction(){
-      return $this->render('PublicationBundle:Submissions:list.html.twig');
+      return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
-
 
     public function publishCreateAction(Request $request){
 
@@ -90,7 +85,7 @@ class PublicationController extends Controller
     }
 
     public function submissionsAction(Publication $publication){
-
+        return $this->render('PublicationBundle:Submissions:list.html.twig');
     }
 
 }
