@@ -32,15 +32,9 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
     }
 
-    //public function publishAction(){
-    //   return $this->render('PublicationBundle:Creation:creation.html.twig');
-    //}
-
     public function publishAction(){
-       return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
+       return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
-
-
 
     public function publishCreateAction(Request $request){
 
@@ -86,10 +80,12 @@ class PublicationController extends Controller
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
+    public function searchAction(){
 
-  public function searchAction(){
-       return $this->render('PublicationBundle:Search:advancedSearch.html.twig');
     }
 
+    public function submissionsAction(Publication $publication){
+        return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
+    }
 
 }
