@@ -27,6 +27,17 @@
                     background: rgba(0, 0, 0, 0);
                     transition: background 0.5s ease;
                     cursor: pointer;
+                    .input-group{
+                        height: 100%;
+                        .input-group-btn{
+                            height: 100%;
+                            width: 100%;
+                            .btn-file{
+                                height: 100%;
+                                opacity: 0;
+                            }
+                        }
+                    }
                 }
                 #img-upload {
                     border-bottom-right-radius: 0px;
