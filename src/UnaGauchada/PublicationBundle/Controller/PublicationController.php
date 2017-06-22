@@ -80,4 +80,12 @@ class PublicationController extends Controller
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
+    public function searchAction(){
+
+    }
+
+    public function submissionsAction(Publication $publication){
+
+    }
+
 }
