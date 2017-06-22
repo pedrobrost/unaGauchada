@@ -5,13 +5,21 @@
     .no-results{
         .card-header{
             text-align: center;
-            i{
+            i.fa-search{
                 font-size: 175px;
             }
+            .btn{
+                margin-top: 25px;
+                cursor:pointer;
+                            }
         }
     }
     .card-header {
         text-align: left;
+        .btn.detalle{
+            float: right;
+            margin-top: 7px;
+        }
     }
     .list-group {
         .list-group-item {

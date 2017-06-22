@@ -5,17 +5,14 @@
             <h1>Resultados de busqueda</h1>
             <h2 class="lead"> No se encontraron publicaciones que coincidan con <strong class="text-primary">Perro</strong></h2>
             <i class="fa fa-search" aria-hidden="true"></i>
+            <br>
+                    <a class="btn btn-outline-primary" href="{{path('publication_page')}}">Volver al Inicio</a>
         </div>
         </div>
-
-        <br>
 
     <div class="card">
         <div class="card-header">
-        <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio" href="#" style="
-    float: right;
-    margin-top: 7px;
-"><i class="fa fa-reply" aria-hidden="true"></i></a>
+        <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio" href="{{path('publication_page')}}"><i class="fa fa-reply" aria-hidden="true"></i></a>
             <h1>Resultados de busqueda</h1>
             <h2 class="lead"><strong class="text-primary">3</strong> publicaciones fueron encontradas con la palabra <strong class="text-primary">Perro</strong></h2>
         </div>
