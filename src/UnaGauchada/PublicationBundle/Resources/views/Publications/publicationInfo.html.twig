@@ -41,7 +41,7 @@
         {% endif %} 
 
         {% if is_granted('submit', publication) %}
-            <button id="postularseBtn" class="card-link btn btn-primary" data-target="postularse" >Postularse</button> 
+            <button id="postularseBtn" class="card-link btn btn-primary" data-toggle="modal" data-target="#myModal">Postularse</button> 
         {% endif %} 
         
         {% if is_granted('unsubmit', publication) %}

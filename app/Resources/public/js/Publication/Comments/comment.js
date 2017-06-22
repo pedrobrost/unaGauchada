@@ -10,19 +10,6 @@ $(".close").click(function(){
 var last=null;
 var isActive=false;
 
-$("#postularseBtn").click(function(){
-        if((last != null) && (isActive)){
-      $('#' + last).hide();
-      $('button[data-target="' + last + '"]').fadeIn('10');
-      $('textarea').val('');
-      $("#form" + last).validate().resetForm();
-    }
-    $("#postularse").fadeIn("10");
-      $(this).hide();
-      last=$(this).data('target');
-      isActive = true;
-});
-
 $("#comment").click(function(){
     if((last != null) && (isActive)){
       $('#' + last).hide();
