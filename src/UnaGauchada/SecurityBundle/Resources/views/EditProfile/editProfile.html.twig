@@ -1,0 +1,28 @@
+{% import 'utils/modal.html.twig' as modal %} 
+
+{% extends 'base.html.twig' %} 
+
+{% block body %} 
+
+{{ modal.item('Esta a punto de salir sin guardar sus cambios, ¿Está seguro que desea continuar?') }}
+
+<div class="edit">
+
+  <div class="container alert alert-danger text-center" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    <strong>Ups!</strong> El email que ingresaste ya esta registrado en el sistema.
+  </div>
+
+  {% include 'UGSecurityBundle:EditProfile:form.html.twig' %}
+
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/EditProfile/editProfileValidation.js') }}"></script>
+<script src="{{ asset('dist/js/EditProfile/profilePhoto.js') }}"></script>
+{% endblock %}

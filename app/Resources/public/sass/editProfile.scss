@@ -1,0 +1,44 @@
+.edit {
+    max-width: 1000px;
+    margin: 0 auto;
+    .alert-danger {
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+    .container.editProfile {
+        margin-top: 40px;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        .row {
+            margin-top: 15px;
+            .profilePic {
+                width: 100%;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                #img-upload{
+                  border-bottom-right-radius: 0px;
+                  border-bottom-left-radius: 0px; 
+                  max-height: 400px; 
+                }
+                @media(max-width: 767px) {
+                    margin-left: 15px;
+                    margin-right: 14px;
+                }
+                h6 {
+                    font-size: 14px;
+                }
+            }
+            .personal-info {
+                button {
+                    float: right;
+                }
+                button:first-of-type {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
