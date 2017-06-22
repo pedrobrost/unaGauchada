@@ -28,13 +28,7 @@ publication_show:
     defaults: { _controller: PublicationBundle:Publication:show }
     methods:  [GET]
 
-<<<<<<< HEAD
-publication_search:
-    path:     /search
-    defaults: { _controller: PublicationBundle:Publication:search }
-=======
 publication_submissions:
     path:     /{id}/submissions
     defaults: { _controller: PublicationBundle:Publication:submissions }
->>>>>>> routing
     methods:  [GET]
