@@ -15,16 +15,23 @@
         <div class="card">
           <div>
             <img id='img-upload' src="{{ path('user_photo', {'id': app.user.id}) }}" class="card-img-bottom rounded" />
-            <div class="card-footer text-muted">
-              Cambiar Imagen
-            </div>
-            <div class="input-group">
-              <input type="text" class="form-control" readonly>
-              <span class="input-group-btn">
-                <span class="btn btn-secondary btn-file"  >
-                    <i class="fa fa-folder-open-o" aria-hidden="true" ></i> Buscar… <input type="file" id="imgInp" name="image" accept="image/*" >
+              <div class="overlay">            
+            <div class="input-group" style="
+    height: 100%;
+">
+              <input type="text" class="form-control" readonly="" style="display: none;" title="">
+              <span class="input-group-btn" style="
+    height: 100%;
+    width: 100%;
+">
+                <span class="btn btn-secondary btn-file" style="height: 100%; opacity:0" >
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i><input type="file" id="imgInp" name="image" accept="image/*" aria-invalid="false" title=" ">
                 </span>
               </span>
+            </div></div>
+              <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
+            <div class="card-footer text-muted">
+              Cambiar Imagen
             </div>
           </div>
         </div>
