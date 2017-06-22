@@ -1,6 +1,18 @@
-a.btn.btn-primary{
+a.btn.btn-primary {
     cursor: pointer;
     color: white;
+}
+
+#myModal {
+    textarea {
+        width: 90%;
+        height: auto;
+        resize: none;
+        outline: none;
+        border-radius: 3px;
+        font-size: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.190);
+    }
 }
 
 .container.publication {
@@ -28,9 +40,9 @@ a.btn.btn-primary{
             .media {
                 width: 100%;
                 img.comment {
-                width: 64px;
-                height: 64px;
-            }
+                    width: 64px;
+                    height: 64px;
+                }
             }
             .media-body {
                 textarea {
@@ -40,7 +52,7 @@ a.btn.btn-primary{
                     outline: none;
                     border-radius: 3px;
                     font-size: 15px;
-                    border: 1px solid rgba(0,0,0,0.190);
+                    border: 1px solid rgba(0, 0, 0, 0.190);
                 }
             }
         }
