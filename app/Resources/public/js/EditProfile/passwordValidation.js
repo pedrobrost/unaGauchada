@@ -5,7 +5,7 @@ $('#passwordForm').validate({
                 },
                 _confirmPass: {
                     minlength: 6,
-                    equalTo: '#pass',
+                    equalTo: '#_newPass',
                 },
             },
             messages: {
