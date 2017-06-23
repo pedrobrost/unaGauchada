@@ -27,7 +27,7 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 82.5%;
+                height: 100%;
                 background: rgba(0, 0, 0, 0);
                 transition: background 0.5s ease;
                 cursor: pointer;
@@ -60,6 +60,13 @@
             }
         }
         .personal-info {
+            #passwb{
+                float: right;
+                width: 10%;
+            }
+            #passwi{
+                width: 89%;
+            }
             button {
                 float: right;
             }

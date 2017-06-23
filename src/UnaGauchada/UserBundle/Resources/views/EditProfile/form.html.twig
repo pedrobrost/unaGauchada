@@ -60,12 +60,8 @@
 <div class="form-group">
           <label class="col-lg-5 control-label">Contraseña:</label>
           <div class="col-lg-11">
-            <a class="btn btn-primary" style="
-    float: right;
-    width: 10%;
-"><i class="fa fa-pencil" aria-hidden="true"></i></a><input class="form-control" id="phone" type="password" name="phone" value="123456" readonly="" style="
-    width: 89%;
-">
+            <a href="{{ path('user_password_edit') }}" class="btn btn-primary" id="passwb" data-toggle="tooltip" data-placement="left" data-original-title="Cambiar contraseña"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <input class="form-control" id="passwi" type="password" value="123456" readonly>
           </div>
         </div>
         <div class="form-group">
