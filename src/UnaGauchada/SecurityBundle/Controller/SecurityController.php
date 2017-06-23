@@ -64,20 +64,33 @@ class SecurityController extends Controller
     public function editAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+
+        $auxUser = new User;
+        $auxUser
+            ->setName($user->getName())
+            ->setLastName($user->getLastName())
+            ->setEmail($user->getEmail())
+            ->setPhone($user->getPhone());
+
         $user
             ->setName($request->get('name'))
             ->setLastName($request->get('lastName'))
             ->setEmail($request->get('email'))
-            ->setPlainPassword($request->get('password'))
-            ->setPassword('chunk')
-            ->setSalt('chunk')
-            ->setPhone($request->get('phone'))
-            ->setImageBlob($request->files->get('image'));
+            ->setPhone($request->get('phone'));
+        if($request->files->get('image')){
+            $user->setImageBlob($request->files->get('image'));
+        }
+
         try {
             $em->persist($user);
             $em->flush();
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
-            return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig', array('emailUsed' => true));
+            $user
+                ->setName($auxUser->getName())
+                ->setLastName($auxUser->getLastName())
+                ->setEmail($auxUser->getEmail())
+                ->setPhone($auxUser->getPhone());
+            return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig', array('emailUsed' => true, 'email' => $request->get('email')));
         }
         return $this->redirectToRoute('user_profile');
     }
