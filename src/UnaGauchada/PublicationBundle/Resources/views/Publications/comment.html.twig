@@ -1,4 +1,4 @@
-{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
+{% import 'PublicationBundle:Publications:createResponse.html.twig' as create %}
 
 <li class="list-group-item">
     <div class="media">
@@ -40,5 +40,5 @@
     </div>
 </li>
 {% if app.user == publication.user and not comment.response %}
-{{ create.comment("Responde a " ~ comment.user.name ~ " " ~ comment.user.lastname, 'response' ~ comment.id) }} 
- {% endif %}
+{{ create.response("Responde a " ~ comment.user.name ~ " " ~ comment.user.lastname, 'response' ~ comment.id, publication, comment) }}
+{% endif %}

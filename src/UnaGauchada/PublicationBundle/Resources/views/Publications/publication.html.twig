@@ -30,14 +30,16 @@
 
 
 <div class="container publication">
+    {% if commentCreated %}
         {{popUp.success('¡Felicitaciones!','Tu comentario se ha creado exitosamente.')}}
+    {% endif %}
     <div class="row">
         <div class="col-md-9">
             <div class="card">
                 {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %} 
                 <ul class="list-group list-group-flush">
-                    {% if is_granted('comment', publication) %} 
-                        {{ create.comment('Agregue su comentario', 'writecomment') }} 
+                    {% if is_granted('comment', publication) %}
+                        {{ create.comment('Agregue su comentario', 'writecomment', publication) }}
                     {% endif %}
                     {% include 'PublicationBundle:Publications:comments.html.twig'%}
                 </ul>

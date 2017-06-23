@@ -1,4 +1,4 @@
-{% macro comment(name, id) %}
+{% macro comment(name, id, publication) %}
 
 <div id="{{id}}" class="escribirComentario" >
     <li class="list-group-item header">
@@ -8,7 +8,7 @@
         <div class="media">
             <img class="comment d-flex mr-3 rounded" src=" {{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del usuario">
             <div class="media-body">
-            <form id="{{"form" ~ id}}" class="commentForm" action="">
+            <form id="{{"form" ~ id}}" class="commentForm" method="post" action="{{ path('comment_create', {'id': publication.id}) }}">
                 <div class="btn-group pull-right" role="group">
                     <button type="button" id="cancelComment" data-target={{id}} class="cancelComment btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
                     <button type="submit" class="btn btn-sm btn-outline-success"><i class="fa fa-check" aria-hidden="true"></i></button>

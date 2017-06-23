@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use UnaGauchada\PublicationBundle\Entity\Comment;
 use UnaGauchada\PublicationBundle\Entity\Publication;
+use UnaGauchada\PublicationBundle\Entity\PublicationComment;
+use Symfony\Component\HttpFoundation\Response;
+use UnaGauchada\PublicationBundle\Entity\Response as CommentResponse;
 
 class PublicationController extends Controller
 {
@@ -28,8 +31,10 @@ class PublicationController extends Controller
         $request->getSession()->remove('publicationCreated');
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
     }
-    public function showAction(Publication $publication){
-        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
+    public function showAction(Publication $publication, Request $request){
+        $commentCreated = $request->getSession()->get('commentCreated', false);
+        $request->getSession()->remove('commentCreated');
+        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication, 'commentCreated' => $commentCreated));
     }
 
     public function publishAction(){
@@ -78,6 +83,35 @@ class PublicationController extends Controller
             return new Response($imageContent, 200, array('Content-Type' => $file->getMimeType()));
         }
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
+    }
+
+    public function commentAction(Publication $publication, Request $request){
+        $comment = new PublicationComment();
+        $comment
+            ->setUser($this->getUser())
+            ->setDate(new \DateTime())
+            ->setText($request->get('message'))
+            ->setPublication($publication);
+        $publication->addPublicationsComment($comment);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($publication);
+        $em->flush();
+
+        $request->getSession()->set('commentCreated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+
+    public function responseAction(Publication $publication, Comment $comment,  Request $request){
+        $response = new CommentResponse();
+        $response->setUser($this->getUser())
+            ->setDate(new \DateTime())
+            ->setText($request->get('message'));
+        $comment->setResponse($response);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 
 }
