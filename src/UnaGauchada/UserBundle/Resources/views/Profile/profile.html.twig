@@ -1,7 +1,10 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+       {{popUp.success('¡Felicitaciones!','Tus datos se modificaron correctamente.')}}
+       {{popUp.success('¡Felicitaciones!','Tu constraseña se modificó correctamente.')}}
+       
 <div class = "profile">
     {% include 'UserBundle:Profile:form.html.twig' %}
 </div>
