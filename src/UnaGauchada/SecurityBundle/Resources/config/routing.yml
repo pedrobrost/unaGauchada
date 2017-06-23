@@ -25,3 +25,8 @@ user_profile_edit:
   defaults: { _controller: UGSecurityBundle:Security:edit }
   methods:  [POST]
 
+user_password_change:
+  path:       /changePassword
+  defaults: { _controller: UGSecurityBundle:Security:editPassword }
+  methods:  [GET]
+

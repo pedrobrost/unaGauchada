@@ -95,4 +95,20 @@ class SecurityController extends Controller
         return $this->redirectToRoute('user_profile');
     }
 
+    public function editPasswordAction(){
+        return $this->render('UGSecurityBundle:EditProfile:password.html.twig');
+    }
+
+    public function changePasswordAction(Request $request){
+        $user = $this->getUser();
+        $user
+            ->setPlainPassword($request->get('password'))
+            ->setPassword('chunk')
+            ->setSalt('chunk');
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        return $this->redirectToRoute('user_profile');
+    }
+
 }
