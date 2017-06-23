@@ -1,5 +1,8 @@
 $(document).ready( function() {
 
+ 	$('[data-toggle="tooltip').on('click', function () {
+    $(this).tooltip('hide');});
+
         var imagen = $('#img-upload').attr('src');
 
     	$(document).on('change', '.btn-file :file', function() {
