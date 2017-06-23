@@ -26,7 +26,6 @@ class UserController extends Controller
     }
 
     public function editShowAction(){
-        //return $this->render('UserBundle:Profile:profile.html.twig');
         return $this->render('UserBundle:EditProfile:editProfile.html.twig');
     }
 
@@ -51,7 +50,6 @@ class UserController extends Controller
         }
 
         try {
-            $em->persist($user);
             $em->flush();
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
             $user

@@ -2,11 +2,9 @@
 
 namespace UnaGauchada\SecurityBundle\Controller;
 
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\UserBundle\Entity\User;
 
 class SecurityController extends Controller
@@ -54,6 +52,7 @@ class SecurityController extends Controller
         $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
         $this->get('security.token_storage')->setToken($token);
         $this->get('session')->set('_security_main', serialize($token));
+
         return $this->redirectToRoute('publication_homepage');
     }
 
@@ -62,15 +61,11 @@ class SecurityController extends Controller
     }
 
     public function changePasswordAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $user
-            ->setPlainPassword($request->get('password'))
-            ->setPassword('chunk')
-            ->setSalt('chunk');
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
+            ->setPlainPassword($request->get('password'));
         $em->flush();
-        
         return $this->redirectToRoute('user_profile');
     }
 
