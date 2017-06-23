@@ -46,13 +46,19 @@ a.btn.btn-primary {
             }
             .media-body {
                 textarea {
-                    width: 90%;
+                    width: 100%;
                     height: auto;
                     resize: none;
                     outline: none;
                     border-radius: 3px;
                     font-size: 15px;
                     border: 1px solid rgba(0, 0, 0, 0.190);
+                }
+                .pull-right.comment{
+                    margin-top: 10px;
+                    button{
+                        width: 72px;
+                    }
                 }
             }
         }

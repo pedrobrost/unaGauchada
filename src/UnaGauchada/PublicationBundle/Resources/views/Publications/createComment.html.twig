@@ -9,13 +9,13 @@
             <img class="comment d-flex mr-3 rounded" src=" {{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del usuario">
             <div class="media-body">
             <form id="{{"form" ~ id}}" class="commentForm" method="post" action="{{ path('comment_create', {'id': publication.id}) }}">
-                <div class="btn-group pull-right" role="group">
-                    <button type="button" id="cancelComment" data-target={{id}} class="cancelComment btn btn-sm btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    <button type="submit" class="btn btn-sm btn-outline-success"><i class="fa fa-check" aria-hidden="true"></i></button>
-                </div>
                 <h5 class="mt-0">  {{ app.user.name }} {{ app.user.lastName }}
                 </h5>
                 <textarea name="message" id="message" placeholder="Escriba aquí su comentario..."></textarea>
+                <div class="pull-right comment" role="group">
+                    <button type="button" id="cancelComment" data-target="writecomment" class="cancelComment btn btn-sm btn-secundary"> Cancelar </button>
+                    <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
+                </div>
             </form>
             </div>
         </div>
