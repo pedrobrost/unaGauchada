@@ -21,8 +21,15 @@ class UserController extends Controller
         return new Response(stream_get_contents($user->getPhoto()), 200, array('Content-Type' => $user->getPhotoMime()));
     }
 
-    public function profileAction(){
-        return $this->render('UserBundle:Profile:profile.html.twig');
+    public function profileAction(Request $request){
+
+        $infoEdited = $request->getSession()->get('infoEdited', false);
+        $request->getSession()->remove('infoEdited');
+
+        $passwordEdited = $request->getSession()->get('passwordEdited', false);
+        $request->getSession()->remove('passwordEdited');
+
+        return $this->render('UserBundle:Profile:profile.html.twig', array('infoEdited' => $infoEdited, 'passwordEdited' => $passwordEdited));
     }
 
     public function editShowAction(){
@@ -59,6 +66,8 @@ class UserController extends Controller
                 ->setPhone($auxUser->getPhone());
             return $this->render('UserBundle:EditProfile:editProfile.html.twig', array('emailUsed' => true, 'email' => $request->get('email')));
         }
+
+        $request->getSession()->set('infoEdited', true);
         return $this->redirectToRoute('user_profile');
     }
 

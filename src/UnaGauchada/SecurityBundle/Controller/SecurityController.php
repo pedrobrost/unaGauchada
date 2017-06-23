@@ -66,6 +66,8 @@ class SecurityController extends Controller
         $user
             ->setPlainPassword($request->get('password'));
         $em->flush();
+
+        $request->getSession()->set('passwordEdited', true);
         return $this->redirectToRoute('user_profile');
     }
 
