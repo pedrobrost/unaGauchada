@@ -1,113 +1,18 @@
  {% extends 'base.html.twig' %} {% block body %}
 
+
+{% include 'PublicationBundle:Submissions:point.html.twig' %}  
 <div class="container postulantes">
     <div class="row">
         <div class="submissions col-xs-12 col-sm-offset-3 col-sm-8">
-            <div class=" card panel panel-default" style="margin-bottom: 25px;">
-                <div class="panel-heading card-header c-list">
-                    <span class="title">Elegido</span>
-
-                </div>
-                <ul class="list-group" id="chosenUser">
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <img src="http://api.randomuser.me/portraits/women/41.jpg" class="img-responsive img-circle rounded">
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <span class="name">Doña Tota</span><br>
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;<span class="text-muted">Buen Tipo</span>
-                            <span class="visible-xs"> <br></span>
-                            <button class=" btn btn-primary elegir" id="calificarButton" href="">Calificar</button>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li class="list-group-item" id="calificar">
-                        <div class="btn-group col-xs-12" data-toggle="buttons" style="margin: 0 auto;">
-                            <label class="btn btn-primary" aria-pressed="true">
-                             <input type="radio" name="options" id="option1" autocomplete="off" checked> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                            </label>
-                            <label class="btn btn-primary" aria-pressed="true">
-                                <input type="radio" name="options" id="option2" autocomplete="off"> -
-                            </label>
-                            <label class="btn btn-primary" aria-pressed="true">
-                                <input type="radio" name="options" id="option3" autocomplete="off"> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
-                           </label>
-                        </div>
-                        <div class="btn-group col-xs-12 col-sm-12" data-toggle="buttons" style="margin: 0 auto;">
-                                                   <textarea placeholder="Puede agregar un comentario..."></textarea>
-                        </div>
-                        <div class="col-xs-12 col-sm-12">
-                        <button class=" btn btn-primary elegir" id="puntuar" style="margin-left: 10px;" >Calificar</button>
-                        <button class=" btn btn-secundary elegir" id="cancelar">Cancelar</button>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class=" card panel panel-default">
-                <div class="panel-heading card-header c-list">
-                    <span class="title">Postulados</span>
-                    <ul class="pull-right c-controls">
-                        <li><a href="#" class="hide-search" data-command="toggle-search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-                <div class="search" style="display: none;">
-                    <div class="col-xs-12">
-                        <div class="input-group c-search">
-                            <input type="text" placeholder="Ingrese el nombre del postulante" class="form-control" id="contact-list-search">
-                        </div>
-                    </div>
-                </div>
-                <ul class="list-group" id="contact-list">
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle rounded" />
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <span class="name">Scott Stevens</span><br/>
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp<span class="text-muted">Buen Tipo</span>
-                            <span class="visible-xs"></span>
-                            <p>Quiero ayudarte porque te se cuanto extrañas a tu gato</p>
-                            <a class=" btn btn-primary elegir" href="">Elegir</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="col-xs-12 col-sm-3">
-                            <img src="https://pbs.twimg.com/profile_images/829792458988982274/Jmc0f4Fb.jpg" alt="Scott Stevens" class="img-responsive img-circle rounded"
-                            />
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <span class="name">Franco Borrelli</span><br/>
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp<span class="text-muted">Buen Tipo</span>
-                            <span class="visible-xs"> <br/></span>
-                            <a class=" btn btn-primary elegir" href="">Elegir</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                </ul>
-            </div>
+            {% include 'PublicationBundle:Submissions:chosen.html.twig' %}   
+            {% include 'PublicationBundle:Submissions:postulados.html.twig' %}  
         </div>
-        <div class="col col-md-3 profilePic">
-            <div class="card">
-                <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="Publicación">
-                <div class="card-block">
-                    <h4 class="card-title">Perdi a mi gato</h4>
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                    <small class="text-muted">24/02/2018</small> <br>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <small class="text-muted">Animales</small>
-                </div>
-            </div>
-            <a href="#" class="btn btn-primary text-right">Volver a la Publicación</a>
-        </div>
+            {% include 'PublicationBundle:Submissions:publication.html.twig' %}  
 
     </div>
 </div>
-</div>
 
-</div>
-</div>
 
 {% endblock %} {% block javascripts %}
 <script src="{{ asset('dist/js/Publication/Submissions/searchable.js') }}"></script>

@@ -34,22 +34,3 @@ $(function () {
         }
     })
 });
-
-$(document).ready(function() {
-    $("#calificar").hide();
-});    
-
-$("#calificarButton").click(function(){
-    $("#calificar").fadeIn("500");
-    $(this).attr('style', 'visibility: hidden;');
-});
-
-$("#puntuar").click(function(){
-    $("#calificar").hide();
-    $("#calificarButton").attr('style', 'visibility: visible;');
-});
-
-$("#cancelar").click(function(){
-    $("#calificar").hide();
-    $("#calificarButton").attr('style', 'visibility: visible;');
-});
