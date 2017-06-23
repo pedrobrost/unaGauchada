@@ -9,7 +9,7 @@ $('#passwordForm').validate({
                 },
             },
             messages: {
-                _newPass: {
+                password: {
                     required: "Por favor ingrese la contraseña",
                     minlength: "Su contraseña debe tener al menos 6 caracteres"
                 },
