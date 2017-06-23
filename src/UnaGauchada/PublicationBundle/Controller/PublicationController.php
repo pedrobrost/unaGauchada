@@ -34,7 +34,17 @@ class PublicationController extends Controller
     public function showAction(Publication $publication, Request $request){
         $commentCreated = $request->getSession()->get('commentCreated', false);
         $request->getSession()->remove('commentCreated');
-        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication, 'commentCreated' => $commentCreated));
+
+        $responseCreated = $request->getSession()->get('responseCreated', false);
+        $request->getSession()->remove('responseCreated');
+
+        $postulated = $request->getSession()->get('postulated', false);
+        $request->getSession()->remove('postulated');
+
+        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication,
+                                                                                                'commentCreated' => $commentCreated,
+                                                                                                'responseCreated' => $responseCreated,
+                                                                                                'postulated' => $postulated));
     }
 
     public function publishAction(){
@@ -111,6 +121,8 @@ class PublicationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($comment);
         $em->flush();
+
+        $request->getSession()->set('responseCreated', true);
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 
