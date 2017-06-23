@@ -20,13 +20,6 @@ $('#editProfile_form').validate({
                     required: true,
                     email: true
                 },
-                pass: {
-                    minlength: 6,
-                },
-                confirmPass: {
-                    minlength: 6,
-                    equalTo: '#pass',
-                },
                 phone: {
                     required: true,
                     number: true,
@@ -40,15 +33,6 @@ $('#editProfile_form').validate({
                 lastName: {
                     required: "Por favor ingrese su apellido",
                     nonNumeric: "Por favor ingrese un apellido valido",
-                },
-                password: {
-                    required: "Por favor ingrese su contraseña",
-                    minlength: "Su contraseña debe tener al menos 6 caracteres"
-                },
-                confirmPass: {
-                    required: "Por favor re-ingrese su contraseña",
-                    minlength: "Su contraseña debe tener al menos 6 caracteres",
-                    equalTo: "La contraseña no coincide"
                 },
                 email: {
                     email: "Por favor ingrese un email valido",
