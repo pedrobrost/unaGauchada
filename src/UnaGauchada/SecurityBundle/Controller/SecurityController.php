@@ -47,7 +47,6 @@ class SecurityController extends Controller
         try {
             $em->persist($user);
             $em->flush();
-            //return $this->redirectToRoute('publication_homepage');
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
             return $this->render('UGSecurityBundle:Register:register.html.twig', array('emailUsed' => true));
         }
@@ -56,6 +55,31 @@ class SecurityController extends Controller
         $this->get('security.token_storage')->setToken($token);
         $this->get('session')->set('_security_main', serialize($token));
         return $this->redirectToRoute('publication_homepage');
+    }
+
+    public function editShowAction(){
+        return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig');
+    }
+
+    public function editAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user
+            ->setName($request->get('name'))
+            ->setLastName($request->get('lastName'))
+            ->setEmail($request->get('email'))
+            ->setPlainPassword($request->get('password'))
+            ->setPassword('chunk')
+            ->setSalt('chunk')
+            ->setPhone($request->get('phone'))
+            ->setImageBlob($request->files->get('image'));
+        try {
+            $em->persist($user);
+            $em->flush();
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+            return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig', array('emailUsed' => true));
+        }
+        return $this->redirectToRoute('user_profile');
     }
 
 }

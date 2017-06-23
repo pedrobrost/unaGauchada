@@ -15,3 +15,13 @@ signup:
     defaults:  { _controller: UGSecurityBundle:Security:signup }
     methods:  [POST]
 
+user_profile_edit_show:
+  path:       /profile/edit
+  defaults: { _controller: UGSecurityBundle:Security:editShow }
+  methods:  [GET]
+
+user_profile_edit:
+  path:       /profile/edit
+  defaults: { _controller: UGSecurityBundle:Security:edit }
+  methods:  [POST]
+
