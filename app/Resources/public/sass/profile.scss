@@ -1,5 +1,9 @@
 .container.profile {
-    padding-top: 40px;
+     padding-top: 40px;
+    #popUpSuccess {
+        position: relative;
+        margin-top: -5px;
+    }
     .row {
         .col.col-md-3.profilePic {
             margin-left: 25px;
