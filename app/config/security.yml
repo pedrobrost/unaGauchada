@@ -30,3 +30,4 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/publish, roles: ROLE_USER }
         - { path: ^/credits, roles: ROLE_USER }
+        - { path: ^/user, roles: ROLE_USER }
