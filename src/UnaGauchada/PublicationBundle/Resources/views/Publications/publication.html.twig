@@ -21,6 +21,11 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <a src="" class="btn btn-primary" style="cursor: pointer; color: white">Postularse</a>
+
+          <form method="post" action="{{ path('publication_submit', {id: publication.id}) }}">
+              <button type="submit">Pos</button>
+          </form>
+
       </div>
     </div>
   </div>

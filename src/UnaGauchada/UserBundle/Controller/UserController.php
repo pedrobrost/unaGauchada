@@ -20,6 +20,17 @@ class UserController extends Controller
         return new Response(stream_get_contents($user->getPhoto()), 200, array('Content-Type' => $user->getPhotoMime()));
     }
 
+    public function profileAction(){
+
+    }
+
+    public function editAction(){
+
+    }
+
+    public function submissionsAction(){
+
+    }
 
 
 }

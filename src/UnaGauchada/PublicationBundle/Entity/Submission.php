@@ -4,6 +4,7 @@ namespace UnaGauchada\PublicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UnaGauchada\PublicationBundle\Model\WaitingState;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Submission
@@ -49,6 +50,12 @@ class Submission
      */
     private $acceptedState;
 
+
+    public function __construct(User $user, Publication $publication){
+        $this->setUser($user);
+        $this->setPublication($publication);
+        $publication->addSubmission($this);
+    }
 
     public function getState(){
         if(!$this->acceptedState){
