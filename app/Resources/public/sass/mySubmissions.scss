@@ -5,12 +5,29 @@
 }
 
 .container.publication {
-    .row{
+    .row {
         width: 100%;
-        a.btn{
+        a.detalle {
             float: right;
             margin-top: -25px;
             width: 120px;
+        }
+    }
+    .no-results {
+        .card {
+            width: 100%;
+            border: 0;
+            text-align: center;
+            i {
+                font-size: 125px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            a.btn {
+                width: 200px;
+                margin: 0 auto;
+                margin-bottom: 10px;
+            }
         }
     }
     .col-md-2 {
