@@ -1,18 +1,48 @@
 {% import 'utils/modal.html.twig' as modal %}
-
+{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
+{% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %} 
 
 {% block body %}
+{% if is_granted('submit', publication) %}
+        {% include 'PublicationBundle:Publications:submission.html.twig'%}
+        {% elseif is_granted('delete', publication) %}
+        {{ modal.item("Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?") }}
+{% endif %}  
 
-{{  modal.item('Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?', 'publication_homepage') }}
 
 <div class="container publication">
+    {% if commentCreated %}
+        {{popUp.success('¡Felicitaciones!','Tu comentario se ha creado exitosamente.')}}
+    {% endif %}
+    {% if responseCreated %}
+        {{popUp.success('¡Felicitaciones!','Tu respuesta se ha creado exitosamente.')}}
+    {% endif %}
+    {% if postulated %}
+        {{popUp.success('¡Felicitaciones!','Te has postulado para ayudar a ' ~ publication.user.name ~ ' ' ~ publication.user.lastname ~ '.' )}}
+    {% endif %}
     <div class="row">
         <div class="col-md-9">
-        {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %}      
+            <div class="card">
+                {% include 'PublicationBundle:Publications:publicationInfo.html.twig' %} 
+                <ul class="list-group list-group-flush">
+                    {% if is_granted('comment', publication) %}
+                        {{ create.comment('Agregue su comentario', 'writecomment', publication) }}
+                    {% endif %}
+                    {% include 'PublicationBundle:Publications:comments.html.twig'%}
+                </ul>
+            </div>
         </div>
         {% include 'PublicationBundle:Publications:profile.html.twig' %}
     </div>
 </div>
 
-{% endblock %}
+{% endblock %} 
+
+{% if is_granted('comment', publication) %}
+    {% block javascripts %}    
+    <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+    <script src="{{ asset('dist/js/Publication/Comments/comment.js') }}"></script>
+    <script src="{{ asset('dist/js/Publication/Comments/commentsValidation.js') }}"></script>
+    {% endblock %} 
+{% endif %}

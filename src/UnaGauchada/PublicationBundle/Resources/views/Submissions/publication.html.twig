@@ -1,0 +1,13 @@
+<div class="col col-md-3 profilePic">
+    <div class="card">
+        <img class="card-img-top" width="100%" src="{{ url('publication_image', {'id': publication.id}) }}" alt="Publicación">
+        <div class="card-block">
+            <h4 class="card-title">{{ publication.title }}</h4>
+            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+            <small class="text-muted">{{ publication.limitDate | date("d/m/Y") }}</small> <br>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <small class="text-muted">{{ publication.category }}</small>
+        </div>
+    </div>
+    <a href="#" class="btn btn-primary text-right">Volver a la Publicación</a>
+</div>

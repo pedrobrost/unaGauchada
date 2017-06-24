@@ -1,8 +1,7 @@
-{% import 'header/navItem.html.twig' as navbar %}
-
 {% embed "header/dropdown.html.twig" %}
+    {% import 'header/navItem.html.twig' as navbar %}
 
-    {% block elements %} 
+    {% block elements %}
 
         {{ navbar.dropdownItem('Mi Perfil', 'fa-user-circle' ,'user_profile', 'myProfile') }}
 
@@ -14,11 +13,11 @@
 
         {{ navbar.dropdownItem('Mis Ayudas', 'fa-users') }}
 
-       <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div>
 
         {{ navbar.dropdownItem('Comprar Créditos', 'fa-shopping-cart', 'credits_purchase_amount', 'creditsPurchase') }}
 
-        <div id="creditsBar"class="dropdown-divider"></div>
+        <div id="creditsBar" class="dropdown-divider"></div>
 
 
         {{ navbar.dropdownItem('Ayuda', 'fa-info-circle') }}

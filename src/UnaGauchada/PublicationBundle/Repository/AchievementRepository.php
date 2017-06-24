@@ -14,9 +14,9 @@ class AchievementRepository extends \Doctrine\ORM\EntityRepository
 
     public function findFor(User $user){
         $qb = $this->createQueryBuilder('a')
-            ->where('a.min <= :calification')
-            ->andWhere('a.max >= :calification')
-            ->setParameter('calification', $user->getCalification())
+            ->where('a.min <= :score')
+            ->andWhere('a.max >= :score')
+            ->setParameter('score', $user->getScore())
             ->getQuery();
 
         return $qb->getSingleResult();

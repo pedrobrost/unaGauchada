@@ -1,8 +1,5 @@
 <div class="card">
-    {% if publication.image is defined %}
-    <img class="card-img-top" src="{{ url('publication_image', {'id': publication.id}) }}"> {% else
-    %}
-    <img class="card-img-top" src="{{ dist/img/logocard.jpg }}"> {% endif %}
+    <img class="card-img-top" src="{{ url('publication_image', {'id': publication.id}) }}">
     <div class="card-block">
         <h5 class="card-title">{{ publication.title }}</h5>
         <div class="row">
