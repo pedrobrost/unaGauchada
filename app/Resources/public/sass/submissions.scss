@@ -3,6 +3,11 @@
     .row {
         .submissions {
             margin: 0 auto;
+            .list-group {
+                .list-group-item {
+                    border: 0;
+                }
+            }
             .panel {
                 .c-list {
                     padding: 10px;
