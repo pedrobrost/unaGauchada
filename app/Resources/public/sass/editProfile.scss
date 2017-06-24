@@ -1,0 +1,101 @@
+.edit {
+    max-width: 1000px;
+    margin: 0 auto;
+    .alert-danger {
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+    .container.editProfile {
+        margin-top: 40px;
+        background-color: white;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 9px;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        .row {
+            margin-top: 15px;
+            .profilePic {
+                width: 100%;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                .card:hover .cambiarFoto {
+                    opacity: 1;
+                }
+            }
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0);
+                transition: background 0.5s ease;
+                cursor: pointer;
+                .input-group {
+                    height: 100%;
+                    .input-group-btn {
+                        height: 100%;
+                        width: 100%;
+                        .btn-file {
+                            height: 100%;
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+            #img-upload {
+                border-bottom-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                height: 218px;
+                @media(max-width: 848px) {
+                min-height: 250px;
+            }
+            }
+            @media(max-width: 767px) {
+                margin-left: 15px;
+                margin-right: 14px;
+            }
+            h6 {
+                font-size: 14px;
+            }
+        }
+        .personal-info {
+            #passwb{
+                float: right;
+                width: 10%;
+            }
+            #passwi{
+                width: 89%;
+            }
+            button {
+                float: right;
+            }
+            button:first-of-type {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+
+.profilePic:hover .overlay {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+}
+.cambiarFoto {
+    position: absolute;
+    top: 4px;
+    right: 7px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+    cursor: pointer;
+}
+.cambiarFoto a {
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+}

@@ -55,6 +55,7 @@ class UserListener implements EventSubscriber
             $this->recomputeChangeSet($args->getObjectManager(), $object);
         }
     }
+
     /**
      * Updates the user properties.
      *

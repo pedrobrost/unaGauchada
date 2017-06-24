@@ -1,0 +1,35 @@
+.container.profile {
+     padding-top: 40px;
+    #popUpSuccess {
+        position: relative;
+        margin-top: -5px;
+    }
+    .row {
+        .col.col-md-3.profilePic {
+            margin-left: 25px;
+            margin-bottom: 25px;
+            #img-upload{
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            @media(max-width: 767px) {
+                margin-left: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .col-md-8 {
+                border: 1px solid rgba(0, 0, 0, 0.125);
+                border-radius: .25rem;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        }
+        .col-md-8.container.editProfile {
+            margin-top: 0px;
+            border: 1px solid rgba(0, 0, 0, 0.125);    
+            border-radius: 6px;
+            padding-top: 15px;
+            padding-bottom: 5px;
+        }
+    }
+}
