@@ -101,7 +101,7 @@ class PublicationVoter extends Voter
 
     private function canUnsubmit(Publication $publication, User $user)
     {
-        return $user->hasSubmission($publication);
+        return ($user->hasSubmission($publication) && ($publication->getUser() != $user));
     }
 
 }

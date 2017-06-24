@@ -28,10 +28,6 @@ class UserController extends Controller
         return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig');
     }
 
-    public function editAction(){
-
-    }
-
     public function submissionsAction(){
         return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
     }
