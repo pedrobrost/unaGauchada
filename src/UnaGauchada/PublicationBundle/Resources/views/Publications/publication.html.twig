@@ -5,26 +5,7 @@
 
 {% block body %}
 {% if is_granted('submit', publication) %}
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ayudar a {{publication.user.name}} {{publication.user.lastname}} </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Estas a punto de postularte para ayudar a {{publication.user.name}} {{publication.user.lastname}} en su publicación "{{publication.title}}" </p>
-         <textarea name="message" id="message" placeholder="Escriba aquí un comentario opcional..." style="height: 29.9886px;width: 100%;"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <a src="" class="btn btn-primary" style="cursor: pointer; color: white">Postularse</a>
-      </div>
-    </div>
-  </div>
-</div>
+        {% include 'PublicationBundle:Publications:submission.html.twig'%}
         {% elseif is_granted('delete', publication) %}
         {{  modal.item("Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?") }} 
 {% endif %}  
