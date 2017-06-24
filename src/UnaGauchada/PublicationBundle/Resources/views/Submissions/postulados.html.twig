@@ -1,3 +1,4 @@
+{% if publication.submissions is not empty  %}
 <div class=" card panel panel-default">
     <div class="panel-heading card-header c-list">
         <span class="title">Postulados</span>
@@ -15,8 +16,9 @@
     <ul class="list-group" id="contact-list">
         {% for submission in publication.submissions %}
             {% include 'PublicationBundle:Submissions:submission.html.twig' %}
-        {% else %}
-            {# agregar cartel no postulados #}
         {% endfor %}
     </ul>
 </div>
+{% else %}
+    {% include 'PublicationBundle:Submissions:noSubmissions.html.twig' %}
+{% endif %}
