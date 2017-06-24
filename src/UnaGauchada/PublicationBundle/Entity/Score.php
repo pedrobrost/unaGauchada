@@ -98,4 +98,9 @@ class Score
     {
         return $this->points;
     }
+
+    public function newRateFor(Submission $submission, $message){
+        $submission->getState()->setRate(new Rate($this, $message));
+    }
+
 }

@@ -43,6 +43,12 @@ class Rate
     private $score;
 
 
+    public function __construct(Score $score, $message){
+        $this->setScore($score);
+        $this->setDate(new \DateTime());
+        $this->setMessage($message);
+    }
+
     /**
      * Get id
      *

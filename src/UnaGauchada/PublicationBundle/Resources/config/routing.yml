@@ -52,3 +52,8 @@ submissions_choose:
     path:     /{id}/choose/{submission}
     defaults: { _controller: PublicationBundle:Submission:choose}
     methods:  [POST]
+
+do_score:
+    path:     /{id}/{submission}/score
+    defaults: { _controller: PublicationBundle:Submission:score}
+    methods:  [POST]

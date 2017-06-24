@@ -7,17 +7,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form>
+            <form method="post" action="{{ path('do_score', {'id': publication.id, 'submission': chosen.id}) }}">
             <div class="modal-body">
                     <div class="" data-toggle="buttons">
                         <label class="btn btn-outline-danger" style="width:33%">
-                            <input type="radio" name="negative" id="negative" autocomplete="off" > <i class="fa fa-frown-o" aria-hidden="true"></i> &nbspNegativa
+                            <input type="radio" name="score" value="negative" autocomplete="off" > <i class="fa fa-frown-o" aria-hidden="true"></i> &nbspNegativa
                         </label>
                         <label class="btn btn-outline-primary" style="width:32%">
-                            <input type="radio" name="neutral" id="neutral" autocomplete="off"  > <i class="fa fa-meh-o" aria-hidden="true"></i> &nbspNeutral
+                            <input type="radio" name="score" value="neutral" autocomplete="off"  > <i class="fa fa-meh-o" aria-hidden="true"></i> &nbspNeutral
                         </label>
                         <label class="btn btn-outline-warning" style="width:33%">
-                            <input type="radio" name="positive" id="positive" autocomplete="off"  style="width:33%"> <i class="fa fa-smile-o" aria-hidden="true"></i> &nbspPositiva
+                            <input type="radio" name="score" value="positive" autocomplete="off"  style="width:33%"> <i class="fa fa-smile-o" aria-hidden="true"></i> &nbspPositiva
                         </label>
                     </div>
                     <textarea name="message" id="message" placeholder="Escriba aquí un comentario opcional" style="height: 29.9886px;width: 100%;"></textarea>

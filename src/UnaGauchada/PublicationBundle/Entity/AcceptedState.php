@@ -31,7 +31,7 @@ class AcceptedState extends SubmissionState
 
     /**
      * One Product has One Shipment.
-     * @ORM\OneToOne(targetEntity="Rate")
+     * @ORM\OneToOne(targetEntity="Rate", cascade={"persist"})
      * @ORM\JoinColumn(name="rate_id", referencedColumnName="id", nullable=true)
      */
     private $rate;

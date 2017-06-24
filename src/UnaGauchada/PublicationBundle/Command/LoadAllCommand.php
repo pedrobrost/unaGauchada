@@ -55,9 +55,9 @@ class LoadAllCommand extends ContainerAwareCommand
         $em->persist(new Achievement("Dios", 51, PHP_INT_MAX));
 
         //Scores
-        $em->persist(new Score('Negativo', -1));
-        $em->persist(new Score('Neutro', 0));
-        $em->persist(new Score('Positivo', 2));
+        $em->persist(new Score('negative', -1));
+        $em->persist(new Score('neutral', 0));
+        $em->persist(new Score('positive', 2));
 
         //Categories
         $em->persist(new Category("Viajes"));
