@@ -48,7 +48,7 @@ class SubmissionController extends Controller{
             ->setTo($receiver->getEmail())
             ->setBody(
                 $this->renderView(
-                    'PublicationBundle/Email/infoTransfer.html.twig',
+                    'PublicationBundle:Email:infoTransfer.html.twig',
                     array('user' => $from)
                 ),
                 'text/html'
