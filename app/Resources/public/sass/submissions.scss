@@ -1,21 +1,17 @@
 .container.postulantes {
     margin-top: 40px;
     .row {
+        .noSubmissions{
+          margin-bottom: 25px;
+          .no-results{
+              text-align: center;
+              .fa-users{
+                  font-size: 194px;
+                  margin-top: 37px;
+              }
+          }
+        }
         .submissions {
-            .img-responsive {
-                height: 140px;
-                object-fit: cover;
-                width: 100%;
-                @media(max-width: 1999px){
-                    height: 120px;
-                }
-               @media(max-width: 992px){
-                    height: 70px;
-                    margin-bottom: 52px;
-                }
-
-                
-            }
             margin: 0 auto;
             .list-group {
                 .list-group-item {
