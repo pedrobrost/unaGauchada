@@ -9,7 +9,7 @@
 namespace UnaGauchada\PublicationBundle\Model;
 
 
-class SubmissionState
+abstract class SubmissionState
 {
-
+    abstract public function getScore();
 }

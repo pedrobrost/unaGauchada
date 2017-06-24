@@ -179,8 +179,8 @@ class Submission
         return $this->acceptedState;
     }
 
-    public function getCalification(){
-        $this->getState()->getCalification();
+    public function getScore(){
+        $this->getState()->getScore();
     }
 
 
@@ -207,4 +207,9 @@ class Submission
     {
         return $this->message;
     }
+
+    public function getChosen(){
+        return $this->getState()->isChosen();
+    }
+
 }

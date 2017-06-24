@@ -567,12 +567,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCalification(){
-        $calificaion = 1;
+    public function getScore(){
+        $score = 1;
         foreach ($this->getSubmissions() as $submission) {
-            $calificaion += $submission->getCalification();
+            $score += $submission->getScore();
         }
-        return $calificaion;
+        return $score;
     }
 
     public function hasSubmission($publication){
