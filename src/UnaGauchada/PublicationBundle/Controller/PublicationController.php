@@ -135,11 +135,17 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Submissions:list.html.twig');
     }
 
-    public function submitAction(Publication $publication){
+    public function submitAction(Publication $publication, Request $request){
         $em = $this->getDoctrine()->getManager();
         $submission = new Submission($this->getUser(), $publication);
+        if($request->get('message') != ""){
+            $submission->setMessage($request->get('message'));
+        }
         $em->persist($submission); // ver si se puede sacar
         $em->flush();
+
+        $request->getSession()->set('postulated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 
 }
