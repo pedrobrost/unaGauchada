@@ -1,4 +1,4 @@
-<div class="col col-md-3 profilePic">
+<div class="col col-md-4 profilePic">
     <div class="card">
         <img class="card-img-top" width="100%" src="{{ url('publication_image', {'id': publication.id}) }}" alt="Publicación">
         <div class="card-block">
@@ -9,5 +9,5 @@
             <small class="text-muted">{{ publication.category }}</small>
         </div>
     </div>
-    <a href="#" class="btn btn-primary text-right">Volver a la Publicación</a>
+    <a href="{{ path('publication_show', {'id': publication.id}) }}" class="btn btn-primary text-right">Volver a la Publicación</a>
 </div>
