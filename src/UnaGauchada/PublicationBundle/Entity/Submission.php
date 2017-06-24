@@ -213,4 +213,8 @@ class Submission
         return $this->getState()->isChosen();
     }
 
+    public function hasScore(){
+        return $this->getState()->getRate();
+    }
+
 }
