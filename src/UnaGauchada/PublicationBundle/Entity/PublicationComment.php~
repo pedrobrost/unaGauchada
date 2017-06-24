@@ -14,7 +14,7 @@ class PublicationComment extends Comment
 {
     /**
      * One Product has One Shipment.
-     * @ORM\OneToOne(targetEntity="Response")
+     * @ORM\OneToOne(targetEntity="Response", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="response_id", referencedColumnName="id")
      */
     private $response;
