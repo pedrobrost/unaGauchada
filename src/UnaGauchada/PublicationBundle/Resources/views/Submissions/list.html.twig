@@ -1,7 +1,9 @@
  {% extends 'base.html.twig' %} {% block body %}
 
+{% if chosen %}
+    {% include 'PublicationBundle:Submissions:point.html.twig' %}
+{% endif %}
 
-{% include 'PublicationBundle:Submissions:point.html.twig' %}  
 <div class="container postulantes">
     <div class="row">
         <div class="submissions col-xs-12 col-sm-offset-3 col-sm-12 col-md-8"">
