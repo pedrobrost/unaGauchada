@@ -452,4 +452,8 @@ class Publication
         return null;
     }
 
+    public function isExpired(){
+        return (new \DateTime() >= $this->getLimitDate());
+    }
+
 }
