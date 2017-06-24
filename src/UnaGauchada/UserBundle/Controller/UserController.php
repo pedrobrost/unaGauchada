@@ -20,6 +20,21 @@ class UserController extends Controller
         return new Response(stream_get_contents($user->getPhoto()), 200, array('Content-Type' => $user->getPhotoMime()));
     }
 
+    public function profileAction(){
+        return $this->render('UserBundle:Profile:profile.html.twig');
+    }
+
+    public function editAction(){
+        return $this->render('UGSecurityBundle:EditProfile:editProfile.html.twig');
+    }
+
+    public function editAction(){
+
+    }
+
+    public function submissionsAction(){
+        return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
+    }
 
 
 }

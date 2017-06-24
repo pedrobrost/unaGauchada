@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class = "profile">
+    {% include 'UserBundle:Profile:form.html.twig' %}
+</div>
+
+{% endblock %}
+
+  {% block javascripts %}
+  <script src="{{ asset('dist/js/Profile/profileDisabled.js') }}"></script>
+  {% endblock %}

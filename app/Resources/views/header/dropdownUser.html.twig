@@ -3,15 +3,15 @@
 
     {% block elements %}
 
-        {{ navbar.dropdownItem('Mi Perfil', 'fa-user-circle') }}
+        {{ navbar.dropdownItem('Mi Perfil', 'fa-user-circle' ,'user_profile', 'myProfile') }}
 
-        <div class="dropdown-divider"></div>
+        <div id="profileBar" class="dropdown-divider"></div>
 
         {{ navbar.dropdownItem('Mis Publicaciones', 'fa-bookmark') }}
 
         <div class="dropdown-divider"></div>
 
-        {{ navbar.dropdownItem('Mis Ayudas', 'fa-users') }}
+        {{ navbar.dropdownItem('Mis Ayudas', 'fa-users', 'user_submissions') }}
 
         <div class="dropdown-divider"></div>
 
