@@ -9,8 +9,6 @@
         width: 100%;
         a.detalle {
             float: right;
-            margin-top: -25px;
-            width: 120px;
         }
     }
     .no-results {
@@ -46,9 +44,21 @@
         @media (min-width: 992px) {
             max-width: inherit;
         }
+        .card{
+            .card-header{
+                text-align: left;
+                h1{
+                    margin-top: 10px;
+                }
+                a.btn{
+                    margin-top: 12px;
+                }
+            }
+            .card-block{
+                padding: 0!important;
+            }
+        }
         .list-group-item {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
             .col-md-5 {
                 margin-bottom: 0px;
                 img {
