@@ -134,10 +134,8 @@ class PublicationController extends Controller
 
     public function submissionsAction(Publication $publication){
         $this->denyAccessUnlessGranted('edit', $publication);
-
         $chosen = $publication->getChosen();
-
-        return $this->render('PublicationBundle:Submissions:list.html.twig', array('publication' => $publication));
+        return $this->render('PublicationBundle:Submissions:list.html.twig', array('publication' => $publication, 'chosen' => $chosen));
     }
 
     public function submitAction(Publication $publication, Request $request){

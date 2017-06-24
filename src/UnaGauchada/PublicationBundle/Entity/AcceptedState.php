@@ -134,4 +134,9 @@ class AcceptedState extends SubmissionState
         }
     }
 
+    public function isChosen()
+    {
+        return true;
+    }
+
 }

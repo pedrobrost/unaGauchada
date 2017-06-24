@@ -12,4 +12,5 @@ namespace UnaGauchada\PublicationBundle\Model;
 abstract class SubmissionState
 {
     abstract public function getScore();
+    abstract public function isChosen();
 }

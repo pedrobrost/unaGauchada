@@ -445,11 +445,11 @@ class Publication
     }
     
     public function getChosen(){
-        $chosen = null;
         foreach ($this->getSubmissions() as $submission) {
-            $chosen = $submission->isChosen();
+            if($submission->isChosen())
+                return $submission->getUser();
         }
-        return $chosen;
+        return null;
     }
 
 }

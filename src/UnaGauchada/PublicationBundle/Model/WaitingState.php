@@ -23,4 +23,8 @@ class WaitingState extends SubmissionState
         return 0;
     }
 
+    public function isChosen()
+    {
+        return false;
+    }
 }

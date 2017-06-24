@@ -208,7 +208,7 @@ class Submission
         return $this->message;
     }
 
-    public function getChosen(){
+    public function isChosen(){
         return $this->getState()->isChosen();
     }
 
