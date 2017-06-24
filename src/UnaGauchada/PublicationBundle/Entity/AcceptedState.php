@@ -132,7 +132,7 @@ class AcceptedState extends SubmissionState
     }
 
     public function getScore(){
-        if(!$this->getRate()){
+        if($this->getRate()){
             return $this->getRate()->getPoints();
         }else{
             return 0;
