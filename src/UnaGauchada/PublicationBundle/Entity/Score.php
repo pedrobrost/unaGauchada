@@ -36,6 +36,11 @@ class Score
     private $points;
 
 
+    public function __construct($name, $points){
+        $this->setName($name);
+        $this->setPoints($points);
+    }
+
     /**
      * Get id
      *
