@@ -32,5 +32,8 @@ class UserController extends Controller
         return $this->render('UserBundle:MySubmissions:mySubmissions.html.twig');
     }
 
+    public function publicationsAction(){
+        return $this->render('UserBundle:MyPublications:myPublications.html.twig');
+    }
 
 }
