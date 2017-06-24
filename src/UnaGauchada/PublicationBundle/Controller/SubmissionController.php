@@ -41,9 +41,11 @@ class SubmissionController extends Controller{
     public function scoreAction(Publication $publication, Submission $submission, Request $request){
         $em = $this->getDoctrine()->getManager();
         $scoreRepository = $this->getDoctrine()->getRepository('PublicationBundle:Score');
-        $score = $scoreRepository->findByName($request->get('score'));
+        $score = $scoreRepository->findOneByName($request->get('score'));
         $score->newRateFor($submission, $request->get('message'));
         $em->flush();
+
+        return $this->redirectToRoute('submissions_show', array('id' => $publication->getId()));
     }
 
 }

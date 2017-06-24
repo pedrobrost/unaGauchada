@@ -63,10 +63,11 @@ class Submission
         $this->setPublication($publication);
         $this->setDate(new \DateTime());
         $publication->addSubmission($this);
+        $user->addSubmission($this);
     }
 
     public function getState(){
-        if(!$this->acceptedState){
+        if($this->acceptedState == null){
             return new WaitingState($this);
         }else{
             return $this->getAcceptedState();
@@ -180,7 +181,7 @@ class Submission
     }
 
     public function getScore(){
-        $this->getState()->getScore();
+        return $this->getState()->getScore();
     }
 
 
