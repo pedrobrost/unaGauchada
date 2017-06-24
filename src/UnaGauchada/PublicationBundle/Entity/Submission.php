@@ -46,7 +46,7 @@ class Submission
 
     /**
      * One Customer has One Cart.
-     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission")
+     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission", cascade={"persist"})
      */
     private $acceptedState;
 

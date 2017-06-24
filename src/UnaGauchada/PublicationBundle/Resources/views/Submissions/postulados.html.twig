@@ -26,8 +26,11 @@
                         <p>{{ submission.message }}</p>
                     {% endif %}
 
-
-                    <button class=" btn btn-primary elegir" href="">Elegir</button>
+                    {% if not chosen %}
+                    <form method="post" action="{{ path('submissions_choose', {'id': publication.id, 'submission': submission.id}) }}">
+                        <button type="submit" class=" btn btn-primary elegir" href="">Elegir</button>
+                    </form>
+                    {% endif %}
 
                 </div>
                 <div class="clearfix"></div>

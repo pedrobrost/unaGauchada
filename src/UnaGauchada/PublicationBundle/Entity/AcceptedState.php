@@ -44,6 +44,11 @@ class AcceptedState extends SubmissionState
     private $submission;
 
 
+    public function __construct($submission){
+        $this->setSubmission($submission);
+        $this->setDate(new \DateTime());
+    }
+
     /**
      * Get id
      *
