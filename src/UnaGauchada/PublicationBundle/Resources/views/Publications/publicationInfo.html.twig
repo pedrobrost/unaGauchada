@@ -37,7 +37,7 @@
         </div>
 
         {% if is_granted('comment', publication) %}
-            <button id="comment" class="card-link btn btn-outline-primary" data-target="writecomment">Comentar</button> 
+            <button id="comment" class="btn btn-outline-primary" data-target="writecomment">Comentar</button> 
         {% endif %} 
 
         {% if is_granted('submit', publication) %}
@@ -49,5 +49,5 @@
         {% endif %} 
 
         {% if is_granted('edit', publication)%}
-        <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
+        <a href="#" class=" btn btn-primary">Ver Postulados</a> {% endif %}
     </div>
