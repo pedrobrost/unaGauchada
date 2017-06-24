@@ -1,6 +1,7 @@
 <div class="col-md-10 container search ">
              <ul class="list-group list-group-flush">
-                 <li class="list-group-item" data-status="elegido">
+              {% include 'UserBundle:MyPublications:noResults.html.twig' %} 
+                 <li class="list-group-item" data-status="active">
                      <div class="row">
                          <div class="col-md-5">
                              <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
@@ -8,17 +9,17 @@
                          <div class="col-md-7">
                              <div class="card-block">
                                  <h4 class="card-title">Salvemos el mundo</h4>
-                                 <p><strong>Estado: <span class="text-success">Elegido</span></strong></p>
+                                 <p><strong>Estado: <span class="text-success">Activa</span></strong></p>
                                  <small>
                                      <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
                                      <br>
                                      <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
                                  </small>
                              </div>
-                             <a class="btn btn-primary detalle" href="#">Contacto</a></div>
+                             <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
                      </div>
                  </li>
-                   <li class="list-group-item" data-status="rechazado">
+                   <li class="list-group-item" data-status="closed">
                      <div class="row">
                          <div class="col-md-5">
                              <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
@@ -26,7 +27,7 @@
                          <div class="col-md-7">
                              <div class="card-block">
                                  <h4 class="card-title">Necesito plata para ir a Roma</h4>
-                                 <p><strong>Estado: <span class="text-danger">Rechazado</span></strong></p>
+                                 <p><strong>Estado: <span class="text-danger">Cerrada</span></strong></p>
                                  <small>
                                      <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
                                      <br>
@@ -35,7 +36,7 @@
                              </div>
                      </div>
                  </li>
-                 <li class="list-group-item" data-status="pendiente">
+                 <li class="list-group-item" data-status="canceled">
                      <div class="row">
                          <div class="col-md-5">
                              <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
@@ -43,7 +44,7 @@
                          <div class="col-md-7">
                              <div class="card-block">
                                  <h4 class="card-title">Reencontrarme con Ramirez</h4>
-                                 <p><strong>Estado: <span class="text-muted">Pendiente</span></strong></p>
+                                 <p><strong>Estado: <span class="text-muted">Cancelada</span></strong></p>
                                  <small>
                                      <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
                                      <br>
@@ -53,7 +54,7 @@
                              <a class="btn btn-primary detalle" href="#">Ver Detalle</a></div>
                      </div>
                  </li>
-                 <li class="list-group-item" data-status="elegido">
+                 <li class="list-group-item" data-status="active">
                      <div class="row">
                          <div class="col-md-5">
                              <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
@@ -61,14 +62,14 @@
                          <div class="col-md-7">
                              <div class="card-block">
                                  <h4 class="card-title">Perdi a mi tucan</h4>
-                                 <p><strong>Estado: <span class="text-success">Elegido</span></strong></p>
+                                 <p><strong>Estado: <span class="text-success">Activa</span></strong></p>
                                  <small>
                                      <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
                                      <br>
                                      <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
                                  </small>
                              </div>
-                             <a class="btn btn-primary detalle" href="#">Contacto</a></div>
+                             <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
                      </div>
                  </li>
              </ul>
