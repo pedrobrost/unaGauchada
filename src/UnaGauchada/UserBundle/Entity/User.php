@@ -577,7 +577,7 @@ class User implements UserInterface
 
     public function hasSubmission($publication){
         foreach ($publication->getSubmissions() as $submission) {
-            if($submission->getPublication() == $publication){
+            if($submission->getUser() == $this){
                 return true;
             }
         }
