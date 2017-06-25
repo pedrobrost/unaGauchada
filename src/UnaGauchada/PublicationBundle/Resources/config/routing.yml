@@ -26,3 +26,13 @@ publication_show:
     path:     /publication/{id}
     defaults: { _controller: PublicationBundle:Publication:show }
     methods:  [GET]
+
+comment_create:
+    path:     /{id}/comment
+    defaults: { _controller: PublicationBundle:Publication:comment}
+    methods:  [POST]
+
+response_create:
+    path:     /{id}/{comment}/response
+    defaults: { _controller: PublicationBundle:Publication:response}
+    methods:  [POST]
