@@ -35,36 +35,36 @@ class SubmissionController extends Controller{
         $submission->setAcceptedState(new AcceptedState($submission));
         $em->flush();
 
-        $this->sendEmailToOwner($publication->getUser(), $submission->getUser());
-        $this->sendEmailToChosen($publication->getUser(), $submission->getUser());
+        $this->sendEmailToOwner($publication, $submission->getUser());
+        $this->sendEmailToChosen($publication, $submission->getUser());
 
         return $this->redirectToRoute('submissions_show', array('id' => $publication->getId()));
     }
 
-    public function sendEmailToOwner($owner, $chosen){
+    public function sendEmailToOwner($publication, $chosen){
         $message = new \Swift_Message('Has elegido a ' . $chosen->getName() . ' para que te ayude.');
         $message
             ->setFrom('unagauchadabss@gmail.com')
-            ->setTo($owner->getEmail())
+            ->setTo($publication->getUser()->getEmail())
             ->setBody(
                 $this->renderView(
                     'PublicationBundle:Email:infoChosen.html.twig',
-                    array('chosen' => $chosen)
+                    array('publication' => $publication, 'chosen' => $chosen)
                 ),
                 'text/html'
             );
         $this->get('mailer')->send($message);
     }
 
-    public function sendEmailToChosen($owner, $chosen){
-        $message = new \Swift_Message( $owner->getName() . ' te ha elegido para que lo ayudes');
+    public function sendEmailToChosen($publication, $chosen){
+        $message = new \Swift_Message( $publication->getUser()->getName() . ' te ha elegido para que lo ayudes');
         $message
             ->setFrom('unagauchadabss@gmail.com')
             ->setTo($chosen->getEmail())
             ->setBody(
                 $this->renderView(
                     'PublicationBundle:Email:infoOwner.html.twig',
-                    array('owner' => $owner)
+                    array('publication' => $publication)
                 ),
                 'text/html'
             );
