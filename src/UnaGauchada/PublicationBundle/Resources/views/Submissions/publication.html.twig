@@ -9,5 +9,9 @@
             <small class="text-muted">{{ publication.category }}</small>
         </div>
     </div>
-    <a href="{{ path('publication_show', {'id': publication.id}) }}" class="btn btn-primary text-right">Volver a la Publicación</a>
+    {% if not chosen %}
+        <a href="{{ path('publication_show', {'id': publication.id}) }}" class="btn btn-primary text-right">Volver a la Publicación</a>
+    {% else %}
+        {#<a href="{{ path('my_publications', {'id': publication.id}) }}" class="btn btn-primary text-right">Volver a mis Publicaciones</a>#}
+    {% endif %}
 </div>
