@@ -5,6 +5,7 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Publication
@@ -442,4 +443,5 @@ class Publication
     {
         return $this->publicationsComments;
     }
+
 }

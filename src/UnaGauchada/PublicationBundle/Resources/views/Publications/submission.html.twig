@@ -7,16 +7,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form method="post" action="{{ path('publication_submit', {'id': publication.id}) }}">
       <div class="modal-body">
         <p>Estas a punto de postularte para ayudar a {{publication.user.name}} {{publication.user.lastname}} en su publicación "{{publication.title}}". </p>
          <textarea name="message" id="message" placeholder="Escriba aquí un comentario opcional." style="height: 50px;width: 100%;"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <form>
         <button type="submit" class="btn btn-primary">Postularse</button>
-        </form>
       </div>
+      </form>
     </div>
   </div>
 </div>

@@ -12,6 +12,7 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 use UnaGauchada\PublicationBundle\Entity\PublicationComment;
 use Symfony\Component\HttpFoundation\Response;
 use UnaGauchada\PublicationBundle\Entity\Response as CommentResponse;
+use UnaGauchada\PublicationBundle\Entity\Submission;
 
 class PublicationController extends Controller
 {
@@ -48,7 +49,7 @@ class PublicationController extends Controller
     }
 
     public function publishAction(){
-       return $this->render('PublicationBundle:Creation:creation.html.twig');
+      return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
 
     public function publishCreateAction(Request $request){
@@ -123,6 +124,27 @@ class PublicationController extends Controller
         $em->flush();
 
         $request->getSession()->set('responseCreated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+    
+    public function searchAction(){
+
+    }
+
+    public function submissionsAction(Publication $publication){
+        return $this->render('PublicationBundle:Submissions:list.html.twig');
+    }
+
+    public function submitAction(Publication $publication, Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $submission = new Submission($this->getUser(), $publication);
+        if($request->get('message') != ""){
+            $submission->setMessage($request->get('message'));
+        }
+        $em->persist($submission); // ver si se puede sacar
+        $em->flush();
+
+        $request->getSession()->set('postulated', true);
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 

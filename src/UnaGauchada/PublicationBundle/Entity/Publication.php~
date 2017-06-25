@@ -5,6 +5,7 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Publication
@@ -94,7 +95,7 @@ class Publication
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication")
+     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication", cascade={"persist", "remove"})
      */
     private $publicationsComments;
 
@@ -442,4 +443,5 @@ class Publication
     {
         return $this->publicationsComments;
     }
+
 }
