@@ -35,21 +35,36 @@ class SubmissionController extends Controller{
         $submission->setAcceptedState(new AcceptedState($submission));
         $em->flush();
 
-        $this->sendEmail($publication->getUser(), $submission->getUser());
-        $this->sendEmail($submission->getUser(), $publication->getUser());
+        $this->sendEmailToOwner($publication->getUser(), $submission->getUser());
+        $this->sendEmailToChosen($publication->getUser(), $submission->getUser());
 
         return $this->redirectToRoute('submissions_show', array('id' => $publication->getId()));
     }
 
-    public function sendEmail($from, $receiver){
-        $message = new \Swift_Message('Hello Email');
+    public function sendEmailToOwner($owner, $chosen){
+        $message = new \Swift_Message('Has elegido a ' . $chosen->getName() . ' para que te ayude.');
         $message
             ->setFrom('unagauchadabss@gmail.com')
-            ->setTo($receiver->getEmail())
+            ->setTo($owner->getEmail())
             ->setBody(
                 $this->renderView(
-                    'PublicationBundle:Email:infoTransfer.html.twig',
-                    array('user' => $from)
+                    'PublicationBundle:Email:infoChosen.html.twig',
+                    array('chosen' => $chosen)
+                ),
+                'text/html'
+            );
+        $this->get('mailer')->send($message);
+    }
+
+    public function sendEmailToChosen($owner, $chosen){
+        $message = new \Swift_Message( $owner->getName() . ' te ha elegido para que lo ayudes');
+        $message
+            ->setFrom('unagauchadabss@gmail.com')
+            ->setTo($chosen->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'PublicationBundle:Email:infoOwner.html.twig',
+                    array('owner' => $owner)
                 ),
                 'text/html'
             );
