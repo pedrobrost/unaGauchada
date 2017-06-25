@@ -31,7 +31,7 @@ class AcceptedState extends SubmissionState
 
     /**
      * One Product has One Shipment.
-     * @ORM\OneToOne(targetEntity="Rate")
+     * @ORM\OneToOne(targetEntity="Rate", cascade={"persist"})
      * @ORM\JoinColumn(name="rate_id", referencedColumnName="id", nullable=true)
      */
     private $rate;
@@ -43,6 +43,11 @@ class AcceptedState extends SubmissionState
      */
     private $submission;
 
+
+    public function __construct($submission){
+        $this->setSubmission($submission);
+        $this->setDate(new \DateTime());
+    }
 
     /**
      * Get id
@@ -126,12 +131,17 @@ class AcceptedState extends SubmissionState
         return $this->submission;
     }
 
-    public function getCalification(){
-        if(!$this->getRate()){
+    public function getScore(){
+        if($this->getRate()){
             return $this->getRate()->getPoints();
         }else{
             return 0;
         }
+    }
+
+    public function isChosen()
+    {
+        return true;
     }
 
 }

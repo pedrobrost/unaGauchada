@@ -12,7 +12,11 @@
 @import "credits";
 @import "errors";
 @import "search";
+@import "submissions";
+@import "editProfile";
+@import "profile";
 
+/* Change the white to any color ;) */
 
 body{
    cursor: default;
@@ -38,6 +42,12 @@ button{
     cursor: pointer
 }
 
+.modal-open {
+  padding-right: 0 !important;
+}
+html {
+  overflow-y: scroll !important;
+}
 .select2.select2-container.select2-container--default{
     width: 100%!important;
     }

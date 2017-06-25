@@ -36,6 +36,11 @@ class Score
     private $points;
 
 
+    public function __construct($name, $points){
+        $this->setName($name);
+        $this->setPoints($points);
+    }
+
     /**
      * Get id
      *
@@ -93,4 +98,9 @@ class Score
     {
         return $this->points;
     }
+
+    public function newRateFor(Submission $submission, $message){
+        $submission->getState()->setRate(new Rate($this, $message));
+    }
+
 }
