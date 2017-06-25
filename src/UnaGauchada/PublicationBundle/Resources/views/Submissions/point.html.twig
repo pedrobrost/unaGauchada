@@ -4,27 +4,29 @@
             <div class="modal-header">
                 <h5 class="modal-title"> Calificación para Franco Borrelli </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form method="post" action="{{ path('do_score', {'id': publication.id, 'submission': chosen.id}) }}">
             <div class="modal-body">
-<div class="" data-toggle="buttons">
-  <label class="btn btn-outline-danger" style="width:33%">
-    <input type="radio" name="options" id="option1" autocomplete="off" > <i class="fa fa-frown-o" aria-hidden="true"></i> &nbspNegativa
-  </label>
-  <label class="btn btn-outline-primary"style="width:32%">
-    <input type="radio" name="options" id="option2" autocomplete="off"  > <i class="fa fa-meh-o" aria-hidden="true"></i> &nbspNeutral
-  </label>
-  <label class="btn btn-outline-warning"style="width:33%">
-    <input type="radio" name="options" id="option3" autocomplete="off"  style="width:33%"> <i class="fa fa-smile-o" aria-hidden="true"></i> &nbspPositiva
-  </label>
-</div>
-                <textarea name="message" id="message" placeholder="Escriba aquí un comentario opcional" style="height: 29.9886px;width: 100%;"></textarea>
+                    <div class="" data-toggle="buttons" style="text-align: center">
+                        <label class="btn btn-outline-danger" style="width:25%">
+                            <input type="radio" name="score" value="negative" autocomplete="off" > <i class="fa fa-frown-o" aria-hidden="true"></i> &nbspNegativa
+                        </label>
+                        <label class="btn btn-outline-primary" style="width:25%">
+                            <input type="radio" name="score" value="neutral" autocomplete="off"  > <i class="fa fa-meh-o" aria-hidden="true"></i> &nbspNeutral
+                        </label>
+                        <label class="btn btn-outline-warning" style="width:25%">
+                              <input type="radio" name="score" value="positive" autocomplete="off"  style="width:33%"> <i class="fa fa-smile-o" aria-hidden="true"></i> &nbspPositiva
+                        </label>
+                    </div>
+                    <textarea name="message" id="message" placeholder="Escriba aquí un comentario opcional" style="height: 50px;width: 100%;"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <a src="" class="btn btn-primary" style="cursor: pointer; color: white">Postularse</a>
+                <button type="submit" class="btn btn-primary" style="width: 100px">Enviar</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

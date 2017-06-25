@@ -1,12 +1,19 @@
 <li class="list-group-item">
     <div class="col-xs-12 col-sm-3">
-        <img src="" alt="Scott Stevens" class="img-responsive img-circle rounded"/>
+        <img src="{{ path('user_photo', {'id': submission.user.id}) }}" alt="{{ submission.user.name }} {{ submission.user.lastName }}" class="img-responsive img-circle rounded"/>
     </div>
     <div class="col-xs-12 col-sm-9">
-        <span class="name"></span><br/>
-        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp<span class="text-muted"></span>
-        <span class="visible-xs"> <br/></span>
-        <a class=" btn btn-primary elegir" href="">Elegir</a>
+        <span class="name">{{ submission.user.name }} {{ submission.user.lastName }}</span>
+        <br>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp<span class="text-muted">{{ achievement_service.getFor(submission.user) }} </span>
+        <span class="visible-xs"></span> {% if submission.message %}
+        <p>{{ submission.message }}</p>
+        {% endif %} {% if not chosen %}
+        <form method="post" action="{{ path('submissions_choose', {'id': publication.id, 'submission': submission.id}) }}">
+            <button type="submit" class=" btn btn-primary elegir" href="">Elegir</button>
+        </form>
+        {% endif %}
+
     </div>
     <div class="clearfix"></div>
 </li>

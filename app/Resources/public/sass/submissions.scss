@@ -1,8 +1,23 @@
 .container.postulantes {
     margin-top: 40px;
     .row {
+        .noSubmissions {
+            margin-bottom: 25px;
+            .no-results {
+                text-align: center;
+                .fa-users {
+                    font-size: 151px;
+                    margin-top: 18px;
+                }
+            }
+        }
         .submissions {
             margin: 0 auto;
+            .list-group {
+                .list-group-item {
+                    border: 0;
+                }
+            }
             .panel {
                 .c-list {
                     padding: 10px;
@@ -36,25 +51,67 @@
                         }
                     }
                 }
-                #contact-list,
+                #contact-list{
+                    .name {
+                        font-size: 1.7em;
+                        font-weight: 700;
+                    }
+                    img {
+                        width: 100%;
+                        height: 142px;
+                        object-fit: cover;
+                        margin-bottom: 0px;
+                        @media(max-width: 1199px) {
+                            width: 100%;
+                            height: 112px;
+                        }
+                        @media(max-width: 990px) {
+                            width: 100%;
+                            height: 72px;
+                 
+                        }
+                        @media(max-width: 767px) {
+                            width: 100%;
+                            height: 87px;
+                        }
+                        @media(max-width: 575px) {
+                            width: 100%;
+                            height: auto;
+                            max-height: 455px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
                 #chosenUser {
                     .name {
                         font-size: 1.7em;
                         font-weight: 700;
                     }
                     img {
-                        width: 74%;
-                        @media(max-width: 1999px) {
-                            width: 90%;
+                        width: 100%;
+                        height: 142px;
+                        object-fit: cover;
+                        margin-bottom: 0px;
+                        @media(max-width: 1199px) {
+                            width: 100%;
+                            margin-bottom: 20px;
+                            height: 112px;
                         }
                         @media(max-width: 990px) {
-                            width: 110%;
+                            width: 100%;
+                            margin-bottom: 50px;
+                            height: 72px;
+                 
                         }
                         @media(max-width: 767px) {
-                            width: 140%;
+                            width: 100%;
+                            height: 87px;
                         }
                         @media(max-width: 575px) {
                             width: 100%;
+                            height: auto;
+                            max-height: 455px;
+                            margin-bottom: 10px;
                         }
                     }
                 }
@@ -64,6 +121,10 @@
             }
         }
         .profilePic {
+            img{
+                max-height: 250px;
+                object-fit: cover;
+            }
             .btn {
                 align-items: center;
                 justify-content: center;
@@ -86,7 +147,7 @@
         font-size: 15px;
         border: 1px solid rgba(0, 0, 0, 0.190);
         margin-bottom: -5px;
-        margin-top: 10px;
+        margin-top: 3px;
     }
 }
 

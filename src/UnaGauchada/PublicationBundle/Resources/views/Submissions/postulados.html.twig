@@ -1,3 +1,4 @@
+{% if publication.submissions is not empty  %}
 <div class=" card panel panel-default">
     <div class="panel-heading card-header c-list">
         <span class="title">Postulados</span>
@@ -14,29 +15,10 @@
     </div>
     <ul class="list-group" id="contact-list">
         {% for submission in publication.submissions %}
-            <li class="list-group-item">
-                <div class="col-xs-12 col-sm-3">
-                    <img src="{{ path('user_photo', {'id': publication.user.id}) }}" alt="Scott Stevens" class="img-responsive img-circle rounded" />
-                </div>
-                <div class="col-xs-12 col-sm-9">
-                    <span class="name">{{ submission.user.name }} {{ submission.user.lastName }}</span><br/>
-                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp<span class="text-muted">{{ achievement_service.getFor(publication.user) }} </span>
-                    <span class="visible-xs"></span>
-                    {% if submission.message %}
-                        <p>{{ submission.message }}</p>
-                    {% endif %}
-
-                    {% if not chosen %}
-                    <form method="post" action="{{ path('submissions_choose', {'id': publication.id, 'submission': submission.id}) }}">
-                        <button type="submit" class=" btn btn-primary elegir" href="">Elegir</button>
-                    </form>
-                    {% endif %}
-
-                </div>
-                <div class="clearfix"></div>
-            </li>
-        {% else %}
-            {# agregar cartel no postulados #}
+            {% include 'PublicationBundle:Submissions:submission.html.twig' %}
         {% endfor %}
     </ul>
 </div>
+{% else %}
+    {% include 'PublicationBundle:Submissions:noSubmissions.html.twig' %}
+{% endif %}

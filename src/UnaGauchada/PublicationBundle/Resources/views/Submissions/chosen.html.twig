@@ -1,18 +1,23 @@
 <div class=" card panel panel-default" style="margin-bottom: 25px;">
     <div class="panel-heading card-header c-list">
         <span class="title">Elegido</span>
-
     </div>
     <ul class="list-group" id="chosenUser">
         <li class="list-group-item">
             <div class="col-xs-12 col-sm-3">
-                <img src="{{ path('user_photo', {'id': publication.user.id}) }}" class="img-responsive img-circle rounded">
+                <img src="{{ path('user_photo', {'id': chosen.user.id}) }}" class="img-responsive img-circle rounded">
             </div>
             <div class="col-xs-12 col-sm-9">
-                <span class="name">{{ chosen.name }} {{ chosen.lastName }}</span><br>
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;<span class="text-muted">{{ achievement_service.getFor(publication.user) }}</span>
-                <span class="visible-xs"> <br></span>
-                <button class=" btn btn-primary elegir" id="calificarButton" data-toggle="modal" data-target="#myModal">Calificar</button>
+                <span class="name">{{ chosen.user.name }} {{ chosen.user.lastName }}</span><br>
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;<span class="text-muted">{{ achievement_service.getFor(chosen.user) }}</span>
+                <p>{{chosen.message}}</p>
+                <span class="visible-xs"> <br> </span>
+
+
+                {% if (not chosen.hasScore) and publication.isExpired %}
+                    <button class=" btn btn-primary elegir" id="calificarButton" data-toggle="modal" data-target="#myModal">Calificar</button>
+                {% endif %}
+
             </div>
             <div class="clearfix"></div>
         </li>
