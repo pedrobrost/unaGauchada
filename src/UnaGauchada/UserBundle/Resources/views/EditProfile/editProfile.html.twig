@@ -8,14 +8,16 @@
 
 <div class="edit">
 
+    {% if emailUsed is defined  %}
   <div class="container alert alert-danger text-center" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-    <strong>Ups!</strong> El email que ingresaste ya esta registrado en el sistema.
+    <strong>Ups!</strong> El email "{{ email }}" ya está registrado en el sistema.
   </div>
+  {% endif %}
 
-  {% include 'UGSecurityBundle:EditProfile:form.html.twig' %}
+  {% include 'UserBundle:EditProfile:form.html.twig' %}
 
 </div>
 

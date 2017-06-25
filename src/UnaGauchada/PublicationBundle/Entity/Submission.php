@@ -46,7 +46,7 @@ class Submission
 
     /**
      * One Customer has One Cart.
-     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission")
+     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission", cascade={"persist"})
      */
     private $acceptedState;
 
@@ -179,8 +179,8 @@ class Submission
         return $this->acceptedState;
     }
 
-    public function getCalification(){
-        $this->getState()->getCalification();
+    public function getScore(){
+        $this->getState()->getScore();
     }
 
 
@@ -207,4 +207,9 @@ class Submission
     {
         return $this->message;
     }
+
+    public function isChosen(){
+        return $this->getState()->isChosen();
+    }
+
 }

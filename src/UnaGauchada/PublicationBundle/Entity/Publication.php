@@ -443,5 +443,13 @@ class Publication
     {
         return $this->publicationsComments;
     }
+    
+    public function getChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return $submission->getUser();
+        }
+        return null;
+    }
 
 }

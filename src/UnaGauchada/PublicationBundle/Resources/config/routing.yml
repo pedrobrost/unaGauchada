@@ -38,12 +38,17 @@ response_create:
     defaults: { _controller: PublicationBundle:Publication:response}
     methods:  [POST]
 
-publication_submissions:
+submissions_show:
     path:     /{id}/submissions
-    defaults: { _controller: PublicationBundle:Publication:submissions }
+    defaults: { _controller: PublicationBundle:Submission:submissions }
     methods:  [GET]
 
 publication_submit:
     path:     /{id}/submit
-    defaults: { _controller: PublicationBundle:Publication:submit}
+    defaults: { _controller: PublicationBundle:Submission:submit}
+    methods:  [POST]
+
+submissions_choose:
+    path:     /{id}/choose/{submission}
+    defaults: { _controller: PublicationBundle:Submission:choose}
     methods:  [POST]

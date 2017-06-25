@@ -32,6 +32,7 @@ class PublicationController extends Controller
         $request->getSession()->remove('publicationCreated');
         return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
     }
+
     public function showAction(Publication $publication, Request $request){
         $commentCreated = $request->getSession()->get('commentCreated', false);
         $request->getSession()->remove('commentCreated');

@@ -5,8 +5,10 @@
 <div class="container postulantes">
     <div class="row">
         <div class="submissions col-xs-12 col-sm-offset-3 col-sm-8">
-            {% include 'PublicationBundle:Submissions:chosen.html.twig' %}   
-            {% include 'PublicationBundle:Submissions:postulados.html.twig' %}  
+            {% if chosen %}
+                {% include 'PublicationBundle:Submissions:chosen.html.twig' %}
+            {% endif %}
+            {% include 'PublicationBundle:Submissions:postulados.html.twig' %}
         </div>
             {% include 'PublicationBundle:Submissions:publication.html.twig' %}  
 

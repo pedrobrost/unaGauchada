@@ -7,7 +7,7 @@
 {% if is_granted('submit', publication) %}
         {% include 'PublicationBundle:Publications:submission.html.twig'%}
         {% elseif is_granted('delete', publication) %}
-        {{  modal.item("Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?") }} 
+        {{ modal.item("Esta a punto de eliminar esta publicación, ¿Está seguro que desea continuar?") }}
 {% endif %}  
 
 

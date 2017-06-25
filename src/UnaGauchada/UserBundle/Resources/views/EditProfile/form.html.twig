@@ -8,7 +8,7 @@
   </div>
   <h1>Editar Perfil</h1>
   <hr>
-  <form id="editProfile_form" method="post" action="">
+  <form id="editProfile_form" method="post" action="{{ path('user_profile_edit') }}" enctype="multipart/form-data">
     <h3>Información Personal</h3>
     <div class="row">
       <div class="col col-md-3 profilePic">
@@ -25,7 +25,7 @@
                 </span>
               </div>
             </div>
-            <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
+            <div class="cambiarFoto"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
             <div class="card-footer text-muted">
               Cambiar Imagen
             </div>
@@ -52,21 +52,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-5 control-label">Contraseña:</label>
-          <div class="col-lg-11">
-            <input class="form-control" id="pass" minlength="6" type="password" name="password" required value="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-5 control-label">Confirmar Contraseña:</label>
-          <div class="col-lg-11">
-            <input class="form-control" minlength="6" id="confirmPass" type="password" name="confirmPass" required value="">
-          </div>
-        </div>
-        <div class="form-group">
           <label class="col-lg-5 control-label">Teléfono:</label>
           <div class="col-lg-11">
             <input class="form-control" id="phone" type="tel" name="phone" value="{{app.user.phone}}">
+          </div>
+        </div>
+<div class="form-group">
+          <label class="col-lg-5 control-label">Contraseña:</label>
+          <div class="col-lg-11">
+            <a href="{{ path('user_password_edit') }}" class="btn btn-primary" id="passwb" data-toggle="tooltip" data-placement="left" data-original-title="Cambiar contraseña"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <input class="form-control" id="passwi" type="password" value="123456" readonly>
           </div>
         </div>
         <div class="form-group">
