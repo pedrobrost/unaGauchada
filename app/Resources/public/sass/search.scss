@@ -1,43 +1,67 @@
-    .col-md-4{
-            margin-bottom: 25px;
-    }
-.container.search {
-    .no-results{
-        .content{
-            text-align: center;
-            padding: 0px 0;
-            h1{
-                margin-bottom: 25px;
-            }
-            i.fa-search{
-                font-size: 200px;
-                margin-top: 15px;
-            }
-            .btn{
-                margin-top: 45px;
-                cursor:pointer;
-                            }
-        }
-    }
-    .card-header {
-        text-align: left;
-        .btn.detalle{
-            float: right;
-            margin-top: 7px;
-        }
-    }
-    .list-group {
-        .list-group-item {
-            .row {
-                width: 100%;
-                img {
-                    margin-top: 20px;
-                    margin-left: 15px;
-                }
-                a.detalle {
-                    float: right;
+    .col-md-4 {
+        margin-bottom: 25px;
+          .searchForm{
+            form{
+                p{
+                    text-align: right;
                 }
             }
         }
     }
-}
+
+    .container.search {
+        .no-results {
+            .content {
+                text-align: center;
+                padding: 0px 0;
+                h1 {
+                    margin-bottom: 25px;
+                }
+                i.fa-search {
+                    font-size: 200px;
+                    margin-top: 15px;
+                }
+                .btn {
+                    margin-top: 45px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .card-header {
+            text-align: left;
+            .btn.detalle {
+                float: right;
+                margin-top: 7px;
+            }
+        }
+        .list-group {
+            .list-group-item {
+                .row {
+                    width: 100%;
+                    img {
+                        object-fit: cover;
+                        height: 146px;
+                        margin-top: 7px;
+                        margin-left: 15px;
+                        @media(max-width: 1091px) {
+                            height: 104px;
+                            margin-top: 18px;
+                            margin-left: 14px;
+                        }
+                        @media(max-width: 929px) {
+                            height: 99px;
+                            margin-top: 15px;
+                        }
+                        @media(max-width: 841px) {
+                            height: 250px;
+                            margin-top: 18px;
+                            margin-left: 14px;
+                        }
+                    }
+                    a.detalle {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
