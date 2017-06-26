@@ -137,9 +137,11 @@ class PublicationController extends Controller
         $request->getSession()->set('responseCreated', true);
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
-    
-    public function searchAction(){
-        return $this->render('PublicationBundle:Search:advancedSearch.html.twig');
+
+    public function searchAction(Request $request){
+        $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
+        $publications = $repository->findAll();
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications));
     }
 
     public function submissionsAction(Publication $publication){

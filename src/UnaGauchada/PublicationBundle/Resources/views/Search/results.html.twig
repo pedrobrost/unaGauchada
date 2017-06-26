@@ -1,41 +1,48 @@
 <div class="col-md-8 container search ">
-
- <div class="card no-results">
-        <div class="card-header">
-            <h1>Resultados de busqueda</h1>
-            <h2 class="lead"> No se encontraron publicaciones que coincidan con <strong class="text-primary">Perro</strong></h2>
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <br>
-                    <a class="btn btn-outline-primary" href="{{path('publication_page')}}">Volver al Inicio</a>
+    {% if not publications %}
+        <div class="card no-results">
+            <div class="card-header">
+                <h1>Resultados de busqueda</h1>
+                <h2 class="lead"> No se encontraron publicaciones que coincidan con <strong
+                            class="text-primary">Perro</strong></h2>
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <br>
+                <a class="btn btn-outline-primary" href="{{ path('publication_page') }}">Volver al Inicio</a>
+            </div>
         </div>
-        </div>
-
-    <div class="card">
-        <div class="card-header">
-        <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio" href="{{path('publication_page')}}"><i class="fa fa-reply" aria-hidden="true"></i></a>
-            <h1>Resultados de busqueda</h1>
-            <h2 class="lead"><strong class="text-primary">3</strong> publicaciones fueron encontradas con la palabra <strong class="text-primary">Perro</strong></h2>
-        </div>
-        <div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-block">
-                                <h4 class="card-title">Lorem ipsum dolor sit amet</h4>
-                                <small>
-                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
-                                    <br>
-                                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
-                                </small>
+    {% else %}
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio"
+                   href="{{ path('publication_page') }}"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                <h1>Resultados de busqueda</h1>
+                <h2 class="lead"><strong class="text-primary">{{ publications|length }}</strong> publicaciones fueron encontradas.</h2>
+            </div>
+            <div>
+                <ul class="list-group list-group-flush">
+                    {% for publication in publications %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{{ path('publication_image', {'id': publication.id}) }}" alt="Lorem ipsum"
+                                         class="w-100 rounded">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-block">
+                                        <h4 class="card-title">{{ publication.title }}</h4>
+                                        <small>
+                                            <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+                                            <span>{{ publication.limitDate | date('d/m/Y') }}</span>
+                                            <br>
+                                            <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ publication.category }}</span>
+                                        </small>
+                                    </div>
+                                    <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': publication.id}) }}">Ver detalle</a></div>
                             </div>
-                            <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
-                    </div>
-                </li>
-            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
