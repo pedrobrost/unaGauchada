@@ -37,6 +37,11 @@
         .list-group {
             .list-group-item {
                 .row {
+                    h4 {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                     width: 100%;
                     img {
                         object-fit: cover;
