@@ -9,7 +9,12 @@
 namespace UnaGauchada\PublicationBundle\Model;
 
 
-class PublicationAvailableState
+use UnaGauchada\PublicationBundle\Entity\Publication;
+
+abstract class PublicationAvailableState
 {
+    public function addIfActive($activePublications, Publication $publication){
+
+    }
 
 }
