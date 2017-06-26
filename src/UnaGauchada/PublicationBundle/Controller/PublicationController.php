@@ -30,7 +30,15 @@ class PublicationController extends Controller
 
         $publicationCreated = $request->getSession()->get('publicationCreated', false);
         $request->getSession()->remove('publicationCreated');
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $this->getActive($publications), 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
+    }
+
+    public function getActive($publications){
+        $activePublications = new ArrayCollection();
+        foreach ($publications as $publication) {
+            $publication->addIfActive($activePublications);
+        }
+        return $activePublications;
     }
 
     public function showAction(Publication $publication, Request $request){
