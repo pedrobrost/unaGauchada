@@ -456,4 +456,8 @@ class Publication
         return (new \DateTime() >= $this->getLimitDate());
     }
 
+    public function addIfActive($activePublications){
+        $this->getState()->addIfActive($activePublications);
+    }
+
 }
