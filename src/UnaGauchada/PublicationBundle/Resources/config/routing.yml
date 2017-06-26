@@ -15,6 +15,11 @@ publish_create:
 
 publication_search:
     path:     /search
+    defaults: { _controller: PublicationBundle:Publication:search, page: 1 }
+    methods:  [GET]
+
+publication_search_page:
+    path:     /search/page/{page}
     defaults: { _controller: PublicationBundle:Publication:search }
     methods:  [GET]
 

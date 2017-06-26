@@ -139,7 +139,7 @@ class PublicationController extends Controller
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 
-    public function searchAction(Request $request){
+    public function searchAction(Request $request, $page){
 
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = new ArrayCollection($repository->findAll());
@@ -168,7 +168,14 @@ class PublicationController extends Controller
             ->getRepository('PublicationBundle:Department')->findAll();
 
         $publications = $this->getActive($publications->matching($criteria));
-        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'categories' => $categories, 'departments' => $departments));
+        $pages = ceil($publications->count() / 9);
+        $pages = ($pages == 0) ? 1 : $pages;
+        $publications = $publications->matching(Criteria::create()
+            ->setFirstResult(($page-1) * 9)
+            ->setMaxResults(9)
+        );
+
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));
     }
 
     public function submitAction(Publication $publication, Request $request){
