@@ -2,7 +2,9 @@
  
  {% block body %}
  <div class="container publication">
- <a href="{{ path("publication_page") }}" class="btn btn-primary" style="float: right" data-toggle="tooltip" data-placement="left" title="Volver al Inicio"><i class="fa fa-reply" aria-hidden="true"></i></a>
+ {% if app.user.submissions is not empty %}
+    <a href="{{ path("publication_page") }}" class="btn btn-primary" style="float: right" data-toggle="tooltip" data-placement="left" title="Volver al Inicio"><i class="fa fa-reply" aria-hidden="true"></i></a>
+  {% endif %}   
      <h1>Mis postulaciones</h1>
      <hr>
      <div class="row">

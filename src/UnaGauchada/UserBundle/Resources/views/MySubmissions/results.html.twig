@@ -1,6 +1,6 @@
-<div class="col-md-10 container search ">
+<div class="col-md-8 col-lg-9 container search ">
     <ul class="list-group list-group-flush">
-        {% for submission in app.user.submissions  %}
+        {% for submission in app.user.submissions|reverse  %}
                 {% include 'UserBundle:MySubmissions:submission.html.twig' %}
         {% else %}
                 {% include 'UserBundle:MySubmissions:noResults.html.twig' %}
