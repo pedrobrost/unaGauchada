@@ -2,14 +2,16 @@
  
  {% block body %}
  <div class="container publication">
- {% if app.user.submissions is not empty %}
+ {% if app.user.publications is not empty %}
     <a href="{{ path("publication_page") }}" class="btn btn-primary" style="float: right" data-toggle="tooltip" data-placement="left" title="Volver al Inicio"><i class="fa fa-reply" aria-hidden="true"></i></a>
   {% endif %}   
      <h1>Mis publicaciones</h1>
      <hr>
      <div class="row">
-             {% include 'UserBundle:MyPublications:searchForm.html.twig' %}   
-             {% include 'UserBundle:MyPublications:results.html.twig' %} 
+        {% if app.user.publications is not empty %}
+             {% include 'UserBundle:MyPublications:searchForm.html.twig' %}    
+        {% endif %} 
+        {% include 'UserBundle:MyPublications:results.html.twig' %} 
      </div>
  </div>
  {% endblock %}
