@@ -8,10 +8,10 @@
      <h1>Mis publicaciones</h1>
      <hr>
      <div class="row">
-        {% if app.user.publications is not empty %}
-             {% include 'UserBundle:MyPublications:searchForm.html.twig' %}    
-        {% endif %} 
-        {% include 'UserBundle:MyPublications:results.html.twig' %} 
+      {% if app.user.submissions is not empty %}
+             {% include 'UserBundle:MyPublications:searchForm.html.twig' %}   
+      {% endif %}    
+             {% include 'UserBundle:MyPublications:results.html.twig' %} 
      </div>
  </div>
  {% endblock %}
