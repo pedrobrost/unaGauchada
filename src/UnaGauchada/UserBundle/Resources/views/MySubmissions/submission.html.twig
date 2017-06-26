@@ -1,0 +1,18 @@
+<li class="list-group-item" data-status="elegido">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ path('publication_image', {'id': submission.publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
+        </div>
+        <div class="col-md-7">
+            <div class="card-block">
+                <h3 class="card-title">{{submission.publication.title}}</h3>
+                <p><strong>Estado: <span class="text-success">Elegido</span></strong></p>
+                <small>
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ submission.publication.limitDate | date('d/m/Y') }}</span>
+                    <br>
+                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ submission.publication.category }}</span>
+                    </small>
+            </div>
+            <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': submission.publication.id}) }}">Ver Publicación</a></div>
+    </div>
+</li>
