@@ -35,5 +35,4 @@ class UserController extends Controller
     public function publicationsAction(){
         return $this->render('UserBundle:MyPublications:myPublications.html.twig');
     }
-
 }
