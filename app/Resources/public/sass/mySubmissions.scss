@@ -90,6 +90,11 @@
                 p {
                     margin-bottom: 0px!important;
                 }
+                h4 {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
         }
     }
