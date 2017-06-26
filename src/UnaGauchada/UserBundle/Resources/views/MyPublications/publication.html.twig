@@ -10,6 +10,8 @@
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ publication.limitDate | date('d/m/Y') }}</span>
                     <br>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{ publication.department.name | title }}</span>
+                    <br>
+                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ publication.category }}</span>
                     </small>
             </div>
             <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': publication.id}) }}">Ver Publicación</a></div>
