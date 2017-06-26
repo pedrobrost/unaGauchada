@@ -3,13 +3,18 @@
     }
 .container.search {
     .no-results{
-        .card-header{
+        .content{
             text-align: center;
+            padding: 0px 0;
+            h1{
+                margin-bottom: 25px;
+            }
             i.fa-search{
-                font-size: 175px;
+                font-size: 200px;
+                margin-top: 15px;
             }
             .btn{
-                margin-top: 25px;
+                margin-top: 45px;
                 cursor:pointer;
                             }
         }
