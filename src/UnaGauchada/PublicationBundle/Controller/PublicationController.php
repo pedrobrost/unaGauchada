@@ -167,7 +167,9 @@ class PublicationController extends Controller
         $departments = $this->getDoctrine()
             ->getRepository('PublicationBundle:Department')->findAll();
 
-        $publications = $this->getActive($publications->matching($criteria));
+        $publications = $this->getActive($publications);
+        $amount = $publications->count();
+        $publications = $publications->matching($criteria);
         $pages = ceil($publications->count() / 9);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
@@ -175,7 +177,7 @@ class PublicationController extends Controller
             ->setMaxResults(9)
         );
 
-        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'amount' => $amount, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));
     }
 
     public function submitAction(Publication $publication, Request $request){
