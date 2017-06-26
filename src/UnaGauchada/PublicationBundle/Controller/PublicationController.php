@@ -144,7 +144,6 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = new ArrayCollection($repository->findAll());
 
-
         $criteria = Criteria::create()
             ->orderBy(array('sysDate' => Criteria::DESC));
 
@@ -163,8 +162,13 @@ class PublicationController extends Controller
             $criteria->andWhere(Criteria::expr()->eq('category', $category));
         }
 
+        $categories = $this->getDoctrine()
+            ->getRepository('PublicationBundle:Category')->findAll();
+        $departments = $this->getDoctrine()
+            ->getRepository('PublicationBundle:Department')->findAll();
+
         $publications = $this->getActive($publications->matching($criteria));
-        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications));
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'categories' => $categories, 'departments' => $departments));
     }
 
     public function submitAction(Publication $publication, Request $request){

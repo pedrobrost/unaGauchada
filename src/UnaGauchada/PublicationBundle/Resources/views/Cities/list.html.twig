@@ -1,3 +1,3 @@
 {% for department in departments %}
-    <option value="{{ department.id }}">{{ department.province.name | title }}{% if department.province.name != '' %}, {% endif %}{{ department.name | title }}</option>
+    <option value="{{ department.id }}" {% if (app.request.get('city') == department.id) %} selected="selected" {% endif %}>{{ department.province.name | title }}{% if department.province.name != '' %}, {% endif %}{{ department.name | title }}</option>
 {% endfor %}
