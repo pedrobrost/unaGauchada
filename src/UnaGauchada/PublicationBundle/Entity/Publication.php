@@ -5,6 +5,11 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use UnaGauchada\PublicationBundle\Model\AvailableState;
+use UnaGauchada\PublicationBundle\Model\CaducatedState;
+use UnaGauchada\PublicationBundle\Model\ClosedState;
+use UnaGauchada\PublicationBundle\Model\WithoutSubmissionsState;
+use UnaGauchada\PublicationBundle\Model\WithSubmissionsState;
 use UnaGauchada\UserBundle\Entity\User;
 
 /**
@@ -452,8 +457,38 @@ class Publication
         return null;
     }
 
+    public function hasChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return true;
+        }
+        return false;
+    }
+
     public function isExpired(){
         return (new \DateTime() >= $this->getLimitDate());
+    }
+
+    public function getAvailableState(){
+        if($this->isExpired()){
+            return new CaducatedState();
+        }else{
+            return new AvailableState();
+        }
+    }
+
+    public function getSubmissionsState(){
+        if($this->getSubmissions()->isEmpty()){
+            return new WithoutSubmissionsState();
+        }elseif ($this->hasChosen()){
+            return new ClosedState();
+        }else{
+            return new WithSubmissionsState();
+        }
+    }
+
+    public function addIfActive($activePublications){
+        $this->getAvailableState()->addIfActive($activePublications, $this);
     }
 
 }

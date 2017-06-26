@@ -9,8 +9,9 @@
         <div class="submissions col-xs-12 col-sm-offset-3 col-sm-12 col-md-8">
             {% if chosen %}
                 {% include 'PublicationBundle:Submissions:chosen.html.twig' %}
+            {% else %}
+                {% include 'PublicationBundle:Submissions:postulados.html.twig' %}
             {% endif %}
-            {% include 'PublicationBundle:Submissions:postulados.html.twig' %}
         </div>
             {% include 'PublicationBundle:Submissions:publication.html.twig' %}  
     </div>

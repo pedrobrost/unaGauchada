@@ -1,10 +1,27 @@
-$("#cancelform").click(function(){
-    $("#editProfile_form").validate().resetForm();
+$(document).ready( function() {
+        $("#modalbutton").hide();
 });
 
-$.validator.addMethod("nonNumeric", function (value, element) {
-            return this.optional(element) || isNaN(Number(value));
-        });
+$("#cancelform").click(function(){
+    $("#editProfile_form").validate().resetForm();
+    change = false;
+        $("#backbutton").show();
+        $("#modalbutton").hide();
+});
+
+var change = false;
+
+$('#editProfile_form').change(function(){
+    if (!change){
+        change = true;
+        $("#backbutton").hide();
+        $("#modalbutton").show();
+    }
+});
+
+$.validator.addMethod("nonNumeric", function(value, element) {
+    return this.optional(element) || !value.match(/[0-9]+/);
+});
 
 $('#editProfile_form').validate({
             rules: {

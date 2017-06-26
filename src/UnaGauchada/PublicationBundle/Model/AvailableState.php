@@ -9,7 +9,13 @@
 namespace UnaGauchada\PublicationBundle\Model;
 
 
+use UnaGauchada\PublicationBundle\Entity\Publication;
+
 class AvailableState extends PublicationAvailableState
 {
+
+    public function addIfActive($activePublications, Publication $publication){
+        $publication->getSubmissionsState()->addAvailableIfActive($activePublications, $publication);
+    }
 
 }
