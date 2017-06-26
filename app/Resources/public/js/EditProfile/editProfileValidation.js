@@ -2,9 +2,9 @@ $("#cancelform").click(function(){
     $("#editProfile_form").validate().resetForm();
 });
 
-$.validator.addMethod("nonNumeric", function (value, element) {
-            return this.optional(element) || isNaN(Number(value));
-        });
+        $.validator.addMethod("nonNumeric", function(value, element) {
+    return this.optional(element) || !value.match(/[0-9]+/);
+});
 
 $('#editProfile_form').validate({
             rules: {
