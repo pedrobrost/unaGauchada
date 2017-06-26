@@ -1,78 +1,9 @@
-<div class="col-md-10 container search ">
-             <ul class="list-group list-group-flush">
-
-              {% include 'UserBundle:MyPublications:noResults.html.twig' %} 
-              
-                 <li class="list-group-item" data-status="active">
-                     <div class="row">
-                         <div class="col-md-5">
-                             <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
-                         </div>
-                         <div class="col-md-7">
-                             <div class="card-block">
-                                 <h4 class="card-title">Salvemos el mundo</h4>
-                                 <p><strong>Estado: <span class="text-success">Activa</span></strong></p>
-                                 <small>
-                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
-                                     <br>
-                                     <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
-                                 </small>
-                             </div>
-                             <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
-                     </div>
-                 </li>
-                   <li class="list-group-item" data-status="closed">
-                     <div class="row">
-                         <div class="col-md-5">
-                             <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
-                         </div>
-                         <div class="col-md-7">
-                             <div class="card-block">
-                                 <h4 class="card-title">Necesito plata para ir a Roma</h4>
-                                 <p><strong>Estado: <span class="text-danger">Cerrada</span></strong></p>
-                                 <small>
-                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
-                                     <br>
-                                     <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
-                                 </small>
-                             </div>
-                     </div>
-                 </li>
-                 <li class="list-group-item" data-status="canceled">
-                     <div class="row">
-                         <div class="col-md-5">
-                             <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
-                         </div>
-                         <div class="col-md-7">
-                             <div class="card-block">
-                                 <h4 class="card-title">Reencontrarme con Ramirez</h4>
-                                 <p><strong>Estado: <span class="text-muted">Cancelada</span></strong></p>
-                                 <small>
-                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
-                                     <br>
-                                     <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
-                                 </small>
-                             </div>
-                             <a class="btn btn-primary detalle" href="#">Ver Detalle</a></div>
-                     </div>
-                 </li>
-                 <li class="list-group-item" data-status="active">
-                     <div class="row">
-                         <div class="col-md-5">
-                             <img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" class="w-100 rounded">
-                         </div>
-                         <div class="col-md-7">
-                             <div class="card-block">
-                                 <h4 class="card-title">Perdi a mi tucan</h4>
-                                 <p><strong>Estado: <span class="text-success">Activa</span></strong></p>
-                                 <small>
-                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>02/15/2014</span>
-                                     <br>
-                                     <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>People</span>
-                                 </small>
-                             </div>
-                             <a class="btn btn-primary detalle" href="#">Ver detalle</a></div>
-                     </div>
-                 </li>
-             </ul>
-         </div> 
+<div class="col-md-8 col-lg-9 container search ">
+    <ul class="list-group list-group-flush">
+        {% for publication in app.user.publications|reverse %}
+            {% include 'UserBundle:MyPublications:publication.html.twig' %}    
+         {% else %} 
+            {% include 'UserBundle:MyPublications:noResults.html.twig' %}
+         {% endfor %}
+    </ul>
+</div>
