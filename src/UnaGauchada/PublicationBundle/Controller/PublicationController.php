@@ -20,6 +20,7 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
+        $publications = $this->getActive($publications);
         $pages = ceil($publications->count() / 9);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
@@ -30,7 +31,7 @@ class PublicationController extends Controller
 
         $publicationCreated = $request->getSession()->get('publicationCreated', false);
         $request->getSession()->remove('publicationCreated');
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $this->getActive($publications), 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
     }
 
     public function getActive($publications){
