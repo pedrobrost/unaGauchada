@@ -1,4 +1,22 @@
 <li class="list-group-item" data-status="elegido">
+<div class="card bg-primary text-white" style="
+    width: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 25px;
+    border-top: 0px;
+    border-right: 0px;
+    boder-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: #ebecee;
+    border: 0px solid rgba(0,0,0,0.125);
+    z-index:1;
+    text-align: center;
+"><span style="
+    margin-top: 1px;
+">Elegido</span></div>
     <div class="row">
         <div class="col-md-5">
             <img src="{{ path('publication_image', {'id': submission.publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
@@ -6,11 +24,12 @@
         <div class="col-md-7">
             <div class="card-block">
                 <h4 class="card-title">{{submission.publication.title}}</h4>
-                <p><strong>Estado: <span class="text-success">Elegido</span></strong></p>
                 <small>
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ submission.publication.limitDate | date('d/m/Y') }}</span>
                     <br>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{ submission.publication.department.name | title }}</span>
+                    <br>
+                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ submission.publication.category }}</span>
                     </small>
             </div>
             <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': submission.publication.id}) }}">Ver Publicación</a></div>
