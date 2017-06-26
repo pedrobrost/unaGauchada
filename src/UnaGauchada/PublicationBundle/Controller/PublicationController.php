@@ -167,10 +167,6 @@ class PublicationController extends Controller
         return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications));
     }
 
-    public function submissionsAction(Publication $publication){
-        return $this->render('PublicationBundle:Submissions:list.html.twig');
-    }
-
     public function submitAction(Publication $publication, Request $request){
         $em = $this->getDoctrine()->getManager();
         $submission = new Submission($this->getUser(), $publication);
