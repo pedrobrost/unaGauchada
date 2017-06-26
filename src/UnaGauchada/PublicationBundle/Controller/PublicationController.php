@@ -4,6 +4,7 @@ namespace UnaGauchada\PublicationBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -139,8 +140,30 @@ class PublicationController extends Controller
     }
 
     public function searchAction(Request $request){
+
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
-        $publications = $repository->findAll();
+        $publications = new ArrayCollection($repository->findAll());
+
+
+        $criteria = Criteria::create()
+            ->orderBy(array('sysDate' => Criteria::DESC));
+
+        if($request->get('title', "") != "")
+            $criteria->andWhere(Criteria::expr()->contains('title', $request->get('title')));
+
+        if($request->get('city', -1) != -1){
+            $departmentRepository = $this->getDoctrine()->getRepository('PublicationBundle:Department');
+            $department = $departmentRepository->findOneById($request->get('city'));
+            $criteria->andWhere(Criteria::expr()->eq('department', $department));
+        }
+
+        if($request->get('category', -1) != -1){
+            $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
+            $category = $categoryRepository->find($request->get('category'));
+            $criteria->andWhere(Criteria::expr()->eq('category', $category));
+        }
+
+        $publications = $this->getActive($publications->matching($criteria));
         return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications));
     }
 
