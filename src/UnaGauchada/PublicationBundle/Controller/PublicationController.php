@@ -168,13 +168,13 @@ class PublicationController extends Controller
             ->getRepository('PublicationBundle:Department')->findAll();
 
         $publications = $this->getActive($publications);
-        $amount = $publications->count();
         $publications = $publications->matching($criteria);
-        $pages = ceil($publications->count() / 9);
+        $amount = $publications->count();
+        $pages = ceil($publications->count() / 1);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
-            ->setFirstResult(($page-1) * 9)
-            ->setMaxResults(9)
+            ->setFirstResult(($page-1) * 1)
+            ->setMaxResults(1)
         );
 
         return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'amount' => $amount, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));

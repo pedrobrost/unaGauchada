@@ -4,7 +4,7 @@
             <h4>Buscar por:</h4>
         </div>
         <div class="card-block">
-            <form class="form-horizontal" method="get">
+            <form class="form-horizontal" method="get" action="{{ path('publication_search') }}">
                 <div class="form-group">
                     <label for="location1" class="control-label">Título:</label>
                     <input value="{{ app.request.get('title') }}" type="text" class="form-control" name="title">
