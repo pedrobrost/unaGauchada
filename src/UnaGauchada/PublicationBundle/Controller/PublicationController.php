@@ -157,4 +157,10 @@ class PublicationController extends Controller
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
 
+    public function cancelAction(Publication $publication){
+        $publication->cancel();
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('publication_homepage');
+    }
+
 }

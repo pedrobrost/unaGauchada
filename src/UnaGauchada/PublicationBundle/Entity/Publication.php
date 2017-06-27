@@ -104,6 +104,13 @@ class Publication
      */
     private $publicationsComments;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isCancelled", type="boolean", nullable=true)
+     */
+    private $isCancelled;
+
 
     public function __construct(){
         $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
@@ -471,24 +478,48 @@ class Publication
 
     public function getAvailableState(){
         if($this->isExpired()){
-            return new CaducatedState();
+            return new CaducatedState($this);
         }else{
-            return new AvailableState();
+            return new AvailableState($this);
         }
     }
 
     public function getSubmissionsState(){
         if($this->getSubmissions()->isEmpty()){
-            return new WithoutSubmissionsState();
+            return new WithoutSubmissionsState($this);
         }elseif ($this->hasChosen()){
-            return new ClosedState();
+            return new ClosedState($this);
         }else{
-            return new WithSubmissionsState();
+            return new WithSubmissionsState($this);
         }
     }
 
     public function addIfActive($activePublications){
-        $this->getAvailableState()->addIfActive($activePublications, $this);
+        $this->getAvailableState()->addIfActive($activePublications);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCancelled(): bool
+    {
+        return $this->isCancelled();
+    }
+
+    /**
+     * @param bool $isCancelled
+     *
+     *
+     * @return self
+     */
+    public function setIsCancelled($isCancelled)
+    {
+        $this->isCancelled = $isCancelled;
+        return $this;
+    }
+
+    public function cancel(){
+        $this->getAvailableState()->cancel();
     }
 
 }

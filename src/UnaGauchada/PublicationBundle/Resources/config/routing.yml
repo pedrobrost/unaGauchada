@@ -57,3 +57,8 @@ do_score:
     path:     /{id}/{submission}/score
     defaults: { _controller: PublicationBundle:Submission:score}
     methods:  [POST]
+
+publication_cancel:
+    path:     /{id}/cancel
+    defaults: { _controller: PublicationBundle:Publication:cancel }
+    methods:  [POST]
