@@ -1,0 +1,35 @@
+<div class="col-md-4">
+    <div class=" card searchForm">
+        <div class="card-header">
+            <h4>Buscar por:</h4>
+        </div>
+        <div class="card-block">
+            <form class="form-horizontal" method="get">
+                <div class="form-group">
+                    <label for="location1" class="control-label">Título:</label>
+                    <input value="{{ app.request.get('title') }}" type="text" class="form-control" name="title">
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Categoria:</label>
+                    <div class="col-xs-5 selectContainer">
+                        <select name="category" id="category" class="form-control">
+                            <option value="-1" selected="selected">Todas las categorias</option>
+                            {% include 'PublicationBundle:Categories:list.html.twig' %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">Ciudad:</label>
+                    <div class="col-xs-5 selectContainer">
+                        <select placeholder="Ciudad" name="city" id="city" class="form-control">
+                            <option value="-1">Todas las ciudades</option>
+                            {% include 'PublicationBundle:Cities:list.html.twig' %}
+                        </select>
+                        <label for="city" class="error" generated="true"></label>
+                    </div>
+                </div>
+                <p><button type="submit" class="btn btn-primary" role="button"><i class="fa fa-search"></i> Buscar</button></p>
+            </form>
+        </div>
+    </div>
+</div>

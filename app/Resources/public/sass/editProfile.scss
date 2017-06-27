@@ -48,8 +48,8 @@
                 border-bottom-left-radius: 0px;
                 height: 218px;
                 @media(max-width: 848px) {
-                min-height: 250px;
-            }
+                    min-height: 250px;
+                }
             }
             @media(max-width: 767px) {
                 margin-left: 15px;
@@ -60,12 +60,15 @@
             }
         }
         .personal-info {
-            #passwb{
+            #passwb {
                 float: right;
                 width: 10%;
+                margin-left: 10px;
             }
-            #passwi{
+            #passwi {
                 width: 89%;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
             }
             button {
                 float: right;
@@ -77,11 +80,11 @@
     }
 }
 
-
 .profilePic:hover .overlay {
     display: block;
     background: rgba(0, 0, 0, .3);
 }
+
 .cambiarFoto {
     position: absolute;
     top: 4px;
@@ -91,6 +94,7 @@
     transition: opacity .35s ease;
     cursor: pointer;
 }
+
 .cambiarFoto a {
     width: 200px;
     padding: 12px 48px;
