@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use UnaGauchada\PublicationBundle\Model\AvailableState;
 use UnaGauchada\PublicationBundle\Model\CaducatedState;
+use UnaGauchada\PublicationBundle\Model\CancelledState;
 use UnaGauchada\PublicationBundle\Model\ClosedState;
 use UnaGauchada\PublicationBundle\Model\WithoutSubmissionsState;
 use UnaGauchada\PublicationBundle\Model\WithSubmissionsState;
@@ -477,7 +478,9 @@ class Publication
     }
 
     public function getAvailableState(){
-        if($this->isExpired()){
+        if($this->isCancelled()){
+            return new CancelledState($this);
+        }elseif($this->isExpired()){
             return new CaducatedState($this);
         }else{
             return new AvailableState($this);
@@ -501,9 +504,9 @@ class Publication
     /**
      * @return bool
      */
-    public function isCancelled(): bool
+    public function isCancelled()
     {
-        return $this->isCancelled();
+        return $this->isCancelled;
     }
 
     /**
@@ -518,8 +521,8 @@ class Publication
         return $this;
     }
 
-    public function cancel(){
-        $this->getAvailableState()->cancel();
+    public function cancel($reason){
+        $this->getAvailableState()->cancel($reason);
     }
 
 }

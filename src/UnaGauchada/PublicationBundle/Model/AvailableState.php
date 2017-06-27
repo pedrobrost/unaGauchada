@@ -18,8 +18,8 @@ class AvailableState extends PublicationAvailableState
         $this->getPublication()->getSubmissionsState()->addAvailableIfActive($activePublications);
     }
 
-    public function cancel(){
-        $this->getPublication()->getSubmissionsState()->cancel();
+    public function cancel($reason){
+        $this->getPublication()->getSubmissionsState()->cancel($reason);
     }
 
 }

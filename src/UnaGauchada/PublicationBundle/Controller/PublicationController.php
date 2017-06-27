@@ -158,7 +158,9 @@ class PublicationController extends Controller
     }
 
     public function cancelAction(Publication $publication){
-        $publication->cancel();
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Refund');
+        $publication->cancel($reason);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('publication_homepage');
     }

@@ -23,7 +23,8 @@ abstract class PublicationAvailableState
     public function addIfActive($activePublications){
     }
 
-    public function cancel(){
+    public function cancel($reason){
+        
     }
 
     /**

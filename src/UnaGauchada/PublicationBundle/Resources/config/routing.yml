@@ -61,4 +61,4 @@ do_score:
 publication_cancel:
     path:     /{id}/cancel
     defaults: { _controller: PublicationBundle:Publication:cancel }
-    methods:  [POST]
+    methods:  [GET]

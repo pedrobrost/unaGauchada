@@ -10,6 +10,7 @@ namespace UnaGauchada\PublicationBundle\Model;
 
 
 use UnaGauchada\PublicationBundle\Entity\Publication;
+use UnaGauchada\PublicationBundle\Service\TransactionService;
 
 class WithoutSubmissionsState extends PublicationSubmissionsState
 {
@@ -17,9 +18,9 @@ class WithoutSubmissionsState extends PublicationSubmissionsState
         $activePublications->add($this->getPublication());
     }
 
-    public function cancel(){
+    public function cancel($reason){
         $this->getPublication()->setIsCancelled(true);
-
+        $reason->newTransactionFor($this->getPublication()->getUser());
     }
 
 }
