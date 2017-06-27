@@ -84,6 +84,11 @@ class LoadAllCommand extends ContainerAwareCommand
             ->setAmount(1)
             ->setPrice(50));
 
+        $em->persist((new TransactionReason())
+            ->setName('Refund')
+            ->setAmount(1)
+            ->setPrice(0));
+
         //Cities
         //mysql -u root -p < src/UnaGauchada/PublicationBundle/Resources/db/departmentsLoader.sql
 

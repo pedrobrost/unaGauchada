@@ -17,4 +17,8 @@ class WithSubmissionsState extends PublicationSubmissionsState
         $activePublications->add($this->getPublication());
     }
 
+    public function cancel(){
+        $this->getPublication()->setIsCancelled(true);
+    }
+
 }
