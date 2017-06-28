@@ -6,8 +6,8 @@
         <div class="col-md-7">
             <div class="card-block">
                 <h4 class="card-title">{{ publication.title }}</h4>
-                {% if publication.active %} <p class="text-success">Activa</p> {% elseif publication.closed %} <p
-                        class="text-warning">Cerrada</p> {% else %} <p class="text-danger">Cancelada</p> {% endif %}
+                {% if publication.active %} <p class="text-success">Activa</p> {% elseif publication.cancelled %} <p class="text-danger">Cancelada</p> {% else %} <p
+                        class="text-warning">Cerrada</p> {% endif %}
 
                 <small>
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
