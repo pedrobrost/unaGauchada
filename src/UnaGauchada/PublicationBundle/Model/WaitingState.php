@@ -27,4 +27,19 @@ class WaitingState extends SubmissionState
     {
         return false;
     }
+
+    public function isWaiting($publication)
+    {
+        return !($publication->isClosed());
+    }
+
+    public function isRejected($publication)
+    {
+        return $publication->isClosed();
+    }
+
+    public function getScoreMessage()
+    {
+        return "";
+    }
 }

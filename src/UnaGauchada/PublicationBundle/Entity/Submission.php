@@ -217,4 +217,16 @@ class Submission
         return $this->getState()->getRate();
     }
 
+    public function isWaiting(){
+        return $this->getState()->isWaiting($this->getPublication());
+    }
+
+    public function isRejected(){
+        return $this->getState()->isRejected($this->getPublication());
+    }
+
+    public function getScoreMessage(){
+        return $this->getState()->getScoreMessage();
+    }
+
 }

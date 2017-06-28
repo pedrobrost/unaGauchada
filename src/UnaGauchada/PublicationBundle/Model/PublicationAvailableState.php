@@ -16,6 +16,12 @@ abstract class PublicationAvailableState
 
     private $publication;
 
+    public function isClosed($publication){
+        return true;
+    }
+
+    abstract public function isActive($publication);
+
     public function __construct($publication){
         $this->publication = $publication;
     }

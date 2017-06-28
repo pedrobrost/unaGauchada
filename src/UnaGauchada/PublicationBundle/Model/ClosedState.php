@@ -11,5 +11,12 @@ namespace UnaGauchada\PublicationBundle\Model;
 
 class ClosedState extends PublicationSubmissionsState
 {
+    public function isClosed(){
+        return true;
+    }
+
+    public function isActive(){
+        return false;
+    }
 
 }

@@ -65,8 +65,6 @@ class PublicationController extends Controller
       return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
 
-
-
     public function publishCreateAction(Request $request){
 
         if(!$this->getUser()->getCredits()==0){

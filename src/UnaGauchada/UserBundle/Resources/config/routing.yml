@@ -20,3 +20,7 @@ user_profile_edit:
   path:       /profile/edit
   defaults: { _controller: UserBundle:User:edit }
   methods:  [POST]
+
+user_publications:
+  path:       /publications
+  defaults: { _controller: UserBundle:User:publications }

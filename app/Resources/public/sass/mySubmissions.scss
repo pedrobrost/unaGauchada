@@ -1,0 +1,107 @@
+.btn-filter,
+.btn-filter:active,
+.btn-filter:hover {
+    outline: none !important;
+}
+
+.container.publication {
+    .row {
+        width: 100%;
+    }
+    .no-results {
+        .card {
+            width: 100%;
+            border: 0;
+            text-align: center;
+            margin: 20px 0;
+            i {
+                font-size: 125px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            a.btn {
+                width: 200px;
+                margin: 0 auto;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .searchform {
+        margin-bottom: 25px;
+    }
+    .container.search {
+        @media(min-width: 768px) {
+            max-width: 79.33333%;
+        }
+        @media (min-width: 992px) {
+            max-width: inherit;
+        }
+        .card {
+            .card-header {
+                text-align: left;
+                h1 {
+                    margin-top: 10px;
+                }
+                a.btn {
+                    margin-top: 12px;
+                }
+            }
+            .card-block {
+                padding: 0!important;
+            }
+        }
+        .list-group-item:first-child {
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+        .list-group-item:last-child {
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        .list-group-item {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            a.detalle {
+                margin-top: -30px;
+            }
+            .modal-body{
+                padding-bottom: 0px;
+            }
+            .col-md-5 {
+                margin-bottom: 0px;
+                img {
+                    height: 160px;
+                    object-fit: cover!important;
+                    @media(max-width: 1200px) {
+                        margin-top: 6px;
+                        height: 144px;
+                    }
+                    @media(max-width: 991px) {
+                        margin-top: 8px;
+                        height: 118px;
+                    }
+                    @media(max-width: 767px) {
+                        margin-left: 13px;
+                        margin-top: 6px;
+                        height: 230px;
+                    }
+                }
+            }
+            .col-md-7 {
+                p {
+                    margin-bottom: 5px!important;
+                }
+                h4 {
+                    margin-bottom: 6px;
+                    margin-top: -5px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                a.detalle {
+                    float: right;
+                    margin-top: -40px;
+                }
+            }
+        }
+    }
+}

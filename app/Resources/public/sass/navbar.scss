@@ -6,6 +6,13 @@ nav.navbar {
     background-color: #ffffff;
 }
 
+
+/*
+    .fa.fa-pencil-square-o::before {
+        color: #FB8C00;
+    }
+*/
+
 .dropdown-toggle {
     cursor: pointer;
 }
@@ -48,15 +55,14 @@ header {
         transition: 0.5s;
         background-color: #fff;
     }
-    nav a{
+    nav a {
         -webkit-transition: 0.5s;
         -moz-transition: 0.5s;
         -ms-transition: 0.5s;
         transition: 0.5s;
-        padding-top: 17px!important;
-        padding-bottom: 17px!important;
+        padding-top: 17px !important;
+        padding-bottom: 17px !important;
     }
-
     nav.navbar.shrink {
         -webkit-transition: 0.5s;
         -moz-transition: 0.5s;

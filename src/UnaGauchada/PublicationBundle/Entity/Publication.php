@@ -525,4 +525,12 @@ class Publication
         return $this->getAvailableState()->cancel($reason);
     }
 
+    public function isClosed(){
+        return $this->getAvailableState()->isClosed($this);
+    }
+
+    public function isActive(){
+        return $this->getAvailableState()->isActive($this);
+    }
+
 }

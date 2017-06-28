@@ -144,4 +144,23 @@ class AcceptedState extends SubmissionState
         return true;
     }
 
+    public function isWaiting($publication)
+    {
+        return false;
+    }
+
+    public function isRejected($publication)
+    {
+        return false;
+    }
+
+    public function getScoreMessage()
+    {
+        if($this->getRate()){
+            return $this->getRate()->getMessage();
+        }else{
+            return "";
+        }
+    }
+
 }
