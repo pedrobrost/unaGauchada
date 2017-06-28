@@ -14,8 +14,12 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 class AvailableState extends PublicationAvailableState
 {
 
-    public function addIfActive($activePublications, Publication $publication){
-        $publication->getSubmissionsState()->addAvailableIfActive($activePublications, $publication);
+    public function addIfActive($activePublications){
+        $this->getPublication()->getSubmissionsState()->addAvailableIfActive($activePublications);
+    }
+
+    public function cancel($reason){
+        return $this->getPublication()->getSubmissionsState()->cancel($reason);
     }
 
 }

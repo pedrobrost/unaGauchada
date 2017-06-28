@@ -32,7 +32,9 @@ class PublicationController extends Controller
 
         $publicationCreated = $request->getSession()->get('publicationCreated', false);
         $request->getSession()->remove('publicationCreated');
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
+        $publicationCancelled = $request->getSession()->get('publicationCancelled', false);
+        $request->getSession()->remove('publicationCancelled');
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $this->getActive($publications), 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated, 'publicationCancelled' => $publicationCancelled));
     }
 
     public function getActive($publications){
@@ -192,6 +194,16 @@ class PublicationController extends Controller
 
         $request->getSession()->set('postulated', true);
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+
+    public function cancelAction(Publication $publication, Request $request){
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Refund');
+        $message = $publication->cancel($reason);
+        $this->getDoctrine()->getManager()->flush();
+
+        $request->getSession()->set('publicationCancelled', $message);
+        return $this->redirectToRoute('publication_homepage');
     }
 
 }

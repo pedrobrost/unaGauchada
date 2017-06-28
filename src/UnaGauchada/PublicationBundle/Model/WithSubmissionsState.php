@@ -13,8 +13,13 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 
 class WithSubmissionsState extends PublicationSubmissionsState
 {
-    public function addAvailableIfActive($activePublications, Publication $publication){
-        $activePublications->add($publication);
+    public function addAvailableIfActive($activePublications){
+        $activePublications->add($this->getPublication());
+    }
+
+    public function cancel($reason){
+        $this->getPublication()->setIsCancelled(true);
+        return "Tu publicación ha sido cancelada exitosamente.";
     }
 
 }

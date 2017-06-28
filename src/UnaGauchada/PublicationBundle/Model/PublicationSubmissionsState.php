@@ -13,8 +13,27 @@ use UnaGauchada\PublicationBundle\Entity\Publication;
 
 abstract class PublicationSubmissionsState
 {
-    public function addAvailableIfActive($activePublications, Publication $publication){
 
+    private $publication;
+
+    public function __construct($publication){
+        $this->publication = $publication;
     }
+
+    public function addAvailableIfActive($activePublications){
+    }
+
+    public function cancel($reason){
+        return "";
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublication()
+    {
+        return $this->publication;
+    }
+
 
 }
