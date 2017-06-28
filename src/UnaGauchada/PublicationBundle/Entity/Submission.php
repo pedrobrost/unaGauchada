@@ -225,4 +225,8 @@ class Submission
         return $this->getState()->isRejected($this->getPublication());
     }
 
+    public function getScoreMessage(){
+        return $this->getState()->getScoreMessage();
+    }
+
 }

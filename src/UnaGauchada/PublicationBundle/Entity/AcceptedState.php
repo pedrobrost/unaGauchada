@@ -154,4 +154,13 @@ class AcceptedState extends SubmissionState
         return false;
     }
 
+    public function getScoreMessage()
+    {
+        if($this->getRate()){
+            return $this->getRate()->getMessage();
+        }else{
+            return "";
+        }
+    }
+
 }

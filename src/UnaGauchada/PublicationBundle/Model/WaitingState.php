@@ -37,4 +37,9 @@ class WaitingState extends SubmissionState
     {
         return $publication->isClosed();
     }
+
+    public function getScoreMessage()
+    {
+        return "";
+    }
 }
