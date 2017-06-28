@@ -8,6 +8,11 @@ section.gauchadas {
     }
 }
 
+#popUpSuccess.popUpLarge{
+    width: 714px;
+    max-width: 714px;
+}
+
 #popUpSuccess{
     position: absolute;
     margin-left: auto;
@@ -19,6 +24,7 @@ section.gauchadas {
     margin-top: 13px;
     max-width: 600px;
 }
+
 
 .publication-list {
     display: flex;

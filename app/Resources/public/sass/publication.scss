@@ -54,12 +54,32 @@ a.btn.btn-primary {
                     font-size: 15px;
                     border: 1px solid rgba(0, 0, 0, 0.190);
                 }
-                .pull-right.comment{
+                .pull-right.comment {
                     margin-top: 10px;
-                    button{
+                    button {
                         width: 72px;
                     }
                 }
+            }
+        }
+    }
+    .profilePic {
+        img {
+            object-fit: cover;
+            height: 240px;
+            @media(max-width: 1199px) {
+                height: 190px;
+            }
+            @media(max-width: 991px) {
+                height: 140px;
+            }
+        }
+        @media(max-width: 767px) {
+            margin-bottom: 30px;
+            padding-top: 25px;
+            img {
+                height: auto;
+                max-height: 350px;
             }
         }
     }
@@ -80,10 +100,4 @@ a.btn.btn-primary {
 
 .date-small {
     font-size: 13px;
-}
-
-@media (max-width: 767px) {
-    .profilePic {
-        padding-top: 25px;
-    }
 }
