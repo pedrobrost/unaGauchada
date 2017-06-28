@@ -61,8 +61,8 @@ class PublicationController extends Controller
                                                                                                 'postulated' => $postulated));
     }
 
-    public function publishAction(){
-      return $this->render('PublicationBundle:Creation:creation.html.twig');
+public function publishAction(){
+     return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
 
     public function publishCreateAction(Request $request){
