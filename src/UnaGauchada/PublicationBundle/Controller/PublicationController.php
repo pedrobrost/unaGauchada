@@ -170,11 +170,11 @@ class PublicationController extends Controller
         $publications = $this->getActive($publications);
         $publications = $publications->matching($criteria);
         $amount = $publications->count();
-        $pages = ceil($publications->count() / 1);
+        $pages = ceil($publications->count() / 6);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
-            ->setFirstResult(($page-1) * 1)
-            ->setMaxResults(1)
+            ->setFirstResult(($page-1) * 6)
+            ->setMaxResults(6)
         );
 
         return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'amount' => $amount, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));
