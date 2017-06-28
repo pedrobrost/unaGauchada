@@ -9,10 +9,10 @@
         </button>
       </div>
       <div class="modal-body ">
-      <div class="alert alert-{% if submission.score == 2 %}sucess{% if submission.score == 0 %}warning{% else %}danger{% endif %}" role="alert">
-            <h4 class="alert-heading">Calificación {% if submission.score == 2 %} Positiva {% if submission.score == 0 %} Neutra {% else %} Negativa {% endif %}</h4>
+      <div class="alert alert-{% if submission.score == 2 %}sucess{% elseif submission.score == 0 %}warning{% else %}danger{% endif %}" role="alert">
+            <h4 class="alert-heading">Calificación {% if submission.score == 2 %} Positiva {% elseif submission.score == 0 %} Neutra {% else %} Negativa {% endif %}</h4>
             <p>{{submission.publication.user.name}} {{submission.publication.user.lastname}} te ha calificado por ayudarlo{% if submission.scoreMessage %} y te ha dejado el siguiente comentario "{{submission.scoreMessage}}"{% endif %}.</p>
-            <p class="mb-0">{% if submission.score == 2 %} Has recibido 1 crédito y has subido 2 puntos en tu reputación. {% if submission.score == 0 %} Has recibido 0 créditos y  no has subido puntos en tu reputación. {% else %} Has has restado 1 punto en tu reputación.{% endif %}</p>
+            <p class="mb-0">{% if submission.score == 2 %} Has recibido 1 crédito y has subido 2 puntos en tu reputación. {% elseif submission.score == 0 %} Has recibido 0 créditos y  no has subido puntos en tu reputación. {% else %} Has has restado 1 punto en tu reputación.{% endif %}</p>
       </div>
       </div>
       <div class="modal-footer">
