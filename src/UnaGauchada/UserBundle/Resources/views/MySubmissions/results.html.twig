@@ -1,5 +1,10 @@
+{% import 'UserBundle:MySubmissions:noSearchResult.html.twig' as noResultMsg %}
+
 <div class="col-md-8 col-lg-9 container search ">
     <ul class="list-group list-group-flush">
+        {{noResultMsg.message('en las que hayas sido elegido','elegidoMessage')}}
+        {{noResultMsg.message('en las que hayas sido rechazado','rechazadoMessage')}}
+        {{noResultMsg.message('pendientes','pendienteMessage')}}
         {% for submission in app.user.submissions|reverse  %}
                 {% include 'UserBundle:MySubmissions:submission.html.twig' %}
         {% else %}
