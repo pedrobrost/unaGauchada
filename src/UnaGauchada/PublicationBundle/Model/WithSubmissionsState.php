@@ -22,4 +22,8 @@ class WithSubmissionsState extends PublicationSubmissionsState
         return "Tu publicación ha sido cancelada exitosamente.";
     }
 
+    public function isActive(){
+        return true;
+    }
+
 }

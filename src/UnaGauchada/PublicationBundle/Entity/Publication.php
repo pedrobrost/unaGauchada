@@ -529,4 +529,8 @@ class Publication
         return $this->getAvailableState()->isClosed($this);
     }
 
+    public function isActive(){
+        return $this->getAvailableState()->isActive($this);
+    }
+
 }

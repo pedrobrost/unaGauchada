@@ -16,6 +16,8 @@ abstract class PublicationSubmissionsState
 
     private $publication;
 
+    abstract public function isActive();
+
     public function isClosed(){
         return false;
     }
