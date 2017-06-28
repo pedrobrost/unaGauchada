@@ -144,4 +144,14 @@ class AcceptedState extends SubmissionState
         return true;
     }
 
+    public function isWaiting($publication)
+    {
+        return false;
+    }
+
+    public function isRejected($publication)
+    {
+        return false;
+    }
+
 }

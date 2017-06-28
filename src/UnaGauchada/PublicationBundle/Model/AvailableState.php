@@ -22,4 +22,8 @@ class AvailableState extends PublicationAvailableState
         return $this->getPublication()->getSubmissionsState()->cancel($reason);
     }
 
+    public function isClosed($publication){
+        return $publication->getSubmissionsState()->isClosed();
+    }
+
 }

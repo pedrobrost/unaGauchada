@@ -16,6 +16,10 @@ abstract class PublicationSubmissionsState
 
     private $publication;
 
+    public function isClosed(){
+        return false;
+    }
+
     public function __construct($publication){
         $this->publication = $publication;
     }
