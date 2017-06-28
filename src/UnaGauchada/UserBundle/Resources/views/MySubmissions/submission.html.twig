@@ -1,4 +1,4 @@
-<li class="list-group-item" data-status="{% if app.user.isChosen %}elegido{% elseif app.user.isWaiting %}pendiente{% else %}rechazado{% endif %}">
+<li class="list-group-item" data-status="{% if submission.chosen %}elegido{% elseif submission.waiting %}pendiente{% else %}rechazado{% endif %}">
     <div class="row">
         <div class="col-md-5">
             <img src="{{ path('publication_image', {'id': submission.publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
@@ -6,7 +6,7 @@
         <div class="col-md-7">
             <div class="card-block">
                 <h4 class="card-title">{{submission.publication.title}}</h4>
-                {% if app.user.isChosen %} <p class="text-success">Elegido</p> {% elseif app.user.isWaiting %} <p class="text-warning">Pendiente</p> {% else %} <p class="text-danger">Rechazado</p> {% endif %}
+                {% if submission.chosen %} <p class="text-success">Elegido</p> {% elseif submission.waiting %} <p class="text-warning">Pendiente</p> {% else %} <p class="text-danger">Rechazado</p> {% endif %}
                 <small>
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ submission.publication.limitDate | date('d/m/Y') }}</span>
                     <br>
