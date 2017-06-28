@@ -15,3 +15,12 @@ signup:
     defaults:  { _controller: UGSecurityBundle:Security:signup }
     methods:  [POST]
 
+user_password_edit:
+  path:       /user/changePassword
+  defaults: { _controller: UGSecurityBundle:Security:editPassword }
+  methods:  [GET]
+
+user_password_change:
+  path:       /user/changePassword
+  defaults: { _controller: UGSecurityBundle:Security:changePassword }
+  methods:  [POST]

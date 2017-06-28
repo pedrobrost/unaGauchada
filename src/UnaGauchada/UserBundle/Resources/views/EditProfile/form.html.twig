@@ -1,0 +1,78 @@
+<div class="container editProfile">
+  <div class="btn-group pull-right" role="group">
+    <div data-toggle="modal" data-target="#myModal">
+      <button id="modalbutton" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver al Perfil">
+          <i class="fa fa-reply" aria-hidden="true"></i>
+    </button>
+    </div>
+    <a href="{{path ('user_profile')}}" id="backbutton" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="" data-original-title="Volver al Perfil" style="display: block;border-radius: .25rem;"><i class="fa fa-reply" aria-hidden="true"></i></a>
+  </div>
+  <h1>Editar Perfil</h1>
+  <hr>
+  <form id="editProfile_form" method="post" action="{{ path('user_profile_edit') }}" enctype="multipart/form-data">
+    <h3>Información Personal</h3>
+    <div class="row">
+      <div class="col col-md-3 profilePic">
+        <div class="card">
+          <div>
+            <img id='img-upload' src="{{ path('user_photo', {'id': app.user.id}) }}" class="card-img-bottom rounded" />
+            <div class="overlay">
+              <div class="input-group">
+                <input type="text" class="form-control" readonly="" style="display: none;" title="">
+                <span class="input-group-btn">
+                <span class="btn btn-secondary btn-file" >
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i><input type="file" id="imgInp" name="image" accept="image/*" aria-invalid="false" title=" ">
+                </span>
+                </span>
+              </div>
+            </div>
+            <div class="cambiarFoto"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+            <div class="card-footer text-muted">
+              Cambiar Imagen
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Nombre:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="text" id="name" name="name" maxlength="40" value="{{app.user.name}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Apellido:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="text" id="lastName" name="lastName" maxlength="40" value="{{app.user.lastname}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Email:</label>
+          <div class="col-lg-11">
+            <input class="form-control" type="text" id="email" name="email" value="{{app.user.email}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label">Teléfono:</label>
+          <div class="col-lg-11">
+            <input class="form-control" id="phone" type="tel" name="phone" value="{{app.user.phone}}">
+          </div>
+        </div>
+<div class="form-group">
+          <label class="col-lg-5 control-label">Contraseña:</label>
+          <div class="col-lg-11">
+            <a href="{{ path('user_password_edit') }}" class="btn btn-primary" id="passwb" data-toggle="tooltip" data-placement="left" data-original-title="Cambiar contraseña"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <input class="form-control" id="passwi" type="password" value="123456" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-5 control-label"></label>
+          <div class="col-lg-11">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="reset" id="cancelform" class="btn btn-default">Deshacer</button>
+          </div>
+        </div>
+  </form>
+  </div>
+  </div>
+</div>

@@ -1,11 +1,18 @@
+{% import 'PublicationBundle:Publications:createResponse.html.twig' as create %}
+
 <li class="list-group-item">
     <div class="media">
-        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Generic placeholder image">
+        <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.user.id}) }}" alt="Imagen del usuario que comenta">
         <div class="media-body">
             {% if app.user == comment.user %}
             <div class="btn-group pull-right" role="group">
                 <button type="button" class="btn btn-sm btn-danger"><i
                                         class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+            {% elseif app.user == publication.user and not comment.response %}
+            <div class="btn-group pull-right" role="group">
+                <button type="button" id="" class="replyButton btn btn-sm btn-default" data-target={{'response' ~ comment.id}}>
+                <i class="fa fa-reply" aria-hidden="true"></i></button>
             </div>
             {% endif %}
             <h5 class="mt-0">{{ comment.user.name }} {{ comment.user.lastName }}
@@ -13,7 +20,7 @@
             </h5>
             {{ comment.text }} {% if comment.response %}
             <div class="media mt-3">
-                <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Generic placeholder image">
+                <img class="comment d-flex mr-3 rounded" src="{{ path('user_photo', {'id': comment.response.user.id}) }}" alt="Imagen de perfil del publicante">
                 <div class="media-body">
                     <h5 class="mt-0"> {{ comment.response.user.name }} {{ comment.response.user.lastName }}
                         <small class="date-small"> {{ comment.date | date('d/m/Y') }} </small>
@@ -29,7 +36,9 @@
                 </div>
             </div>
             {% endif %}
-
         </div>
     </div>
 </li>
+{% if app.user == publication.user and not comment.response %}
+{{ create.response("Responde a " ~ comment.user.name ~ " " ~ comment.user.lastname, 'response' ~ comment.id, publication, comment) }}
+{% endif %}

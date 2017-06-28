@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use UnaGauchada\PublicationBundle\Entity\Comment;
 use UnaGauchada\PublicationBundle\Entity\Publication;
+use UnaGauchada\PublicationBundle\Entity\PublicationComment;
+use Symfony\Component\HttpFoundation\Response;
+use UnaGauchada\PublicationBundle\Entity\Response as CommentResponse;
+use UnaGauchada\PublicationBundle\Entity\Submission;
 
 class PublicationController extends Controller
 {
@@ -26,14 +30,37 @@ class PublicationController extends Controller
 
         $publicationCreated = $request->getSession()->get('publicationCreated', false);
         $request->getSession()->remove('publicationCreated');
-        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $publications, 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated));
+        $publicationCancelled = $request->getSession()->get('publicationCancelled', false);
+        $request->getSession()->remove('publicationCancelled');
+        return $this->render('PublicationBundle:Publications:index.html.twig', array('publications' => $this->getActive($publications), 'page' => $page, 'pages' => $pages, 'publicationCreated' => $publicationCreated, 'publicationCancelled' => $publicationCancelled));
     }
-    public function showAction(Publication $publication){
-        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication));
+
+    public function getActive($publications){
+        $activePublications = new ArrayCollection();
+        foreach ($publications as $publication) {
+            $publication->addIfActive($activePublications);
+        }
+        return $activePublications;
+    }
+
+    public function showAction(Publication $publication, Request $request){
+        $commentCreated = $request->getSession()->get('commentCreated', false);
+        $request->getSession()->remove('commentCreated');
+
+        $responseCreated = $request->getSession()->get('responseCreated', false);
+        $request->getSession()->remove('responseCreated');
+
+        $postulated = $request->getSession()->get('postulated', false);
+        $request->getSession()->remove('postulated');
+
+        return $this->render('PublicationBundle:Publications:publication.html.twig', array('publication' => $publication,
+                                                                                                'commentCreated' => $commentCreated,
+                                                                                                'responseCreated' => $responseCreated,
+                                                                                                'postulated' => $postulated));
     }
 
     public function publishAction(){
-       return $this->render('PublicationBundle:Creation:creation.html.twig');
+      return $this->render('PublicationBundle:Creation:creation.html.twig');
     }
 
     public function publishCreateAction(Request $request){
@@ -80,12 +107,66 @@ class PublicationController extends Controller
         return new Response(stream_get_contents($publication->getImage()), 200, array('Content-Type' => $publication->getImageMime()));
     }
 
+    public function commentAction(Publication $publication, Request $request){
+        $comment = new PublicationComment();
+        $comment
+            ->setUser($this->getUser())
+            ->setDate(new \DateTime())
+            ->setText($request->get('message'))
+            ->setPublication($publication);
+        $publication->addPublicationsComment($comment);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($publication);
+        $em->flush();
+
+        $request->getSession()->set('commentCreated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+
+    public function responseAction(Publication $publication, Comment $comment,  Request $request){
+        $response = new CommentResponse();
+        $response->setUser($this->getUser())
+            ->setDate(new \DateTime())
+            ->setText($request->get('message'));
+        $comment->setResponse($response);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        $request->getSession()->set('responseCreated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+    
     public function searchAction(){
 
     }
 
     public function submissionsAction(Publication $publication){
+        return $this->render('PublicationBundle:Submissions:list.html.twig');
+    }
 
+    public function submitAction(Publication $publication, Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $submission = new Submission($this->getUser(), $publication);
+        if($request->get('message') != ""){
+            $submission->setMessage($request->get('message'));
+        }
+        $em->persist($submission); // ver si se puede sacar
+        $em->flush();
+
+        $request->getSession()->set('postulated', true);
+        return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
+    }
+
+    public function cancelAction(Publication $publication, Request $request){
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Refund');
+        $message = $publication->cancel($reason);
+        $this->getDoctrine()->getManager()->flush();
+
+        $request->getSession()->set('publicationCancelled', $message);
+        return $this->redirectToRoute('publication_homepage');
     }
 
 }

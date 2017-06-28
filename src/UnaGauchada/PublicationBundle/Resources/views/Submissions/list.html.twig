@@ -1,0 +1,24 @@
+ {% extends 'base.html.twig' %} {% block body %}
+
+{% if chosen %}
+    {% include 'PublicationBundle:Submissions:point.html.twig' %}
+{% endif %}
+
+<div class="container postulantes">
+    <div class="row">
+        <div class="submissions col-xs-12 col-sm-offset-3 col-sm-12 col-md-8">
+            {% if chosen %}
+                {% include 'PublicationBundle:Submissions:chosen.html.twig' %}
+            {% else %}
+                {% include 'PublicationBundle:Submissions:postulados.html.twig' %}
+            {% endif %}
+        </div>
+            {% include 'PublicationBundle:Submissions:publication.html.twig' %}  
+    </div>
+</div>
+
+
+{% endblock %} {% block javascripts %}
+<script src="{{ asset('dist/js/Publication/Submissions/searchable.js') }}"></script>
+<script src="{{ asset('dist/js/Publication/Submissions/list.js') }}"></script>
+{% endblock %}
