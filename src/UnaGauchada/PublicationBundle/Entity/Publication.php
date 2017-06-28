@@ -522,7 +522,7 @@ class Publication
     }
 
     public function cancel($reason){
-        $this->getAvailableState()->cancel($reason);
+        return $this->getAvailableState()->cancel($reason);
     }
 
 }

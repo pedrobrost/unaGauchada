@@ -19,6 +19,7 @@ class WithSubmissionsState extends PublicationSubmissionsState
 
     public function cancel($reason){
         $this->getPublication()->setIsCancelled(true);
+        return "Tu publicación ha sido cancelada exitosamente.";
     }
 
 }

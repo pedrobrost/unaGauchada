@@ -21,6 +21,7 @@ class WithoutSubmissionsState extends PublicationSubmissionsState
     public function cancel($reason){
         $this->getPublication()->setIsCancelled(true);
         $reason->newTransactionFor($this->getPublication()->getUser());
+        return "Tu publicación ha sido cancelada exitosamente, se te ha devuelto un crédito.";
     }
 
 }

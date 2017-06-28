@@ -19,7 +19,7 @@ class AvailableState extends PublicationAvailableState
     }
 
     public function cancel($reason){
-        $this->getPublication()->getSubmissionsState()->cancel($reason);
+        return $this->getPublication()->getSubmissionsState()->cancel($reason);
     }
 
 }

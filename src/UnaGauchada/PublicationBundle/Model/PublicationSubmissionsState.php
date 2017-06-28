@@ -24,6 +24,7 @@ abstract class PublicationSubmissionsState
     }
 
     public function cancel($reason){
+        return "";
     }
 
     /**
