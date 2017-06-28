@@ -5,15 +5,25 @@
         </div>
         <div class="col-md-7">
             <div class="card-block">
-                <h4 class="card-title">{{publication.title}}</h4>
+                <h4 class="card-title">{{ publication.title }}</h4>
+                {% if publication.active %} <p class="text-success">Activa</p> {% elseif publication.closed %} <p
+                        class="text-warning">Cerrada</p> {% else %} <p class="text-danger">Cancelada</p> {% endif %}
+
                 <small>
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ publication.limitDate | date('d/m/Y') }}</span>
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+                    <span>{{ publication.limitDate | date('d/m/Y') }}</span>
                     <br>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{ publication.department.name | title }}</span>
+                    <i class="fa fa-map-marker"
+                       aria-hidden="true"></i>&nbsp;<span>{{ publication.department.name | title }}</span>
                     <br>
                     <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ publication.category }}</span>
-                    </small>
+                </small>
             </div>
-            <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': publication.id}) }}">Ver Publicación</a></div>
+
+            {% if not publication.closed %}
+                <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': publication.id}) }}">Ver Publicación</a></div>
+            {% elseif publication.hasChosen and publication.expired and not publication.chosen.hasScore %}
+                <a class="btn btn-primary detalle" href="{{ path('submissions_show', {'id': publication.id}) }}">Ver Postulados</a></div>
+            {% endif %}
     </div>
 </li>

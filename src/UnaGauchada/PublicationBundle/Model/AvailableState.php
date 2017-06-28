@@ -26,4 +26,8 @@ class AvailableState extends PublicationAvailableState
         return $publication->getSubmissionsState()->isClosed();
     }
 
+    public function isActive($publication){
+        return $publication->getSubmissionsState()->isActive();
+    }
+
 }

@@ -24,4 +24,8 @@ class WithoutSubmissionsState extends PublicationSubmissionsState
         return "Tu publicación ha sido cancelada exitosamente, se te ha devuelto un crédito.";
     }
 
+    public function isActive(){
+        return true;
+    }
+
 }

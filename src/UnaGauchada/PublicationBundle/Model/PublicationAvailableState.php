@@ -20,6 +20,8 @@ abstract class PublicationAvailableState
         return true;
     }
 
+    abstract public function isActive($publication);
+
     public function __construct($publication){
         $this->publication = $publication;
     }

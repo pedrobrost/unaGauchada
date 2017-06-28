@@ -15,4 +15,8 @@ class ClosedState extends PublicationSubmissionsState
         return true;
     }
 
+    public function isActive(){
+        return false;
+    }
+
 }

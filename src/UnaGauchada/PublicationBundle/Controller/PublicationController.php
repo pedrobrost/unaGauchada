@@ -4,6 +4,7 @@ namespace UnaGauchada\PublicationBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class PublicationController extends Controller
         $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
         $publications = $repository->findAll();
         $publications = new ArrayCollection($publications);
+        $publications = $this->getActive($publications);
         $pages = ceil($publications->count() / 9);
         $pages = ($pages == 0) ? 1 : $pages;
         $publications = $publications->matching(Criteria::create()
@@ -137,13 +139,46 @@ class PublicationController extends Controller
         $request->getSession()->set('responseCreated', true);
         return $this->redirectToRoute('publication_show', array('id' => $publication->getId()));
     }
-    
-    public function searchAction(){
 
-    }
+    public function searchAction(Request $request, $page){
 
-    public function submissionsAction(Publication $publication){
-        return $this->render('PublicationBundle:Submissions:list.html.twig');
+        $repository = $this->getDoctrine()->getRepository('PublicationBundle:Publication');
+        $publications = new ArrayCollection($repository->findAll());
+
+        $criteria = Criteria::create()
+            ->orderBy(array('sysDate' => Criteria::DESC));
+
+        if($request->get('title', "") != "")
+            $criteria->andWhere(Criteria::expr()->contains('title', $request->get('title')));
+
+        if($request->get('city', -1) != -1){
+            $departmentRepository = $this->getDoctrine()->getRepository('PublicationBundle:Department');
+            $department = $departmentRepository->findOneById($request->get('city'));
+            $criteria->andWhere(Criteria::expr()->eq('department', $department));
+        }
+
+        if($request->get('category', -1) != -1){
+            $categoryRepository = $this->getDoctrine()->getRepository('PublicationBundle:Category');
+            $category = $categoryRepository->find($request->get('category'));
+            $criteria->andWhere(Criteria::expr()->eq('category', $category));
+        }
+
+        $categories = $this->getDoctrine()
+            ->getRepository('PublicationBundle:Category')->findAll();
+        $departments = $this->getDoctrine()
+            ->getRepository('PublicationBundle:Department')->findAll();
+
+        $publications = $this->getActive($publications);
+        $publications = $publications->matching($criteria);
+        $amount = $publications->count();
+        $pages = ceil($publications->count() / 6);
+        $pages = ($pages == 0) ? 1 : $pages;
+        $publications = $publications->matching(Criteria::create()
+            ->setFirstResult(($page-1) * 6)
+            ->setMaxResults(6)
+        );
+
+        return $this->render('PublicationBundle:Search:advancedSearch.html.twig', array('publications' => $publications, 'amount' => $amount, 'page' => $page, 'pages' => $pages, 'categories' => $categories, 'departments' => $departments));
     }
 
     public function submitAction(Publication $publication, Request $request){
