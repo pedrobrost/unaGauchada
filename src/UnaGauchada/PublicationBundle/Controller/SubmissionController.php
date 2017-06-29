@@ -75,9 +75,13 @@ class SubmissionController extends Controller{
         $em = $this->getDoctrine()->getManager();
         $scoreRepository = $this->getDoctrine()->getRepository('PublicationBundle:Score');
         $score = $scoreRepository->findOneByName($request->get('score'));
+        if($request->get('score') == 'positive'){
+            $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+            $reason = $repository->findOneByName('PositiveScore');
+            $reason->newTransactionFor($submission->getUser());
+        }
         $score->newRateFor($submission, $request->get('message'));
         $em->flush();
-
         return $this->redirectToRoute('submissions_show', array('id' => $publication->getId()));
     }
 
