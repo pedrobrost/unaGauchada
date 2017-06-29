@@ -23,7 +23,7 @@
             {% elseif not publication.closed %}
                 <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': publication.id}) }}">Ver Publicación</a></div>
             {% elseif publication.hasChosen and publication.expired and not publication.chosen.hasScore %}
-                <a class="btn btn-primary detalle" href="{{ path('submissions_show', {'id': publication.id}) }}">Calificar Postulado</a></div>
+                <a class="btn btn-primary detalle" href="{{ path('submissions_show', {'id': publication.id}) }}">Ver elegido</a></div>
             {% elseif publication.hasChosen %}
                 <a class="btn btn-primary detalle" href="{{ path('submissions_show', {'id': publication.id}) }}">Ver elegido</a></div>
             {% endif %}
