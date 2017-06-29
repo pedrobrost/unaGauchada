@@ -14,10 +14,14 @@
         .submissions {
             margin: 0 auto;
             .list-group {
+                .list-group-item:last-child{
+                    border: 0px;
+                }
                 .list-group-item {
                     border-top-right-radius: 0rem;
                     border-top-left-radius: 0rem;
-                    border: 0.2px solid rgba(0,0,0,0.125);
+                    border: 0px;
+                    border-bottom: 2px solid rgba(0,0,0,0.125);
                 }
             }
             .panel {
