@@ -44,6 +44,11 @@
                         text-overflow: ellipsis;
                     }
                     width: 100%;
+                    .col-md-7{
+                        .card-block{
+                        padding: 20px!important;
+                        }
+                    }
                     img {
                         object-fit: cover;
                         height: 154px;
