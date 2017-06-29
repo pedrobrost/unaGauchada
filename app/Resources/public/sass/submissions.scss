@@ -15,7 +15,9 @@
             margin: 0 auto;
             .list-group {
                 .list-group-item {
-                    border: 0;
+                    border-top-right-radius: 0rem;
+                    border-top-left-radius: 0rem;
+                    border: 0.2px solid rgba(0,0,0,0.125);
                 }
             }
             .panel {
@@ -117,6 +119,7 @@
                 }
                 .elegir {
                     float: right;
+                    margin-top: -25px;
                 }
             }
         }
