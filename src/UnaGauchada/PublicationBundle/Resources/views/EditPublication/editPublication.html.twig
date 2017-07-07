@@ -18,7 +18,22 @@
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                 <small class="text-muted">{#{ publication.sysDate | date('d/m/Y') }#} </small> &nbsp
             </div>
-            <img class=" card-img-top publication" src="/publications/15/image{#{ path('publication_image', {'id': publication.id}) }#}" alt="Card image cap">
+             <div class="card imagen">
+          <div>
+            <img class=" card-img-top publication" id='img-upload' src="/publications/15/image" class="card-img-bottom rounded" />
+            <div class="overlay">
+              <div class="input-group">
+                <input type="text" class="form-control" readonly="" style="display: none;" title="">
+                <span class="input-group-btn">
+                <span class="btn btn-secondary btn-file" >
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i><input type="file" id="imgInp" name="image" accept="image/*" aria-invalid="false" title=" ">
+                </span>
+                </span>
+              </div>
+            </div>
+            <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
+          </div>
+        </div>
                 <textarea class="card-text">Necesito ayuda{# publication.description #}</textarea>
             <div class="card-block text-right">
                 <div class="text-left">
@@ -37,6 +52,7 @@
 
 {% block javascripts %}    
 <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/EditProfile/profilePhoto.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/comment.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/commentsValidation.js') }}"></script>
 {% endblock %} 
