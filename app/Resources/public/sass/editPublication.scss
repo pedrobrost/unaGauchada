@@ -6,10 +6,17 @@
         border: 1px solid rgba(0, 0, 0, 0.19)!important;
         height: 37.3px;
     }
+    .col-xs-5.selectContainer{
+        margin-top: 20px;
+    }
+    .card.city{
+        .card-block{
+        margin-bottom: -20px;}
+    }
     .col-md-9 {
         .card.imagen:hover .cambiarFoto {
-                    opacity: 1;
-                }
+            opacity: 1;
+        }
         .card.imagen {
             border: 0px;
             #img-upload {
@@ -17,7 +24,6 @@
                 max-height: 450px;
                 object-fit: cover;
             }
-
             .overlay {
                 position: absolute;
                 top: 0;
@@ -38,8 +44,9 @@
                         }
                     }
                 }
-            }}
-        .card{
+            }
+        }
+        .card {
             textarea {
                 width: 98%;
                 height: auto;
@@ -77,8 +84,7 @@
     }
 }
 
- 
- .cambiarFoto {
+.cambiarFoto {
     right: 43.7%;
     top: 30%;
     font-size: 110px;
@@ -87,24 +93,20 @@
     opacity: 0;
     transition: opacity .35s ease;
     cursor: pointer;
-    @media(max-width: 1199px){
+    @media(max-width: 1199px) {
         top: 26%;
     }
-    @media(max-width: 992px){
+    @media(max-width: 992px) {
         right: 40.7%;
         top: 18%;
     }
-    @media(max-width: 992px){
+    @media(max-width: 992px) {
         right: 40.7%;
         top: 18%;
     }
-    @media(max-width: 500px){
+    @media(max-width: 500px) {
         right: 40.7%;
         top: 18%;
         font-size: 80px;
     }
-
-
-
-
 }

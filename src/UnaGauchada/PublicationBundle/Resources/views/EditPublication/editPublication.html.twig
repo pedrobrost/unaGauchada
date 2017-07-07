@@ -1,58 +1,98 @@
-{% extends 'base.html.twig' %} 
-
-{% block body %}
+{% extends 'base.html.twig' %} {% block stylesheets %}
+<link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet" /> {% endblock %} {% block body %}
 <div class="container publication">
-<div class="row editPublication">
-    <div class="col-md-9">
-        <div class="card">
-        <form>
-            <div class="card-block">
-                <h4 class="card-title"> <input maxlength="50" class="card-title" type="text" value="Hola a todos">
-                    <div class="btn-group pull-right" role="group">
-                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
+    <div class="row editPublication">
+        <div class="col-md-9">
+            <div class="card">
+                <form>
+                    <div class="card-block">
+                        <h4 class="card-title"> <input maxlength="50" class="card-title" type="text" value="Hola a todos">
+                            <div class="btn-group pull-right" role="group">
+                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
                         <i class="fa fa-reply" aria-hidden="true"></i>
                     </button>
+                            </div>
+                        </h4>
+                        &nbsp
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <small class="text-muted">27/08/2014{#{ publication.sysDate | date('d/m/Y') }#} </small> &nbsp
                     </div>
-                </h4>
-                &nbsp
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <small class="text-muted">{#{ publication.sysDate | date('d/m/Y') }#} </small> &nbsp
-            </div>
-             <div class="card imagen">
-          <div>
-            <img class=" card-img-top publication" id='img-upload' src="/publications/15/image" class="card-img-bottom rounded" />
-            <div class="overlay">
-              <div class="input-group">
-                <input type="text" class="form-control" readonly="" style="display: none;" title="">
-                <span class="input-group-btn">
+                    <div class="card imagen">
+                        <div>
+                            <img class=" card-img-top publication" id='img-upload' src="/publications/15/image" class="card-img-bottom rounded" />
+                            <div class="overlay">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" readonly="" style="display: none;" title="">
+                                    <span class="input-group-btn">
                 <span class="btn btn-secondary btn-file" >
                     <i class="fa fa-folder-open-o" aria-hidden="true"></i><input type="file" id="imgInp" name="image" accept="image/*" aria-invalid="false" title=" ">
                 </span>
-                </span>
-              </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
+                        </div>
+                    </div>
+                    <textarea class="card-text">  Necesito ayuda{# publication.description #}</textarea>
+                    <div class="card-block text-right">
+                        <div class="text-left">
+                            <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: 27/08/2020 {# publication.limitDate
+                            | date('d/m/Y')#}
+                        </div>
+                        <button type="reset" id="cancelform" class="btn btn-default">Deshacer</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
             </div>
-            <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
-          </div>
         </div>
-                <textarea class="card-text">Necesito ayuda{# publication.description #}</textarea>
-            <div class="card-block text-right">
-                <div class="text-left">
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: {# publication.limitDate | date('d/m/Y')#}
+        <div class="col col-md-3 profilePic">
+            <div class="card">
+                <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del publicante">
+                <div class="card-block">
+                    <h4 class="card-title">{{ app.user }}</h4>
+                    <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 
+                {{ achievement_service.getFor(app.user) }} 
+            </small>
                 </div>
             </div>
-        </form>
+            <br>
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp Categoria</h5>
+                    <div class="col-xs-5 selectContainer">
+                        <select name="category" id="category" class="form-control">
+                            <option value="-1" selected="selected">Todas las categorias</option>
+                            {#% include 'PublicationBundle:Categories:list.html.twig' %#}
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="card city">
+                <div class="card-block">
+                    <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ciudad</h5>
+                    <div class="col-xs-5 selectContainer">
+                        <select placeholder="Ciudad" name="city" id="city" class="form-control">
+                            <option value="-1">Todas las ciudades</option>
+                            {#% include 'PublicationBundle:Cities:list.html.twig' %#}
+                        </select>
+                        <label for="city" class="error" generated="true"></label>
+                    </div>
+                </div>
+            </div>
+            <br>
+
         </div>
     </div>
-    {#% include 'PublicationBundle:Publications:profile.html.twig' %#}
-</div>
 </div>
 
 
-{% endblock %} 
-
-{% block javascripts %}    
+{% endblock %} {% block javascripts %}
 <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('dist/js/EditProfile/profilePhoto.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/comment.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/commentsValidation.js') }}"></script>
-{% endblock %} 
+<script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('dist/js/Publication/Publish/createForm.select2.js') }}"></script>
+{% endblock %}
