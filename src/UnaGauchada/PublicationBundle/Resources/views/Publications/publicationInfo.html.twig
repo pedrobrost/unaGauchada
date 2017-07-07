@@ -5,7 +5,7 @@
             <div class="btn-group pull-right" role="group">
 
                 {% if is_granted('edit', publication) %}
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Editar">
                         <i class="fa fa-pencil"  aria-hidden="true"></i>
                     </button> 
                 {% endif %} 

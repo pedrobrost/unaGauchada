@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+<div class="container publication">
+<div class="row editPublication">
+    <div class="col-md-9">
+        <div class="card">
+        <form>
+            <div class="card-block">
+                <h4 class="card-title"> <input maxlength="50" class="card-title" type="text" value="Hola a todos">
+                    <div class="btn-group pull-right" role="group">
+                        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
+                        <i class="fa fa-reply" aria-hidden="true"></i>
+                    </button>
+                    </div>
+                </h4>
+                &nbsp
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <small class="text-muted">{#{ publication.sysDate | date('d/m/Y') }#} </small> &nbsp
+            </div>
+            <img class=" card-img-top publication" src="/publications/15/image{#{ path('publication_image', {'id': publication.id}) }#}" alt="Card image cap">
+                <textarea class="card-text">Necesito ayuda{# publication.description #}</textarea>
+            <div class="card-block text-right">
+                <div class="text-left">
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: {# publication.limitDate | date('d/m/Y')#}
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    {#% include 'PublicationBundle:Publications:profile.html.twig' %#}
+</div>
+</div>
+
+
+{% endblock %} 
+
+{% block javascripts %}    
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/Publication/Comments/comment.js') }}"></script>
+<script src="{{ asset('dist/js/Publication/Comments/commentsValidation.js') }}"></script>
+{% endblock %} 

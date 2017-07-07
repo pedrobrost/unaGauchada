@@ -1,0 +1,46 @@
+.editPublication {
+    input:hover,
+    input:focus {
+        outline: none;
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.19)!important;
+        height: 37.3px;
+    }
+    .col-md-9 {
+        .card {
+            textarea {
+                width: 98%;
+                height: auto;
+                resize: none;
+                outline: none;
+                border: 1px hidden;
+                font-size: 15px;
+                font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-size: 1rem;
+                font-weight: normal;
+                line-height: 1.5;
+                margin-top: 13px;
+                margin-left: 10px;
+                margin-bottom: 3px;
+                padding-left: 1px;
+            }
+            textarea:focus,
+            textarea:hover {
+                border-radius: 3px;
+                border: 1px solid rgba(0, 0, 0, 0.19)!important;
+            }
+            .card-block {
+                .card-title {
+                    input {
+                        border: 0px;
+                        font-size: 1.5rem;
+                        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                        padding: 6px;
+                        height: 37.3px;
+                        width: 93%;
+                    }
+                }
+            }
+        }
+    }
+}
