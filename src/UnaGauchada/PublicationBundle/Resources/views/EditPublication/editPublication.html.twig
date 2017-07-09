@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %} {% block stylesheets %}
 <link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet" /> {% endblock %} {% block body %}
 <div class="container publication">
+    <form id="editPublication_form">
     <div class="row editPublication">
         <div class="col-md-9">
             <div class="card">
-                <form>
                     <div class="card-block">
-                        <h4 class="card-title"> <input placeholder="Título" maxlength="50" class="card-title" type="text" value="Hola a todos">
-                            <div class="btn-group pull-right" role="group">
+                                                <div class="btn-group pull-right" role="group">
                                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
                         <i class="fa fa-reply" aria-hidden="true"></i>
                     </button>
                             </div>
+                        <h4 class="card-title">
+                        <div class="form-group"> <input placeholder="Título" name="title" maxlength="50" class="card-title form-control" type="text" value="Hola a todos">
+                        </div>
                         </h4>
                         &nbsp
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -33,7 +35,9 @@
                             <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
                         </div>
                     </div>
-                    <textarea placeholder="  Descripción" class="card-text">  Necesito ayuda{# publication.description #}</textarea>
+                    <div class="descriptionField">
+                    <textarea placeholder="Descripción" name="description" class="card-text">Necesito ayuda{# publication.description #}</textarea>
+                    </div>
                     <div class="card-block text-right">
                         <div class="text-left">
                             <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: 27/08/2020 {# publication.limitDate
@@ -42,7 +46,6 @@
                         <button type="reset" id="cancelform" class="btn btn-default">Deshacer</button>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </div>
-                </form>
             </div>
         </div>
         <div class="col col-md-3 profilePic">
@@ -85,12 +88,14 @@
 
         </div>
     </div>
+    </form>
 </div>
 
 
 {% endblock %} {% block javascripts %}
 <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('dist/js/EditProfile/profilePhoto.js') }}"></script>
+<script src="{{ asset('dist/js/EditPublication/editPublicationValidation.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/comment.js') }}"></script>
 <script src="{{ asset('dist/js/Publication/Comments/commentsValidation.js') }}"></script>
 <script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>

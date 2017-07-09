@@ -1,9 +1,19 @@
 .editPublication {
+    .error{
+        font-size: initial; 
+        font-weight: initial;
+    }
     input:hover,
     input:focus {
         outline: none;
         border-radius: 3px;
         border: 1px solid rgba(0, 0, 0, 0.19)!important;
+        height: 37.3px;
+    }
+    input.form-control-warning :hover,
+    input.form-control-warning :focus {
+        border-radius: 3px;
+        border: inherit;
         height: 37.3px;
     }
     .col-xs-5.selectContainer {
@@ -54,6 +64,9 @@
             }
         }
         .card {
+            .descriptionField{
+                margin-left: 20px;
+                margin-right: 10px;
             textarea {
                 width: 98%;
                 height: auto;
@@ -66,7 +79,6 @@
                 font-weight: normal;
                 line-height: 1.5;
                 margin-top: 13px;
-                margin-left: 10px;
                 margin-bottom: 3px;
                 padding-left: 1px;
                 @media(max-width: 500px) {
@@ -77,6 +89,7 @@
             textarea:hover {
                 border-radius: 3px;
                 border: 1px solid rgba(0, 0, 0, 0.19)!important;
+            }
             }
             .card-block {
                 .card-title {
