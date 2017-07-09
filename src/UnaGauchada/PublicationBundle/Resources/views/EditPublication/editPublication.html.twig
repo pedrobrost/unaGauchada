@@ -6,7 +6,7 @@
             <div class="card">
                 <form>
                     <div class="card-block">
-                        <h4 class="card-title"> <input maxlength="50" class="card-title" type="text" value="Hola a todos">
+                        <h4 class="card-title"> <input placeholder="Título" maxlength="50" class="card-title" type="text" value="Hola a todos">
                             <div class="btn-group pull-right" role="group">
                                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
                         <i class="fa fa-reply" aria-hidden="true"></i>
@@ -33,14 +33,13 @@
                             <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
                         </div>
                     </div>
-                    <textarea class="card-text">  Necesito ayuda{# publication.description #}</textarea>
+                    <textarea placeholder="  Descripción" class="card-text">  Necesito ayuda{# publication.description #}</textarea>
                     <div class="card-block text-right">
                         <div class="text-left">
                             <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: 27/08/2020 {# publication.limitDate
                             | date('d/m/Y')#}
                         </div>
                         <button type="reset" id="cancelform" class="btn btn-default">Deshacer</button>
-                        &nbsp
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                 </form>

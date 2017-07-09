@@ -23,7 +23,7 @@
             display: inline-block;
             background: black;
             padding: 0;
-            opacity: 0.15;
+            opacity: 0.25;
         }
         .card.imagen {
             border: 0px;
@@ -86,9 +86,54 @@
                         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
                         padding: 6px;
                         height: 37.3px;
-                        width: 85%;
+                        width: 92%;
+                        @media(max-width: 1199px) {
+                            width: 90%;
+                        }
+                        @media(max-width: 991px) {
+                            width: 84%;
+                        }
                     }
                 }
+                @media(max-width: 989px) {
+                    .btn {
+                        margin-top: 10px
+                    }
+                }
+                @media(max-width: 767px) {
+                    .btn {
+                        display: block;
+                        margin-right: 0px;
+                        width: 100%;
+                        margin-top: 10px;
+                    }
+                    .btn:first {
+                        margin-top: 25px;
+                    }
+                }
+                #cancelform {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+     .profilePic {
+        img {
+            object-fit: cover;
+            height: 240px;
+            @media(max-width: 1199px) {
+                height: 190px;
+            }
+            @media(max-width: 991px) {
+                height: 140px;
+            }
+        }
+        @media(max-width: 767px) {
+            margin-bottom: 30px;
+            padding-top: 25px;
+            img {
+                height: auto;
+                max-height: 350px;
             }
         }
     }
@@ -103,6 +148,7 @@
     opacity: 0;
     transition: opacity .35s ease;
     cursor: pointer;
+    color: #3a3939;
     @media(max-width: 1199px) {
         top: 26%;
     }
@@ -119,4 +165,24 @@
         top: 18%;
         font-size: 80px;
     }
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #999;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #999;
 }
