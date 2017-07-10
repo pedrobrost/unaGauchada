@@ -112,18 +112,18 @@
                     }
                 }
                 @media(max-width: 989px) {
-                    .btn {
+                    .btn.form {
                         margin-top: 10px
                     }
                 }
                 @media(max-width: 767px) {
-                    .btn {
+                    .btn.form {
                         display: block;
                         margin-right: 0px;
                         width: 100%;
                         margin-top: 10px;
                     }
-                    .btn:first {
+                    .btn.form:first {
                         margin-top: 25px;
                     }
                 }
@@ -168,6 +168,15 @@
     ::-webkit-input-placeholder {
         /* WebKit browsers */
         color: #999;
+    }
+}
+
+@media(max-width: 767px){
+    .usercard{
+        display: none;
+    }
+    .categorycard{
+        margin-top: -20px;
     }
 }
 
