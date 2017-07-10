@@ -1,6 +1,9 @@
 .editPublication {
-    .error{
-        font-size: initial; 
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+    .error {
+        font-size: initial;
         font-weight: initial;
     }
     input:hover,
@@ -9,12 +12,10 @@
         border-radius: 3px;
         border: 1px solid rgba(0, 0, 0, 0.19)!important;
         height: 37.3px;
+        transition: none!important;
     }
-    input.form-control-warning :hover,
-    input.form-control-warning :focus {
-        border-radius: 3px;
-        border: inherit;
-        height: 37.3px;
+    .form-control-warning {
+        border: 1px solid rgba(0, 0, 0, 0.19)!important;
     }
     .col-xs-5.selectContainer {
         margin-top: 20px;
@@ -64,32 +65,34 @@
             }
         }
         .card {
-            .descriptionField{
+            .descriptionField {
                 margin-left: 20px;
                 margin-right: 10px;
-            textarea {
-                width: 98%;
-                height: auto;
-                resize: none;
-                outline: none;
-                border: 1px hidden;
-                font-size: 15px;
-                font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-                font-size: 1rem;
-                font-weight: normal;
-                line-height: 1.5;
-                margin-top: 13px;
-                margin-bottom: 3px;
-                padding-left: 1px;
-                @media(max-width: 500px) {
-                    width: 94%;
+                textarea {
+                    width: 98%;
+                    height: auto;
+                    resize: none;
+                    outline: none;
+                    border: 1px hidden;
+                    font-size: 15px;
+                    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                    font-size: 1rem;
+                    font-weight: normal;
+                    line-height: 1.5;
+                    margin-top: 13px;
+                    margin-bottom: 3px;
+                    padding: 0;
+                    padding-left: 1px;
+                    @media(max-width: 500px) {
+                        width: 94%;
+                    }
                 }
-            }
-            textarea:focus,
-            textarea:hover {
-                border-radius: 3px;
-                border: 1px solid rgba(0, 0, 0, 0.19)!important;
-            }
+                textarea:focus,
+                textarea:hover {
+                    border-radius: 3px;
+                    border: 1px solid rgba(0, 0, 0, 0.19)!important;
+                    transition: none!important;
+                }
             }
             .card-block {
                 .card-title {
@@ -130,7 +133,7 @@
             }
         }
     }
-     .profilePic {
+    .profilePic {
         img {
             object-fit: cover;
             height: 240px;
@@ -150,6 +153,22 @@
             }
         }
     }
+     :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #999;
+    }
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #999;
+    }
+    :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #999;
+    }
+    ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: #999;
+    }
 }
 
 .cambiarFoto {
@@ -157,6 +176,9 @@
     top: 30%;
     font-size: 110px;
     position: absolute;
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+    }
     text-align: center;
     opacity: 0;
     transition: opacity .35s ease;
@@ -178,24 +200,4 @@
         top: 18%;
         font-size: 80px;
     }
-}
-
-::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: #999;
-}
-
-:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #999;
-}
-
-::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #999;
-}
-
-:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: #999;
 }

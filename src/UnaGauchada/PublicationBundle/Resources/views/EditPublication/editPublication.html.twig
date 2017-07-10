@@ -2,18 +2,19 @@
 <link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet" /> {% endblock %} {% block body %}
 <div class="container publication">
     <form id="editPublication_form">
-    <div class="row editPublication">
-        <div class="col-md-9">
-            <div class="card">
+        <div class="row editPublication">
+            <div class="col-md-9">
+                <div class="card">
                     <div class="card-block">
-                                                <div class="btn-group pull-right" role="group">
-                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
+                        <div class="btn-group pull-right" role="group">
+                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
                         <i class="fa fa-reply" aria-hidden="true"></i>
                     </button>
-                            </div>
-                        <h4 class="card-title">
-                        <div class="form-group"> <input placeholder="Título" name="title" maxlength="50" class="card-title form-control" type="text" value="Hola a todos">
                         </div>
+                        <h4 class="card-title">
+                            <div class="form-group"> <input placeholder="Título" name="title" maxlength="50" class="card-title form-control" type="text"
+                                    value="Hola a todos">
+                            </div>
                         </h4>
                         &nbsp
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -35,8 +36,8 @@
                             <div class="cambiarFoto"> <i class="fa fa-pencil" aria-hidden="true"></i></div>
                         </div>
                     </div>
-                    <div class="descriptionField">
-                    <textarea placeholder="Descripción" name="description" class="card-text">Necesito ayuda{# publication.description #}</textarea>
+                    <div class="descriptionField form-group">
+                        <textarea placeholder="Descripción" name="description" class="card-text form-control">Necesito ayuda{# publication.description #}</textarea>
                     </div>
                     <div class="card-block text-right">
                         <div class="text-left">
@@ -46,48 +47,48 @@
                         <button type="reset" id="cancelform" class="btn btn-default">Deshacer</button>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </div>
-            </div>
-        </div>
-        <div class="col col-md-3 profilePic">
-            <div class="card">
-                <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del publicante">
-                <div class="card-block">
-                    <h4 class="card-title">{{ app.user }}</h4>
-                    <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 
-                {{ achievement_service.getFor(app.user) }} 
-            </small>
                 </div>
             </div>
-            <br>
-            <div class="card">
-                <div class="card-block">
-                    <h5 class="card-title"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp Categoria</h5>
-                    <div class="col-xs-5 selectContainer">
-                        <select name="category" id="category" class="form-control">
+            <div class="col col-md-3 profilePic">
+                <div class="card">
+                    <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}" alt="imagen del publicante">
+                    <div class="card-block">
+                        <h4 class="card-title">{{ app.user }}</h4>
+                        <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 
+                {{ achievement_service.getFor(app.user) }} 
+            </small>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-block">
+                        <h5 class="card-title"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp Categoria</h5>
+                        <div class="col-xs-5 selectContainer">
+                            <select name="category" id="category" class="form-control">
                             <option value="-1" selected="selected">Todas las categorias</option>
                             {#% include 'PublicationBundle:Categories:list.html.twig' %#}
                         </select>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-            <br>
-            <div class="card city">
-                <div class="card-block">
-                    <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ciudad</h5>
-                    <div class="col-xs-5 selectContainer">
-                        <select placeholder="Ciudad" name="city" id="city" class="form-control">
+                </div>
+                <br>
+                <div class="card city">
+                    <div class="card-block">
+                        <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ciudad</h5>
+                        <div class="col-xs-5 selectContainer">
+                            <select placeholder="Ciudad" name="city" id="city" class="form-control">
                             <option value="-1">Todas las ciudades</option>
                             {#% include 'PublicationBundle:Cities:list.html.twig' %#}
                         </select>
-                        <label for="city" class="error" generated="true"></label>
+                            <label for="city" class="error" generated="true"></label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br>
+                <br>
 
+            </div>
         </div>
-    </div>
     </form>
 </div>
 
