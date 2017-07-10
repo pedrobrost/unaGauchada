@@ -1,5 +1,9 @@
+{% import 'utils/modal.html.twig' as modal %} 
 {% extends 'base.html.twig' %} {% block stylesheets %}
 <link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet" /> {% endblock %} {% block body %}
+
+{{ modal.item('Esta a punto de salir sin guardar sus cambios, ¿Está seguro que desea continuar?', 'user_profile') }}
+
 <div class="container publication">
     <form id="editPublication_form">
         <div class="row editPublication">
@@ -7,10 +11,13 @@
                 <div class="card">
                     <div class="card-block">
                         <div class="btn-group pull-right" role="group">
-                            <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
-                        <i class="fa fa-reply" aria-hidden="true"></i>
-                    </button>
-                        </div>
+    <div data-toggle="modal" data-target="#myModal">
+      <button id="modalbutton" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Volver">
+          <i class="fa fa-reply" aria-hidden="true"></i>
+    </button>
+    </div>
+    <a href="{{path ('user_profile')}}" id="backbutton" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="" data-original-title="Volver" style="display: block;border-radius: .25rem;"><i class="fa fa-reply" aria-hidden="true"></i></a>
+  </div>
                         <h4 class="card-title">
                             <div class="form-group"> <input placeholder="Título" name="title" maxlength="50" class="card-title form-control" type="text"
                                     value="Hola a todos">
@@ -63,8 +70,8 @@
                 <div class="card">
                     <div class="card-block">
                         <h5 class="card-title"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp Categoria</h5>
-                        <div class="col-xs-5 selectContainer">
-                            <select name="category" id="category" class="form-control">
+                        <div class="col-xs-5 selectContainer form-group">
+                            <select name="category" id="category" class="form-control" required>
                             <option value="-1" selected="selected">Todas las categorias</option>
                             {#% include 'PublicationBundle:Categories:list.html.twig' %#}
                         </select>
@@ -76,12 +83,12 @@
                 <div class="card city">
                     <div class="card-block">
                         <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ciudad</h5>
-                        <div class="col-xs-5 selectContainer">
+                        <div class="col-xs-5 selectContainer form-group">
                             <select placeholder="Ciudad" name="city" id="city" class="form-control">
                             <option value="-1">Todas las ciudades</option>
+                            <option value="1">Todas las ciudades</option>
                             {#% include 'PublicationBundle:Cities:list.html.twig' %#}
                         </select>
-                            <label for="city" class="error" generated="true"></label>
                         </div>
                     </div>
                 </div>
