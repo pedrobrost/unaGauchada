@@ -48,10 +48,10 @@ $('#editPublication_form').validate({
                     required: "Por favor ingrese una descripción",
                 },
                 category: {
-                    required: "Por favor seleccione una categoria",
+                    required: "Seleccione una categoria",
                 },
                 city: {
-                    required: "Por favor seleccione la ciudad",
+                    required: "Seleccione la ciudad",
                 },
             },
 
