@@ -51,7 +51,7 @@ $('#editPublication_form').validate({
                     required: "Seleccione una categoria",
                 },
                 city: {
-                    required: "Seleccione la ciudad",
+                    required: "Seleccione una ciudad",
                 },
             },
 
