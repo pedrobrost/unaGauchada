@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+<div class="container form date">
+    <div class="container">
+        <div class="price-box">
+            <form class="form-horizontal form-pricing " role="form" method="post" action="{{ path('credits_purchase_info') }}">
+                <div class="">
+                    <h4 class="great">Ingrese rango de fechas</h4>
+                                    <div class="form-group">
+                          <input type="text" id="datePicker" class="form-control">
+                        </div>
+                </div>
+                <div class="col text-right" style="">
+                    <button class="btn btn-primary my-2 my-sm-0" id="nextstep" type="submit">Seguir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %} {% block javascripts %}
+<script src="{{ asset('dist/js/moment.min.js') }}"></script>
+<script src="{{ asset('dist/js/daterangepicker.js') }}"></script>
+<script src="{{ asset('dist/js/Credits/picker.js') }}"></script>
+{% endblock %}

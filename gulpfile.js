@@ -11,6 +11,8 @@ const jsDirs = [
   "./node_modules/jquery/dist/jquery.js",
   "./node_modules/bootstrap/dist/js/bootstrap.js",
   "./node_modules/jquery-validation/dist/jquery.validate.js",
+  "./node_modules/moment/min/moment.min.js",
+  "./node_modules/daterangepicker/daterangepicker.js",
   jsSrc
 ]
 
