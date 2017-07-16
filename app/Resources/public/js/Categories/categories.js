@@ -17,7 +17,6 @@ $(document).ready(function () {
   ],
   "bLengthChange": false,
           "info":     false,
-          "bFilter": false,
     "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ usuarios",
