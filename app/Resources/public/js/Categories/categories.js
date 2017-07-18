@@ -2,6 +2,10 @@ $(document).ready(function () {
     $("#mySubmissions").addClass("active");
 });
 
+$('#agregarCategoria').on('hidden.bs.modal', function (e) {
+      $(".addCategoryForm").validate().resetForm();
+})
+
 $(document).ready(function () {
     $('#usuarios').DataTable({
         "order": [
