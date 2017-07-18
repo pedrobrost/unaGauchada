@@ -1,4 +1,4 @@
-<li class="list-group-item" data-status="{% if publication.active %}active{% elseif publication.cancelled %}cancelled{% else %}closed{% endif %}">
+<li class="list-group-item" data-status="{% if publication.active %}active{% elseif publication.cancelled %}cancelled{% elseif publication.hasChosen and publication.expired and not publication.chosen.hasScore %}calificar{% else %}closed{% endif %}">
     <div class="row">
         <div class="col-md-5">
             <img src="{{ path('publication_image', {'id': publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
@@ -6,8 +6,8 @@
         <div class="col-md-7">
             <div class="card-block">
             <h4 class="card-title">{{ publication.title }}</h4> 
-                {% if publication.active %} <p class="text-success">Activa</p> {% elseif publication.cancelled %} <p class="text-danger">Cancelada</p> {% else %} <p 
-                        class="text-warning">Cerrada</p> {% endif %} 
+                {% if publication.active %} <p class="text-primary">Activa</p> {% elseif publication.cancelled %} <p class="text-danger">Cancelada</p> {% elseif publication.hasChosen and publication.expired and not publication.chosen.hasScore %} <p 
+                     <p class="text-success">Calificación pendiente</p> {% else %}  <p class="text-warning">Cerrada</p> {% endif %} 
                 <small>
                     <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
                     <span>{{ publication.limitDate | date('d/m/Y') }}</span>
@@ -23,8 +23,6 @@
             {% elseif not publication.closed %}
                 <a class="btn btn-primary detalle btn-sm"  style="width:115px" href="{{ path('publication_show', {'id': publication.id}) }}">Ver Publicación</a></div>
             {% elseif publication.hasChosen and publication.expired and not publication.chosen.hasScore %}
-                <a class="btn btn-primary detalle btn-sm"  style="width:115px" href="{{ path('submissions_show', {'id': publication.id}) }}">Ver elegido</a></div>
-            {% elseif publication.hasChosen and publication.expired %}
                 <a class="btn btn-primary detalle btn-sm"  style="width:115px" href="{{ path('submissions_show', {'id': publication.id}) }}">Calificar</a></div>
             {% elseif publication.hasChosen %}
                 <a class="btn btn-primary detalle btn-sm"  style="width:115px" href="{{ path('submissions_show', {'id': publication.id}) }}">Ver elegido</a></div>
