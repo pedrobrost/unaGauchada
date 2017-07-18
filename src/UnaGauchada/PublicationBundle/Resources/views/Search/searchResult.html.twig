@@ -1,0 +1,21 @@
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ path('publication_image', {'id': publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
+        </div>
+        <div class="col-md-7">
+            <div class="card-block">
+                <h4 class="card-title">{{ publication.title }}</h4>
+                <small>
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;
+                    <span>{{ publication.limitDate | date('d/m/Y') }}</span>
+                    <br>
+                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ publication.category }}</span>
+                </small>
+                <br>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <small class="text-muted">{{ publication.department | title }}</small>
+            </div>
+            <a class="btn btn-primary detalle" id="acceder" href="{{ path('publication_show', {'id': publication.id}) }}">Acceder</a></div>
+    </div>
+</li>

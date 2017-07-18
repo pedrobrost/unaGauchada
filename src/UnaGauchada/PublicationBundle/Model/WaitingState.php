@@ -19,8 +19,27 @@ class WaitingState extends SubmissionState
         $this->submission = $submission;
     }
 
-    public function getCalification(){
+    public function getScore(){
         return 0;
     }
 
+    public function isChosen()
+    {
+        return false;
+    }
+
+    public function isWaiting($publication)
+    {
+        return !($publication->isClosed());
+    }
+
+    public function isRejected($publication)
+    {
+        return $publication->isClosed();
+    }
+
+    public function getScoreMessage()
+    {
+        return "";
+    }
 }

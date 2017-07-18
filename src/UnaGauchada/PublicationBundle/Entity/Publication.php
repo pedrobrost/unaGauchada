@@ -5,6 +5,13 @@ namespace UnaGauchada\PublicationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use UnaGauchada\PublicationBundle\Model\AvailableState;
+use UnaGauchada\PublicationBundle\Model\CaducatedState;
+use UnaGauchada\PublicationBundle\Model\CancelledState;
+use UnaGauchada\PublicationBundle\Model\ClosedState;
+use UnaGauchada\PublicationBundle\Model\WithoutSubmissionsState;
+use UnaGauchada\PublicationBundle\Model\WithSubmissionsState;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Publication
@@ -97,6 +104,13 @@ class Publication
      * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication", cascade={"persist", "remove"})
      */
     private $publicationsComments;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isCancelled", type="boolean", nullable=true)
+     */
+    private $isCancelled;
 
 
     public function __construct(){
@@ -442,4 +456,81 @@ class Publication
     {
         return $this->publicationsComments;
     }
+    
+    public function getChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return $submission;
+        }
+        return null;
+    }
+
+    public function hasChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return true;
+        }
+        return false;
+    }
+
+    public function isExpired(){
+        return (new \DateTime() >= $this->getLimitDate());
+    }
+
+    public function getAvailableState(){
+        if($this->isCancelled()){
+            return new CancelledState($this);
+        }elseif($this->isExpired()){
+            return new CaducatedState($this);
+        }else{
+            return new AvailableState($this);
+        }
+    }
+
+    public function getSubmissionsState(){
+        if($this->getSubmissions()->isEmpty()){
+            return new WithoutSubmissionsState($this);
+        }elseif ($this->hasChosen()){
+            return new ClosedState($this);
+        }else{
+            return new WithSubmissionsState($this);
+        }
+    }
+
+    public function addIfActive($activePublications){
+        $this->getAvailableState()->addIfActive($activePublications);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCancelled()
+    {
+        return $this->isCancelled;
+    }
+
+    /**
+     * @param bool $isCancelled
+     *
+     *
+     * @return self
+     */
+    public function setIsCancelled($isCancelled)
+    {
+        $this->isCancelled = $isCancelled;
+        return $this;
+    }
+
+    public function cancel($reason){
+        return $this->getAvailableState()->cancel($reason);
+    }
+
+    public function isClosed(){
+        return $this->getAvailableState()->isClosed($this);
+    }
+
+    public function isActive(){
+        return $this->getAvailableState()->isActive($this);
+    }
+
 }

@@ -4,6 +4,7 @@ namespace UnaGauchada\PublicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UnaGauchada\PublicationBundle\Model\WaitingState;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Submission
@@ -45,13 +46,28 @@ class Submission
 
     /**
      * One Customer has One Cart.
-     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission")
+     * @ORM\OneToOne(targetEntity="AcceptedState", mappedBy="submission", cascade={"persist"})
      */
     private $acceptedState;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", nullable=true)
+     */
+    protected $message;
+
+
+    public function __construct(User $user, Publication $publication){
+        $this->setUser($user);
+        $this->setPublication($publication);
+        $this->setDate(new \DateTime());
+        $publication->addSubmission($this);
+        $user->addSubmission($this);
+    }
 
     public function getState(){
-        if(!$this->acceptedState){
+        if($this->acceptedState == null){
             return new WaitingState($this);
         }else{
             return $this->getAcceptedState();
@@ -164,8 +180,53 @@ class Submission
         return $this->acceptedState;
     }
 
-    public function getCalification(){
-        $this->getState()->getCalification();
+    public function getScore(){
+        return $this->getState()->getScore();
+    }
+
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     *
+     * @return Submission
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    public function isChosen(){
+        return $this->getState()->isChosen();
+    }
+
+    public function hasScore(){
+        return $this->getState()->getRate();
+    }
+
+    public function isWaiting(){
+        return $this->getState()->isWaiting($this->getPublication());
+    }
+
+    public function isRejected(){
+        return $this->getState()->isRejected($this->getPublication());
+    }
+
+    public function getScoreMessage(){
+        return $this->getState()->getScoreMessage();
     }
 
 }

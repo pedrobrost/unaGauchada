@@ -1,0 +1,24 @@
+{% if publication.submissions is not empty  %}
+<div class=" card panel panel-default">
+    <div class="panel-heading card-header c-list">
+        <span class="title">Postulados</span>
+        <ul class="pull-right c-controls">
+            <li><a href="#" class="hide-search" data-command="toggle-search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+    <div class="search" style="display: none;">
+        <div class="col-xs-12">
+            <div class="input-group c-search">
+                <input type="text" placeholder="Ingrese el nombre o logro del postulado" class="form-control" id="contact-list-search">
+            </div>
+        </div>
+    </div>
+    <ul class="list-group" id="contact-list">
+        {% for submission in publication.submissions %}
+            {% include 'PublicationBundle:Submissions:submission.html.twig' %}
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+    {% include 'PublicationBundle:Submissions:noSubmissions.html.twig' %}
+{% endif %}

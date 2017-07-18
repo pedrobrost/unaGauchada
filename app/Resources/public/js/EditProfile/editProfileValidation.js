@@ -1,10 +1,27 @@
-$("#cancelform").click(function(){
-    $("#editProfile_form").validate().resetForm();
+$(document).ready( function() {
+        $("#modalbutton").hide();
 });
 
-$.validator.addMethod("nonNumeric", function (value, element) {
-            return this.optional(element) || isNaN(Number(value));
-        });
+$("#cancelform").click(function(){
+    $("#editProfile_form").validate().resetForm();
+    change = false;
+        $("#backbutton").show();
+        $("#modalbutton").hide();
+});
+
+var change = false;
+
+$('#editProfile_form').change(function(){
+    if (!change){
+        change = true;
+        $("#backbutton").hide();
+        $("#modalbutton").show();
+    }
+});
+
+$.validator.addMethod("nonNumeric", function(value, element) {
+    return this.optional(element) || !value.match(/[0-9]+/);
+});
 
 $('#editProfile_form').validate({
             rules: {
@@ -20,17 +37,6 @@ $('#editProfile_form').validate({
                     required: true,
                     email: true
                 },
-                pass: {
-                    minlength: 6,
-                },
-                confirmPass: {
-                    minlength: 6,
-                    equalTo: '#pass',
-                },
-                birthday: {
-                    required: true,
-
-                },
                 phone: {
                     required: true,
                     number: true,
@@ -45,15 +51,6 @@ $('#editProfile_form').validate({
                     required: "Por favor ingrese su apellido",
                     nonNumeric: "Por favor ingrese un apellido valido",
                 },
-                password: {
-                    required: "Por favor ingrese su contraseña",
-                    minlength: "Su contraseña debe tener al menos 6 caracteres"
-                },
-                confirmPass: {
-                    required: "Por favor re-ingrese su contraseña",
-                    minlength: "Su contraseña debe tener al menos 6 caracteres",
-                    equalTo: "La contraseña no coincide"
-                },
                 email: {
                     email: "Por favor ingrese un email valido",
                     required: "Por favor ingrese su email"
@@ -61,11 +58,6 @@ $('#editProfile_form').validate({
                 phone: {
                     number: "Por favor ingrese un teléfono valido",
                     required: "Por favor ingrese su teléfono"
-                },
-                birthday: {
-                    required: "Por favor ingrese su fecha de nacimiento",
-                    min: "Por favor ingrese una fecha mayor al 01/01/1900",
-                    max: "Lo siento, debes tener más de 18 años"
                 },
             },
 

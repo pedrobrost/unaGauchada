@@ -11,5 +11,7 @@ namespace UnaGauchada\PublicationBundle\Model;
 
 class CaducatedState extends PublicationAvailableState
 {
-
+    public function isActive($publication){
+        return false;
+    }
 }

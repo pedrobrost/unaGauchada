@@ -1,4 +1,5 @@
-<div class="card">
+{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
+
     <div class="card-block">
         <h4 class="card-title">{{ publication.title }}
             <div class="btn-group pull-right" role="group">
@@ -36,11 +37,11 @@
         </div>
 
         {% if is_granted('comment', publication) %}
-            <a href="#" id="comment" class="card-link">Comentar</a> 
+            <button id="comment" class="btn btn-outline-primary" data-target="writecomment">Comentar</button> 
         {% endif %} 
 
         {% if is_granted('submit', publication) %}
-            <button id="postularseBtn" class="card-link btn btn-primary">Postularme</button> 
+            <button id="postularseBtn" class="card-link btn btn-primary" data-toggle="modal" data-target="#myModal">Postularse</button> 
         {% endif %} 
         
         {% if is_granted('unsubmit', publication) %}
@@ -48,9 +49,5 @@
         {% endif %} 
 
         {% if is_granted('edit', publication)%}
-        <a href="#" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
+        <a href="{{ path('submissions_show', {'id': publication.id}) }}" class="card-link btn btn-primary">Ver Postulados</a> {% endif %}
     </div>
-
-    {% include 'PublicationBundle:Publications:comments.html.twig' %}
-
-</div>

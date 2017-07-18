@@ -1,13 +1,27 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %}
 
 {% block body %}
 
-<div class = "profile">
-    {% include 'UserBundle:Profile:form.html.twig' %}
-</div>
+    <div class="profile">
+
+        <div class="container profile">
+
+            {% if infoEdited %}
+                {{ popUp.success('¡Felicitaciones!','Tus datos se modificaron correctamente.') }}
+            {% elseif passwordEdited %}
+                {{ popUp.success('¡Felicitaciones!','Tu constraseña se modificó correctamente.') }}
+            {% endif %}
+
+            <h1>Información Personal</h1>
+            <hr>
+            {% include 'UserBundle:Profile:form.html.twig' %}
+        </div>
+
+    </div>
 
 {% endblock %}
 
   {% block javascripts %}
-  <script src="{{ asset('dist/js/Profile/profileDisabled.js') }}"></script>
+      <script src="{{ asset('dist/js/Profile/profileDisabled.js') }}"></script>
   {% endblock %}

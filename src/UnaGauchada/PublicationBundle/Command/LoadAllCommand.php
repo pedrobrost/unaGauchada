@@ -11,6 +11,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
 use UnaGauchada\PublicationBundle\Entity\Category;
 use UnaGauchada\CreditBundle\Entity\TransactionReason;
+use UnaGauchada\PublicationBundle\Entity\Score;
 
 class LoadAllCommand extends ContainerAwareCommand
 {
@@ -53,6 +54,11 @@ class LoadAllCommand extends ContainerAwareCommand
         $em->persist(new Achievement("Nobleza Gaucha", 21, 50));
         $em->persist(new Achievement("Dios", 51, PHP_INT_MAX));
 
+        //Scores
+        $em->persist(new Score('negative', -1));
+        $em->persist(new Score('neutral', 0));
+        $em->persist(new Score('positive', 2));
+
         //Categories
         $em->persist(new Category("Viajes"));
         $em->persist(new Category("Animales"));
@@ -77,6 +83,16 @@ class LoadAllCommand extends ContainerAwareCommand
             ->setName('Purchase')
             ->setAmount(1)
             ->setPrice(50));
+
+        $em->persist((new TransactionReason())
+            ->setName('Refund')
+            ->setAmount(1)
+            ->setPrice(0));
+
+        $em->persist((new TransactionReason())
+            ->setName('PositiveScore')
+            ->setAmount(1)
+            ->setPrice(0));
 
         //Cities
         //mysql -u root -p < src/UnaGauchada/PublicationBundle/Resources/db/departmentsLoader.sql

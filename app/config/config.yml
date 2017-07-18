@@ -33,6 +33,7 @@ framework:
     assets: ~
     php_errors:
         log: true
+    ide: 'phpstorm'
 
 # Twig Configuration
 twig:

@@ -5,6 +5,10 @@
         {{popUp.success('¡Felicitaciones!','Tu publicación ha sido creada exitosamente.')}}
     {% endif %}
 
+    {% if publicationCancelled %}
+        {{popUp.success('',publicationCancelled, 'popUpLarge')}}
+    {% endif %}
+
     <section class="gauchadas">   
         <div class="container">
             <h1 class="display-3">Últimas Gauchadas</h1>

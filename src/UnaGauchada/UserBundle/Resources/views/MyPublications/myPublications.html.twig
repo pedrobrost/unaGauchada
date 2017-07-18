@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+ 
+ {% block body %}
+ <div class="container publication">
+ {% if app.user.publications is not empty %}
+    <a href="{{ path("publication_page") }}" class="btn btn-primary" style="float: right" data-toggle="tooltip" data-placement="left" title="Volver al Inicio"><i class="fa fa-reply" aria-hidden="true"></i></a>
+  {% endif %}   
+     <h1>Mis publicaciones</h1>
+     <hr>
+     <div class="row">
+      {% if app.user.publications is not empty %}
+             {% include 'UserBundle:MyPublications:searchForm.html.twig' %}   
+      {% endif %}    
+             {% include 'UserBundle:MyPublications:results.html.twig' %} 
+     </div>
+ </div>
+ {% endblock %}
+ 
+   {% block javascripts %}
+     <script src="{{ asset('dist/js/MySubmissions/mySubmissions.js') }}"></script>
+      <script src="{{ asset('dist/js/MyPublications/publicationsDisabled.js') }}"></script>
+   {% endblock %}

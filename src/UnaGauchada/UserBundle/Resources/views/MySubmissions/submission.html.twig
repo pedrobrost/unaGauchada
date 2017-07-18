@@ -1,0 +1,52 @@
+{% if submission.chosen and submission.score %}
+<div class="modal fade" id="calificacion{{submission.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tu Calificación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+      <div class="alert alert-{% if submission.score == 2 %}success{% elseif submission.score == 0 %}warning{% else %}danger{% endif %}" role="alert">
+            <h4 class="alert-heading">Calificación {% if submission.score == 2 %} Positiva {% elseif submission.score == 0 %} Neutra {% else %} Negativa {% endif %}</h4>
+            <p>{{submission.publication.user.name}} {{submission.publication.user.lastname}} te ha calificado por ayudarlo{% if submission.scoreMessage %} y te ha dejado el siguiente comentario "{{submission.scoreMessage}}"{% endif %}.</p>
+            <p class="mb-0">{% if submission.score == 2 %} Has recibido 1 crédito y has subido 2 puntos en tu reputación. {% elseif submission.score == 0 %} Has recibido 0 créditos y  no has subido puntos en tu reputación. {% else %} Has has restado 1 punto en tu reputación.{% endif %}</p>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<li class="list-group-item" data-status="{% if submission.chosen %}elegido{% elseif submission.waiting %}pendiente{% else %}rechazado{% endif %}">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ path('publication_image', {'id': submission.publication.id}) }}" alt="Lorem ipsum" class="w-100 rounded">
+        </div>
+        <div class="col-md-7">
+            <div class="card-block">
+                <h4 class="card-title">{{submission.publication.title}}</h4>
+                {% if submission.chosen %} <p class="text-success">Elegido</p> {% elseif submission.waiting %} <p class="text-warning">Pendiente</p> {% else %} <p class="text-danger">Rechazado</p> {% endif %}
+                <small>
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <span>{{ submission.publication.limitDate | date('d/m/Y') }}</span>
+                    <br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<span>{{ submission.publication.department.name | title }}</span>
+                    <br>
+                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;<span>{{ submission.publication.category }}</span>
+                    </small>
+            </div>
+            {% if submission.chosen and submission.score %}
+                <button type="button" class="btn btn-primary detalle" data-toggle="modal" data-target="#calificacion{{submission.id}}">
+                    Calificación
+                </button>
+            {% elseif submission.waiting %}
+                <a class="btn btn-primary detalle" href="{{ path('publication_show', {'id': submission.publication.id})}}">Ver Publicación</a>
+            {% endif %}
+        </div>
+    </div>
+</li>

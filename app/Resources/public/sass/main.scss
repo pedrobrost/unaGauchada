@@ -11,8 +11,12 @@
 @import "publish";
 @import "credits";
 @import "errors";
+@import "search";
+@import "submissions";
 @import "editProfile";
 @import "profile";
+@import "mySubmissions";
+@import "userReport";
 
 /* Change the white to any color ;) */
 
@@ -40,9 +44,16 @@ button{
     cursor: pointer
 }
 
+.input-group-addon{
+    width: 45px;
+}
+
 .modal-open {
   padding-right: 0 !important;
 }
 html {
   overflow-y: scroll !important;
 }
+.select2.select2-container.select2-container--default{
+    width: 100%!important;
+    }

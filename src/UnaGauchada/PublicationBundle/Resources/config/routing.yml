@@ -15,6 +15,11 @@ publish_create:
 
 publication_search:
     path:     /search
+    defaults: { _controller: PublicationBundle:Publication:search, page: 1 }
+    methods:  [GET]
+
+publication_search_page:
+    path:     /search/page/{page}
     defaults: { _controller: PublicationBundle:Publication:search }
     methods:  [GET]
 
@@ -28,7 +33,37 @@ publication_show:
     defaults: { _controller: PublicationBundle:Publication:show }
     methods:  [GET]
 
-publication_submissions:
+comment_create:
+    path:     /{id}/comment
+    defaults: { _controller: PublicationBundle:Publication:comment}
+    methods:  [POST]
+
+response_create:
+    path:     /{id}/{comment}/response
+    defaults: { _controller: PublicationBundle:Publication:response}
+    methods:  [POST]
+
+submissions_show:
     path:     /{id}/submissions
-    defaults: { _controller: PublicationBundle:Publication:submissions }
+    defaults: { _controller: PublicationBundle:Submission:submissions }
+    methods:  [GET]
+
+publication_submit:
+    path:     /{id}/submit
+    defaults: { _controller: PublicationBundle:Submission:submit}
+    methods:  [POST]
+
+submissions_choose:
+    path:     /{id}/choose/{submission}
+    defaults: { _controller: PublicationBundle:Submission:choose}
+    methods:  [POST]
+
+do_score:
+    path:     /{id}/{submission}/score
+    defaults: { _controller: PublicationBundle:Submission:score}
+    methods:  [POST]
+
+publication_cancel:
+    path:     /{id}/cancel
+    defaults: { _controller: PublicationBundle:Publication:cancel }
     methods:  [GET]
