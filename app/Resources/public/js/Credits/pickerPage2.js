@@ -40,6 +40,7 @@ $('#datePicker').daterangepicker({
         ],
         "firstDay": 1
     },
+    "autoUpdateInput": true,
     "applyClass": "btn-primary",
     "showCustomRangeLabel": false,
     "alwaysShowCalendars": true,
@@ -48,5 +49,5 @@ $('#datePicker').daterangepicker({
     "maxDate": moment(),
     "opens": "left"
 }, function (start, end, label) {
-    console.log("New date range selected: " + start.format('MM-DD-YYYY') + " to " + end.format('MM-DD-YYYY') + " (predefined range: " + label + ")");
+    $('#dateRanger').trigger( "submit" );
 });
