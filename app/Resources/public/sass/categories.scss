@@ -24,9 +24,10 @@
         border: 1px solid rgba(0, 0, 0, 0.190);
         padding-left: 3px;
     }
-    td.input.form-control-warning{
+    .editCategoryForm{
+         input.form-control-warning{
         width: 95%!important;
-    }
+    }}
     input:read-only{
         border: 0;
     }
