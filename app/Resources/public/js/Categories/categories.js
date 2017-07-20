@@ -78,3 +78,14 @@ $(document).ready(function () {
     $(".editable").hide();
     $(".col-sm-12.col-md-6").first().remove();
 });
+
+    $('#usuarios').on( 'order.dt', function () {
+    if (editando == true){
+    last.find('input').prop('readonly', true);
+    last.find('form').validate().resetForm();
+    last.find('form').trigger("reset");
+    $('.editable').hide();
+    $('.botones').show();   
+    editando = false;
+    }
+} );
