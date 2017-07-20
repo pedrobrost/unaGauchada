@@ -2,6 +2,9 @@
     td:first-of-type{
         font-size: 0
     }
+    td.dataTables_empty{
+        font-size: inherit!important;
+    }
     .dataTables_filter {
 text-align: left !important;
 }
