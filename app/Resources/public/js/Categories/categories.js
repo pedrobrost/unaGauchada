@@ -6,6 +6,8 @@ $(document).ready(function () {
 
 $('#agregarCategoria').on('hidden.bs.modal', function (e) {
       $(".addCategoryForm").validate().resetForm();
+      $(this).find('input').val('');
+      $(this).find('.form-control-warning').removeClass('form-control-warning');
 })
 
 $('.edit').on('click', function (e) {

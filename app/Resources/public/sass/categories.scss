@@ -1,6 +1,6 @@
 .container.categories{
-    label{
-        display: none!important;
+    .form-group{
+        margin: 0
     }
     input{
         font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -12,7 +12,7 @@
         border: 1px solid rgba(0, 0, 0, 0.190);
         padding-left: 3px;
     }
-    input.form-control-warning{
+    td.input.form-control-warning{
         width: 95%!important;
     }
     input:read-only{
