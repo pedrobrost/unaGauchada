@@ -39,10 +39,11 @@ $(".editCancel").on("click", function(e) {
     $clone.remove();
   }
 });
-
+var $desahacer = $("#logros").clone();
 var $TABLE = $("#logros");
 var btnAgregar = false;
 var $clone;
+
 $(document).ready(function() {
   $("#mySubmissions").addClass("active");
   $(".editable").hide();
@@ -87,4 +88,8 @@ $(".table-down").click(function() {
   var $row = $(this).parents("tr");
   if ($row.next().hasClass( "nonemove" )) return;
   $row.next().after($row.get(0));
+});
+
+$(".deshacer").click(function() {
+location.reload(true);
 });
