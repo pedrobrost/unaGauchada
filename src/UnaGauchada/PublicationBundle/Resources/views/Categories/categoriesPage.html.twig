@@ -4,10 +4,12 @@
 {% include 'PublicationBundle:Categories:addCategory.html.twig' %}
 {% include 'PublicationBundle:Categories:deleteCategory.html.twig' %}
     <div class="container carta">
+    <a href="{{path ('user_profile')}}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left" title="" data-original-title="Volver al Perfil" style="display: block;border-radius: .25rem;     margin-top: -5px;
+    margin-right: 14px;"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Categorias</h3>
         <hr>
                 <div data-toggle="tooltip" class="pull-right">
-            <button type="button" style="margin-right: 15px;" class="btn btn-warning btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">
+            <button type="button" style="margin-right: 15px;" class="btn btn-primary btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">
                         Agregar
                     </button>
         </div>

@@ -1,9 +1,3 @@
-$(document).ready(function () {
-    $("#mySubmissions").addClass("active");
-    $(".editable").hide();
-});
-
-
 $('#agregarCategoria').on('hidden.bs.modal', function (e) {
       $(".addCategoryForm").validate().resetForm();
       $(this).find('input').val('');
@@ -57,10 +51,17 @@ $(document).ready(function () {
             "sNext":    "Siguiente",
             "sPrevious": "Anterior"
         },
+        "dom": 'fltip',
         "oAria": {
             "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
     }
     });
+});
+
+$(document).ready(function () {
+    $("#mySubmissions").addClass("active");
+    $(".editable").hide();
+    $(".col-sm-12.col-md-6").first().remove();
 });
