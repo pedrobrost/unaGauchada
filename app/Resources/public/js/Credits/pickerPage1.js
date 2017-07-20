@@ -40,11 +40,12 @@ $('#datePicker').daterangepicker({
         ],
         "firstDay": 1
     },
+    "applyClass": "btn-primary",
     "showCustomRangeLabel": false,
     "alwaysShowCalendars": true,
     "linkedCalendars": false,
     "minDate": "01/01/2017",
-    "maxDate": "31/12/2999",
+    "maxDate": moment(),
     "opens": "center"
 }, function (start, end, label) {
     console.log("New date range selected: " + start.format('MM-DD-YYYY') + " to " + end.format('MM-DD-YYYY') + " (predefined range: " + label + ")");
