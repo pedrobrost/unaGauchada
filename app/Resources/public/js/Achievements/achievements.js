@@ -13,6 +13,7 @@ $(".submit").on("click", function(e) {
 });
 
 $(".edit").on("click", function(e) {
+  if($('.btns:hidden')){$('.btns').show()};
   if (editando == true) {
     last.find("input").prop("readonly", true);
     last.find("form").trigger("reset");
@@ -49,6 +50,7 @@ $(document).ready(function() {
   $(".editable").hide();
   $("input").prop("readonly", true);
   $TABLE.find("tr.hide").hide();
+  $('.btns').hide();
 });
 
 $("td").on("keydown paste", function(event) {
@@ -63,6 +65,7 @@ $("#range").keypress(function(e) {
 });
 
 $(".table-add").click(function() {
+    if($('.btns:hidden')){$('.btns').show()};
   $clone = $TABLE.find("tr.hide").clone(true).removeClass("hide table-line");
   $clone.show();
   $clone.find("input").prop("readonly", false);
