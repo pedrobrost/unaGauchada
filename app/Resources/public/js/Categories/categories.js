@@ -1,9 +1,24 @@
 $(document).ready(function () {
     $("#mySubmissions").addClass("active");
+    $(".editable").hide();
 });
+
 
 $('#agregarCategoria').on('hidden.bs.modal', function (e) {
       $(".addCategoryForm").validate().resetForm();
+})
+
+$('.edit').on('click', function (e) {
+      $(this).closest("tr").find('input').prop('readonly', false);
+      $(this).closest("div").hide();
+      $(this).closest("tr").find('.editable').show();
+})
+
+$('.editCancel').on('click', function (e) {
+    $(this).closest("tr").find('input').prop('readonly', true);
+    $(this).closest("tr").find('form').validate().resetForm();
+    $(this).closest("tr").find('.editable').hide();
+    $(this).closest("tr").find('.botones').show();
 })
 
 $(document).ready(function () {

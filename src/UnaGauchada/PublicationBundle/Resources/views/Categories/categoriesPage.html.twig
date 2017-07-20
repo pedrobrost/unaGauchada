@@ -1,17 +1,13 @@
-{% extends 'base.html.twig' %} {% block body %}
+{% extends 'base.html.twig' %} {% block body %} {% include 'PublicationBundle:Categories:addCategory.html.twig' %} {% include
+'PublicationBundle:Categories:deleteCategory.html.twig' %}
 
-                {% include 'PublicationBundle:Categories:addCategory.html.twig' %}
-
-                {% include 'PublicationBundle:Categories:deleteCategory.html.twig' %}
-
-<div class="container">
-
+<div class="container categories">
     <div class="container carta">
-    <div data-toggle="tooltip" data-placement="left" title="Agregar" class="pull-right">
-        <button type="button" style="margin-right: 15px;" class="btn btn-warning" data-toggle="modal" data-target="#agregarCategoria">
+        <div data-toggle="tooltip" data-placement="left" title="Agregar" class="pull-right">
+            <button type="button" style="margin-right: 15px;" class="btn btn-warning" data-toggle="modal" data-target="#agregarCategoria">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>
-                    </div>
+        </div>
         <h3>&nbsp Categorias</h3>
         <hr>
         <table id="usuarios" class="table table-bordered" cellspacing="0" width="100%">
@@ -24,21 +20,36 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Animales</td>
-                    <td class="text-center">12</td>
-                    <td>
-                        <div class="btn-group" role="group" style="
+                        <td>
+                        <div class="form-group" style="margin:0">
+                        <form class="editCategoryForm" action="">
+                        <input placeholder="Ingrese el nombre de la categoria" type="text" value="Animales" id="message" name="message" readonly>
+                        </div>
+                        </td>
+                        <td class="text-center">12</td>
+                        <td>
+                            <div class="btn-group editable" role="group" style="
     margin-left: 27px;
 ">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="left" title="Editar">
+                                <button type="submit" class="btn btn-success btn-sm submit"  data-toggle="tooltip" data-placement="left" title="Aceptar">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </button>
+                                <button type="reset" class="editCancel btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="cancelar">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                            </div>
+                                                </form>
+                            <div class="btn-group botones" role="group" style="
+    margin-left: 27px;
+">
+                                <button type="button" class="edit btn btn-primary btn-sm" data-toggle="tooltip" data-placement="left" title="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button> 
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#deleteCategoria">
+                    </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCategoria">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                        </div>
-                    </td>
+                            </div>
+                        </td>
                 </tr>
             </tbody>
         </table>
@@ -46,7 +57,7 @@
 </div>
 {% endblock %} {% block javascripts %}
 <script src="{{ asset('dist/js/UserReport/table.js') }}"></script>
-      <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('dist/js/Categories/categories.js') }}"></script>
 <script src="{{ asset('dist/js/Categories/addValidation.js') }}"></script>
 {% endblock %}
