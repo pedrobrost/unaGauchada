@@ -62,7 +62,7 @@ class PublicationController extends Controller
     }
 
 public function publishAction(){
-    return $this->render('PublicationBundle:Categories:categoriesPage.html.twig');
+    return $this->render('UserBundle:Achievements:achievementsPage.html.twig');
    }
 
     public function publishCreateAction(Request $request){
