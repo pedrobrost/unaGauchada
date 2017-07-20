@@ -67,7 +67,7 @@ $(".table-add").click(function() {
   $clone.find("input").prop("readonly", false);
   $clone.find(".edit").trigger("click");
   last = $clone;
-  $TABLE.append($clone);
+  $clone.insertBefore( $TABLE.find("tr.hide") );
   $(".table-add").hide();
   btnAgregar = true;
   editando = true;
@@ -85,5 +85,6 @@ $(".table-up").click(function() {
 
 $(".table-down").click(function() {
   var $row = $(this).parents("tr");
+  if ($row.next().hasClass( "nonemove" )) return;
   $row.next().after($row.get(0));
 });
