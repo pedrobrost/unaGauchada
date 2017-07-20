@@ -1,4 +1,7 @@
 .container.categories{
+    td:first-of-type{
+        font-size: 0
+    }
     .dataTables_filter {
 text-align: left !important;
 }

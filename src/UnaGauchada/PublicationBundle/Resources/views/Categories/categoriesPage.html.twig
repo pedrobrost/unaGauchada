@@ -1,66 +1,26 @@
-{% extends 'base.html.twig' %} {% block body %}  
+{% extends 'base.html.twig' %}
+
+{% block body %}
 
 <div class="container categories">
-{% include 'PublicationBundle:Categories:addCategory.html.twig' %}
-{% include 'PublicationBundle:Categories:deleteCategory.html.twig' %}
+    {% include 'PublicationBundle:Categories:addCategory.html.twig' %} 
+    {% include 'PublicationBundle:Categories:deleteCategory.html.twig'%}
     <div class="container carta">
-    <a href="{{path ('user_profile')}}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left" title="" data-original-title="Volver al Perfil" style="display: block;border-radius: .25rem;     margin-top: -5px;
-    margin-right: 14px;"><i class="fa fa-reply" aria-hidden="true"></i></a>
+        <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left" style="display: block;border-radius: .25rem; margin-top: -5px;margin-right: 14px;"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Categorias</h3>
         <hr>
-                <div data-toggle="tooltip" class="pull-right">
-            <button type="button" style="margin-right: 15px;" class="btn btn-primary btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">
-                        Agregar
-                    </button>
+        <div data-toggle="tooltip" class="pull-right">
+            <button type="button" style="margin-right: 15px;" class="btn btn-primary btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">Agregar</button>
         </div>
         <br>
         <br>
-        <table id="usuarios" class="table table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th class="text-center">Nº de Publicaciones</th>
-                    <th class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                        <td>
-                        <div class="form-group" style="margin:0">
-                        <form class="editCategoryForm" action="">
-                        <input placeholder="Ingrese el nombre de la categoria" type="text" value="Animales" id="message" name="message" readonly>
-                        </div>
-                        </td>
-                        <td class="text-center">12</td>
-                        <td>
-                            <div class="btn-group editable" role="group" style="
-    margin-left: 27px;
-">
-                                <button type="submit" class="btn btn-success btn-sm submit"  data-toggle="tooltip" data-placement="left" title="Aceptar">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                    </button>
-                                <button type="reset" class="editCancel btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="cancelar">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </button>
-                            </div>
-                                                </form>
-                            <div class="btn-group botones" role="group" style="
-    margin-left: 27px;
-">
-                                <button type="button" class="edit btn btn-primary btn-sm" data-toggle="tooltip" data-placement="left" title="Editar">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCategoria">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                            </div>
-                        </td>
-                </tr>
-            </tbody>
-        </table>
+    {% include 'PublicationBundle:Categories:table.html.twig'%}
     </div>
 </div>
-{% endblock %} {% block javascripts %}
+
+{% endblock %}
+
+{% block javascripts %}
 <script src="{{ asset('dist/js/UserReport/table.js') }}"></script>
 <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('dist/js/Categories/categories.js') }}"></script>
