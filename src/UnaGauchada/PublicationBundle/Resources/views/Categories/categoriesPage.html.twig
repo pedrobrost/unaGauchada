@@ -4,13 +4,15 @@
 {% include 'PublicationBundle:Categories:addCategory.html.twig' %}
 {% include 'PublicationBundle:Categories:deleteCategory.html.twig' %}
     <div class="container carta">
-        <div data-toggle="tooltip" data-placement="left" title="Agregar" class="pull-right">
-            <button type="button" style="margin-right: 15px;" class="btn btn-warning" data-toggle="modal" data-target="#agregarCategoria">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-        </div>
         <h3>&nbsp Categorias</h3>
         <hr>
+                <div data-toggle="tooltip" class="pull-right">
+            <button type="button" style="margin-right: 15px;" class="btn btn-warning btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">
+                        Agregar
+                    </button>
+        </div>
+        <br>
+        <br>
         <table id="usuarios" class="table table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
