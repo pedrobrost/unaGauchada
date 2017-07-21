@@ -38,7 +38,7 @@ $(".submit").on("click", function (e) {
       }
     } else {
       if (!$before.hasClass("hide")) {
-        if (($rango.val() <= $before.find('.campoRango').val()) && (($rango.val()))) {
+        if (($rango.val() <= $before.find('.campoRango').val())) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
@@ -46,7 +46,7 @@ $(".submit").on("click", function (e) {
         }
       } else {
               if (! $after.hasClass("nonemove")) {
-        if (($rango.val() >= $before.find('.campoRango').val()) && (($rango.val()))) {
+        if (($rango.val() >= $after.find('.campoRango').val())) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
@@ -61,6 +61,8 @@ $(".submit").on("click", function (e) {
   $nombre.closest('.form-group').addClass('has-success');
   $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
+  $rango.closest('.form-group').removeClass('has-danger');
+  $rango.removeClass('form-control-danger');
   $rango.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
