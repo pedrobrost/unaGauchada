@@ -32,7 +32,8 @@ $(".submit").on("click", function (e) {
   $nombre.removeClass('form-control-warning');
   $nombre.closest('.form-group').addClass('has-success');
     if (!$before.hasClass("hide") && ! $after.hasClass("nonemove")) {
-      if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || parseInt((($rango.val()) >= parseInt($after.find('.campoRango').val())))) {
+      if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || ((parseInt($rango.val()))>= parseInt($after.find('.campoRango').val()))) {
+        console.log("entro A");
         $rango.closest('.form-group').addClass('has-danger');
         $rango.addClass('form-control-danger');
         error = true;
@@ -71,7 +72,7 @@ $(".submit").on("click", function (e) {
     $(".table-add").show();
     btnAgregar = false;
   }
-      $nombre.attr("value", parseInt($nombre.val()));
+      $nombre.attr("value", $nombre.val());
     $rango.attr("value", parseInt($rango.val()));
   return true;
 });
@@ -133,6 +134,8 @@ $(".editCancel").on("click", function (e) {
   $nombre.closest('.form-group').addClass('has-success');
   $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
+    $rango.closest('.form-group').removeClass('has-danger');
+  $rango.removeClass('form-control-danger');
   $rango.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
