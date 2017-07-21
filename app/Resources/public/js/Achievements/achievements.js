@@ -1,7 +1,7 @@
 var editando = false;
 var last = null;
 
-$(".submit").on("click", function(e) {
+$(".submit").on("click", function (e) {
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
@@ -12,8 +12,10 @@ $(".submit").on("click", function(e) {
   }
 });
 
-$(".edit").on("click", function(e) {
-  if($('.btns:hidden')){$('.btns').show()};
+$(".edit").on("click", function (e) {
+  if ($('.btns:hidden')) {
+    $('.btns').show()
+  };
   if (editando == true) {
     last.find("input").prop("readonly", true);
     last.find("form").trigger("reset");
@@ -29,7 +31,7 @@ $(".edit").on("click", function(e) {
   last = $(this).closest("tr");
 });
 
-$(".editCancel").on("click", function(e) {
+$(".editCancel").on("click", function (e) {
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
@@ -44,55 +46,89 @@ var $desahacer = $("#logros").clone();
 var $TABLE = $("#logros");
 var btnAgregar = false;
 var $clone;
+var $up;
+var $down;
 
-$(document).ready(function() {
+
+$(document).ready(function () {
   $("#mySubmissions").addClass("active");
   $(".editable").hide();
   $("input").prop("readonly", true);
   $TABLE.find("tr.hide").hide();
   $('.btns').hide();
+  $up = $("tr:nth-child(3)").find('.table-up').clone(true);
+  $down = $("tr:nth-last-child(2)").find('.table-down').clone(true);
+  $("tr:nth-child(3)").find('.table-up').remove();
+  $("tr:nth-last-child(2)").find('.table-down').remove();  
+
 });
 
-$("td").on("keydown paste", function(event) {
+var cambio = function(){
+  $(".editable").each(function(){
+      $(this).find('.table-up').remove();
+      $(this).find('.table-down').remove();
+      if (! $(this).children().first().hasClass(".table-up")){
+        $(this).prepend($up.clone(true));
+      }
+      if($(this).find(".table-down").length <= 0) {
+         $down.clone(true).insertAfter( $(this).find('.table-up'));
+    }
+  });
+  $("tr:nth-child(3)").find('.table-up').remove();
+  $("tr:nth-last-child(2)").find('.table-down').remove();  
+  $("tr:nth-last-child(1)").find('.table-down').remove(); 
+  $("tr:nth-last-child(1)").find('.table-up').remove(); 
+}
+
+$("td").on("keydown paste", function (event) {
   //Prevent on paste as well
   if ($(this).text().length === 10 && event.keyCode != 8) {
     event.preventDefault();
   }
 });
 
-$("#range").keypress(function(e) {
+$("#range").keypress(function (e) {
   if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
 });
 
-$(".table-add").click(function() {
-    if($('.btns:hidden')){$('.btns').show()};
+$(".table-add").click(function () {
+  if ($('.btns:hidden')) {
+    $('.btns').show()
+  };
   $clone = $TABLE.find("tr.hide").clone(true).removeClass("hide table-line");
   $clone.show();
   $clone.find("input").prop("readonly", false);
   $clone.find(".edit").trigger("click");
   last = $clone;
-  $clone.insertBefore( $TABLE.find("tr.hide") );
+  $clone.find('.table-up').remove();
+  $clone.insertBefore($TABLE.find("tr.hide"));
   $(".table-add").hide();
   btnAgregar = true;
   editando = true;
+  cambio();
+  $clone.find('.table-up').remove();  
 });
 
-$(".table-remove").click(function() {
+$(".table-remove").click(function () {
   $(this).parents("tr").detach();
+  cambio();
 });
 
-$(".table-up").click(function() {
+$(".table-up").click(function () {
   var $row = $(this).parents("tr");
   if ($row.index() === 1) return; // Don't go above the header
   $row.prev().before($row.get(0));
+  cambio();
 });
 
-$(".table-down").click(function() {
+$(".table-down").click(function () {
   var $row = $(this).parents("tr");
-  if ($row.next().hasClass( "nonemove" )) return;
+  if ($row.next().hasClass("nonemove")) return;
   $row.next().after($row.get(0));
+  cambio();
 });
 
-$(".deshacer").click(function() {
-location.reload(true);
+$(".deshacer").click(function () {
+  location.reload(true);
 });
+
