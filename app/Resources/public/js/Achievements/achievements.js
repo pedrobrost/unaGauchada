@@ -28,9 +28,11 @@ $(".submit").on("click", function (e) {
     }
     return false;
   } else {
-    console.log(!$before.hasClass("hide") && ! $after.hasClass("nonemove"))
+    $nombre.closest('.form-group').removeClass('has-warning');
+  $nombre.removeClass('form-control-warning');
+  $nombre.closest('.form-group').addClass('has-success');
     if (!$before.hasClass("hide") && ! $after.hasClass("nonemove")) {
-      if (($rango.val() <= $before.find('.campoRango').val()) && (($rango.val() >= $after.find('.campoRango').val()))) {
+      if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || parseInt((($rango.val()) >= parseInt($after.find('.campoRango').val())))) {
         $rango.closest('.form-group').addClass('has-danger');
         $rango.addClass('form-control-danger');
         error = true;
@@ -38,7 +40,7 @@ $(".submit").on("click", function (e) {
       }
     } else {
       if (!$before.hasClass("hide")) {
-        if (($rango.val() <= $before.find('.campoRango').val())) {
+        if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val()))) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
@@ -46,7 +48,7 @@ $(".submit").on("click", function (e) {
         }
       } else {
               if (! $after.hasClass("nonemove")) {
-        if (($rango.val() >= $after.find('.campoRango').val())) {
+        if ((parseInt($rango.val()) >= parseInt($after.find('.campoRango').val()))) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
@@ -56,9 +58,6 @@ $(".submit").on("click", function (e) {
     }
   }
   error = false;
-  $nombre.closest('.form-group').removeClass('has-warning');
-  $nombre.removeClass('form-control-warning');
-  $nombre.closest('.form-group').addClass('has-success');
   $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
   $rango.closest('.form-group').removeClass('has-danger');
@@ -68,10 +67,12 @@ $(".submit").on("click", function (e) {
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
   editando = false;
-  if ((btnAgregar = true)) {
+  if ((btnAgregar == true)) {
     $(".table-add").show();
     btnAgregar = false;
   }
+      $nombre.attr("value", parseInt($nombre.val()));
+    $rango.attr("value", parseInt($rango.val()));
   return true;
 });
 
@@ -138,7 +139,7 @@ $(".editCancel").on("click", function (e) {
   $(this).closest("tr").find(".botones").show();
   editando = false;
   error = false;
-  if ((btnAgregar = true)) {
+  if ((btnAgregar == true)) {
     $(".table-add").show();
     btnAgregar = false;
     $clone.remove();
