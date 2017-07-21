@@ -2,6 +2,21 @@ var editando = false;
 var last = null;
 var error = false;
 
+$(document).ready(function () {
+  $("#mySubmissions").addClass("active");
+  $(".editable").hide();
+  $("input").prop("readonly", true);
+  $TABLE.find("tr.hide").hide();
+  $('.btns').hide();
+  $up = $("tr:nth-child(3)").find('.table-up').clone(true);
+  $down = $("tr:nth-last-child(2)").find('.table-down').clone(true);
+  $("tr:nth-child(3)").find('.table-up').remove();
+  $("tr:nth-last-child(2)").find('.table-down').remove();
+  $('.input1').iconpicker(".input1");
+
+});
+
+
 var equalName = function(element){
   var count = 0;
   $(".campoNombre").each(function () {
@@ -181,20 +196,6 @@ var $clone;
 var $up;
 var $down;
 var $new;
-
-
-$(document).ready(function () {
-  $("#mySubmissions").addClass("active");
-  $(".editable").hide();
-  $("input").prop("readonly", true);
-  $TABLE.find("tr.hide").hide();
-  $('.btns').hide();
-  $up = $("tr:nth-child(3)").find('.table-up').clone(true);
-  $down = $("tr:nth-last-child(2)").find('.table-down').clone(true);
-  $("tr:nth-child(3)").find('.table-up').remove();
-  $("tr:nth-last-child(2)").find('.table-down').remove();
-
-});
 
 var cambio = function () {
   $(".editable").each(function () {
