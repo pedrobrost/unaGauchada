@@ -12,12 +12,11 @@
     }
 
     .howl-iconpicker-middle {
-        display: table-cell;
-        vertical-align: middle
+        margin-top: 200px;
     }
 
     .howl-iconpicker-close {
-        background: #e83131;
+        background: #ff7043;
         color: #fff;
         padding: 10px;
         text-transform: uppercase;
@@ -30,7 +29,7 @@ width: 287px;
     }
 
     .howl-iconpicker-close:hover {
-        background: #e62323
+        background: #ff4910;
     }
 
     .howl-iconpicker {
@@ -91,7 +90,7 @@ width: 287px;
     }
 
     .selectedicon {
-        background: #f55e4f!important;
-        border-color: #f55e4f!important;
+        background: #ff7043!important;
+        border-color: #ff7043!important;
         color: #fff
     }

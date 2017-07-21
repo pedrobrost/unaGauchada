@@ -2,14 +2,16 @@
     margin-left: 12px;
     width: 97.5%;" cellspacing="0" width="100%">
       <tr>
-        <th style="width: 60%">Nombre</th>
+        <th style="width: 55%">Nombre</th>
         <th class="text-center">Puntos Máximos</th>
+        <th style="width: 10%" class="text-center">Icono</th>
         <th style="width: 14%" class="text-center"><i class="fa fa-cog" aria-hidden="true"></i></th>
       </tr>
                {% include 'UserBundle:Achievements:addAchievement.html.twig'%}
       <tr>
         <td><div class="form-group"><input placeholder="Introduzca el nombre del Logro" class="campoNombre" type="text" value="Buen Tipo"></div></td>
         <td class="text-center"><div class="form-group"><input placeholder="Introduzca el valor máximo" type="number" class="campoRango" value="1" style="text-align: center;"></div></td>
+        <td class="text-center"><input type="text" class="icono" value="fa-cog"></td>
         <td class="text-center">
                 <div class="btn-group editable" role="group">
                                     <button type="button" class=" btn btn-info btn-sm table-up">
@@ -38,6 +40,7 @@
     <tr class="nonemove text-center">
         <td><div class="form-group"><input class="campoNombre" type="text" value="Dios"></div></td>
         <td><input type="text" value="∞" id="infinity"  style="text-align: center;"></td>
+                <td><input type="text" class="icono" value="fa-pencil"></td>
         <td>
                 <div class="btn-group editable" role="group">
             <button type="button" class="btn btn-success btn-sm submit" data-toggle="tooltip" data-placement="left" title="Aceptar">
