@@ -2,6 +2,21 @@ var editando = false;
 var last = null;
 var error = false;
 
+var equalName = function(element){
+  var count = 0;
+  $(".campoNombre").each(function () {
+      if (($(this).val().toUpperCase()) == (element.val().toUpperCase())){
+          count++;
+      }
+  })
+  if (count > 1){
+      element.closest('.form-group').addClass('has-danger');
+      element.addClass('form-control-danger');
+      return true;
+  }
+  return false;
+};
+
 $(".submit").on("click", function (e) {
   $new = false;
   var $nombre = $(this).closest("tr").find('.campoNombre');
@@ -37,6 +52,7 @@ $(".submit").on("click", function (e) {
         $rango.closest('.form-group').addClass('has-danger');
         $rango.addClass('form-control-danger');
         error = true;
+        equalName($nombre);
         return
       }
     } else {
@@ -45,6 +61,7 @@ $(".submit").on("click", function (e) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
+              equalName($nombre);
               return
         }
       } else {
@@ -53,17 +70,25 @@ $(".submit").on("click", function (e) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
               error = true;
+              equalName($nombre);
               return
         }}
       }
     }
   }
-  error = false;
-  $rango.closest('.form-group').removeClass('has-warning');
+    $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
   $rango.closest('.form-group').removeClass('has-danger');
   $rango.removeClass('form-control-danger');
   $rango.closest('.form-group').addClass('has-success');
+  if (equalName($nombre)){
+    error = true;
+    return;
+  }
+  error = false;
+  $nombre.closest('.form-group').removeClass('has-danger');
+  $nombre.removeClass('form-control-danger');
+  $nombre.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
