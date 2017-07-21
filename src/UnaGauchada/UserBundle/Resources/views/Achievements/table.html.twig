@@ -1,4 +1,3 @@
-<form action="">
 <table id="logros" class="table table-bordered" style="margin-top: -12px;
     margin-left: 12px;
     width: 97.5%;" cellspacing="0" width="100%">
@@ -9,8 +8,8 @@
       </tr>
                {% include 'UserBundle:Achievements:addAchievement.html.twig'%}
       <tr>
-        <td><input id="nombre" name="nombre" type="text" value="default"></td>
-        <td class="text-center"><input type="number" id="rango" name="rango" value="232" style="text-align: center;"></td>
+        <td><div class="form-group"><input placeholder="Introduzca el nombre del Logro" class="campoNombre" type="text" value="default"></div></td>
+        <td class="text-center"><div class="form-group"><input placeholder="Introduzca el valor máximo" type="number" class="campoRango" value="232" style="text-align: center;"></div></td>
         <td class="text-center">
                 <div class="btn-group editable" role="group">
                                     <button type="button" class=" btn btn-info btn-sm table-up">
@@ -37,7 +36,7 @@
         </td>
       </tr>
     <tr class="nonemove text-center">
-        <td><input type="text" value="default"></td>
+        <td><div class="form-group"><input class="campoNombre" type="text" value="default" required></div></td>
         <td><input type="text" value="∞" id="infinity"  style="text-align: center;"></td>
         <td>
                 <div class="btn-group editable" role="group">
@@ -57,4 +56,3 @@
       </tr>
 
     </table>
-</form>    

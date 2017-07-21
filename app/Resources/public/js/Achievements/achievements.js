@@ -1,7 +1,37 @@
 var editando = false;
 var last = null;
+var error = false;
 
 $(".submit").on("click", function (e) {
+  var $nombre = $(this).closest("tr").find('.campoNombre');
+  var $rango = $(this).closest("tr").find('.campoRango');
+  if (($nombre.val() == 0) || ($rango.val() == 0)) {
+    error = true;
+    if ($nombre.val() == 0) {
+      $nombre.closest('.form-group').addClass('has-warning');
+      $nombre.addClass('form-control-warning');
+    } else {
+      $nombre.closest('.form-group').removeClass('has-warning');
+      $nombre.removeClass('form-control-warning');
+      $nombre.closest('.form-group').addClass('has-success');
+    }
+    if ($rango.val() == 0) {
+      $rango.closest('.form-group').addClass('has-warning');
+      $rango.addClass('form-control-warning');
+    } else {
+      $rango.closest('.form-group').removeClass('has-warning');
+      $rango.removeClass('form-control-warning');
+      $rango.closest('.form-group').addClass('has-success');
+    }
+    return;
+  }
+  error = false;
+  $nombre.closest('.form-group').removeClass('has-warning');
+  $nombre.removeClass('form-control-warning');
+  $nombre.closest('.form-group').addClass('has-success');
+  $rango.closest('.form-group').removeClass('has-warning');
+  $rango.removeClass('form-control-warning');
+  $rango.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
@@ -32,10 +62,19 @@ $(".edit").on("click", function (e) {
 });
 
 $(".editCancel").on("click", function (e) {
+    var $nombre = $(this).closest("tr").find('.campoNombre');
+  var $rango = $(this).closest("tr").find('.campoRango');
+    $nombre.closest('.form-group').removeClass('has-warning');
+  $nombre.removeClass('form-control-warning');
+  $nombre.closest('.form-group').addClass('has-success');
+  $rango.closest('.form-group').removeClass('has-warning');
+  $rango.removeClass('form-control-warning');
+  $rango.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
   editando = false;
+  error = false;
   if ((btnAgregar = true)) {
     $(".table-add").show();
     btnAgregar = false;
@@ -59,25 +98,25 @@ $(document).ready(function () {
   $up = $("tr:nth-child(3)").find('.table-up').clone(true);
   $down = $("tr:nth-last-child(2)").find('.table-down').clone(true);
   $("tr:nth-child(3)").find('.table-up').remove();
-  $("tr:nth-last-child(2)").find('.table-down').remove();  
+  $("tr:nth-last-child(2)").find('.table-down').remove();
 
 });
 
-var cambio = function(){
-  $(".editable").each(function(){
-      $(this).find('.table-up').remove();
-      $(this).find('.table-down').remove();
-      if (! $(this).children().first().hasClass(".table-up")){
-        $(this).prepend($up.clone(true));
-      }
-      if($(this).find(".table-down").length <= 0) {
-         $down.clone(true).insertAfter( $(this).find('.table-up'));
+var cambio = function () {
+  $(".editable").each(function () {
+    $(this).find('.table-up').remove();
+    $(this).find('.table-down').remove();
+    if (!$(this).children().first().hasClass(".table-up")) {
+      $(this).prepend($up.clone(true));
+    }
+    if ($(this).find(".table-down").length <= 0) {
+      $down.clone(true).insertAfter($(this).find('.table-up'));
     }
   });
   $("tr:nth-child(3)").find('.table-up').remove();
-  $("tr:nth-last-child(2)").find('.table-down').remove();  
-  $("tr:nth-last-child(1)").find('.table-down').remove(); 
-  $("tr:nth-last-child(1)").find('.table-up').remove(); 
+  $("tr:nth-last-child(2)").find('.table-down').remove();
+  $("tr:nth-last-child(1)").find('.table-down').remove();
+  $("tr:nth-last-child(1)").find('.table-up').remove();
 }
 
 $("td").on("keydown paste", function (event) {
@@ -92,6 +131,8 @@ $("#range").keypress(function (e) {
 });
 
 $(".table-add").click(function () {
+  if (error) return;
+  error = true;
   if ($('.btns:hidden')) {
     $('.btns').show()
   };
@@ -106,11 +147,11 @@ $(".table-add").click(function () {
   btnAgregar = true;
   editando = true;
   cambio();
-  $clone.find('.table-up').remove();  
+  $clone.find('.table-up').remove();
 });
 
 $(".table-remove").click(function () {
-  $(this).parents("tr").detach();
+  $(this).parents("tr").remove();
   cambio();
 });
 
@@ -131,4 +172,3 @@ $(".table-down").click(function () {
 $(".deshacer").click(function () {
   location.reload(true);
 });
-
