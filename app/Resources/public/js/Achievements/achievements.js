@@ -187,6 +187,7 @@ $(".edit").on("click", function (e) {
   $(this).closest('tr').find('td').find('.btn-icon').find('i').addClass($(this).closest('tr').find('td').find('.icono').val());
   $(this).closest('tr').find('td').find('.icono').iconpicker($(this).closest('tr').find('td').find('.icono'));
   editando = true;
+  last = $(this).closest('tr');
 });
 
 $(".editCancel").on("click", function (e) {
@@ -216,14 +217,6 @@ $(".editCancel").on("click", function (e) {
     btnAgregar = false;
     $clone.remove();
     cambio();
-  }else{
-    if ($mov){
-      $(this).tooltip('hide');
-      $('#logros').remove();
-      $('#logrosForm').prepend($deshacer);
-      $('.btn').tooltip(); 
-      $mov = false;
-    }
   }
 });
 var $deshacer;
