@@ -16,6 +16,9 @@ $(document).ready(function () {
   $("tr:nth-last-child(2)").find('.table-down').remove();
   $('.icono').hide()
   $('.btn-icon').hide()
+  $('.btn-icon').on( "click",function() {
+      $(this).closest('td').find('input').trigger( "focusin" );
+});
   $('.icono').each(function(){
   $(this).closest('td').append(icon);
   $(this).closest('td').find('.noneEditable').addClass($(this).closest('td').find('.icono').val());
@@ -169,6 +172,8 @@ $(".edit").on("click", function (e) {
     last.find('td:nth-child(3)').append(icon);
     last.find('td:nth-child(3)').find('.icono').hide();
     last.find('td:nth-child(3)').find('.noneEditable').addClass(last.find('td:nth-child(3)').find('.icono').val());
+      last.find('td:nth-child(3)').find('.btn-icon').hide();
+  last.find('td:nth-child(3)').find('.btn-icon').find('i').remove();
   }
   $(this).closest("tr").find("input").prop("readonly", false);
   $("#infinity").prop("readonly", true);
@@ -204,6 +209,7 @@ $(".editCancel").on("click", function (e) {
   $(this).closest('tr').find('td').find('.btn-icon').hide();
   $(this).closest('tr').find('td').find('.icono').val($(this).closest('tr').find('td').find('.icono').attr("value"))
   $(this).closest('tr').find('td:nth-child(3)').find('.noneEditable').addClass($(this).closest('tr').find('td:nth-child(3)').find('.icono').val());
+  $(this).closest('tr').find('td:nth-child(3)').find('.btn-icon').find('i').remove();
   editando = false;
   error = false;
   if ((btnAgregar == true)) {
