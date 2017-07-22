@@ -43,6 +43,7 @@ var equalName = function (element) {
 
 $(".submit").on("click", function (e) {
   $new = false;
+  $mov = false;
   var $nombre = $(this).closest("tr").find('.campoNombre');
   var $rango = $(this).closest("tr").find('.campoRango');
   var $before = $(this).closest("tr").prev();
@@ -72,7 +73,6 @@ $(".submit").on("click", function (e) {
     $nombre.closest('.form-group').addClass('has-success');
     if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
       if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || ((parseInt($rango.val())) >= parseInt($after.find('.campoRango').val()))) {
-        console.log("entro A");
         $rango.closest('.form-group').addClass('has-danger');
         $rango.addClass('form-control-danger');
         error = true;
@@ -133,6 +133,7 @@ $(".submit").on("click", function (e) {
 });
 
 $(".edit").on("click", function (e) {
+  $deshacer = $TABLE.clone(true,true);
   if (error) {
     return
   } else {
@@ -160,7 +161,6 @@ $(".edit").on("click", function (e) {
       }
     }
   }
-  console.log("hola")
   if ($('.btns:hidden')) {
     $('.btns').show()
   }
@@ -216,15 +216,24 @@ $(".editCancel").on("click", function (e) {
     btnAgregar = false;
     $clone.remove();
     cambio();
+  }else{
+    if ($mov){
+      $(this).tooltip('hide');
+      $('#logros').remove();
+      $('#logrosForm').prepend($deshacer);
+      $('.btn').tooltip(); 
+      $mov = false;
+    }
   }
 });
-var $desahacer = $("#logros").clone();
+var $deshacer;
 var $TABLE = $("#logros");
 var btnAgregar = false;
 var $clone;
 var $up;
 var $down;
 var $new;
+var $mov = false;
 
 var cambio = function () {
   $(".editable").each(function () {
@@ -275,11 +284,14 @@ $(".table-add").click(function () {
 });
 
 $(".table-remove").click(function () {
+  if (!editando){
   $(this).parents("tr").remove();
   cambio();
+  }
 });
 
 $(".table-up").click(function () {
+  $mov = true;
   var $row = $(this).parents("tr");
   if ($row.index() === 1) return; // Don't go above the header
   $row.prev().before($row.get(0));
@@ -287,6 +299,7 @@ $(".table-up").click(function () {
 });
 
 $(".table-down").click(function () {
+  $mov = true;
   var $row = $(this).parents("tr");
   if ($row.next().hasClass("nonemove")) return;
   $row.next().after($row.get(0));
