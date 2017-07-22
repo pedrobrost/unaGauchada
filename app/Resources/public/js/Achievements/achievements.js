@@ -119,6 +119,7 @@ $(".submit").on("click", function (e) {
   }
   $nombre.attr("value", $nombre.val());
   $rango.attr("value", parseInt($rango.val()));
+  $(this).closest('tr').find('td').find('.icono').attr("value", $(this).closest('tr').find('td').find('.icono').val());
   $(this).closest('tr').find('td:nth-child(3)').append(icon);
   $(this).closest('tr').find('td:nth-child(3)').find('.icono').hide();
   $(this).closest('tr').find('td:nth-child(3)').find('.noneEditable').addClass($(this).closest('tr').find('td:nth-child(3)').find('.icono').val());
@@ -174,9 +175,9 @@ $(".edit").on("click", function (e) {
   $(this).closest("tr").find(".editable").show();
   editando = true;
   last = $(this).closest("tr");
-  $(this).closest('tr').closest('tr').find('td').find('.noneEditable').remove();
-  $(this).closest('tr').closest('tr').find('td').find('.icono').show();
-  $(this).closest('tr').closest('tr').find('td').find('.icono').iconpicker($(this).closest('tr').find('td').find('.icono'));
+  $(this).closest('tr').find('td').find('.noneEditable').remove();
+  $(this).closest('tr').find('td').find('.icono').show();
+  $(this).closest('tr').find('td').find('.icono').iconpicker($(this).closest('tr').find('td').find('.icono'));
 });
 
 $(".editCancel").on("click", function (e) {
@@ -194,9 +195,10 @@ $(".editCancel").on("click", function (e) {
   $(this).closest("tr").find("input").prop("readonly", true);
   $(this).closest("tr").find(".editable").hide();
   $(this).closest("tr").find(".botones").show();
-  $(this).closest('td').append(icon);
-  $(this).closest('td').find('.icon').hide();
-  $(this).closest('td').find('.noneEditable').addClass($(this).closest('td').find('.icon').val());
+  $(this).closest('tr').find('td:nth-child(3)').append(icon);
+  $(this).closest('tr').find('td').find('.icono').hide();
+  $(this).closest('tr').find('td').find('.icono').val($(this).closest('tr').find('td').find('.icono').attr("value"))
+  $(this).closest('tr').find('td:nth-child(3)').find('.noneEditable').addClass($(this).closest('tr').find('td:nth-child(3)').find('.icono').val());
   editando = false;
   error = false;
   if ((btnAgregar == true)) {
