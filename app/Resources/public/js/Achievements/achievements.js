@@ -172,7 +172,7 @@ $(".edit").on("click", function (e) {
     last.find('td:nth-child(3)').append(icon);
     last.find('td:nth-child(3)').find('.icono').hide();
     last.find('td:nth-child(3)').find('.noneEditable').addClass(last.find('td:nth-child(3)').find('.icono').val());
-      last.find('td:nth-child(3)').find('.btn-icon').hide();
+    last.find('td:nth-child(3)').find('.btn-icon').hide();
   last.find('td:nth-child(3)').find('.btn-icon').find('i').remove();
   }
   $(this).closest("tr").find("input").prop("readonly", false);
