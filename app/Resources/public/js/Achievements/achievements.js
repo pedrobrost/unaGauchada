@@ -2,7 +2,7 @@ var editando = false;
 var last = null;
 var error = false;
 
-var icon="<i class=\"noneEditable fa\" aria-hidden=\"true\"><\/i>";
+var icon = "<i class=\"noneEditable fa\" aria-hidden=\"true\"><\/i>";
 
 $(document).ready(function () {
   $("#mySubmissions").addClass("active");
@@ -16,27 +16,27 @@ $(document).ready(function () {
   $("tr:nth-last-child(2)").find('.table-down').remove();
   $('.icono').hide()
   $('.btn-icon').hide()
-  $('.btn-icon').on( "click",function() {
-      $(this).closest('td').find('input').trigger( "focusin" );
-});
-  $('.icono').each(function(){
-  $(this).closest('td').append(icon);
-  $(this).closest('td').find('.noneEditable').addClass($(this).closest('td').find('.icono').val());
+  $('.btn-icon').on("click", function () {
+    $(this).closest('td').find('input').trigger("focusin");
+  });
+  $('.icono').each(function () {
+    $(this).closest('td').append(icon);
+    $(this).closest('td').find('.noneEditable').addClass($(this).closest('td').find('.icono').val());
   });
 });
 
 
-var equalName = function(element){
+var equalName = function (element) {
   var count = 0;
   $(".campoNombre").each(function () {
-      if (($(this).val().toUpperCase()) == (element.val().toUpperCase())){
-          count++;
-      }
+    if (($(this).val().toUpperCase()) == (element.val().toUpperCase())) {
+      count++;
+    }
   })
-  if (count > 1){
-      element.closest('.form-group').addClass('has-danger');
-      element.addClass('form-control-danger');
-      return true;
+  if (count > 1) {
+    element.closest('.form-group').addClass('has-danger');
+    element.addClass('form-control-danger');
+    return true;
   }
   return false;
 };
@@ -45,8 +45,8 @@ $(".submit").on("click", function (e) {
   $new = false;
   var $nombre = $(this).closest("tr").find('.campoNombre');
   var $rango = $(this).closest("tr").find('.campoRango');
-      var $before = $(this).closest("tr").prev();
-    var $after = $(this).closest("tr").next();
+  var $before = $(this).closest("tr").prev();
+  var $after = $(this).closest("tr").next();
   if (($nombre.val() == 0) || ($rango.val() == 0)) {
     error = true;
     if ($nombre.val() == 0) {
@@ -68,10 +68,10 @@ $(".submit").on("click", function (e) {
     return false;
   } else {
     $nombre.closest('.form-group').removeClass('has-warning');
-  $nombre.removeClass('form-control-warning');
-  $nombre.closest('.form-group').addClass('has-success');
-    if (!$before.hasClass("hide") && ! $after.hasClass("nonemove")) {
-      if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || ((parseInt($rango.val()))>= parseInt($after.find('.campoRango').val()))) {
+    $nombre.removeClass('form-control-warning');
+    $nombre.closest('.form-group').addClass('has-success');
+    if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
+      if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val())) || ((parseInt($rango.val())) >= parseInt($after.find('.campoRango').val()))) {
         console.log("entro A");
         $rango.closest('.form-group').addClass('has-danger');
         $rango.addClass('form-control-danger');
@@ -84,28 +84,29 @@ $(".submit").on("click", function (e) {
         if ((parseInt($rango.val()) <= parseInt($before.find('.campoRango').val()))) {
           $rango.closest('.form-group').addClass('has-danger');
           $rango.addClass('form-control-danger');
-              error = true;
-              equalName($nombre);
-              return
+          error = true;
+          equalName($nombre);
+          return
         }
       } else {
-              if (! $after.hasClass("nonemove")) {
-        if ((parseInt($rango.val()) >= parseInt($after.find('.campoRango').val()))) {
-          $rango.closest('.form-group').addClass('has-danger');
-          $rango.addClass('form-control-danger');
-              error = true;
-              equalName($nombre);
-              return
-        }}
+        if (!$after.hasClass("nonemove")) {
+          if ((parseInt($rango.val()) >= parseInt($after.find('.campoRango').val()))) {
+            $rango.closest('.form-group').addClass('has-danger');
+            $rango.addClass('form-control-danger');
+            error = true;
+            equalName($nombre);
+            return
+          }
+        }
       }
     }
   }
-    $rango.closest('.form-group').removeClass('has-warning');
+  $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
   $rango.closest('.form-group').removeClass('has-danger');
   $rango.removeClass('form-control-danger');
   $rango.closest('.form-group').addClass('has-success');
-  if (equalName($nombre)){
+  if (equalName($nombre)) {
     error = true;
     return;
   }
@@ -156,11 +157,10 @@ $(".edit").on("click", function (e) {
           $rango.removeClass('form-control-warning');
           $rango.closest('.form-group').addClass('has-success');
         }
-        return false;
       }
     }
-
   }
+  console.log("hola")
   if ($('.btns:hidden')) {
     $('.btns').show()
   }
@@ -173,25 +173,23 @@ $(".edit").on("click", function (e) {
     last.find('td:nth-child(3)').find('.icono').hide();
     last.find('td:nth-child(3)').find('.noneEditable').addClass(last.find('td:nth-child(3)').find('.icono').val());
     last.find('td:nth-child(3)').find('.btn-icon').hide();
-  last.find('td:nth-child(3)').find('.btn-icon').find('i').remove();
+    last.find('td:nth-child(3)').find('.btn-icon').find('i').remove();
   }
+
   $(this).closest("tr").find("input").prop("readonly", false);
   $("#infinity").prop("readonly", true);
-
   $(this).closest("div").hide();
   $(this).closest("tr").find(".editable").show();
-  editando = true;
-  last = $(this).closest("tr");
   $(this).closest("tr").find('.btn-icon').append(icon);
   $(this).closest("tr").find('.btn-icon').find('i').addClass($(this).closest('td').find('.icono').val());
   $(this).closest('tr').find('td > .noneEditable').remove();
   $(this).closest('tr').find('td').find('.btn-icon').show();
   $(this).closest('tr').find('td').find('.btn-icon').find('i').addClass($(this).closest('tr').find('td').find('.icono').val());
   $(this).closest('tr').find('td').find('.icono').iconpicker($(this).closest('tr').find('td').find('.icono'));
+  editando = true;
 });
 
 $(".editCancel").on("click", function (e) {
-  $new = false;
   var $nombre = $(this).closest("tr").find('.campoNombre');
   var $rango = $(this).closest("tr").find('.campoRango');
   $nombre.closest('.form-group').removeClass('has-warning');
@@ -199,7 +197,7 @@ $(".editCancel").on("click", function (e) {
   $nombre.closest('.form-group').addClass('has-success');
   $rango.closest('.form-group').removeClass('has-warning');
   $rango.removeClass('form-control-warning');
-    $rango.closest('.form-group').removeClass('has-danger');
+  $rango.closest('.form-group').removeClass('has-danger');
   $rango.removeClass('form-control-danger');
   $rango.closest('.form-group').addClass('has-success');
   $(this).closest("tr").find("input").prop("readonly", true);
@@ -212,6 +210,7 @@ $(".editCancel").on("click", function (e) {
   $(this).closest('tr').find('td:nth-child(3)').find('.btn-icon').find('i').remove();
   editando = false;
   error = false;
+  $new = false;
   if ((btnAgregar == true)) {
     $(".table-add").show();
     btnAgregar = false;
