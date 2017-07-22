@@ -2,15 +2,19 @@ var editando = false;
 var last = null;
 var error = false;
 var index;
+var equal = false;
 
 var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
 
 $(document).ready(function () {
-  $(function () {
-    $('[data-toggle="popover"]').popover({
-      trigger: 'manual'
-    })
-  });
+$('body').popover({
+  html: true,
+  trigger: 'manual',
+  selector: '[data-toggle="popover"]',
+  content: function () {
+    return $(this).parent().find('.content').html();
+  }
+});
   $('[data-toggle="popover"]').on("keypress", function () {
     $(this).popover('hide');
   });
@@ -56,6 +60,7 @@ var equalName = function (element) {
 $(".submit").on("click", function (e) {
   $new = false;
   $mov = false;
+    $('[data-toggle="popover"]').popover('hide');
   var $nombre = $(this).closest("tr").find(".campoNombre");
   var $rango = $(this).closest("tr").find(".campoRango");
   var $before = $(this).closest("tr").prev();
@@ -91,7 +96,8 @@ $(".submit").on("click", function (e) {
         $rango.closest(".form-group").addClass("has-danger");
         $rango.addClass("form-control-danger");
         error = true;
-        equalName($nombre);
+        equal = equalName($nombre);
+        $rango.closest('td').popover('show');
         return;
       }
     } else {
@@ -102,7 +108,8 @@ $(".submit").on("click", function (e) {
           $rango.closest(".form-group").addClass("has-danger");
           $rango.addClass("form-control-danger");
           error = true;
-          equalName($nombre);
+          equal = equalName($nombre);
+          $rango.closest('td').popover('show');
           return;
         }
       } else {
@@ -113,7 +120,8 @@ $(".submit").on("click", function (e) {
             $rango.closest(".form-group").addClass("has-danger");
             $rango.addClass("form-control-danger");
             error = true;
-            equalName($nombre);
+            equal = equalName($nombre);
+            $rango.closest('td').popover('show');
             return;
           }
         }
@@ -369,6 +377,14 @@ $(".table-add").click(function () {
   editando = true;
   cambio();
   $clone.find(".table-up").remove();
+    $(function () {
+    $('[data-toggle="popover"]').popover({
+      trigger: 'manual'
+    })
+  });
+  $('[data-toggle="popover"]').on("keypress", function () {
+    $(this).popover('hide');
+  });
 });
 
 $(".table-remove").click(function () {
@@ -380,6 +396,7 @@ $(".table-remove").click(function () {
 
 $(".table-up").click(function () {
   $mov = true;
+    $('[data-toggle="popover"]').popover('hide');
   var $row = $(this).parents("tr");
   if ($row.index() === 1) return; // Don't go above the header
   $row.prev().before($row.get(0));
@@ -388,6 +405,7 @@ $(".table-up").click(function () {
 
 $(".table-down").click(function () {
   $mov = true;
+    $('[data-toggle="popover"]').popover('hide');
   var $row = $(this).parents("tr");
   if ($row.next().hasClass("nonemove")) return;
   $row.next().after($row.get(0));
