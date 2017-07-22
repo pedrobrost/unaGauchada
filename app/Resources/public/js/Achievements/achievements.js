@@ -1,6 +1,7 @@
 var editando = false;
 var last = null;
 var error = false;
+var index;
 
 var icon = "<i class=\"noneEditable fa\" aria-hidden=\"true\"><\/i>";
 
@@ -133,7 +134,7 @@ $(".submit").on("click", function (e) {
 });
 
 $(".edit").on("click", function (e) {
-  $deshacer = $TABLE.clone(true,true);
+  index = $(this).closest("tr").index();
   if (error) {
     return
   } else {
@@ -217,9 +218,24 @@ $(".editCancel").on("click", function (e) {
     btnAgregar = false;
     $clone.remove();
     cambio();
+  }else{
+    var actual = $(this).closest("tr").index();
+    if (index != actual ){
+      if (index > actual){
+        for (i = 0; i < (index - actual); i++) { 
+            $(this).closest("tr").find(".editable").find('.table-down').trigger('click');
+          }
+      }
+      else{
+        for (i = 0; i < (actual - index); i++) { 
+            $(this).closest("tr").find(".editable").find('.table-up').trigger('click');
+          } 
+      }
+    }
   }
 });
-var $deshacer;
+
+
 var $TABLE = $("#logros");
 var btnAgregar = false;
 var $clone;
