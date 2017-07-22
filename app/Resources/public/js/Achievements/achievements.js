@@ -377,11 +377,14 @@ $(".table-add").click(function () {
   editando = true;
   cambio();
   $clone.find(".table-up").remove();
-    $(function () {
-    $('[data-toggle="popover"]').popover({
-      trigger: 'manual'
-    })
-  });
+$('body').popover({
+  html: true,
+  trigger: 'manual',
+  selector: '[data-toggle="popover"]',
+  content: function () {
+    return $(this).parent().find('.content').html();
+  }
+});
   $('[data-toggle="popover"]').on("keypress", function () {
     $(this).popover('hide');
   });
