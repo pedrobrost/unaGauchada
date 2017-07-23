@@ -6,7 +6,15 @@ var equal = false;
 
 var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
 
+function noSave() {
+    if (error) return false;    
+}
+
+
 $(document).ready(function () {
+$("#save").on('click', function() {
+    if (error) return false;    
+});
 $('body').popover({
   html: true,
   trigger: 'manual',
@@ -96,7 +104,7 @@ $(".submit").on("click", function (e) {
         $rango.closest(".form-group").addClass("has-danger");
         $rango.addClass("form-control-danger");
         error = true;
-        equal = equalName($nombre);
+        equalName($nombre);
         $rango.closest('td').popover('show');
         return;
       }
@@ -108,7 +116,7 @@ $(".submit").on("click", function (e) {
           $rango.closest(".form-group").addClass("has-danger");
           $rango.addClass("form-control-danger");
           error = true;
-          equal = equalName($nombre);
+          equalName($nombre);
           $rango.closest('td').popover('show');
           return;
         }
@@ -120,7 +128,7 @@ $(".submit").on("click", function (e) {
             $rango.closest(".form-group").addClass("has-danger");
             $rango.addClass("form-control-danger");
             error = true;
-            equal = equalName($nombre);
+            equalName($nombre);
             $rango.closest('td').popover('show');
             return;
           }
