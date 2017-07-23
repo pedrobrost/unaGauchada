@@ -15,7 +15,7 @@
                     </div>
                     <h4 class="card-title">
                         <div class="form-group">
-                            <input placeholder="Título" name="title" maxlength="50" class="card-title form-control"
+                            <input placeholder="Título" name="title" id="title" maxlength="50" class="card-title form-control"
                                    type="text" value="{{ publication.title }}">
                         </div>
                     </h4>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="descriptionField form-group">
-                    <textarea placeholder="Descripción" name="description"
+                    <textarea placeholder="Descripción" name="description" id="description"
                               class="card-text form-control">{{ publication.description }}</textarea>
                 </div>
                 <div class="card-block text-right buttons">
