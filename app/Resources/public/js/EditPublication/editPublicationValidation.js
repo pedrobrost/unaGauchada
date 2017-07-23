@@ -8,11 +8,11 @@ $(document).ready(function () {
         placement: 'left',
         trigger: 'manual'
     });
-        $('#city').popover({
+    $('#city').popover({
         placement: 'left',
         trigger: 'manual'
     });
-        $('#category').popover({
+    $('#category').popover({
         placement: 'left',
         trigger: 'manual'
     });
@@ -71,8 +71,8 @@ $('#editPublication_form').validate({
         },
     },
     errorPlacement: function (err, element) {
-        element.attr('data-content',err.text());
-                $(element).popover('show');
+        element.attr('data-content', err.text());
+        $(element).popover('show');
     },
     highlight: function (element) {
         $(element).closest('.form-group').addClass('has-warning');
