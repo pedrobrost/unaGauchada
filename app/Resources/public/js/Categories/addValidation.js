@@ -11,16 +11,32 @@ $(document).ready(function () {
     });
 });
 
+
+$.validator.addMethod("equalName", function(value, element) {
+    var parentForm = $(element).closest('table');
+    var timeRepeated = 0;
+    if (value != '') {
+        $(parentForm.find(':text')).each(function () {
+            if (($(this).val().toUpperCase() ==  value.toUpperCase())) {
+                timeRepeated++;
+            }
+        });
+    }
+    return timeRepeated === 1 || timeRepeated === 0;
+}), 
+
 $('.editCategoryForm').each(function () { // attach to all form elements on page
     $(this).validate({
         rules: {
             message: {
-                required: true
+                required: true,
+                equalName: true,
             },
         },
         messages: {
             message: {
                 required: "Debe ingresar el nombre de la categoria",
+                equalName: "Ese nombre ya es usado por otra categoria. Intenta ingregar uno nuevo"
             },
 
         },
