@@ -6,6 +6,7 @@ var index;
 var editando = false;
 var btnAgregar = false;
 var last = null;
+var borrar = null;
 var error = false;
 var $TABLE = $("#logros");
 var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
@@ -42,12 +43,19 @@ $(document).ready(function () {
     });
 });
 
-$(".table-remove").click(function () {
+$(".eliminar").click(function () {
     if (!editando) {
-        $(this).parents("tr").remove();
-        cambio();
+    borrar = $(this);
+    $('.modalText').text("Estas a punto de eliminar el logro '" + $(this).closest("tr").find(".campoNombre").val() + "', ¿Estas seguro que deseas continuar?");
+    $('#deleteModal').modal("show");
     }
 });
+
+$(".table-remove").click(function () {
+        borrar.parents("tr").remove();
+        $('#deleteModal').modal("hide");
+        cambio();
+    });
 
 $(".table-up").click(function () {
     $(this).closest("tr").find("td").popover("hide");
@@ -114,7 +122,8 @@ $(".editCancel").on("click", function (e) {
         $(".table-add").removeClass("disabled");
         $(".table-add").show();
         last.find('td').popover("dispose");
-        $(this).closest("tr").find(".table-remove").trigger("click");
+        borrar = $(this);
+        $(".table-remove").trigger("click");
         return;
     }
     $(this).closest("tr").find("input").prop("readonly", true);

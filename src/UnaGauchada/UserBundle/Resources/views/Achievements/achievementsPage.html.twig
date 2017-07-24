@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %} 
 
 {% block body %}
+{% include 'UserBundle:Achievements:deleteAchievement.html.twig'%}
 <div class="container categories achievements">
     <div class="container carta">
         <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left"><i class="fa fa-reply" aria-hidden="true"></i></a>

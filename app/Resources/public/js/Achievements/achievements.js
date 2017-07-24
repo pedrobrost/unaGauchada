@@ -44,21 +44,6 @@ $(document).ready(function () {
   });
 });
 
-var equalName = function (element) {
-  var count = 0;
-  $(".campoNombre").each(function () {
-    if ($(this).val().toUpperCase() == element.val().toUpperCase()) {
-      count++;
-    }
-  });
-  if (count > 1) {
-    element.closest(".form-group").addClass("has-danger");
-    element.addClass("form-control-danger");
-    element.closest('td').popover('show');
-    return true;
-  }
-  return false;
-};
 
 $(".submit").on("click", function (e) {
   $new = false;
