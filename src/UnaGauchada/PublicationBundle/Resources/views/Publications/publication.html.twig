@@ -32,7 +32,7 @@
 
 <div class="container publication">
 
-    {% for message in app.session.flashbag.get('edit') %}
+    {% for message in app.flashes('edit') %}
         {{popUp.success('¡Felicitaciones!', message)}}
     {% endfor %}
 
