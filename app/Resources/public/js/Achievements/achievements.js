@@ -1,408 +1,371 @@
-var editando = false;
-var last = null;
-var error = false;
-var index;
-var equal = false;
-
-var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
-
-$(document).ready(function () {
-  $("#save").on('click', function () {
-    if (error || editando) return false;
-  });
-  $('body').popover({
-    html: true,
-    trigger: 'manual',
-    selector: '[data-toggle="popover"]',
-    content: function () {
-      return $(this).parent().find('.content').html();
-    }
-  });
-  $('[data-toggle="popover"]').on("keypress", function () {
-    $(this).popover('hide');
-  });
-  $("#mySubmissions").addClass("active");
-  $(".editable").hide();
-  $("input").prop("readonly", true);
-  $TABLE.find("tr.hide").hide();
-  $(".btns").hide();
-  $up = $("tr:nth-child(3)").find(".table-up").clone(true);
-  $down = $("tr:nth-last-child(2)").find(".table-down").clone(true);
-  $("tr:nth-child(3)").find(".table-up").remove();
-  $("tr:nth-last-child(2)").find(".table-down").remove();
-  $(".icono").hide();
-  $(".btn-icon").hide();
-  $(".btn-icon").on("click", function () {
-    $(this).closest("td").find("input").trigger("focusin");
-  });
-  $(".icono").each(function () {
-    $(this).closest("td").append(icon);
-    $(this)
-      .closest("td")
-      .find(".noneEditable")
-      .addClass($(this).closest("td").find(".icono").val());
-  });
-});
-
-
-$(".submit").on("click", function (e) {
-  $new = false;
-  $mov = false;
-  $('[data-toggle="popover"]').popover('hide');
-  var $nombre = $(this).closest("tr").find(".campoNombre");
-  var $rango = $(this).closest("tr").find(".campoRango");
-  var $before = $(this).closest("tr").prev();
-  var $after = $(this).closest("tr").next();
-  if ($nombre.val() == 0 || $rango.val() == 0) {
-    error = true;
-    if ($nombre.val() == 0) {
-      $nombre.closest(".form-group").addClass("has-warning");
-      $nombre.addClass("form-control-warning");
-    } else {
-      $nombre.closest(".form-group").removeClass("has-warning");
-      $nombre.removeClass("form-control-warning");
-      $nombre.closest(".form-group").addClass("has-success");
-    }
-    if ($rango.val() == 0) {
-      $rango.closest(".form-group").addClass("has-warning");
-      $rango.addClass("form-control-warning");
-    } else {
-      $rango.closest(".form-group").removeClass("has-warning");
-      $rango.removeClass("form-control-warning");
-      $rango.closest(".form-group").addClass("has-success");
-    }
-    return false;
-  } else {
-    $nombre.closest(".form-group").removeClass("has-warning");
-    $nombre.removeClass("form-control-warning");
-    $nombre.closest(".form-group").addClass("has-success");
-    if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
-      if (
-        parseInt($rango.val()) <= parseInt($before.find(".campoRango").val()) ||
-        parseInt($rango.val()) >= parseInt($after.find(".campoRango").val())
-      ) {
-        $rango.closest(".form-group").addClass("has-danger");
-        $rango.addClass("form-control-danger");
-        error = true;
-        equalName($nombre);
-        $rango.closest('td').popover('show');
-        return;
-      }
-    } else {
-      if (!$before.hasClass("hide")) {
-        if (
-          parseInt($rango.val()) <= parseInt($before.find(".campoRango").val())
-        ) {
-          $rango.closest(".form-group").addClass("has-danger");
-          $rango.addClass("form-control-danger");
-          error = true;
-          equalName($nombre);
-          $rango.closest('td').popover('show');
-          return;
-        }
-      } else {
-        if (!$after.hasClass("nonemove")) {
-          if (
-            parseInt($rango.val()) >= parseInt($after.find(".campoRango").val())
-          ) {
-            $rango.closest(".form-group").addClass("has-danger");
-            $rango.addClass("form-control-danger");
-            error = true;
-            equalName($nombre);
-            $rango.closest('td').popover('show');
-            return;
-          }
-        }
-      }
-    }
-  }
-  $rango.closest(".form-group").removeClass("has-warning");
-  $rango.removeClass("form-control-warning");
-  $rango.closest(".form-group").removeClass("has-danger");
-  $rango.removeClass("form-control-danger");
-  $rango.closest(".form-group").addClass("has-success");
-  if (equalName($nombre)) {
-    error = true;
-    return;
-  }
-  error = false;
-  $nombre.closest(".form-group").removeClass("has-danger");
-  $nombre.removeClass("form-control-danger");
-  $nombre.closest(".form-group").addClass("has-success");
-  $(this).closest("tr").find("input").prop("readonly", true);
-  $(this).closest("tr").find(".editable").hide();
-  $(this).closest("tr").find(".botones").show();
-  editando = false;
-  if (btnAgregar == true) {
-    $(".table-add").show();
-    btnAgregar = false;
-  }
-  $nombre.attr("value", $nombre.val());
-  $rango.attr("value", parseInt($rango.val()));
-  $(this)
-    .closest("tr")
-    .find("td")
-    .find(".icono")
-    .attr("value", $(this).closest("tr").find("td").find(".icono").val());
-  $(this).closest("tr").find("td:nth-child(3)").append(icon);
-  $(this).closest("tr").find("td:nth-child(3)").find(".btn-icon").hide();
-  $(this)
-    .closest("tr")
-    .find("td:nth-child(3)")
-    .find(".btn-icon")
-    .find("i")
-    .remove();
-  $(this)
-    .closest("tr")
-    .find("td:nth-child(3)")
-    .find(".noneEditable")
-    .addClass(
-      $(this).closest("tr").find("td:nth-child(3)").find(".icono").val()
-    );
-  return true;
-});
-
-$(".edit").on("click", function (e) {
-  index = $(this).closest("tr").index();
-  if (error) {
-    return;
-  } else {
-    if ($new && last) {
-      var $nombre = last.closest("tr").find(".campoNombre");
-      var $rango = last.closest("tr").find(".campoRango");
-      if ($nombre.val() == 0 && $rango.val() == 0) {
-        $(".table-add").show();
-        btnAgregar = false;
-        last.remove();
-        cambio();
-      }
-      if ($nombre.val() == 0 || $rango.val() == 0) {
-        error = true;
-        if ($nombre.val() == 0) {
-          $nombre.closest(".form-group").addClass("has-warning");
-          $nombre.addClass("form-control-warning");
-        } else {
-          $nombre.closest(".form-group").removeClass("has-warning");
-          $nombre.removeClass("form-control-warning");
-          $nombre.closest(".form-group").addClass("has-success");
-        }
-        if ($rango.val() == 0) {
-          $rango.closest(".form-group").addClass("has-warning");
-          $rango.addClass("form-control-warning");
-        } else {
-          $rango.closest(".form-group").removeClass("has-warning");
-          $rango.removeClass("form-control-warning");
-          $rango.closest(".form-group").addClass("has-success");
-        }
-      }
-    }
-  }
-  if ($(".btns:hidden")) {
-    $(".btns").show();
-  }
-  if (editando == true) {
-    last.find("input").prop("readonly", true);
-    last.find("form").trigger("reset");
-    $(".editable").hide();
-    $(".botones").show();
-    last.find("td:nth-child(3)").append(icon);
-    last.find("td:nth-child(3)").find(".icono").hide();
-    last
-      .find("td:nth-child(3)")
-      .find(".noneEditable")
-      .addClass(last.find("td:nth-child(3)").find(".icono").val());
-    last.find("td:nth-child(3)").find(".btn-icon").hide();
-    last.find("td:nth-child(3)").find(".btn-icon").find("i").remove();
-  }
-
-  $(this).closest("tr").find("input").prop("readonly", false);
-  $("#infinity").prop("readonly", true);
-  $(this).closest("div").hide();
-  $(this).closest("tr").find(".editable").show();
-  $(this).closest("tr").find(".btn-icon").append(icon);
-  $(this)
-    .closest("tr")
-    .find(".btn-icon")
-    .find("i")
-    .addClass($(this).closest("td").find(".icono").val());
-  $(this).closest("tr").find("td > .noneEditable").remove();
-  $(this).closest("tr").find("td").find(".btn-icon").show();
-  $(this)
-    .closest("tr")
-    .find("td")
-    .find(".btn-icon")
-    .find("i")
-    .addClass($(this).closest("tr").find("td").find(".icono").val());
-  $(this)
-    .closest("tr")
-    .find("td")
-    .find(".icono")
-    .iconpicker($(this).closest("tr").find("td").find(".icono"));
-  editando = true;
-  last = $(this).closest("tr");
-});
-
-$(".editCancel").on("click", function (e) {
-  var $nombre = $(this).closest("tr").find(".campoNombre");
-  var $rango = $(this).closest("tr").find(".campoRango");
-  $nombre.closest(".form-group").removeClass("has-warning");
-  $nombre.removeClass("form-control-warning");
-  $nombre.closest(".form-group").removeClass("has-danger");
-  $nombre.removeClass("form-control-danger");
-  $nombre.closest(".form-group").addClass("has-success");
-  $rango.closest(".form-group").removeClass("has-warning");
-  $rango.removeClass("form-control-warning");
-  $rango.closest(".form-group").removeClass("has-danger");
-  $rango.removeClass("form-control-danger");
-  $rango.closest(".form-group").addClass("has-success");
-  $(this).closest("tr").find("input").prop("readonly", true);
-  $(this).closest("tr").find(".editable").hide();
-  $(this).closest("tr").find(".botones").show();
-  $(this).closest("tr").find("td:nth-child(3)").append(icon);
-  $(this).closest("tr").find("td").find(".btn-icon").hide();
-  $(this)
-    .closest("tr")
-    .find("td")
-    .find(".icono")
-    .val($(this).closest("tr").find("td").find(".icono").attr("value"));
-  $(this)
-    .closest("tr")
-    .find("td:nth-child(3)")
-    .find(".noneEditable")
-    .addClass(
-      $(this).closest("tr").find("td:nth-child(3)").find(".icono").val()
-    );
-  $(this)
-    .closest("tr")
-    .find("td:nth-child(3)")
-    .find(".btn-icon")
-    .find("i")
-    .remove();
-  editando = false;
-  error = false;
-  $new = false;
-  $('[data-toggle="popover"]').popover('hide');
-  if (btnAgregar == true) {
-    $(".table-add").show();
-    btnAgregar = false;
-    $clone.remove();
-    cambio();
-  } else {
-    var actual = $(this).closest("tr").index();
-    if (index != actual) {
-      if (index > actual) {
-        for (i = 0; i < index - actual; i++) {
-          $(this)
-            .closest("tr")
-            .find(".editable")
-            .find(".table-down")
-            .trigger("click");
-        }
-      } else {
-        for (i = 0; i < actual - index; i++) {
-          $(this)
-            .closest("tr")
-            .find(".editable")
-            .find(".table-up")
-            .trigger("click");
-        }
-      }
-    }
-  }
-});
-
-var $TABLE = $("#logros");
-var btnAgregar = false;
 var $clone;
 var $up;
 var $down;
 var $new;
-var $mov = false;
+var index;
+var editando = false;
+var btnAgregar = false;
+var last = null;
+var borrar = null;
+var error = false;
+var $TABLE = $("#logros");
+var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
 
-var cambio = function () {
-  $(".editable").each(function () {
-    $(this).find(".table-up").remove();
-    $(this).find(".table-down").remove();
-    if (!$(this).children().first().hasClass(".table-up")) {
-      $(this).prepend($up.clone(true));
-    }
-    if ($(this).find(".table-down").length <= 0) {
-      $down.clone(true).insertAfter($(this).find(".table-up"));
-    }
-  });
-  $("tr:nth-child(3)").find(".table-up").remove();
-  $("tr:nth-last-child(2)").find(".table-down").remove();
-  $("tr:nth-last-child(1)").find(".table-down").remove();
-  $("tr:nth-last-child(1)").find(".table-up").remove();
-};
-
-$("td").on("keydown paste", function (event) {
-  //Prevent on paste as well
-  if ($(this).text().length === 10 && event.keyCode != 8) {
-    event.preventDefault();
-  }
+$(document).ready(function () {
+    $("#save").on('click', function () {
+        if (error || editando) {
+            $(this).addClass("disabled");
+            return false;
+        }
+    });
+    $up = $("tr:nth-child(3)").find(".table-up").clone(true);
+    $down = $("tr:nth-last-child(2)").find(".table-down").clone(true);
+    $(".editable").hide();
+    $("input").prop("readonly", true);
+    $TABLE.find("tr.hide").hide();
+    $(".btns").hide();
+    $("tr:nth-child(3)").find(".table-up").remove();
+    $("tr:nth-last-child(2)").find(".table-down").remove();
+    $(".icono").hide();
+    $(".btn-icon").hide();
+    $(".btn-icon").on("click", function () {
+        $(this).closest("td").find("input").trigger("focusin");
+    });
+    $(".icono").each(function () {
+        $(this).closest("td").append(icon);
+        $(this)
+            .closest("td")
+            .find(".noneEditable")
+            .addClass($(this).closest("td").find(".icono").val());
+    });
+    $('[data-toggle="popover"]').on("keypress", function () {
+        $(this).popover('hide');
+    });
 });
 
-$("#range").keypress(function (e) {
-  if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
-});
-
-$(".table-add").click(function () {
-  if (error) return;
-  if ($(".btns:hidden")) {
-    $(".btns").show();
-  }
-  $new = true;
-  $clone = $TABLE.find("tr.hide").clone(true).removeClass("hide table-line");
-  $clone.show();
-  $clone.find("input").prop("readonly", false);
-  $clone.find(".edit").trigger("click");
-  last = $clone;
-  $clone.find(".table-up").remove();
-  $clone.insertAfter($TABLE.find("tr.hide"));
-  $(".table-add").hide();
-  btnAgregar = true;
-  editando = true;
-  cambio();
-  $clone.find(".table-up").remove();
-  $('body').popover({
-    html: true,
-    trigger: 'manual',
-    selector: '[data-toggle="popover"]',
-    content: function () {
-      return $(this).parent().find('.content').html();
+$(".eliminar").click(function () {
+    if (!editando) {
+        borrar = $(this);
+        $('.modalText').text($(this).closest("tr").find(".campoNombre").val());
+        $('#deleteModal').modal("show");
     }
-  });
-  $('[data-toggle="popover"]').on("keypress", function () {
-    $(this).popover('hide');
-  });
 });
 
 $(".table-remove").click(function () {
-  if (!editando) {
-    $(this).parents("tr").remove();
+    borrar.parents("tr").remove();
     cambio();
-  }
+    if ($(".btns:hidden")) {
+        $(".btns").show();
+    }
 });
 
 $(".table-up").click(function () {
-  $mov = true;
-  $('[data-toggle="popover"]').popover('hide');
-  var $row = $(this).parents("tr");
-  if ($row.index() === 1) return; // Don't go above the header
-  $row.prev().before($row.get(0));
-  cambio();
+    $(this).closest("tr").find("td").popover("hide");
+    var $row = $(this).parents("tr");
+    if ($row.index() === 1) return; // Don't go above the header
+    $row.prev().before($row.get(0));
+    cambio();
 });
 
 $(".table-down").click(function () {
-  $mov = true;
-  $('[data-toggle="popover"]').popover('hide');
-  var $row = $(this).parents("tr");
-  if ($row.next().hasClass("nonemove")) return;
-  $row.next().after($row.get(0));
-  cambio();
+    $(this).closest("tr").find("td").popover("hide");
+    var $row = $(this).parents("tr");
+    if ($row.next().hasClass("nonemove")) return;
+    $row.next().after($row.get(0));
+    cambio();
 });
 
 $(".deshacer").click(function () {
-  location.reload(true);
+    location.reload(true);
 });
+
+$(".edit").on("click", function (e) {
+    if ($(".btns:hidden")) {
+        $(".btns").show();
+    }
+    $(this).closest("tr").find("input").prop("readonly", false);
+    $(this).closest("div").hide();
+    $(this).closest("tr").find(".editable").show();
+    $(this).closest("tr").find(".btn-icon").append(icon);
+    $(this)
+        .closest("tr")
+        .find(".btn-icon")
+        .find("i")
+        .addClass($(this).closest("td").find(".icono").val());
+    $(this).closest("tr").find("td > .noneEditable").remove();
+    $(this).closest("tr").find("td").find(".btn-icon").show();
+    $(this)
+        .closest("tr")
+        .find("td")
+        .find(".btn-icon")
+        .find("i")
+        .addClass($(this).closest("tr").find("td").find(".icono").val());
+    $(this)
+        .closest("tr")
+        .find("td")
+        .find(".icono")
+        .iconpicker($(this).closest("tr").find("td").find(".icono"));
+    if (editando == true) {
+        last.closest("tr").find("td").find(".editCancel").trigger("click");
+    }
+    editando = true;
+    error = false;
+    last = $(this).closest("tr");
+    index = $(this).closest("tr").index();
+});
+
+$(".editCancel").on("click", function (e) {
+    if ($new) {
+        $new = false;
+        btnAgregar = false;
+        editando = false;
+        error = false;
+        last.find('td').popover("dispose");
+        borrar = $(this);
+        $("#save").removeClass("disabled");
+        $(".table-add").removeClass("disabled");
+        $(".table-add").show();
+        $(".table-remove").trigger("click");
+        return;
+    }
+    $(this).closest("tr").find("input").prop("readonly", true);
+    $(this).closest("tr").find(".editable").hide();
+    $(this).closest("tr").find(".botones").show();
+    $(this).closest("tr").find("td:nth-child(3)").append(icon);
+    $(this).closest("tr").find("td").find(".btn-icon").hide();
+    $(this)
+        .closest("tr")
+        .find("td")
+        .find(".icono")
+        .val($(this).closest("tr").find("td").find(".icono").attr("value"));
+    $(this)
+        .closest("tr")
+        .find("td:nth-child(3)")
+        .find(".noneEditable")
+        .addClass(
+            $(this).closest("tr").find("td:nth-child(3)").find(".icono").val()
+        );
+    $(this)
+        .closest("tr")
+        .find("td:nth-child(3)")
+        .find(".btn-icon")
+        .find("i")
+        .remove();
+    cambio();
+    rePosicionar($(this).closest("tr"));
+    editando = false;
+    error = false;
+    $("#save").removeClass("disabled");
+    $(".table-add").removeClass("disabled");
+
+    var $nombre = $(this).closest("tr").find(".campoNombre");
+    var $rango = $(this).closest("tr").find(".campoRango");
+    unhighlight($nombre, "warning");
+    unhighlight($nombre, "danger");
+    unhighlight($rango, "warning");
+    unhighlight($rango, "danger");
+});
+
+
+$(".table-add").click(function () {
+    if ($(".btns:hidden")) {
+        $(".btns").show();
+    }
+    if (editando) {
+        $(this).addClass("disabled");
+        return
+    }
+    $new = true;
+    $clone = $TABLE.find("tr.hide").clone(true).removeClass("hide table-line");
+    $clone.show();
+    $clone.find("input").prop("readonly", false);
+    $clone.find(".edit").trigger("click");
+    $clone.insertAfter($TABLE.find("tr.hide"));
+    $(".table-add").hide();
+    $clone.find(".table-up").remove();
+    btnAgregar = true;
+    editando = true;
+    cambio();
+});
+
+$(".submit").on("click", function () {
+    var $nombre = $(this).closest("tr").find(".campoNombre");
+    var $rango = $(this).closest("tr").find(".campoRango");
+    if (emptyValidation($nombre, $rango) | rangeValidation($rango) | equalName($nombre)) {
+        error = true;
+        return;
+    }
+    $new = false;
+    editando = false;
+    $("#save").removeClass("disabled");
+    $(".table-add").removeClass("disabled");
+    $(this).closest("tr").find("input").prop("readonly", true);
+    $(this).closest("tr").find(".editable").hide();
+    $(this).closest("tr").find(".botones").show();
+    if (btnAgregar == true) {
+        $(".table-add").show();
+        btnAgregar = false;
+    }
+    nuevoIcono($(this).closest("tr"));
+    cambio();
+    $nombre.attr("value", $nombre.val());
+    $rango.attr("value", parseInt($rango.val()));
+});
+
+
+var nuevoIcono = function (element) {
+    $(element).find("td")
+        .find(".icono")
+        .attr("value", $(element).find("td").find(".icono").val());
+    $(element).find("td:nth-child(3)").append(icon);
+    $(element).find("td:nth-child(3)").find(".btn-icon").hide();
+    $(element).find("td:nth-child(3)")
+        .find(".btn-icon")
+        .find("i")
+        .remove();
+    $(element)
+        .find("td:nth-child(3)")
+        .find(".noneEditable")
+        .addClass(
+            $(element).find("td:nth-child(3)").find(".icono").val()
+        );
+    return true;
+}
+
+var rePosicionar = function (element) {
+    var actual = element.index();
+    if (index != actual) {
+        if (index > actual) {
+            for (i = 0; i < index - actual; i++) {
+                element
+                    .find(".editable")
+                    .find(".table-down")
+                    .trigger("click");
+            }
+        } else {
+            for (i = 0; i < actual - index; i++) {
+                element
+                    .find(".editable")
+                    .find(".table-up")
+                    .trigger("click");
+            }
+        }
+    }
+}
+
+var equalName = function (element) {
+    if (element.val() != "") {
+        var count = 0;
+        $(".campoNombre").each(function () {
+            if ($(this).val().toUpperCase() == element.val().toUpperCase()) {
+                count++;
+            }
+        });
+        if (count > 1) {
+            element.closest("td").attr('data-content', "El nombre que elegiste ya esta siendo usado. Escribe un nuevo nombre.");
+            highlight(element, "danger");
+            return true;
+        }
+        unhighlight(element, "danger");
+        return false;
+    }
+};
+
+var highlight = function (element, clase) {
+    $('body').popover({
+        html: true,
+        trigger: 'manual',
+        selector: '[data-toggle="popover"]',
+        content: function () {
+            return $(this).parent().find('.content').html();
+        }
+    });
+    element.closest('td').popover('show');
+    element.closest(".form-group").addClass("has-" + clase);
+    element.addClass("form-control-" + clase);
+};
+
+var unhighlight = function (element, clase) {
+    element.closest(".form-group").removeClass("has-" + clase);
+    element.removeClass("form-control-" + clase);
+    element.closest(".form-group").addClass("has-success");
+    element.closest('td').popover('dispose');
+};
+
+var emptyValidation = function ($nombre, $rango) {
+    if ($nombre.val() == 0 || $rango.val() == 0) {
+        if ($nombre.val() == 0) {
+            $nombre.closest("td").attr('data-content', "Debes ingresar el nombre para el logro.");
+            highlight($nombre, "warning");
+        } else {
+            unhighlight($nombre, "warning");
+        }
+        if ($rango.val() == 0) {
+            $rango.closest("td").attr('data-content', "Debes ingresar el valor máximo de puntos para este logro.");
+            highlight($rango, "warning")
+        } else {
+            unhighlight($rango, "warning")
+        }
+        return true;
+    }
+    unhighlight($nombre, "warning");
+    unhighlight($rango, "warning")
+    return false;
+}
+
+var rangeValidation = function (rango) {
+    if (rango.val() != 0) {
+        var $before = rango.closest('tr').prev();
+        var $after = rango.closest('tr').next();
+        if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
+            if (
+                parseInt(rango.val()) <= parseInt($before.find(".campoRango").val()) ||
+                parseInt(rango.val()) >= parseInt($after.find(".campoRango").val())
+            ) {
+                rango.closest("td").attr('data-content', "Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + " y menor a " + $after.find(".campoRango").val() + ".");
+                highlight(rango, "danger");
+                return true;
+            }
+        } else {
+            if (!$before.hasClass("hide")) {
+                if (
+                    parseInt(rango.val()) <= parseInt($before.find(".campoRango").val())
+                ) {
+                    rango.closest("td").attr('data-content', "Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + ".");
+                    highlight(rango, "danger");
+                    return true;
+                }
+            } else {
+                if (!$after.hasClass("nonemove")) {
+                    if (
+                        parseInt(rango.val()) >= parseInt($after.find(".campoRango").val())
+                    ) {
+                        rango.closest("td").attr('data-content', "Debes ingresar un valor menor a " + $after.find(".campoRango").val() + ".");
+                        highlight(rango, "danger");
+                        return true;
+                    }
+                }
+            }
+        }
+        unhighlight(rango, "danger");
+        return false;
+    }
+    return false;
+}
+
+var cambio = function () {
+    $(".editable").each(function () {
+        $(this).find(".table-up").remove();
+        $(this).find(".table-down").remove();
+        if (!$(this).children().first().hasClass(".table-up")) {
+            $(this).prepend($up.clone(true));
+        }
+        if ($(this).find(".table-down").length <= 0) {
+            $down.clone(true).insertAfter($(this).find(".table-up"));
+        }
+    });
+    $("tr:nth-child(3)").find(".table-up").remove();
+    $("tr:nth-last-child(2)").find(".table-down").remove();
+    $("tr:nth-last-child(1)").find(".table-down").remove();
+    $("tr:nth-last-child(1)").find(".table-up").remove();
+};
