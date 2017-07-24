@@ -1,42 +1,27 @@
-$("#cancelform").click(function(){
+$("#cancelform").click(function () {
     $("#editProfile_form").validate().resetForm();
     change = false;
-        $("#backbutton").show();
-        $("#modalbutton").hide();
+    $("#backbutton").show();
+    $("#modalbutton").hide();
 });
 
 var change = false;
+var error = false;
 
-$('#editProfile_form').change(function(){
-    if (!change){
+$('#editProfile_form').change(function () {
+    if (!change) {
         change = true;
         $("#backbutton").hide();
         $("#modalbutton").show();
     }
 });
 
-$.validator.addMethod("nonNumeric", function(value, element) {
+$.validator.addMethod("nonNumeric", function (value, element) {
     return this.optional(element) || !value.match(/[0-9]+/);
 })
 
 $(document).ready(function () {
     $("#modalbutton").hide();
-    $('#name').popover({
-        placement: 'right',
-        trigger: 'manual'
-    });
-    $('#lastName').popover({
-        placement: 'right',
-        trigger: 'manual'
-    });
-    $('#email').popover({
-        placement: 'right',
-        trigger: 'manual'
-    });
-    $('#phone').popover({
-        placement: 'right',
-        trigger: 'manual'
-    });
 });
 
 $('#editProfile_form').validate({
@@ -77,6 +62,10 @@ $('#editProfile_form').validate({
         },
     },
     errorPlacement: function (err, element) {
+        element.popover({
+            placement: 'right',
+            trigger: 'manual'
+        });
         element.attr('data-content', err.text());
         $(element).popover('show');
     },
@@ -89,6 +78,7 @@ $('#editProfile_form').validate({
         $(element).popover('hide');
         $(element).closest('.form-group').removeClass('has-warning');
         $(element).removeClass('form-control-warning');
+        $(element).popover('dispose');
     },
     submitHandler: function (form) {
         form.submit();
