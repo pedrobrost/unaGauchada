@@ -253,6 +253,21 @@ var rePosicionar = function (element) {
     }
 }
 
+var changeForm = function () {
+    var cantidad = 1
+    $("tr").not(":first").not(".hide").not(".nonemove").each(function () {
+        $(this).find(".campoNombre").attr("name", ("campoNombre" + cantidad));
+        $(this).find(".campoNombre").attr("id", ("campoNombre" + cantidad));
+        $(this).find(".campoRango").attr("name", ("campoRango" + cantidad));
+        $(this).find(".campoRango").attr("id", ("campoRango" + cantidad));
+        $(this).find(".campoIcono").attr("name", ("campoIcono" + cantidad));
+        $(this).find(".campoIcono").attr("id", ("campoIcono" + cantidad));
+        cantidad++;
+    })
+    $(".nonemove").find(".campoNombre").attr("name", ("campoNombre" + (cantidad-1)));
+    $(".nonemove").find(".campoNombre").attr("id", ("campoNombre" + (cantidad-1)));
+};
+
 var equalName = function (element) {
     if (element.val() != "") {
         var count = 0;
@@ -364,6 +379,7 @@ var cambio = function () {
             $down.clone(true).insertAfter($(this).find(".table-up"));
         }
     });
+    changeForm();
     $("tr:nth-child(3)").find(".table-up").remove();
     $("tr:nth-last-child(2)").find(".table-down").remove();
     $("tr:nth-last-child(1)").find(".table-down").remove();
