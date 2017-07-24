@@ -61,13 +61,25 @@ class SecurityController extends Controller
     }
 
     public function changePasswordAction(Request $request){
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getUser();
-        $user
-            ->setPlainPassword($request->get('password'));
-        $em->flush();
+        $encoder = $this->container->get('api.users.password_updater');
 
-        $request->getSession()->set('passwordEdited', true);
+        if($encoder->isPasswordValid($this->getUser(), $request->get('old_password'))) {
+            $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $user
+                ->setPlainPassword($request->get('password'));
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Tu constraseña se modificó correctamente.'
+            );
+        }else{
+            $this->addFlash(
+                'error',
+                'Contraseña incorrecta'
+            );
+        }
         return $this->redirectToRoute('user_profile');
     }
 
