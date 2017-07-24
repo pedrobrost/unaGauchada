@@ -74,13 +74,14 @@ class SecurityController extends Controller
                 'notice',
                 'Tu constraseña se modificó correctamente.'
             );
+            return $this->redirectToRoute('user_profile');
         }else{
             $this->addFlash(
                 'error',
                 'Contraseña incorrecta'
             );
         }
-        return $this->redirectToRoute('user_profile');
+        return $this->render('UGSecurityBundle:Password:password.html.twig');
     }
 
 }
