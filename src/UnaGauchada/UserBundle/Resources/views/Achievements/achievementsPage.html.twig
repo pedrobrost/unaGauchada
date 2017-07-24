@@ -1,8 +1,15 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
+
 {% extends 'base.html.twig' %} 
 
 {% block body %}
-{% include 'UserBundle:Achievements:deleteAchievement.html.twig'%}
+{% include 'UserBundle:Achievements:deleteAchievement.html.twig'%} 
 <div class="container categories achievements">
+
+{# -------- Te Dejo el popUp hecho -----------
+    {{popUp.success('¡Felicitaciones!','Los cambios se han guardado correctamente.')}}
+#}
+
     <div class="container carta">
         <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Logros</h3>
@@ -25,9 +32,6 @@
 {% endblock %} 
 
 {% block javascripts %}
-<script>
-    let cantidad = 1;
-</script>
 <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
 <script src="{{ asset('dist/js/Achievements/simple-iconpicker.min.js') }}"></script>
 <script src="{{ asset('dist/js/Achievements/achievements.js') }}"></script>
