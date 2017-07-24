@@ -1,30 +1,35 @@
-.container.categories{
-    td:first-of-type{
+.container.categories {
+    #popUpSuccess {
+        position: relative;
+        margin-top: 27px;
+        margin-bottom: -15px;
+    }
+    td:first-of-type {
         font-size: 0
     }
-    td.dataTables_empty{
+    td.dataTables_empty {
         font-size: inherit!important;
     }
     .dataTables_filter {
-text-align: left !important;
-}
-    .form-group{
+        text-align: left !important;
+    }
+    .form-group {
         margin: 0
     }
-    #agregarbtn{
-            position: relative;
-    z-index: 1;
-    margin-left: -18px;
+    #agregarbtn {
+        position: relative;
+        z-index: 1;
+        margin-left: -18px;
         margin-right: 15px;
-    margin-top: -2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+        margin-top: -2px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
-    #usuarios_wrapper{
+    #usuarios_wrapper {
         margin-top: -50px;
     }
-    input{
-        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    input {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         width: 100%;
         height: 30px;
         outline: none;
@@ -33,11 +38,12 @@ text-align: left !important;
         border: 1px solid rgba(0, 0, 0, 0.190);
         padding-left: 3px;
     }
-    .editCategoryForm{
-         input.form-control-warning{
-        width: 95%!important;
-    }}
-    input:read-only{
+    .editCategoryForm {
+        input.form-control-warning {
+            width: 95%!important;
+        }
+    }
+    input:read-only {
         border: 0;
     }
 }
