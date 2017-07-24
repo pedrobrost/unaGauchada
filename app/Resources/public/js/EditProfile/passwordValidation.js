@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 $('#passwordForm').validate({
     rules: {
-        your_password: {
+        old_password: {
             required: true,
             minlength: 6,
         },
@@ -29,7 +29,7 @@ $('#passwordForm').validate({
         },
     },
     messages: {
-    your_password: {
+    old_password: {
         required: "Por favor ingrese su contraseña",
         minlength: "Su contraseña debe tener al menos 6 caracteres"
     },
