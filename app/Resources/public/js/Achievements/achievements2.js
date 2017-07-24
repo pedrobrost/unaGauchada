@@ -180,7 +180,7 @@ $(".table-add").click(function () {
 $(".submit").on("click", function () {
     var $nombre = $(this).closest("tr").find(".campoNombre");
     var $rango = $(this).closest("tr").find(".campoRango");
-    if (rangeValidation($rango) | equalName($nombre) | emptyValidation($nombre, $rango)) {
+    if (emptyValidation($nombre, $rango) | rangeValidation($rango) | equalName($nombre) ) {
         error = true;
         return;
     }
@@ -251,7 +251,7 @@ var equalName = function (element) {
             }
         });
         if (count > 1) {
-            element.closest("td").attr('data-content',"El nombre que elegiste ya esta siendo usado. Escribe un nuevo nombre.");
+            element.closest("td").attr('data-content', "El nombre que elegiste ya esta siendo usado. Escribe un nuevo nombre.");
             highlight(element, "danger");
             return true;
         }
@@ -261,7 +261,7 @@ var equalName = function (element) {
 };
 
 var highlight = function (element, clase) {
-        $('body').popover({
+    $('body').popover({
         html: true,
         trigger: 'manual',
         selector: '[data-toggle="popover"]',
@@ -284,13 +284,13 @@ var unhighlight = function (element, clase) {
 var emptyValidation = function ($nombre, $rango) {
     if ($nombre.val() == 0 || $rango.val() == 0) {
         if ($nombre.val() == 0) {
-            $nombre.closest("td").attr('data-content',"Debes ingresar el nombre para el logro.");
+            $nombre.closest("td").attr('data-content', "Debes ingresar el nombre para el logro.");
             highlight($nombre, "warning");
         } else {
             unhighlight($nombre, "warning");
         }
         if ($rango.val() == 0) {
-            $rango.closest("td").attr('data-content',"Debes ingresar el valor máximo de puntos para este logro.");
+            $rango.closest("td").attr('data-content', "Debes ingresar el valor máximo de puntos para este logro.");
             highlight($rango, "warning")
         } else {
             unhighlight($rango, "warning")
@@ -303,6 +303,7 @@ var emptyValidation = function ($nombre, $rango) {
 }
 
 var rangeValidation = function (rango) {
+    if (rango.val() != 0){
     var $before = rango.closest('tr').prev();
     var $after = rango.closest('tr').next();
     if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
@@ -310,7 +311,7 @@ var rangeValidation = function (rango) {
             parseInt(rango.val()) <= parseInt($before.find(".campoRango").val()) ||
             parseInt(rango.val()) >= parseInt($after.find(".campoRango").val())
         ) {
-            rango.closest("td").attr('data-content',"Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + " y menor a " + $after.find(".campoRango").val() + ".");
+            rango.closest("td").attr('data-content', "Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + " y menor a " + $after.find(".campoRango").val() + ".");
             highlight(rango, "danger");
             return true;
         }
@@ -319,7 +320,7 @@ var rangeValidation = function (rango) {
             if (
                 parseInt(rango.val()) <= parseInt($before.find(".campoRango").val())
             ) {
-                rango.closest("td").attr('data-content',"Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + ".");
+                rango.closest("td").attr('data-content', "Debes ingresar un valor mayor a " + $before.find(".campoRango").val() + ".");
                 highlight(rango, "danger");
                 return true;
             }
@@ -328,7 +329,7 @@ var rangeValidation = function (rango) {
                 if (
                     parseInt(rango.val()) >= parseInt($after.find(".campoRango").val())
                 ) {
-                    rango.closest("td").attr('data-content',"Debes ingresar un valor menor a " + $after.find(".campoRango").val() + ".");
+                    rango.closest("td").attr('data-content', "Debes ingresar un valor menor a " + $after.find(".campoRango").val() + ".");
                     highlight(rango, "danger");
                     return true;
                 }
@@ -336,6 +337,8 @@ var rangeValidation = function (rango) {
         }
     }
     unhighlight(rango, "danger");
+    return false;
+}
     return false;
 }
 
