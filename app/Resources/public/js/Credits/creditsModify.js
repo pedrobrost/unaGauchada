@@ -8,11 +8,12 @@ $(function() {
     	if (btn.attr('data-dir') == 'up') {
             action = setInterval(function(){
                 if (input.val()==""){
-                    input.val("0.00")
+                    input.val("0")
                     return; 
                 }
                 if ( input.attr('max') == undefined || parseFloat(input.val()) < parseFloat(input.attr('max')) ) {
-                    input.val((parseFloat(input.val())+0.50).toFixed(1));
+                    input.val(roundHalf((parseFloat(input.val())+0.50)));
+                    $(".data-dwn").popover('dispose');
                 }else{
                     btn.prop("disabled", true);
                     clearInterval(action);
@@ -21,7 +22,8 @@ $(function() {
     	} else {
             action = setInterval(function(){
                 if ( input.attr('min') == undefined || parseFloat(input.val()) > parseFloat(input.attr('min')) ) {
-                    input.val((parseFloat(input.val())-0.50).toFixed(1));
+                    input.val(roundHalf((parseFloat(input.val())-0.50)));
+                    $(".data-dwn").popover('dispose');
                 }else{
                     btn.prop("disabled", true);
                     clearInterval(action);
@@ -32,3 +34,7 @@ $(function() {
         clearInterval(action);
     });
 });
+
+var roundHalf = function(num) {
+    return (Math.round(num*2)/2).toFixed(1);
+}

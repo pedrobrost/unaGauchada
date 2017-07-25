@@ -8,26 +8,22 @@ $('#changeCredits').validate({
         amount: {
             required: "Debe llenar este campo",
             step: "Debes ingresar un múltiplo de 0.5",
+            number: "Debe ingresar un número válido",
         },
     },
     errorPlacement: function (err, element) {
-        element.popover({
-            placement: 'bottom',
+        $(".data-dwn").popover({
+            placement: 'left',
             trigger: 'manual'
         });
-        element.attr('data-content', err.text());
-        $(element).popover('show');
+        $(".data-dwn").attr('data-content', err.text());
+        $(".data-dwn").popover('show');
     },
     highlight: function (element) {
-        $(element).closest('.form-group').addClass('has-warning');
-        $(element).addClass('form-control-warning');
 
     },
     unhighlight: function (element) {
-        $(element).closest('.form-group').removeClass('has-warning');
-        $(element).removeClass('form-control-warning');
-        $(element).closest('.form-group').addClass('has-success');
-        $(element).popover('dispose');
+        $(".data-dwn").popover('dispose');
     },
     submitHandler: function (form) {
         form.submit();
