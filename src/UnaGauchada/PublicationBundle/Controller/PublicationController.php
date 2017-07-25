@@ -66,7 +66,7 @@ class PublicationController extends Controller
   //  }
     
 public function publishAction(){
-     return $this->render('CreditBundle:changeValue:viewChangeValue.html.twig');
+     return $this->render('CreditBundle:ChangeValue:viewChangeValue.html.twig');
     }
 
     public function publishCreateAction(Request $request){
