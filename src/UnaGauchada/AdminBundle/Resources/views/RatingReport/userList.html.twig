@@ -1,0 +1,8 @@
+{% for user in users %}
+    <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ achievement_service.getFor(user) }}</td>
+        <td class="text-center">{{ user.score }}</td>
+    </tr>
+{% endfor %}

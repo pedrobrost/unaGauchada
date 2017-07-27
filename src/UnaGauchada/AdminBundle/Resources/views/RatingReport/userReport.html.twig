@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<div class="container userReport">
+    <div class="card">
+        <div class="card-header text-left">
+            <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio" href="{{ path('publication_page') }}"><i class="fa fa-reply" aria-hidden="true"></i></a>
+            <h3>Reporte de reputación</h3>
+        </div>
+        <div class="card-block">
+            {% include 'AdminBundle:RatingReport:table.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %} 
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/UserReport/table.js') }}"></script>
+<script src="{{ asset('dist/js/UserReport/userReportActive.js') }}"></script>
+{% endblock %}
