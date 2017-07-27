@@ -17,4 +17,9 @@ class AdminController extends Controller
         $users = $query->getResult();
         return $this->render('AdminBundle:RatingReport:userReport.html.twig', array('users' => $users));
     }
+
+    public function profitAction(){
+        return $this->render('AdminBundle:ProfitReport:report.html.twig');
+    }
+
 }
