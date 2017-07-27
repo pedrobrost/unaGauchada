@@ -3,5 +3,5 @@ rating_report:
     defaults: { _controller: AdminBundle:Admin:rating }
 
 profit_report:
-    path:     /rating
-    defaults: { _controller: AdminBundle:Admin:rating }
+    path:     /profit
+    defaults: { _controller: AdminBundle:Admin:profit }
