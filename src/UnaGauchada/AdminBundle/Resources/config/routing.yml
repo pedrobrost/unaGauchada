@@ -1,0 +1,3 @@
+rating_report:
+    path:     /rating
+    defaults: { _controller: AdminBundle:Admin:rating }

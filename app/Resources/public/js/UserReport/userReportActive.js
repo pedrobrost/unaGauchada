@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#mySubmissions").addClass("active");
+    $("#rating_report").addClass("active");
 });
 
 $(document).ready(function () {
@@ -7,6 +7,7 @@ $(document).ready(function () {
         "order": [
             [3, "desc"]
         ],
+        "bLengthChange": false,
     "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ usuarios",
