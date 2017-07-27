@@ -20,7 +20,10 @@ class AdminController extends Controller
 
     public function creditsPriceAction()
     {
-        return $this->render('AdminBundle:CreditsPrice:viewChangeValue.html.twig');
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Purchase');
+        $actualPrice = $reason->getPrice();
+        return $this->render('AdminBundle:CreditsPrice:viewChangeValue.html.twig', array('actualPrice' => $actualPrice));
     }
 
 }
