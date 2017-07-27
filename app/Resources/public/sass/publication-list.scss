@@ -8,12 +8,12 @@ section.gauchadas {
     }
 }
 
-#popUpSuccess.popUpLarge{
+#popUpSuccess.popUpLarge {
     width: 714px;
     max-width: 714px;
 }
 
-#popUpSuccess{
+#popUpSuccess {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -22,9 +22,8 @@ section.gauchadas {
     margin: 0 auto;
     display: block;
     margin-top: 13px;
-    max-width: 600px;
+    max-width: 644px;
 }
-
 
 .publication-list {
     display: flex;
@@ -54,5 +53,5 @@ section.gauchadas {
                 margin-top: 10px;
             }
         }
-    } 
+    }
 }
