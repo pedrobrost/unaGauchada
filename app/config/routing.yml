@@ -1,3 +1,7 @@
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 publication_homepage:
     path:     /
     defaults: { _controller: PublicationBundle:Publication:index, page: 1 }
