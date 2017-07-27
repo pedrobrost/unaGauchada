@@ -6,7 +6,7 @@ $(document).ready(function () {
         trigger: 'manual'
     });
     $('.category').popover({
-        placement: 'left',
+        placement: 'bottom',
         trigger: 'manual'
     });
 });
