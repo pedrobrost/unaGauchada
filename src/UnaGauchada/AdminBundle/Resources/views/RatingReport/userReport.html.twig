@@ -7,13 +7,13 @@
             <h3>Reporte de reputación</h3>
         </div>
         <div class="card-block">
-            {% include 'UserBundle:UserReport:table.html.twig' %}
+            {% include 'UserBundle:RatingReport:table.html.twig' %}
         </div>
     </div>
 </div>
 {% endblock %} 
 
 {% block javascripts %}
-<script src="{{ asset('dist/js/UserReport/table.js') }}"></script>
-<script src="{{ asset('dist/js/UserReport/userReportActive.js') }}"></script>
+<script src="{{ asset('dist/js/RatingReport/table.js') }}"></script>
+<script src="{{ asset('dist/js/RatingReport/userReportActive.js') }}"></script>
 {% endblock %}
