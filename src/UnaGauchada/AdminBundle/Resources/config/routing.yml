@@ -1,3 +1,3 @@
-rating_report:
-    path:     /rating
-    defaults: { _controller: AdminBundle:Admin:rating }
+ranking_report:
+    path:     /ranking
+    defaults: { _controller: AdminBundle:Admin:ranking }
