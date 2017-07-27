@@ -3,6 +3,7 @@
 namespace UnaGauchada\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use UnaGauchada\UserBundle\Entity\User;
 
 class AdminController extends Controller
@@ -24,6 +25,15 @@ class AdminController extends Controller
         $reason = $repository->findOneByName('Purchase');
         $actualPrice = $reason->getPrice();
         return $this->render('AdminBundle:CreditsPrice:viewChangeValue.html.twig', array('actualPrice' => $actualPrice));
+    }
+
+    public function changeCreditsPriceAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $repository->findOneByName('Purchase')->setPrice($request->get('price'));
+        $em->flush();
+        return $this->redirectToRoute('publication_homepage');
     }
 
 }

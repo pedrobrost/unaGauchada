@@ -1,7 +1,7 @@
 <div class="container form">
     <div class="container">
         <div class="price-box">
-            <form class="form-horizontal form-pricing" id="changeCredits" role="form" method="post" action="">
+            <form class="form-horizontal form-pricing" id="changeCredits" role="form" method="post" action="{{ path('change_credits_price') }}">
                 <div class="">
                     <h4 class="great">Cambiar costo de creditos</h4><br>
                     <span class="help-text">Ingrese el nuevo valor para los créditos:</span>
@@ -13,7 +13,7 @@
                             <span class="input-group-btn data-dwn">
                         <button class="btn btn-default" id="dwn" type="button" data-dir="dwn"><i class="fa fa-minus" aria-hidden="true"></i></button>
                     </span>
-                            <input type="number" id="amount" name="amount" class="form-control text-center" min="0" value="{{ actualPrice }}" step="0.5" placeholder="Ingrese el nuevo valor">
+                            <input type="number" id="amount" name="price" class="form-control text-center" min="0" value="{{ actualPrice }}" step="0.5" placeholder="Ingrese el nuevo valor">
                             <span class="input-group-btn data-up">
                         <button class="btn btn-default"  id="up"  type="button" data-dir="up"><i class="fa fa-plus" aria-hidden="true"></i>
                         </button>

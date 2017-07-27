@@ -5,3 +5,8 @@ rating_report:
 credits_price:
     path:     /creditsPrice
     defaults: { _controller: AdminBundle:Admin:creditsPrice }
+
+change_credits_price:
+    path:     /changeCreditsPrice
+    defaults: { _controller: AdminBundle:Admin:changeCreditsPrice }
+    methods: [POST]
