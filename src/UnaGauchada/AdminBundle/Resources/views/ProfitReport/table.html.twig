@@ -1,3 +1,15 @@
+
+{% set total = 0 %}
+{% set credits = 0 %}
+{% set users = { } %}
+{% for transaction in transactions %}
+{% set total = total + transaction.totalPrice %}
+{% set credits = credits + transaction.amountOfCredits %}
+{% if transaction.user not in users %}
+    {% set users = users|merge([transaction.user]) %}
+{% endif %}
+{% endfor %}
+
 <table id="ganancias" class="table table-striped table-bordered text-center" cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -11,9 +23,9 @@
         {% include 'AdminBundle:ProfitReport:purchaseList.html.twig' %}
     </tbody>
     <tfooter>
-        <th class="text-center">19 compras</th>
-        <th class="text-center">2 usuarios</th>
-        <th class="text-center">9 creditos</th>
-        <th class="text-center">$3434</th>
+        <th class="text-center"> {% if  transactions|length == 1 %} 1 compra {% else %} {{transactions |length}} compras {% endif %}</th>
+        <th class="text-center">{% if  users|length == 1 %} 1 usuario {% else %} {{users|length}} usuarios {% endif %}</th>
+        <th class="text-center">{% if  credits == 1 %} 1 crédito {% else %} {{credits}} créditos {% endif %}</th>
+        <th class="text-center">${{total}}</th>
     </tfooter>
 </table>

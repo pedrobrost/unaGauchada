@@ -51,7 +51,9 @@ $('#datePicker').daterangepicker({
     "alwaysShowCalendars": true,
     "linkedCalendars": false,
     "minDate": "01/01/2000",
+    "startDate": "01/01/2000",
     "maxDate": moment(),
+    "endDate": moment(),
     "opens": "left"
 }, function (start, end, label) {
 });

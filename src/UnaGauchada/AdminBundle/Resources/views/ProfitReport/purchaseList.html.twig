@@ -3,6 +3,6 @@
         <td>{{ transaction.user.name }} {{ transaction.user.lastName }}</td>
         <td class="text-center">{{ transaction.date | date('d/m/Y') }}</td>
         <td class="text-center">{{ transaction.amountOfCredits }}</td>
-        <td class="text-center">{{ transaction.totalPrice }}</td>
+        <td class="text-center">${{ transaction.totalPrice }}</td>
     </tr>
 {% endfor %}
