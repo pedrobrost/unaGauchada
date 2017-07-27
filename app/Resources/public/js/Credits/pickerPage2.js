@@ -1,3 +1,8 @@
+$(document).ready( function() {
+    $( "#profit_report" ).addClass( "active" );
+});
+
+
 $('#datePicker').daterangepicker({
     "ranges": {
         'Hoy': [moment(), moment()],
@@ -49,5 +54,4 @@ $('#datePicker').daterangepicker({
     "maxDate": moment(),
     "opens": "left"
 }, function (start, end, label) {
-    $('#dateRanger').trigger( "submit" );
 });
