@@ -34,4 +34,9 @@ class PasswordUpdaterService{
         return $encoder->encodePassword($pass, $user->getSalt());
     }
 
+    public function isPasswordValid($user, $pass){
+        $encoder = $this->encoderFactory->getEncoder($user);
+        return $encoder->isPasswordValid($user->getPassword(), $pass, $user->getSalt());
+    }
+
 }

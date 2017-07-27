@@ -61,14 +61,27 @@ class SecurityController extends Controller
     }
 
     public function changePasswordAction(Request $request){
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->getUser();
-        $user
-            ->setPlainPassword($request->get('password'));
-        $em->flush();
+        $encoder = $this->container->get('api.users.password_updater');
 
-        $request->getSession()->set('passwordEdited', true);
-        return $this->redirectToRoute('user_profile');
+        if($encoder->isPasswordValid($this->getUser(), $request->get('old_password'))) {
+            $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $user
+                ->setPlainPassword($request->get('password'));
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Tu constraseña se modificó correctamente.'
+            );
+            return $this->redirectToRoute('user_profile');
+        }else{
+            $this->addFlash(
+                'error',
+                'Contraseña incorrecta'
+            );
+        }
+        return $this->render('UGSecurityBundle:Password:password.html.twig');
     }
 
 }
