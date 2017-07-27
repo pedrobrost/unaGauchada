@@ -33,6 +33,9 @@ class AdminController extends Controller
         $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
         $repository->findOneByName('Purchase')->setPrice($request->get('price'));
         $em->flush();
+
+        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a '.$request->get('price').'.');
+
         return $this->redirectToRoute('publication_homepage');
     }
 
