@@ -45,15 +45,16 @@ $('#datePicker').daterangepicker({
         ],
         "firstDay": 1
     },
-    "autoUpdateInput": true,
+    "autoUpdateInput": false,
     "applyClass": "btn-primary",
     "showCustomRangeLabel": false,
     "alwaysShowCalendars": true,
     "linkedCalendars": false,
-    "minDate": "01/01/2000",
-    "startDate": "01/01/2000",
-    "maxDate": moment(),
     "endDate": moment(),
     "opens": "left"
-}, function (start, end, label) {
+}, 
+function(chosen_date, end) {
+  $('#datePicker').val(chosen_date.format('DD/MM/YYYY') + " - " + end.format('DD/MM/YYYY') );
+},
+function (start, end, label) {
 });
