@@ -12,6 +12,7 @@ var $TABLE = $("#logros");
 var icon = '<i class="noneEditable fa" aria-hidden="true"></i>';
 
 $(document).ready(function () {
+    $( "#achievements_management" ).addClass( "active" );
     $("#save").on('click', function () {
         if (error || editando) {
             $(this).addClass("disabled");
