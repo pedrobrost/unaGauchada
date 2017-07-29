@@ -4,7 +4,7 @@ $(function() {
         btn = $(this);
         input = btn.closest('.number-spinner').find('input');
         btn.closest('.number-spinner').find('button').prop("disabled", false);
-
+        input.trigger( "change" );
     	if (btn.attr('data-dir') == 'up') {
             action = setInterval(function(){
                 if (input.val()==""){

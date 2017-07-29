@@ -1,15 +1,23 @@
-$(document).ready( function() {
-    $( "#credits_price" ).addClass( "active" );
+var price;
+
+$(document).ready(function () {
+    $("#nextStep").hide();
+    price = $("#price").val();
+});
+
+$("#changeCredits").on("change paste keyup", function(){
+    $("#nextStep").show();
+    $("#noneChange").hide();
 });
 
 $('#changeCredits').validate({
     rules: {
-        amount: {
+        price: {
             required: true,
         },
     },
     messages: {
-        amount: {
+        price: {
             required: "Debe llenar este campo",
             number: "Debe ingresar un número válido",
         },
@@ -33,3 +41,9 @@ $('#changeCredits').validate({
     },
 
 });
+
+$("#nextStep").click(function() { 
+    if ($("#changeCredits").valid()){
+        $(".precio").text(parseFloat($("#price").val()) + 0);
+        $("#confirm").modal('show')
+     }});

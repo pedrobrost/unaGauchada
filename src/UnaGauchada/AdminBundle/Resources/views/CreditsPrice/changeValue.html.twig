@@ -13,7 +13,7 @@
                             <span class="input-group-btn data-dwn">
                         <button class="btn btn-default" id="dwn" type="button" data-dir="dwn"><i class="fa fa-minus" aria-hidden="true"></i></button>
                     </span>
-                            <input type="number" id="amount" name="price" class="form-control text-center" min="0" value="{{ actualPrice }}" placeholder="Ingrese el nuevo valor">
+                            <input type="number" id="price" name="price" class="form-control text-center" min="0" value="{{ actualPrice }}" placeholder="Ingrese el nuevo valor en pesos ($)">
                             <span class="input-group-btn data-up">
                         <button class="btn btn-default"  id="up"  type="button" data-dir="up"><i class="fa fa-plus" aria-hidden="true"></i>
                         </button>
@@ -23,7 +23,8 @@
                 </div>
                 <div class="col text-right">
             <a href="{{ path('publication_page') }}" class="cancel"><button class="btn btn-default my-2 my-sm-0" type="button">Cancelar</button></a>
-                    <button class="btn btn-primary my-2 my-sm-0" id="nextstep" type="submit">Guardar</button>
+                    <button class="btn btn-primary my-2 my-sm-0"  id="nextStep" type="button">Guardar</button>
+                    <button class="btn btn-primary my-2 my-sm-0" id="noneChange" type="submit">Guardar</button>
                 </div>
             </form>
         </div>
