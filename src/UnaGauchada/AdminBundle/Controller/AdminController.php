@@ -23,7 +23,6 @@ class AdminController extends Controller
     }
 
     public function profitAction(Request $request){
-
         $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
         $reasonId = $repository->findOneByName('Purchase')->getId();
         $repository = $this->getDoctrine()
@@ -33,9 +32,9 @@ class AdminController extends Controller
         $qb
             ->where('t.reason = :reason_id')
             ->setParameter('reason_id', $reasonId);
-
         $transactions = $qb->getQuery()->getResult();
 
+        $dates = null;
         if($request->get('dates')){
             $dates = explode(' - ', $request->get('dates'));
             $from = \DateTime::createFromFormat('d/m/Y', $dates[0]);
@@ -49,10 +48,9 @@ class AdminController extends Controller
                 }
             }
             $transactions = $aux;
+            $dates = $request->get('dates');
         }
-
-
-        return $this->render('AdminBundle:ProfitReport:report.html.twig', array('transactions' => $transactions));
+        return $this->render('AdminBundle:ProfitReport:report.html.twig', array('transactions' => $transactions, 'dates' => $dates));
     }
 
 }
