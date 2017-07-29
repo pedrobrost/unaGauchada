@@ -36,7 +36,7 @@ class AdminController extends Controller
 
         $price = $request->get('price');
         $price = floor($price) == $price ? floor($price) : $price;
-        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a $'.$price.'.');
+        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a $'.($price + 0).'.');
 
         return $this->redirectToRoute('publication_homepage');
     }
