@@ -16,6 +16,7 @@ $(document).ready(function () {
         placement: 'left',
         trigger: 'manual'
     });
+    city = $(city).find("li[aria-selected='true']");
 });
 
 $("#cancelform").click(function () {
@@ -23,9 +24,11 @@ $("#cancelform").click(function () {
     change = false;
     $("#backbutton").show();
     $("#modalbutton").hide();
+    setTimeout(function() {
+    $("#city").select2()
+    }, 0);
 });
 
-var change = false;
 
 $('#editPublication_form').change(function () {
     if (!change) {
