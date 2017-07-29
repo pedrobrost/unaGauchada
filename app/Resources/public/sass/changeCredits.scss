@@ -1,0 +1,23 @@
+.changeCredits {
+    .cancel {
+        margin-right: 5px!important;
+    }
+    .help-text {
+        margin-top: -25px;
+    }
+    .col-sm-12.input {
+        margin-bottom: 30px;
+        input {
+            border: 1px solid rgba(0, 0, 0, 0.15)!important;
+            outline: none;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input:focus {
+            outline: none;
+        }
+    }
+}
