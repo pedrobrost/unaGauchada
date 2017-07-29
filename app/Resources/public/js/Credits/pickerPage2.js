@@ -1,12 +1,19 @@
 $(document).ready( function() {
     $( "#profit_report" ).addClass( "active" );
-    $("li[data-range-key]").first().hide();
+    $("li[data-range-key]").first().removeClass("active");
+    $("li[data-range-key]").first().on("click", function(){
+        $('#datePicker').val(moment().format('DD/MM/YYYY') + " - " + moment().format('DD/MM/YYYY') );
+    })
+    $(".applyBtn").on("click", function(){
+        if ($("li[data-range-key]").first().hasClass("active")){
+        $('#datePicker').val(moment().format('DD/MM/YYYY') + " - " + moment().format('DD/MM/YYYY') );
+        }
+    })
 });
 
 
 $('#datePicker').daterangepicker({
     "ranges": {
-        'villa': [moment().subtract(1, 'days'), moment()],
         'Hoy': [moment(), moment()],
         'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
         'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
@@ -52,8 +59,6 @@ $('#datePicker').daterangepicker({
     "showCustomRangeLabel": false,
     "alwaysShowCalendars": true,
     "linkedCalendars": false,
-    "startDate": moment().subtract(1, 'days'),
-    "endDate": moment(),
     "minDate": "01/01/2010",
     "maxDate": moment(),
     "opens": "left"
