@@ -1,3 +1,7 @@
+$(document).ready( function() {
+    $( "#credits_price" ).addClass( "active" );
+});
+
 $('#changeCredits').validate({
     rules: {
         amount: {
@@ -7,7 +11,6 @@ $('#changeCredits').validate({
     messages: {
         amount: {
             required: "Debe llenar este campo",
-            step: "Debes ingresar un múltiplo de 0.5",
             number: "Debe ingresar un número válido",
         },
     },
