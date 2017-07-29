@@ -34,7 +34,9 @@ class AdminController extends Controller
         $repository->findOneByName('Purchase')->setPrice($request->get('price'));
         $em->flush();
 
-        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a '.$request->get('price').'.');
+        $price = $request->get('price');
+        $price = floor($price) == $price ? floor($price) : $price;
+        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a $'.$price.'.');
 
         return $this->redirectToRoute('publication_homepage');
     }
