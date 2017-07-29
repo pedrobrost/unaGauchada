@@ -5,27 +5,6 @@
 
 
 {% block body %}
-
-<div class="modal fade" id="confirm">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">¡Cuidado!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Estas a punto de cambiar el costo de los créditos a <span class="precio"> </span> pesos argentinos, ¿Estás seguro que deseas continuar? .</p>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Confirmar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container changeCredits form">
   {% include 'AdminBundle:CreditsPrice:changeValue.html.twig' %}
 </div>
