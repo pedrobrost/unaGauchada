@@ -1,3 +1,7 @@
 rating_report:
     path:     /rating
     defaults: { _controller: AdminBundle:Admin:rating }
+
+achievements_management:
+    path:     /achievements
+    defaults: { _controller: AdminBundle:Admin:achievements }

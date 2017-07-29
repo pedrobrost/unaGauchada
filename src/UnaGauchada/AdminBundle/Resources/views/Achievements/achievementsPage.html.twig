@@ -3,7 +3,7 @@
 {% extends 'base.html.twig' %} 
 
 {% block body %}
-{% include 'UserBundle:Achievements:deleteAchievement.html.twig'%} 
+{% include 'AdminBundle:Achievements:deleteAchievement.html.twig'%}
 <div class="container categories achievements">
 
 {# -------- Te Dejo el popUp hecho -----------
@@ -20,7 +20,7 @@
         <br>
         <br>
         <form id="logrosForm" action="">
-            {% include 'UserBundle:Achievements:table.html.twig'%}
+            {% include 'AdminBundle:Achievements:table.html.twig'%}
             <div class="text-left btns">
                 <button class="btn btn-default deshacer">Deshacer</button>
                 <button type="submit" id="save" class="btn btn-primary">Guardar</button>
