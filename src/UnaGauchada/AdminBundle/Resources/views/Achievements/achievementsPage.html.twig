@@ -19,7 +19,7 @@
         </div>
         <br>
         <br>
-        <form id="logrosForm" action="">
+        <form id="logrosForm" method="post" action="{{ path('achievements_management') }}">
             {% include 'AdminBundle:Achievements:table.html.twig'%}
             <div class="text-left btns">
                 <button class="btn btn-default deshacer">Deshacer</button>
