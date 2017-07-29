@@ -43,7 +43,6 @@
             }
         }
         .card.imagen:hover .input-group {
-            border-radius: 2px;
             display: inline-block;
             background: black;
             padding: 0;
@@ -62,8 +61,7 @@
                 height: 450px;
                 max-height: 450px;
                 object-fit: cover;
-                border-bottom-right-radius: 0px;
-                border-bottom-left-radius: 0px;
+                border-radius: 0px;
             }
             .overlay {
                 position: absolute;
