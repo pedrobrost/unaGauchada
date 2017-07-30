@@ -19,6 +19,15 @@ $(document).ready(function () {
             return false;
         }
     });
+    $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      if (last){
+          last.find("td").find(".submit").trigger("click");
+      }
+      return false;
+    }
+  });
     $up = $("tr:nth-child(3)").find(".table-up").clone(true);
     $down = $("tr:nth-last-child(2)").find(".table-down").clone(true);
     $(".editable").hide();
@@ -212,6 +221,7 @@ $(".submit").on("click", function () {
     cambio();
     $nombre.attr("value", $nombre.val());
     $rango.attr("value", parseInt($rango.val()));
+    last = null;
 });
 
 
