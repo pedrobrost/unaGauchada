@@ -37,7 +37,7 @@ class AdminController extends Controller
             $em->remove($achievement);
         }
         $em->flush();
-
+        return $this->render('dump.html.twig', array('var' => $request->request->all()));
         $achievements = $request->request->all();
         $lastIcon = array_pop($achievements);
         $lastName = array_pop($achievements);
