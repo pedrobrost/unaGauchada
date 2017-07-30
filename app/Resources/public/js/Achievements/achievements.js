@@ -198,6 +198,7 @@ $(".submit").on("click", function () {
     }
     $new = false;
     editando = false;
+    error = false;
     $("#save").removeClass("disabled");
     $(".table-add").removeClass("disabled");
     $(this).closest("tr").find("input").prop("readonly", true);
@@ -267,6 +268,8 @@ var changeForm = function () {
     })
     $(".nonemove").find(".campoNombre").attr("name", ("campoNombre" + (cantidad-1)));
     $(".nonemove").find(".campoNombre").attr("id", ("campoNombre" + (cantidad-1)));
+    $(".nonemove").find(".campoIcono").attr("name", ("campoIcono" + (cantidad-1)));
+    $(".nonemove").find(".campoIcono").attr("id", ("campoIcono" + (cantidad-1)));
 };
 
 var equalName = function (element) {
