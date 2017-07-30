@@ -45,8 +45,8 @@ class LoadAllCommand extends ContainerAwareCommand
         $em = $this->getManager();
 
         //Achievements
-        $em->persist(new Achievement('Observador', 0, 0));
         $em->persist(new Achievement("Irresponsable", PHP_INT_MIN, -1));
+        $em->persist(new Achievement('Observador', 0, 0));
         $em->persist(new Achievement("Buen Tipo", 1, 1));
         $em->persist(new Achievement("Gran tipo", 2, 5));
         $em->persist(new Achievement("Tipazo", 6, 10));
@@ -54,6 +54,7 @@ class LoadAllCommand extends ContainerAwareCommand
         $em->persist(new Achievement("Nobleza Gaucha", 21, 50));
         $em->persist(new Achievement("Dios", 51, PHP_INT_MAX));
 
+        
         //Scores
         $em->persist(new Score('negative', -1));
         $em->persist(new Score('neutral', 0));
