@@ -10,13 +10,18 @@
                     <div class="input-group">
                         <input type="text" name="dates" id="datePicker" class="form-control" readonly="readonly" placeholder="Ingrese rango de fechas" value="{{dates}}">
                         <span class="input-group-btn">
-        <button class="btn btn-secondary" id="btn-searchDate" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-      </span>
+                            <button class="btn btn-secondary" id="btn-searchDate" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </span>
                     </div>
                 </form>
             </div>
         </div>
-        <br><br> {% include 'AdminBundle:ProfitReport:table.html.twig' %}
+        <br><br> 
+        {% if transactions is not empty %}
+            {% include 'AdminBundle:ProfitReport:table.html.twig' %}
+        {% else %}
+         {% include 'AdminBundle:ProfitReport:noResults.html.twig' %}
+        {% endif %}
     </div>
 </div>
 {% endblock %} {% block javascripts %}

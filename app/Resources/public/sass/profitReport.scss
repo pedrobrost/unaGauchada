@@ -1,10 +1,5 @@
 .profitReport {
-    .carta {
-        a.detalle {
-            float: right;
-            margin-right: 15px;
-        }
-        .row.uno {
+     .row.uno {
             float: right;
             margin-right: -16px;
             width: 310px;
@@ -12,6 +7,14 @@
                 margin: 0 auto;
                 width: 80%;
             }
+        }
+    .carta {
+                        .fa-shopping-cart{
+            font-size: 230px;
+        }
+        a.detalle {
+            float: right;
+            margin-right: 15px;
         }
     }
 }
