@@ -5,3 +5,7 @@ rating_report:
 achievements_management:
     path:     /achievements
     defaults: { _controller: AdminBundle:Admin:achievements }
+
+edit_achievements:
+    path:     /editAchievements
+    defaults: { _controller: AdminBundle:Admin:editAchievements }

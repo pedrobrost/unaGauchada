@@ -5,11 +5,9 @@
 {% block body %}
 {% include 'AdminBundle:Achievements:deleteAchievement.html.twig'%}
 <div class="container categories achievements">
-
-{# -------- Te Dejo el popUp hecho -----------
-    {{popUp.success('¡Felicitaciones!','Los cambios se han guardado correctamente.')}}
-#}
-
+    {% for message in app.flashes('notice') %}
+        {{popUp.success('¡Felicitaciones!', message )}}
+    {% endfor %}
     <div class="container carta">
         <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Logros</h3>
@@ -19,7 +17,7 @@
         </div>
         <br>
         <br>
-        <form id="logrosForm" method="post" action="{{ path('achievements_management') }}">
+        <form id="logrosForm" method="post" action="{{ path('edit_achievements') }}">
             {% include 'AdminBundle:Achievements:table.html.twig'%}
             <div class="text-left btns">
                 <button class="btn btn-default deshacer">Deshacer</button>
