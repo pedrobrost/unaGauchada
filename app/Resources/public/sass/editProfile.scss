@@ -18,7 +18,7 @@
                 width: 100%;
                 margin-top: 5px;
                 margin-bottom: 10px;
-                .card:hover .cambiarFoto {
+                .card:hover .cambiarFotoProf {
                     opacity: 1;
                 }
             }
@@ -86,7 +86,7 @@
     background: rgba(0, 0, 0, .3);
 }
 
-.cambiarFoto {
+.cambiarFotoProf {
     position: absolute;
     top: 4px;
     right: 7px;
@@ -96,7 +96,7 @@
     cursor: pointer;
 }
 
-.cambiarFoto a {
+.cambiarFotoProf a {
     width: 200px;
     padding: 12px 48px;
     text-align: center;

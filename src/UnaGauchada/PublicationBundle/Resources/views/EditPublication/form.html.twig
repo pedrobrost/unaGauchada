@@ -1,0 +1,101 @@
+<form id="editPublication_form" method="post" action="{{ path('publication_edit', {'id': publication.id}) }}" enctype="multipart/form-data">
+    <div class="row editPublication">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-block">
+                    <div class="btn-group pull-right" role="group">
+                        <div data-toggle="modal" data-target="#myModal">
+                            <button id="modalbutton" type="button" class="btn btn-primary" data-toggle="tooltip"
+                                    data-placement="left" title="Volver"><i class="fa fa-reply" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <a href="{{ path('publication_show', {'id': publication.id}) }}" id="backbutton" class="btn btn-primary"
+                           data-toggle="tooltip" data-placement="left" data-original-title="Volver"
+                           style="display: block;border-radius: .25rem;"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                    </div>
+                    <h4 class="card-title">
+                        <div class="form-group">
+                            <input placeholder="Título" name="title" id="title" maxlength="50" class="card-title form-control"
+                                   type="text" value="{{ publication.title }}">
+                        </div>
+                    </h4>
+                    &nbsp
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <small class="text-muted">{{ publication.sysDate | date('d/m/Y') }} </small>
+                </div>
+                <div class="card imagen">
+                    <div>
+                        <img class=" card-img-top publication" id='img-upload'
+                             src="{{ path('publication_image', {'id': publication.id}) }}"
+                             class="card-img-bottom rounded"/>
+                        <div class="overlay">
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly="" style="display: none;" title="">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-secondary btn-file">
+                                        <i class="fa fa-folder-open-o" aria-hidden="true"></i><input type="file"
+                                                                                                     id="imgInp"
+                                                                                                     name="image"
+                                                                                                     accept="image/*"
+                                                                                                     aria-invalid="false"
+                                                                                                     title=" ">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="cambiarFoto"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div class="descriptionField form-group">
+                    <textarea placeholder="Descripción" name="description" id="description"
+                              class="card-text form-control">{{ publication.description }}</textarea>
+                </div>
+                <div class="card-block text-right buttons">
+                    <div class="text-left">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        Fecha límite: {{ publication.limitDate | date('d/m/Y') }}
+                    </div>
+                    <button type="reset" id="cancelform" class="btn btn-default form">Deshacer</button>
+                    <button type="submit" class="btn btn-primary form">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-3 profilePic">
+            <div class="card usercard">
+                <img class="card-img-top" width="100%" src="{{ path('user_photo', {'id': app.user.id}) }}"
+                     alt="imagen del publicante">
+                <div class="card-block">
+                    <h4 class="card-title">{{ app.user }}</h4>
+                    <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        {{ achievement_service.getFor(app.user) }}
+                    </small>
+                </div>
+            </div>
+            <br>
+            <div class="card categorycard">
+                <div class="card-block">
+                    <h5 class="card-title"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp Categoria</h5>
+                    <div class="col-xs-5 selectContainer">
+                        <select name="category" id="category" class="form-control">
+                            {{ render(controller('PublicationBundle:Category:listDefault', {'publication': publication.id})) }}
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp Ciudad</h5>
+                    <div class="col-xs-5 selectContainer">
+                        <select name="city" id="city" class="form-control">
+                            {{ render(controller('PublicationBundle:Department:listDefault', {'publication': publication.id})) }}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+    </div>
+</form>
