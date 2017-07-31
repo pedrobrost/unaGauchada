@@ -1,0 +1,12 @@
+{% macro message(msg,id) %}
+
+<li class="list-group-item no-results" id="{{id}}">
+    <div class="card">
+        <h2>No tienes Publicaciones {{msg}}</h2>
+        <br>
+        <i class="fa fa-bookmark" aria-hidden="true"></i>
+        <br>
+    </div>
+</li>
+
+{% endmacro %}

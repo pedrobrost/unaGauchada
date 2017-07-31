@@ -1,5 +1,10 @@
+{% import 'UserBundle:MyPublications:noSearchResult.html.twig' as noResultMsg %}
 <div class="col-md-8 col-lg-9 container search ">
     <ul class="list-group list-group-flush">
+        {{noResultMsg.message('canceladas','cancelledMessage')}}
+        {{noResultMsg.message('activas','activeMessage')}}
+        {{noResultMsg.message('cerradas','closedMessage')}}   
+        {{noResultMsg.message('para calificar','calificarMessage')}}  
         {% for publication in app.user.publications|reverse %}
             {% include 'UserBundle:MyPublications:publication.html.twig' %}    
          {% else %} 
