@@ -27,6 +27,18 @@ $(document).ready(function () {
       }
       return false;
     }
+    if(event.keyCode == 38) {
+      if (last){
+          last.find("td").find(".table-up").trigger("click");
+      }
+      return false;
+    }
+    if(event.keyCode == 40) {
+      if (last){
+          last.find("td").find(".table-down").trigger("click");
+      }
+      return false;
+    }
   });
     $up = $("tr:nth-child(3)").find(".table-up").clone(true);
     $down = $("tr:nth-last-child(2)").find(".table-down").clone(true);
