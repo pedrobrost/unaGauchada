@@ -37,7 +37,6 @@ class AdminController extends Controller
             $em->remove($achievement);
         }
         $em->flush();
-
         $achievements = $request->request->all();
         $lastIcon = array_pop($achievements);
         $lastName = array_pop($achievements);

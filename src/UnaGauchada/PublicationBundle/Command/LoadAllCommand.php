@@ -54,7 +54,7 @@ class LoadAllCommand extends ContainerAwareCommand
         $em->persist(new Achievement("Nobleza Gaucha", 21, 50, 'fa-thumbs-o-up'));
         $em->persist(new Achievement("Dios", 51, PHP_INT_MAX, 'fa-thumbs-o-up'));
 
-
+        /*
         //Scores
         $em->persist(new Score('negative', -1));
         $em->persist(new Score('neutral', 0));
@@ -97,7 +97,7 @@ class LoadAllCommand extends ContainerAwareCommand
 
         //Cities
         //mysql -u root -p < src/UnaGauchada/PublicationBundle/Resources/db/departmentsLoader.sql
-
+        */
         $em->flush();
 
         $io->newLine();
