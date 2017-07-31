@@ -322,14 +322,14 @@ var unhighlight = function (element, clase) {
 };
 
 var emptyValidation = function ($nombre, $rango) {
-    if ($nombre.val() == 0 || $rango.val() == 0) {
+    if ($nombre.val() == 0 || ( ($rango.val() == 0) && (parseFloat($rango.val()) != 0))) {
         if ($nombre.val() == 0) {
             $nombre.closest("td").attr('data-content', "Debes ingresar el nombre para el logro.");
             highlight($nombre, "warning");
         } else {
             unhighlight($nombre, "warning");
         }
-        if ($rango.val() == 0) {
+        if ( ($rango.val() == 0) && (parseFloat($rango.val()) != 0)) {
             $rango.closest("td").attr('data-content', "Debes ingresar el valor máximo de puntos para este logro.");
             highlight($rango, "warning")
         } else {
@@ -343,7 +343,7 @@ var emptyValidation = function ($nombre, $rango) {
 }
 
 var rangeValidation = function (rango) {
-    if (rango.val() != 0) {
+    if (rango.val() != 0 || (parseFloat(rango.val()) == 0)) {
         var $before = rango.closest('tr').prev();
         var $after = rango.closest('tr').next();
         if (!$before.hasClass("hide") && !$after.hasClass("nonemove")) {
