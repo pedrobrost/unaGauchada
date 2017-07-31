@@ -86,6 +86,7 @@ $(".table-down").click(function () {
 });
 
 $(".deshacer").click(function () {
+    event.preventDefault();
     location.reload(true);
 });
 
