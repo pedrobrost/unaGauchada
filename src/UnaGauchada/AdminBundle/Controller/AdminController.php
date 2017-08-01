@@ -53,4 +53,27 @@ class AdminController extends Controller
         return $this->render('AdminBundle:ProfitReport:report.html.twig', array('transactions' => $transactions, 'dates' => $dates));
     }
 
+
+    public function creditsPriceAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $reason = $repository->findOneByName('Purchase');
+        $actualPrice = $reason->getPrice();
+        return $this->render('AdminBundle:CreditsPrice:viewChangeValue.html.twig', array('actualPrice' => $actualPrice));
+    }
+
+    public function changeCreditsPriceAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository('CreditBundle:TransactionReason');
+        $repository->findOneByName('Purchase')->setPrice($request->get('price'));
+        $em->flush();
+
+        $price = $request->get('price');
+        $price = floor($price) == $price ? floor($price) : $price;
+        $this->addFlash('notice', 'El precio de los créditos se ha actualizado a $'.($price + 0).'.');
+
+        return $this->redirectToRoute('publication_homepage');
+    }
+
 }
