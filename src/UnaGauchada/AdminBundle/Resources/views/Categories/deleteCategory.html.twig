@@ -1,7 +1,7 @@
 <div class="modal fade" id="delete{{ category.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="addCategoryForm" method="" action="">
+            <form class="addCategoryForm" method="post" action="{{ path('edit_categories') }}">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Eliminar categoria</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

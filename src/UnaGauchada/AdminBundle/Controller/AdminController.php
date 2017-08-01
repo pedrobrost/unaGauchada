@@ -113,11 +113,26 @@ class AdminController extends Controller
     }
 
     public function categoriesAction(){
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $query = $this->getDoctrine()->getRepository(Category::class)->createQueryBuilder('c')
+                    ->where('c.isDeleted != :deleted')
+                    ->setParameter('deleted', true)
+                    ->getQuery();
+        $categories = $query->getResult();
         return $this->render('AdminBundle:Categories:categoriesPage.html.twig', array('categories' => $categories));
     }
 
-    public function editCategories(Request $request){
+    public function editCategoriesAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if($request->get('deletedId')){
+            $category = $em->getRepository(Category::class)->find($request->get('deletedId'));
+            $category->setIsDeleted(true);
+        }elseif ($request->get('newCategory')){
+            $em->persist(new Category($request->get('newCategory')));
+        }else{
+            $category = $em->getRepository(Category::class)->find($request->get('id'));
+            $category->setName($request->get('categoryName'));
+        }
+        $em->flush();
         return $this->redirectToRoute('categories_management');
     }
 

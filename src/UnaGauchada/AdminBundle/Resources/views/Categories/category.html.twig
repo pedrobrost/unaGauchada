@@ -1,7 +1,7 @@
 {% for category in categories %}
     {% include 'AdminBundle:Categories:deleteCategory.html.twig' %}
     <tr>
-        <form class="editCategoryForm" action="">
+        <form class="editCategoryForm" method="post" action="{{ path('edit_categories') }}">
             <td>
                 <div class="form-group" style="margin:0">
                     <input type="hidden" name="id" value="{{ category.id }}">
