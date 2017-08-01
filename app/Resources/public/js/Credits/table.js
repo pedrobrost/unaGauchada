@@ -51,7 +51,7 @@ null
         "bLengthChange": false,
         "info": false,
         "bFilter": false,
-        "iDisplayLength": 10,
+        "iDisplayLength": 25,
         "language": {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ usuarios",

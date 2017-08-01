@@ -31,6 +31,12 @@
         }
         tr{
             td{
+                input{
+                    background-color: transparent;
+                }
+                input:focus{
+                    background-color: white;
+                }
                 input[type=number]{
                     text-align: center;
                 }

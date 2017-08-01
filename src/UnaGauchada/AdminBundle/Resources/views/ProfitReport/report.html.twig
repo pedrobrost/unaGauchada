@@ -3,12 +3,13 @@
     <div class="container carta">
         <a class="btn btn-primary detalle" data-toggle="tooltip" data-placement="left" title="Volver al inicio" href="{{ path('publication_page') }}"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Reporte de ganancias</h3>
-        <hr>
+        <hr> 
         <div class="row uno">
             <div class="demo">
                 <form id="dateRanger" method="get" action="{{ path('profit_report') }}">
                     <div class="input-group">
-                        <input type="text" name="dates" id="datePicker" class="form-control" readonly="readonly" placeholder="Ingrese rango de fechas" value="{{dates}}">
+                        <input type="text" name="dates" id="datePicker" class="form-control" readonly="readonly" placeholder="Ingrese rango de fechas"
+                            value="{{dates}}">
                         <span class="input-group-btn">
                             <button class="btn btn-secondary" id="btn-searchDate" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </span>
@@ -17,10 +18,10 @@
             </div>
         </div>
         <br><br> 
-        {% if transactions is not empty %}
-            {% include 'AdminBundle:ProfitReport:table.html.twig' %}
-        {% else %}
-         {% include 'AdminBundle:ProfitReport:noResults.html.twig' %}
+        {% if transactions is not empty %} 
+            {% include 'AdminBundle:ProfitReport:table.html.twig' %} 
+        {% else %} 
+            {%include 'AdminBundle:ProfitReport:noResults.html.twig' %} 
         {% endif %}
     </div>
 </div>
