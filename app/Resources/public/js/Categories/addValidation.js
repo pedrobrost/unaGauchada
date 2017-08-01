@@ -13,10 +13,10 @@ $(document).ready(function () {
 
 
 $.validator.addMethod("equalName", function(value, element) {
-    var parentForm = $(element).closest('table');
+    var parentForm = $('#usuarios');
     var timeRepeated = 0;
     if (value != '') {
-        $(parentForm.find(':text')).each(function () {
+        $('.category').each(function () {
             if (($(this).val().toUpperCase() ==  value.toUpperCase())) {
                 timeRepeated++;
             }
@@ -25,16 +25,29 @@ $.validator.addMethod("equalName", function(value, element) {
     return timeRepeated === 1 || timeRepeated === 0;
 }), 
 
+$.validator.addMethod("equalNameNew", function(value, element) {
+    var parentForm = $('#usuarios');
+    var timeRepeated = 0;
+    if (value != '') {
+        $('.category').each(function () {
+            if (($(this).val().toUpperCase() ==  value.toUpperCase())) {
+                timeRepeated++;
+            }
+        });
+    }
+    return timeRepeated === 0;
+}), 
+
 $('.editCategoryForm').each(function () { // attach to all form elements on page
     $(this).validate({
         rules: {
-            categoryName: {
+            message: {
                 required: true,
                 equalName: true,
             },
         },
         messages: {
-            categoryName: {
+            message: {
                 required: "Debe ingresar el nombre de la categoria",
                 equalName: "Ese nombre ya es usado por otra categoria. Intenta ingregar uno nuevo"
             },
@@ -68,12 +81,14 @@ $('.addCategoryForm').each(function () { // attach to all form elements on page
     $(this).validate({
         rules: {
            newCategory: {
-                required: true
+                required: true,
+                equalNameNew: true
             },
         },
         messages: {
             newCategory: {
                 required: "Debe ingresar el nombre de la nueva categoria",
+                equalNameNew: "Ese nombre ya es usado por otra categoria. Intenta ingregar uno nuevo"
             },
 
         },
