@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#usuarios').DataTable({
         "order": [
-            [3, "desc"]
+            [3, "desc"], [ 1, 'asc' ]
         ],
         "bLengthChange": false,
     "language": {
