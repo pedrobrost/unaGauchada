@@ -38,3 +38,7 @@ $(function() {
 var roundHalf = function(num) {
     return (Math.round(num*2)/2).toFixed(1);
 }
+
+$(document).ready( function() {
+    $( "#credits_price" ).addClass( "active" );
+});
