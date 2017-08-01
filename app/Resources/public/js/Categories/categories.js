@@ -45,6 +45,7 @@ $('.editCancel').on('click', function (e) {
 })
 
 $(document).ready(function () {
+    $( "#categories_management" ).addClass( "active" );
     $('#usuarios').DataTable({
         "order": [
             [0, "asc"]
