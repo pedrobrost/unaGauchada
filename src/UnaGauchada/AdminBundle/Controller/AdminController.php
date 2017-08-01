@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
+use UnaGauchada\PublicationBundle\Entity\Category;
 use UnaGauchada\PublicationBundle\PublicationBundle;
 use UnaGauchada\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -112,7 +113,12 @@ class AdminController extends Controller
     }
 
     public function categoriesAction(){
-        return $this->render('AdminBundle:Categories:categoriesPage.html.twig');
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('AdminBundle:Categories:categoriesPage.html.twig', array('categories' => $categories));
+    }
+
+    public function editCategories(Request $request){
+        return $this->redirectToRoute('categories_management');
     }
 
 }
