@@ -56,7 +56,7 @@ $(document).ready(function () {
     $up = $("tr:nth-child(3)").find(".table-up").clone(true);
     $down = $("tr:nth-last-child(2)").find(".table-down").clone(true);
     $(".editable").hide();
-    $("input").prop("readonly", true);
+    $(".carta").find("input").prop("readonly", true);
     $TABLE.find("tr.hide").hide();
     $(".btns").hide();
     $("tr:nth-child(3)").find(".table-up").remove();
