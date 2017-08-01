@@ -1,5 +1,11 @@
 .profitReport {
+    .container.search .no-results .content {
+    text-align: center;
+    padding: 0px 0;
+    background-color: transparent;
+}
      .row.uno {
+            background-color: transparent;
             float: right;
             margin-right: -16px;
             width: 310px;
@@ -9,7 +15,7 @@
             }
         }
     .carta {
-                        .fa-shopping-cart{
+            .fa-shopping-cart{
             font-size: 230px;
         }
         a.detalle {
