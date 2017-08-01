@@ -8,6 +8,7 @@ use Doctrine\ORM\PersistentCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use UnaGauchada\PublicationBundle\Entity\Category;
 use UnaGauchada\PublicationBundle\Entity\Comment;
 use UnaGauchada\PublicationBundle\Entity\Publication;
 use UnaGauchada\PublicationBundle\Entity\PublicationComment;
@@ -178,12 +179,19 @@ class PublicationController extends Controller
             $criteria->andWhere(Criteria::expr()->eq('category', $category));
         }
 
-        $categories = $this->getDoctrine()
-            ->getRepository('PublicationBundle:Category')->findAll();
         $departments = $this->getDoctrine()
             ->getRepository('PublicationBundle:Department')->findAll();
-
         $publications = $this->getActive($publications);
+        $query = $this->getDoctrine()->getRepository(Category::class)->createQueryBuilder('c')
+            ->where('c.isDeleted != :deleted')
+            ->setParameter('deleted', true)
+            ->getQuery();
+        $categories = $query->getResult();
+        foreach ($publications as $publication) {
+            if(!in_array($publication->getCategory(), $categories)){
+                $categories[] = $publication->getCategory();
+            }
+        }
         $publications = $publications->matching($criteria);
         $amount = $publications->count();
         $pages = ceil($publications->count() / 6);
