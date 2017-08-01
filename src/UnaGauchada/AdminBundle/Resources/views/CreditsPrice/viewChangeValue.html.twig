@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/jquery-ui/jquery-ui.css') }}"> {% endblock %} 
+
+
+{% block body %}
+<div class="container changeCredits form">
+  {% include 'AdminBundle:CreditsPrice:changeValue.html.twig' %}
+</div>
+{% endblock %} 
+
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/Credits/creditsModify.js') }}"></script>
+<script src="{{ asset('dist/js/Credits/changeValidation.js') }}"></script>
+{% endblock %}

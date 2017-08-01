@@ -31,6 +31,11 @@
 
 
 <div class="container publication">
+
+    {% for message in app.flashes('edit') %}
+        {{popUp.success('¡Felicitaciones!', message)}}
+    {% endfor %}
+
     {% if commentCreated %}
         {{popUp.success('¡Felicitaciones!','Tu comentario se ha creado exitosamente.')}}
     {% endif %}

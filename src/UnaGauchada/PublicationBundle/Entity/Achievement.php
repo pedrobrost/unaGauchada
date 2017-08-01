@@ -42,11 +42,19 @@ class Achievement
      */
     private $min;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon_name", type="string", length=64, unique=false)
+     */
+    private $iconName;
 
-    public function __construct($name, $min, $max){
+
+    public function __construct($name, $min, $max, $icon){
         $this->name = $name;
         $this->min = $min;
         $this->max = $max;
+        $this->iconName = $icon;
     }
 
     /**
@@ -81,6 +89,30 @@ class Achievement
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Achievement
+     */
+    public function setIconName($iconName)
+    {
+        $this->iconName = $iconName;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getIconName()
+    {
+        return $this->iconName;
     }
 
     /**

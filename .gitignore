@@ -17,3 +17,4 @@
 /.idea/
 /node_modules/
 /web/dist/
+\.web-server-pid

@@ -26,10 +26,7 @@ class UserController extends Controller
         $infoEdited = $request->getSession()->get('infoEdited', false);
         $request->getSession()->remove('infoEdited');
 
-        $passwordEdited = $request->getSession()->get('passwordEdited', false);
-        $request->getSession()->remove('passwordEdited');
-
-        return $this->render('UserBundle:Profile:profile.html.twig', array('infoEdited' => $infoEdited, 'passwordEdited' => $passwordEdited));
+        return $this->render('UserBundle:Profile:profile.html.twig', array('infoEdited' => $infoEdited));
     }
 
     public function editShowAction(){

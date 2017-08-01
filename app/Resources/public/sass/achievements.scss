@@ -1,0 +1,143 @@
+    .popover.bs-tether-element-attached-top {
+            margin-top: -5px!important;
+    }
+.achievements {
+    #popUpSuccess {
+    position: relative;
+    margin-top: 27px;
+    margin-bottom: -15px;
+}
+    #backbutton {
+        display: block;
+        border-radius: .25rem;
+        margin-top: -5px;
+        margin-right: 14px;
+    }
+    #agregarbtn {
+        margin-right: 15px;
+    }
+    #logros {
+        margin-top: -12px;
+        margin-left: 12px;
+        width: 97.5%;
+        th:first-child {
+            width: 50%;
+        }
+        th:nth-child(3) {
+            width: 10%
+        }
+        th:nth-child(4) {
+            width: 14%
+        }
+        tr{
+            td{
+                input[type=number]{
+                    text-align: center;
+                }
+                .infinity{
+                        padding-right: 10px;
+                }
+            }
+        }
+    }
+    .btns {
+        margin-left: 15px
+    }
+}
+
+.howl-iconpicker-outer {
+    background: rgba(0, 0, 0, .78);
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999999
+}
+
+.howl-iconpicker-middle {
+    margin-top: 200px;
+}
+
+.howl-iconpicker-close {
+    background: #ff7043;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: center;
+    width: 287px;
+    margin: 0 auto;
+    cursor: pointer
+}
+
+.howl-iconpicker-close:hover {
+    background: #ff4910;
+}
+
+.howl-iconpicker {
+    border: 1px solid #ccc;
+    background: #efefef;
+    width: 287px;
+    margin: 0 auto;
+}
+
+.howl-iconpicker:active,
+.howl-iconpicker:focus,
+.howl-iconpicker:hover {
+    display: block!important
+}
+
+.howl-iconpicker .geticonval .fa {
+    font-size: 23px;
+    padding-bottom: 10px
+}
+
+.howl-iconpicker .geticonval {
+    text-align: center;
+    background: #fcfcfc;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    float: left;
+    padding-left: 1px;
+    padding-top: 5px;
+}
+
+.howl-iconpicker .geticonval:hover {
+    background: #efefef;
+    cursor: pointer
+}
+
+.howl-iconpicker .geticonval:active {
+    background: #ccc
+}
+
+.srchicons {
+    margin: 5px 5px 60px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
+    width: 287px;
+    position: absolute;
+    display: none;
+}
+
+.iconsholder {
+    height: 243px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.selectedicon {
+    background: #ff7043!important;
+    border-color: #ff7043!important;
+    color: #fff
+}

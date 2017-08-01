@@ -1,0 +1,54 @@
+<div class="container form">
+    <div class="container">
+        <div class="price-box">
+            <form class="form-horizontal form-pricing" id="changeCredits" role="form" method="post" action="{{ path('change_credits_price') }}">
+
+                <div class="modal fade" id="confirm">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">¡Cuidado!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Estas a punto de cambiar el costo de los créditos a <span class="precio"> </span> pesos argentinos,
+                                    ¿Estás seguro que deseas continuar? .</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <h4 class="great">Cambiar costo de creditos</h4><br>
+                    <span class="help-text">Ingrese el nuevo valor para los créditos:</span>
+                </div>
+                <br>
+                <div class="col-sm-12 input">
+                    <div class="col-xs-3 col-xs-offset-3">
+                        <div class="input-group number-spinner">
+                            <span class="input-group-btn data-dwn">
+                        <button class="btn btn-default" id="dwn" type="button" data-dir="dwn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    </span>
+                            <input type="number" id="price" name="price" class="form-control text-center" min="0" value="{{ actualPrice }}" placeholder="Ingrese el nuevo valor en pesos ($)">
+                            <span class="input-group-btn data-up">
+                        <button class="btn btn-default"  id="up"  type="button" data-dir="up"><i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                   </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-right">
+                    <a href="{{ path('publication_page') }}" class="cancel"><button class="btn btn-default my-2 my-sm-0" type="button">Cancelar</button></a>
+                    <button class="btn btn-primary my-2 my-sm-0" id="nextStep" type="button">Guardar</button>
+                    <button class="btn btn-primary my-2 my-sm-0" id="noneChange" type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

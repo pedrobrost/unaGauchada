@@ -14,6 +14,10 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /user
 
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 security:
     resource: "@UGSecurityBundle/Resources/config/routing.yml"
     prefix:   /

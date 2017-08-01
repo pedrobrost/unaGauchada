@@ -1,0 +1,24 @@
+ranking_report:
+    path:     /ranking
+    defaults: { _controller: AdminBundle:Admin:ranking }
+
+achievements_management:
+    path:     /achievements
+    defaults: { _controller: AdminBundle:Admin:achievements }
+
+edit_achievements:
+    path:     /editAchievements
+    defaults: { _controller: AdminBundle:Admin:editAchievements }
+
+profit_report:
+    path:     /profit
+    defaults: { _controller: AdminBundle:Admin:profit }
+
+credits_price:
+    path:     /creditsPrice
+    defaults: { _controller: AdminBundle:Admin:creditsPrice }
+
+change_credits_price:
+    path:     /changeCreditsPrice
+    defaults: { _controller: AdminBundle:Admin:changeCreditsPrice }
+    methods: [POST]

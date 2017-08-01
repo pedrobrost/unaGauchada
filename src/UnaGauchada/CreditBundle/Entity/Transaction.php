@@ -192,4 +192,9 @@ class Transaction
     {
         return $this->reason;
     }
+
+    public function getTotalPrice(){
+        return $this->getPrice() * $this->getAmountOfCredits();
+    }
+
 }
