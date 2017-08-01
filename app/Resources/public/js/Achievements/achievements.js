@@ -23,7 +23,36 @@ $(document).ready(function () {
     if(event.keyCode == 13) {
       event.preventDefault();
       if (last){
+          $(".howl-iconpicker-close").trigger("click");
           last.find("td").find(".submit").trigger("click");
+      }
+      return false;
+    }
+        });
+        $(window).keydown(function(event){
+    if(event.keyCode == 38) {
+      event.preventDefault();
+      if (last){
+          last.find("td").find(".table-up").trigger("click");
+      }
+      return false;
+    }
+        });
+        $(window).keydown(function(event){
+    if(event.keyCode == 40) {
+      event.preventDefault();
+      if (last){
+          last.find("td").find(".table-down").trigger("click");
+      }
+      return false;
+    }
+  });
+    $(window).keydown(function(event){
+    if(event.keyCode == 27) {
+      event.preventDefault();
+      if (last){
+          $(".howl-iconpicker-close").trigger("click");
+          last.find("td").find(".editCancel").trigger("click");
       }
       return false;
     }
@@ -174,6 +203,7 @@ $(".editCancel").on("click", function (e) {
     unhighlight($rango, "danger");
         cambio();
     rePosicionar($(this).closest("tr"));
+    last = null;
 });
 
 
