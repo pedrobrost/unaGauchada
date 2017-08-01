@@ -20,10 +20,13 @@ class CategoryController extends Controller{
     }
 
     public function listDefaultAction(Publication $publication){
-        $repository = $this->getDoctrine()
-            ->getRepository('PublicationBundle:Category');
-
-        $categories = $repository->findAll();
+        $query = $this->getDoctrine()->getRepository(Category::class)->createQueryBuilder('c')
+            ->where('c.isDeleted != :deleted')
+            ->setParameter('deleted', true)
+            ->getQuery();
+        $categories = $query->getResult();
+        if(!in_array($publication->getCategory(), $categories))
+            $categories[] = $publication->getCategory();
         return $this->render('PublicationBundle:Categories:listDefault.html.twig', array('categories' => $categories, 'publication' => $publication));
     }
 
