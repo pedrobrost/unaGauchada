@@ -7,7 +7,8 @@
             <h1>No se encontraron resultados</h1>
             <h2 class="lead"> No ha registrado ninguna compra de créditos{% if today == days|first|trim %} el día de hoy. {% elseif (days|first|trim) == (days|last|trim)  %} el día {{days|first}}. {% else %} entre el {{days|first}} y el {{days|last}}. {% endif %}</h2>
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <br>
+            <div>   </div>
+            <a style=";" class="btn btn-outline-primary" href="{{ path('profit_report') }}">Volver al Listado Completo</a>
         </div>
     </div>
 </div>
