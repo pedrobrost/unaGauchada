@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $("#rating_report").addClass("active");
-});
-
-$(document).ready(function () {
     $('#usuarios').DataTable({
         "order": [
             [3, "desc"]
