@@ -9,12 +9,12 @@
         </button>
                 </div>
                 <div class="modal-body">
-                    <p>"Esta a punto de eliminar la categoría {{ category.name }}, ¿Está seguro que desea continuar?"</p>
+                    <p>Esta a punto de eliminar la categoría "{{ category.name }}", ¿Está seguro que desea continuar?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="deletedId" value="{{ category.id }}">
-                    <button type="submit" class="btn btn-secondary">Eliminar</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-secondary">Eliminar</button>
                 </div>
             </form>
         </div>
