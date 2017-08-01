@@ -22,7 +22,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <a href="{{ path('publication_cancel', {'id': publication.id}) }}" class="btn btn-primary" style="cursor: pointer; color: white;">Continuar</a>
+                            <a href="{% if not is_granted('ROLE_ADMIN') %}{{ path('publication_cancel', {'id': publication.id}) }}{% endif %}" class="btn btn-primary" style="cursor: pointer; color: white;">Continuar</a>
                         </div>
                     </div>
                 </div>

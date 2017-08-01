@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
 use UnaGauchada\PublicationBundle\Entity\Category;
+use UnaGauchada\PublicationBundle\Entity\Publication;
 use UnaGauchada\PublicationBundle\PublicationBundle;
 use UnaGauchada\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -127,13 +128,51 @@ class AdminController extends Controller
             $category = $em->getRepository(Category::class)->find($request->get('deletedId'));
             $category->setIsDeleted(true);
         }elseif ($request->get('newCategory')){
-            $em->persist(new Category($request->get('newCategory')));
+            $isOld = false;
+            $name = $request->get('newCategory');
+            foreach ($this->deletedCategories() as $category) {
+                if($category->getName() == $name){
+                    $category->setIsDeleted(false);
+                    $isOld = true;
+                    break;
+                }
+            }
+            if(!$isOld){
+                $em->persist(new Category($request->get('newCategory')));
+            }
         }else{
-            $category = $em->getRepository(Category::class)->find($request->get('id'));
-            $category->setName($request->get('categoryName'));
+            $isOld = false;
+            $name = $request->get('categoryName');
+            foreach ($this->deletedCategories() as $category) {
+                if($category->getName() == $name){
+                    $category->setIsDeleted(false);
+                    $oldCategory = $em->getRepository(Category::class)->find($request->get('id'));
+                    $publications = $em->getRepository(Publication::class)->findAll();
+                    foreach ($publications as $publication) {
+                        if($publication->getCategory() == $oldCategory){
+                            $publication->setCategory($category);
+                        }
+                    }
+                    $em->remove($oldCategory);
+                    $isOld = true;
+                    break;
+                }
+            }
+            if(!$isOld){
+                $category = $em->getRepository(Category::class)->find($request->get('id'));
+                $category->setName($request->get('categoryName'));
+            }
         }
         $em->flush();
         return $this->redirectToRoute('categories_management');
+    }
+
+    public function deletedCategories(){
+        $query = $this->getDoctrine()->getRepository(Category::class)->createQueryBuilder('c')
+            ->where('c.isDeleted = :deleted')
+            ->setParameter('deleted', true)
+            ->getQuery();
+        return $query->getResult();
     }
 
 }

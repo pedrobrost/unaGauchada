@@ -2,6 +2,7 @@
 
 namespace UnaGauchada\PublicationBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -139,6 +140,15 @@ class Category
     {
         $this->isDeleted = $isDeleted;
         return $this;
+    }
+
+    public function activePublications(){
+        $publications = $this->getPublications();
+        $actives = new ArrayCollection();
+        foreach ($publications as $publication) {
+            $publication->addIfActive($actives);
+        }
+        return $actives;
     }
 
 }
