@@ -1,42 +1,33 @@
-{% for category in categories %}
-    {% include 'AdminBundle:Categories:deleteCategory.html.twig' %}
-    <tr>
+{% for category in categories %} {% include 'AdminBundle:Categories:deleteCategory.html.twig' %}
+<tr>
+    <td>
         <form class="editCategoryForm" method="post" action="{{ path('edit_categories') }}">
-            <td>
-                <div class="form-group" style="margin:0">
-                    <input type="hidden" name="id" value="{{ category.id }}">
-                    <input placeholder="Ingrese el nombre de la categoria" type="text" value="{{ category.name }}"
-                           class="category"
-                           id="categoryName" name="categoryName" readonly> {{ category.name }}
-                </div>
-            </td>
-            <td class="text-center">{{ category.activePublications|length }}</td>
-            <td>
-                <div class="btn-group editable" role="group" style="margin-left: 27px;">
-                    <button type="submit" class="btn btn-success btn-sm submit" data-toggle="tooltip"
-                            data-placement="left"
-                            title="Aceptar">
+            <div class="form-group" style="margin:0">
+                <input placeholder="Ingrese el nombre de la categoria" type="text" value="{{ category.name }}" class="category" id="categoryName"
+                    name="categoryName" readonly> {{ category.name }}
+                <input type="hidden" name="id" value="{{ category.id }}">
+            </div>
+    </td>
+    <td class="text-center">{{ category.activePublications|length }}</td>
+    <td>
+        <div class="btn-group editable" role="group" style="margin-left: 27px;">
+            <button type="submit" class="btn btn-success btn-sm submit" data-toggle="tooltip" data-placement="left" title="Aceptar">
                         <i class="fa fa-check" aria-hidden="true"></i>
                     </button>
-                    <button type="reset" class="editCancel btn btn-danger btn-sm" data-toggle="tooltip"
-                            data-placement="right"
-                            title="cancelar">
+            <button type="reset" class="editCancel btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="cancelar">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </button>
-                </div>
+            </form>
+        </div>
 
-                <div class="btn-group botones" role="group" style="margin-left: 27px;">
-                    <button type="button" class="edit btn btn-primary btn-sm" data-toggle="tooltip"
-                            data-placement="left"
-                            title="Editar">
+        <div class="btn-group botones" role="group" style="margin-left: 27px;">
+            <button type="button" class="edit btn btn-primary btn-sm" data-toggle="tooltip" data-placement="left" title="Editar">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                            data-target="#delete{{ category.id }}">
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ category.id }}">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                </div>
-            </td>
-        </form>
-    </tr>
+        </div>
+    </td>
+</tr>
 {% endfor %}
