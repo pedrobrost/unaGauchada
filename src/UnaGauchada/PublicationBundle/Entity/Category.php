@@ -34,6 +34,13 @@ class Category
      */
     private $publications;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isDeleted", type="boolean", nullable=false)
+     */
+    private $isDeleted = false;
+
 
     public function __construct($name)
     {
@@ -112,6 +119,26 @@ class Category
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDeleted(): bool
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * @param bool $isDeleted
+     *
+     *
+     * @return self
+     */
+    public function setIsDeleted($isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
+        return $this;
     }
 
 }

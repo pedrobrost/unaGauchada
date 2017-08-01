@@ -7,7 +7,18 @@ $('#agregarCategoria').on('hidden.bs.modal', function (e) {
 var editando = false;
 var last = null;
 
+$("#agregarbtn").on('click', function () {
+    if (editando){
+        $(this).addClass("disabled");
+        $(this).attr("data-toggle", "");
+        return
+    }
+});
+
 $('.edit').on('click', function (e) {
+    if (error){
+        return
+    }
     if (editando == true){
     last.find('input').prop('readonly', true);
     last.find('form').validate().resetForm();
@@ -23,14 +34,18 @@ $('.edit').on('click', function (e) {
 })
 
 $('.editCancel').on('click', function (e) {
+    error = false;
     $(this).closest("tr").find('input').prop('readonly', true);
     $(this).closest("tr").find('form').validate().resetForm();
     $(this).closest("tr").find('.editable').hide();
     $(this).closest("tr").find('.botones').show();
     editando = false;
+    $("#agregarbtn").removeClass("disabled");
+    $("#agregarbtn").attr("data-toggle", "modal");
 })
 
 $(document).ready(function () {
+    $( "#categories_management" ).addClass( "active" );
     $('#usuarios').DataTable({
         "order": [
             [0, "asc"]

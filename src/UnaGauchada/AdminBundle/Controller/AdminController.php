@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UnaGauchada\CreditBundle\Entity\Transaction;
 use UnaGauchada\PublicationBundle\Entity\Achievement;
+use UnaGauchada\PublicationBundle\Entity\Category;
 use UnaGauchada\PublicationBundle\PublicationBundle;
 use UnaGauchada\UserBundle\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -109,6 +110,30 @@ class AdminController extends Controller
 
         $this->addFlash('notice', 'Los cambios se han guardado correctamente.');
         return $this->redirectToRoute('achievements_management');
+    }
+
+    public function categoriesAction(){
+        $query = $this->getDoctrine()->getRepository(Category::class)->createQueryBuilder('c')
+                    ->where('c.isDeleted != :deleted')
+                    ->setParameter('deleted', true)
+                    ->getQuery();
+        $categories = $query->getResult();
+        return $this->render('AdminBundle:Categories:categoriesPage.html.twig', array('categories' => $categories));
+    }
+
+    public function editCategoriesAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if($request->get('deletedId')){
+            $category = $em->getRepository(Category::class)->find($request->get('deletedId'));
+            $category->setIsDeleted(true);
+        }elseif ($request->get('newCategory')){
+            $em->persist(new Category($request->get('newCategory')));
+        }else{
+            $category = $em->getRepository(Category::class)->find($request->get('id'));
+            $category->setName($request->get('categoryName'));
+        }
+        $em->flush();
+        return $this->redirectToRoute('categories_management');
     }
 
 }

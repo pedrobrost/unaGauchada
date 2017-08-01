@@ -22,3 +22,11 @@ change_credits_price:
     path:     /changeCreditsPrice
     defaults: { _controller: AdminBundle:Admin:changeCreditsPrice }
     methods: [POST]
+
+categories_management:
+    path:     /categories
+    defaults: { _controller: AdminBundle:Admin:categories }
+
+edit_categories:
+    path:     /editCategories
+    defaults: { _controller: AdminBundle:Admin:editCategories }
