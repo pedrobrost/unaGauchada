@@ -89,9 +89,7 @@ $(".eliminar").click(function () {
 $(".table-remove").click(function () {
     borrar.parents("tr").remove();
     cambio();
-    if ($(".btns:hidden")) {
-        $(".btns").show();
-    }
+    $("#save").trigger("click");
 });
 
 $(".table-up").click(function () {
@@ -116,9 +114,6 @@ $(".deshacer").click(function () {
 });
 
 $(".edit").on("click", function (e) {
-    if ($(".btns:hidden")) {
-        $(".btns").show();
-    }
     $(this).closest("tr").find("input").prop("readonly", false);
     $(this).closest("div").hide();
     $(this).closest("tr").find(".editable").show();
@@ -204,9 +199,6 @@ $(".editCancel").on("click", function (e) {
 
 
 $(".table-add").click(function () {
-    if ($(".btns:hidden")) {
-        $(".btns").show();
-    }
     if (editando) {
         $(this).addClass("disabled");
         return
@@ -248,6 +240,7 @@ $(".submit").on("click", function () {
     $nombre.attr("value", $nombre.val());
     $rango.attr("value", parseInt($rango.val()));
     last = null;
+    $("#save").trigger("click");
 });
 
 
