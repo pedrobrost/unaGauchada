@@ -162,19 +162,18 @@ $(".editCancel").on("click", function (e) {
         .find(".btn-icon")
         .find("i")
         .remove();
-    cambio();
-    rePosicionar($(this).closest("tr"));
-    editando = false;
-    error = false;
     $("#save").removeClass("disabled");
     $(".table-add").removeClass("disabled");
-
+    editando = false;
+    error = false;
     var $nombre = $(this).closest("tr").find(".campoNombre");
     var $rango = $(this).closest("tr").find(".campoRango");
     unhighlight($nombre, "warning");
     unhighlight($nombre, "danger");
     unhighlight($rango, "warning");
     unhighlight($rango, "danger");
+        cambio();
+    rePosicionar($(this).closest("tr"));
 });
 
 
