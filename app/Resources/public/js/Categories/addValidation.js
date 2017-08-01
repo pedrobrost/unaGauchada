@@ -28,13 +28,13 @@ $.validator.addMethod("equalName", function(value, element) {
 $('.editCategoryForm').each(function () { // attach to all form elements on page
     $(this).validate({
         rules: {
-            message: {
+            categoryName: {
                 required: true,
                 equalName: true,
             },
         },
         messages: {
-            message: {
+            categoryName: {
                 required: "Debe ingresar el nombre de la categoria",
                 equalName: "Ese nombre ya es usado por otra categoria. Intenta ingregar uno nuevo"
             },
