@@ -67,3 +67,13 @@ publication_cancel:
     path:     /{id}/cancel
     defaults: { _controller: PublicationBundle:Publication:cancel }
     methods:  [GET]
+
+publication_showEdit:
+    path:     /{id}/edit
+    defaults: { _controller: PublicationBundle:Publication:showEdit }
+    methods:  [GET]
+
+publication_edit:
+    path:     /{id}/edit
+    defaults: { _controller: PublicationBundle:Publication:edit }
+    methods:  [POST]

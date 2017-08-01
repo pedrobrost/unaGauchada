@@ -45,14 +45,15 @@ class LoadAllCommand extends ContainerAwareCommand
         $em = $this->getManager();
 
         //Achievements
-        $em->persist(new Achievement('Observador', 0, 0));
-        $em->persist(new Achievement("Irresponsable", PHP_INT_MIN, -1));
-        $em->persist(new Achievement("Buen Tipo", 1, 1));
-        $em->persist(new Achievement("Gran tipo", 2, 5));
-        $em->persist(new Achievement("Tipazo", 6, 10));
-        $em->persist(new Achievement("Héroe", 11, 20));
-        $em->persist(new Achievement("Nobleza Gaucha", 21, 50));
-        $em->persist(new Achievement("Dios", 51, PHP_INT_MAX));
+        $em->persist(new Achievement("Irresponsable", PHP_INT_MIN, -1, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement('Observador', 0, 0, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Buen Tipo", 1, 1, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Gran tipo", 2, 5, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Tipazo", 6, 10, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Héroe", 11, 20, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Nobleza Gaucha", 21, 50, 'fa-thumbs-o-up'));
+        $em->persist(new Achievement("Dios", 51, PHP_INT_MAX, 'fa-thumbs-o-up'));
+
 
         //Scores
         $em->persist(new Score('negative', -1));

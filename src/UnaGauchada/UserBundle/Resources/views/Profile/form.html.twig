@@ -6,7 +6,7 @@
                      class="card-img-bottom rounded">
             </div>
             <div class="card-block">
-                <small><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }}
+                <small><i class="fa {{ achievement_service.getFor(app.user).iconName }}" aria-hidden="true"></i> {{ achievement_service.getFor(app.user) }}
                 </small>
                 <br>
                 <small><i class="fa fa-line-chart"

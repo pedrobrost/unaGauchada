@@ -1,6 +1,10 @@
 {% import 'utils/popUpMessage.html.twig' as popUp %}
 {% extends 'base.html.twig' %} {% block body %}
 
+    {% for message in app.flashes('notice') %}
+        {{popUp.success('¡Felicitaciones!', message)}}
+    {% endfor %}
+
     {% if publicationCreated %}
         {{popUp.success('¡Felicitaciones!','Tu publicación ha sido creada exitosamente.')}}
     {% endif %}

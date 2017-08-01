@@ -19,9 +19,11 @@ class AppKernel extends Kernel
             new UnaGauchada\UserBundle\UserBundle(),
             new UnaGauchada\CreditBundle\CreditBundle(),
             new UnaGauchada\SecurityBundle\UGSecurityBundle(),
+            new UnaGauchada\AdminBundle\AdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
+            $bundles[] = new \Symfony\Bundle\WebServerBundle\WebServerBundle();
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

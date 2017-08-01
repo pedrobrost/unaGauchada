@@ -2,9 +2,9 @@
 
 <div class="col-md-8 col-lg-9 container search ">
     <ul class="list-group list-group-flush">
-        {{noResultMsg.message('en las que hayas sido elegido','elegidoMessage')}}
-        {{noResultMsg.message('en las que hayas sido rechazado','rechazadoMessage')}}
-        {{noResultMsg.message('pendientes','pendienteMessage')}}
+        {{noResultMsg.message('en las que hayas sido elegido','elegidoMessage','fa-users')}}
+        {{noResultMsg.message('en las que hayas sido rechazado','rechazadoMessage', 'fa-users')}}
+        {{noResultMsg.message('pendientes','pendienteMessage','fa-users')}}
         {% for submission in app.user.submissions|reverse  %}
                 {% include 'UserBundle:MySubmissions:submission.html.twig' %}
         {% else %}

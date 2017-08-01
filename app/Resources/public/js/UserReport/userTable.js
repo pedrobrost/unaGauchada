@@ -1,12 +1,9 @@
 $(document).ready(function () {
-    $("#mySubmissions").addClass("active");
-});
-
-$(document).ready(function () {
     $('#usuarios').DataTable({
         "order": [
             [3, "desc"]
         ],
+        "bLengthChange": false,
     "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ usuarios",

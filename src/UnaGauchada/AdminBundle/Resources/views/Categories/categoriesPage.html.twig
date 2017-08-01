@@ -10,8 +10,8 @@
         {{popUp.success('¡Felicitaciones!','Tu la categoria se ha modificado exitosamente.')}}
 #}
 
-    {% include 'PublicationBundle:Categories:addCategory.html.twig' %} 
-    {% include 'PublicationBundle:Categories:deleteCategory.html.twig'%}
+    {% include 'AdminBundle:Categories:addCategory.html.twig' %}
+    {% include 'AdminBundle:Categories:deleteCategory.html.twig'%}
     <div class="container carta">
         <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left" style="display: block;border-radius: .25rem; margin-top: -5px;margin-right: 14px;"><i class="fa fa-reply" aria-hidden="true"></i></a>
         <h3>&nbsp Categorias</h3>
@@ -21,7 +21,7 @@
         </div>
         <br>
         <br>
-    {% include 'PublicationBundle:Categories:table.html.twig'%}
+    {% include 'AdminBundle:Categories:table.html.twig'%}
     </div>
 </div>
 

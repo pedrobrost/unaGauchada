@@ -1,26 +1,25 @@
-{% import 'header/navItem.html.twig' as navbar %}
-
 {% embed "header/dropdown.html.twig" %}
+    {% import 'header/navItem.html.twig' as navbar %}
 
     {% block elements %} 
 
-        {{ navbar.dropdownItem('Reporte de usuarios', 'fa-bar-chart') }}
+        {{ navbar.dropdownItem('Reporte de usuarios', 'fa-bar-chart', 'ranking_report', 'rating_report' ) }}
 
         <div class="dropdown-divider"></div>
 
-        {{ navbar.dropdownItem('Reporte de ganancias', 'fa-line-chart') }}
+        {{ navbar.dropdownItem('Reporte de ganancias', 'fa-line-chart', 'profit_report', 'profit_report') }}
 
         <div class="dropdown-divider"></div>
 
-        {{ navbar.dropdownItem('Logros', 'fa-trophy') }}
+        {{ navbar.dropdownItem('Logros', 'fa-trophy', 'achievements_management', 'achievements_management') }}
 
         <div class="dropdown-divider"></div>
 
-        {{ navbar.dropdownItem('Categorias', 'fa-bookmark') }}
+        {{ navbar.dropdownItem('Categorias', 'fa-bookmark', 'categories_management') }}
 
         <div class="dropdown-divider"></div>
 
-        {{ navbar.dropdownItem('Creditos', 'fa-shopping-cart') }}
+        {{ navbar.dropdownItem('Modificar creditos', 'fa-shopping-cart', 'credits_price', 'credits_price') }}
 
     {% endblock %}
 
