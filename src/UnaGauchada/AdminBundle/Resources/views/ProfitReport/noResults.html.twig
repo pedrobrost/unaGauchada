@@ -5,10 +5,14 @@
     <div class="no-results">
         <div class="content">
             <h1>No se encontraron resultados</h1>
+            {% if dates is not null %}
             <h2 class="lead"> No ha registrado ninguna compra de créditos{% if today == days|first|trim %} el día de hoy. {% elseif (days|first|trim) == (days|last|trim)  %} el día {{days|first}}. {% else %} entre el {{days|first}} y el {{days|last}}. {% endif %}</h2>
+            {% endif %}
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             <div>   </div>
-            <a style=";" class="btn btn-outline-primary" href="{{ path('profit_report') }}">Volver al Listado Completo</a>
+            {% if dates is not null %}
+            <a class="btn btn-outline-primary" href="{{ path('profit_report') }}">Volver al Listado Completo</a>
+            {% endif %}
         </div>
     </div>
 </div>
