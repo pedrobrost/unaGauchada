@@ -1,0 +1,43 @@
+.container.categories{
+    td:first-of-type{
+        font-size: 0
+    }
+    td.dataTables_empty{
+        font-size: inherit!important;
+    }
+    .dataTables_filter {
+text-align: left !important;
+}
+    .form-group{
+        margin: 0
+    }
+    #agregarbtn{
+            position: relative;
+    z-index: 1;
+    margin-left: -18px;
+        margin-right: 15px;
+    margin-top: -2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+    #usuarios_wrapper{
+        margin-top: -50px;
+    }
+    input{
+        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+        width: 100%;
+        height: 30px;
+        outline: none;
+        border-radius: 3px;
+        font-size: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.190);
+        padding-left: 3px;
+    }
+    .editCategoryForm{
+         input.form-control-warning{
+        width: 95%!important;
+    }}
+    input:read-only{
+        border: 0;
+    }
+}

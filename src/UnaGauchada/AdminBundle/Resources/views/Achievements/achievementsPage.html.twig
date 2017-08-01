@@ -1,0 +1,36 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
+
+{% extends 'base.html.twig' %} 
+
+{% block body %}
+{% include 'AdminBundle:Achievements:deleteAchievement.html.twig'%}
+<div class="container categories achievements">
+    {% for message in app.flashes('notice') %}
+        {{popUp.success('¡Felicitaciones!', message )}}
+    {% endfor %}
+    <div class="container carta">
+        <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left"><i class="fa fa-reply" aria-hidden="true"></i></a>
+        <h3>&nbsp Logros</h3>
+        <hr>
+        <div data-toggle="tooltip" class="pull-right">
+            <button type="button" class="btn btn-primary btn btn-sm table-add" id="agregarbtn">Agregar</button>
+        </div>
+        <br>
+        <br>
+        <form id="logrosForm" method="post" action="{{ path('edit_achievements') }}">
+            {% include 'AdminBundle:Achievements:table.html.twig'%}
+            <div class="text-left btns">
+                <button class="btn btn-default deshacer">Deshacer</button>
+                <button type="submit" id="save" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %} 
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/Achievements/simple-iconpicker.min.js') }}"></script>
+<script src="{{ asset('dist/js/Achievements/achievements.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container categories">
+    {% include 'PublicationBundle:Categories:addCategory.html.twig' %} 
+    {% include 'PublicationBundle:Categories:deleteCategory.html.twig'%}
+    <div class="container carta">
+        <a title="Volver al inicio" href="{{ path('publication_page') }}" id="backbutton" class="btn btn-primary pull-right" data-toggle="tooltip" data-placement="left" style="display: block;border-radius: .25rem; margin-top: -5px;margin-right: 14px;"><i class="fa fa-reply" aria-hidden="true"></i></a>
+        <h3>&nbsp Categorias</h3>
+        <hr>
+        <div data-toggle="tooltip" class="pull-right">
+            <button type="button" style="margin-right: 15px;" class="btn btn-primary btn btn-sm" id="agregarbtn" data-toggle="modal" data-target="#agregarCategoria">Agregar</button>
+        </div>
+        <br>
+        <br>
+    {% include 'PublicationBundle:Categories:table.html.twig'%}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('dist/js/UserReport/table.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+<script src="{{ asset('dist/js/Categories/categories.js') }}"></script>
+<script src="{{ asset('dist/js/Categories/addValidation.js') }}"></script>
+{% endblock %}
