@@ -89,7 +89,10 @@ $(".eliminar").click(function () {
 $(".table-remove").click(function () {
     borrar.parents("tr").remove();
     cambio();
+    if (!$new){
     $("#save").trigger("click");
+}
+    $new = false;
 });
 
 $(".table-up").click(function () {
@@ -147,7 +150,6 @@ $(".edit").on("click", function (e) {
 
 $(".editCancel").on("click", function (e) {
     if ($new) {
-        $new = false;
         btnAgregar = false;
         editando = false;
         error = false;
