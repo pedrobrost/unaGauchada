@@ -49,7 +49,7 @@ $('.editCategoryForm').each(function () { // attach to all form elements on page
         },
         messages: {
             categoryName: {
-                required: "Debe ingresar el nombre de la nueva categoria",
+                required: "Debe ingresar el nombre de la categoria",
                 equalName: "Ese nombre ya es usado por otra categoria. Intenta ingresar uno nuevo"
             },
 
