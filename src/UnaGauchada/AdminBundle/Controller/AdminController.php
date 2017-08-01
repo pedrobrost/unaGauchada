@@ -111,4 +111,8 @@ class AdminController extends Controller
         return $this->redirectToRoute('achievements_management');
     }
 
+    public function categoriesAction(){
+        return $this->render('AdminBundle:Categories:categoriesPage.html.twig');
+    }
+
 }
