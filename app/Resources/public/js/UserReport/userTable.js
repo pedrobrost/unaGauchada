@@ -3,7 +3,6 @@ $(document).ready(function () {
         "order": [
             [3, "desc"], [ 1, 'asc' ]
         ],
-        "bLengthChange": false,
     "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ usuarios",
