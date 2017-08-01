@@ -22,7 +22,7 @@ class SubmissionController extends Controller{
         if($request->get('message') != ""){
             $submission->setMessage($request->get('message'));
         }
-        $em->persist($submission); // ver si se puede sacar
+        $em->persist($submission);
         $em->flush();
 
         $request->getSession()->set('postulated', true);
@@ -35,8 +35,8 @@ class SubmissionController extends Controller{
         $submission->setAcceptedState(new AcceptedState($submission));
         $em->flush();
 
-        $this->sendEmailToOwner($publication, $submission->getUser());
-        $this->sendEmailToChosen($publication, $submission->getUser());
+        //$this->sendEmailToOwner($publication, $submission->getUser());
+        //$this->sendEmailToChosen($publication, $submission->getUser());
 
         return $this->redirectToRoute('submissions_show', array('id' => $publication->getId()));
     }
