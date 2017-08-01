@@ -1,3 +1,7 @@
 ranking_report:
     path:     /ranking
     defaults: { _controller: AdminBundle:Admin:ranking }
+
+profit_report:
+    path:     /profit
+    defaults: { _controller: AdminBundle:Admin:profit }
