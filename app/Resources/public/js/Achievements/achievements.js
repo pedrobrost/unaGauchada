@@ -31,20 +31,16 @@ $(document).ready(function () {
         });
         $(window).keydown(function(event){
     if(event.keyCode == 38) {
-      event.preventDefault();
-      if (last){
+      if (last && !(last.find("td").find(".campoRango").is(":focus"))){
           last.find("td").find(".table-up").trigger("click");
       }
-      return false;
     }
         });
         $(window).keydown(function(event){
     if(event.keyCode == 40) {
-      event.preventDefault();
-      if (last){
+      if (last && !(last.find("td").find(".campoRango").is(":focus"))){
           last.find("td").find(".table-down").trigger("click");
       }
-      return false;
     }
   });
     $(window).keydown(function(event){
