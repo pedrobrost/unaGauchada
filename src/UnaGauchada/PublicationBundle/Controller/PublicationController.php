@@ -156,8 +156,15 @@ class PublicationController extends Controller
         $criteria = Criteria::create()
             ->orderBy(array('sysDate' => Criteria::DESC));
 
-        if ($request->get('title', "") != "")
-            $criteria->andWhere(Criteria::expr()->contains('title', $request->get('title')));
+        if ($request->get('title', "") != ""){
+            $title = strtolower($request->get('title'));
+            $query = $repository->createQueryBuilder('p')
+                ->where("LOWER(p.title) LIKE :title")
+                ->setParameter('title', '%'.$title.'%')
+                ->getQuery();
+            $publications = $query->getResult();
+            $publications = new ArrayCollection($publications);
+        }
 
         if ($request->get('city', -1) != -1) {
             $departmentRepository = $this->getDoctrine()->getRepository('PublicationBundle:Department');
