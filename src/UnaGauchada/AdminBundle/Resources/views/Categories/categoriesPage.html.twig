@@ -4,11 +4,9 @@
 {% block body %}
 <div class="container categories">
 
-{#                 ------------------- ACA TENES LOS MENSAJITOS -----------------------------
-        {{popUp.success('¡Felicitaciones!','Tu la categoria PONER NOMBRE se ha creado exitosamente.')}}
-        {{popUp.success('¡Felicitaciones!','Tu la categoria PONER NOMBRE se ha eliminada exitosamente.')}}
-        {{popUp.success('¡Felicitaciones!','Tu la categoria se ha modificado exitosamente.')}}
-#}
+    {% for message in app.flashes('notice') %}
+        {{popUp.success('¡Felicitaciones!', message )}}
+    {% endfor %}
 
     {% include 'AdminBundle:Categories:addCategory.html.twig' %}
     <div class="container carta">

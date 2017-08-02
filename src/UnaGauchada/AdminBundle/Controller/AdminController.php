@@ -127,6 +127,7 @@ class AdminController extends Controller
         if($request->get('deletedId')){
             $category = $em->getRepository(Category::class)->find($request->get('deletedId'));
             $category->setIsDeleted(true);
+            $this->addFlash('notice', 'La categoría '.$category->getName().' se ha eliminado exitosamente.');
         }elseif ($request->get('newCategory')){
             $isOld = false;
             $name = $request->get('newCategory');
@@ -140,9 +141,11 @@ class AdminController extends Controller
             if(!$isOld){
                 $em->persist(new Category($request->get('newCategory')));
             }
+            $this->addFlash('notice', 'La categoría '.$category->getName().' se ha creado exitosamente.');
         }else{
             $isOld = false;
             $name = $request->get('categoryName');
+            $oldName = ($em->getRepository(Category::class)->find($request->get('id')))->getName();
             foreach ($this->deletedCategories() as $category) {
                 if($category->getName() == $name){
                     $category->setIsDeleted(false);
@@ -162,6 +165,7 @@ class AdminController extends Controller
                 $category = $em->getRepository(Category::class)->find($request->get('id'));
                 $category->setName($request->get('categoryName'));
             }
+            $this->addFlash('notice', 'La categoría '.$oldName.' se ha modificado por '.$category->getName());
         }
         $em->flush();
         return $this->redirectToRoute('categories_management');
