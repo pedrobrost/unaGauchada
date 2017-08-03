@@ -75,6 +75,10 @@ $('#editPublication_form').validate({
     },
     errorPlacement: function (err, element) {
         element.attr('data-content', err.text());
+        element.popover({
+        placement: 'right',
+        trigger: 'manual'
+    });
         $(element).popover('show');
     },
     highlight: function (element) {
@@ -84,7 +88,7 @@ $('#editPublication_form').validate({
     unhighlight: function (element) {
         $(element).closest('.form-group').removeClass('has-warning');
         $(element).removeClass('form-control-warning');
-        $(element).popover('hide');
+        $(element).popover('dispose');
     },
     submitHandler: function (form) {
         form.submit();
