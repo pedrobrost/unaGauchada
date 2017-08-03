@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $("#modalbutton").hide();
     $('#title').popover({
-        placement: 'left',
+        placement: 'right',
         trigger: 'manual'
     });
     $('#description').popover({
-        placement: 'left',
+        placement: 'right',
         trigger: 'manual'
     });
     $('#city').popover({
