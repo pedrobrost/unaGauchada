@@ -78,7 +78,7 @@ class SecurityController extends Controller
         }else{
             $this->addFlash(
                 'error',
-                'Contraseña incorrecta'
+                'Contraseña actual incorrecta'
             );
         }
         return $this->render('UGSecurityBundle:Password:password.html.twig');
