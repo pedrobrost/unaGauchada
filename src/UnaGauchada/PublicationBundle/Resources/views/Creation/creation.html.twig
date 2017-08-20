@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/select2/css/select2.min.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="signUp">
+        {% include 'PublicationBundle:Creation:form.html.twig' %}
+    </div>
+{% endblock %}
+
+  {% block javascripts %}
+      <script src="{{ asset('dist/js/Publication/Publish/publish.js') }}"></script>
+      <script src="{{ asset('dist/js/Publication/Publish/publishDisabled.js') }}"></script>
+      <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+      <script src="{{ asset('dist/js/Publication/Publish/publishValidation.js') }}"></script>
+      <script src="{{ asset('assets/select2/js/select2.min.js') }}"></script>
+      <script src="{{ asset('dist/js/Publication/Publish/createForm.select2.js') }}"></script>
+  {% endblock %}

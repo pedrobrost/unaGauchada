@@ -1,0 +1,9 @@
+{% import 'header/navItem.html.twig' as navbar %}
+
+<a class="nav-link" href="{{ path('credits_purchase_amount') }}" data-toggle="tooltip" data-placement="bottom" title="Creditos disponibles">{{ app.user.credits }}   
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</a>
+
+{{ navbar.item('Publicar Gauchada', 'publish_new', 'publish-nav') }} 
+
+{% include 'header/dropdownUser.html.twig' %}

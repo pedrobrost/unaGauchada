@@ -1,5 +1,26 @@
+publication_homepage:
+    path:     /
+    defaults: { _controller: PublicationBundle:Publication:index, page: 1 }
+
 publication:
     resource: "@PublicationBundle/Resources/config/routing.yml"
+    prefix:   /publications
+
+credit:
+    resource: "@CreditBundle/Resources/config/routing.yml"
+    prefix:   /credits
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+security:
+    resource: "@UGSecurityBundle/Resources/config/routing.yml"
     prefix:   /
+
 
 

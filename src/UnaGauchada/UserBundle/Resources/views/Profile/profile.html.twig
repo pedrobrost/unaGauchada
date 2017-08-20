@@ -1,0 +1,29 @@
+{% import 'utils/popUpMessage.html.twig' as popUp %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="profile">
+
+        <div class="container profile">
+
+            {% if infoEdited %}
+                {{ popUp.success('¡Felicitaciones!','Tus datos se modificaron correctamente.') }}
+            {% endif %}
+
+            {% for message in app.flashes('notice') %}
+                {{ popUp.success('¡Felicitaciones!', message) }}
+            {% endfor %}
+
+            <h1>Información Personal</h1>
+            <hr>
+            {% include 'UserBundle:Profile:form.html.twig' %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+  {% block javascripts %}
+      <script src="{{ asset('dist/js/Profile/profileDisabled.js') }}"></script>
+  {% endblock %}

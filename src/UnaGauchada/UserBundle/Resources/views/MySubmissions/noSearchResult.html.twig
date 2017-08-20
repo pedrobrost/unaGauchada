@@ -1,0 +1,12 @@
+{% macro message(msg,id,icon) %}
+
+<li class="list-group-item no-results" id="{{id}}">
+    <div class="card">
+        <h2>No tienes Postulaciones {{msg}}</h2>
+        <br>
+        <i class="fa {{icon}}" aria-hidden="true"></i>
+        <br>
+    </div>
+</li>
+
+{% endmacro %}

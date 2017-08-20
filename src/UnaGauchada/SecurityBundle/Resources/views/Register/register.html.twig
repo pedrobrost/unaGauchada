@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class = "signUp">
+    {% include 'UGSecurityBundle:Register:form.html.twig' %}
+</div>
+{% endblock %}
+
+  {% block javascripts %}
+  <script src="{{ asset('dist/js/SignUp/signUpDisabled.js') }}"></script>
+  <script src="{{ asset('dist/js/jquery.validate.js') }}"></script>
+  <script src="{{ asset('dist/js/SignUp/signUpValidation.js') }}"></script>
+  {% endblock %}

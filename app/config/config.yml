@@ -23,7 +23,6 @@ framework:
         engines: ['twig']
     default_locale: '%locale%'
     trusted_hosts: ~
-    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -33,11 +32,14 @@ framework:
     assets: ~
     php_errors:
         log: true
+    ide: 'phpstorm'
 
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        achievement_service: '@publication.achievements'
 
 # Doctrine Configuration
 doctrine:

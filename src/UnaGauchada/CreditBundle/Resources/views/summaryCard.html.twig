@@ -1,0 +1,68 @@
+ {% embed 'utils/card.html.twig' with {'title': 'Resumen'} %} {% block content %}
+
+{% set amount = app.request.get('amount') %}
+{% set creditCard = app.request.get('creditCard') %}
+{% set year = app.request.get('anio') %}
+{% set month = app.request.get('mes') %}
+
+<div class="container">
+    <div class="row">
+<div class="" style="margin-left: 25px; margin-right: 25px;">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>{{app.request.get('name')}} {{app.request.get('lastName')}}</strong>
+                        <br>
+                        DNI: {{app.request.get('dni')}}
+                        <br>
+                        Nº de tarjeta: {{app.request.get('creditCard')}}
+                        <br>
+                        Vencimiento: {{app.request.get('mes')}}/{{app.request.get('anio')}}
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em>Fecha: {{ "now"|date("d/m/Y") }}</em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                </div>
+                
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>#</th>
+                            <th class="text-center">Precio</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-md-9"><em>Creditos</em></td>
+                            <td class="col-md-1" style="text-align: center"> {{amount}} </td>
+                            <td class="col-md-1 text-center">$50</td>
+                            <td class="col-md-1 text-center">${{ (app.request.get('amount')) * 50 }}</td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td> &nbsp; </td>
+                            <td> &nbsp; </td>
+                            <td class="text-right"><h4><strong>Total:&nbsp;</strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>${{ amount * price }}</strong></h4></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+               <a href="{{ path('credits_purchase_amount') }}" class="btn btn-primary btn-lg pull-left">Anular</a>
+                            <form method="post" action="{{ path('credits_buy', {'amount': amount, 'creditCard': creditCard, 'year': year, 'month': month}) }}">
+                    <button class="btn btn-primary btn-lg pull-right" type="submit">Confirmar</button>
+                </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}{% endembed %}

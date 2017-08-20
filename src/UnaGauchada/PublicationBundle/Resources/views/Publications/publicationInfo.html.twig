@@ -1,0 +1,57 @@
+{% import 'PublicationBundle:Publications:createComment.html.twig' as create %}
+
+<div class="card-block">
+    <h4 class="card-title">{{ publication.title }}
+        <div class="btn-group pull-right" role="group">
+
+            {% if is_granted('edit', publication) and publication.submissions is empty %}
+                <a href="{{ path('publication_showEdit', {'id': publication.id}) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Editar">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            {% endif %}
+
+            {% if is_granted('delete', publication) %}
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            {% endif %}
+        </div>
+    </h4>
+    &nbsp
+    <i class="fa fa-clock-o" aria-hidden="true"></i>
+    <small class="text-muted">{{ publication.sysDate | date('d/m/Y') }} </small>
+    &nbsp
+    <i class="fa fa-tag" aria-hidden="true"></i>
+    <small>{{ publication.category }}</small>
+    &nbsp
+    <i class="fa fa-map-marker" aria-hidden="true"></i>
+    <small>{{ publication.department.name | title }}</small>
+</div>
+<img class=" card-img-top publication" src="{{ path('publication_image', {'id': publication.id}) }}"
+     alt="Card image cap">
+<div class="card-block">
+    <p class="card-text"> {{ publication.description }} </p>
+</div>
+<div class="card-block text-right">
+    <div class="text-left">
+        <i class="fa fa-calendar-o" aria-hidden="true"></i> Fecha límite: {{ publication.limitDate | date('d/m/Y') }}
+    </div>
+
+    {% if is_granted('comment', publication) %}
+        <button id="comment" class="btn btn-outline-primary" data-target="writecomment">Comentar</button>
+    {% endif %}
+
+    {% if is_granted('submit', publication) %}
+        <button id="postularseBtn" class="card-link btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Postularse
+        </button>
+    {% endif %}
+
+    {% if is_granted('unsubmit', publication) %}
+        <a href="#" class="card-link btn btn-primary">Despostularme</a>
+    {% endif %}
+
+    {% if is_granted('edit', publication) %}
+        <a href="{{ path('submissions_show', {'id': publication.id}) }}" class="card-link btn btn-primary">Ver
+            Postulados</a> {% endif %}
+</div>

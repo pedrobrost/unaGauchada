@@ -1,35 +1,46 @@
-{% extends 'base.html.twig' %}
+{% import 'utils/popUpMessage.html.twig' as popUp %}
+{% extends 'base.html.twig' %} {% block body %}
 
-{% block body %}
+    {% for message in app.flashes('notice') %}
+        {{popUp.success('¡Felicitaciones!', message)}}
+    {% endfor %}
 
-    <section class="jumbotron text-center">
+    {% if publicationCreated %}
+        {{popUp.success('¡Felicitaciones!','Tu publicación ha sido creada exitosamente.')}}
+    {% endif %}
+
+    {% if publicationCancelled %}
+        {{popUp.success('',publicationCancelled, 'popUpLarge')}}
+    {% endif %}
+
+    <section class="gauchadas">   
         <div class="container">
-            <h1 class="jumbotron-heading">Gauchadas</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+            <h1 class="display-3">Últimas Gauchadas</h1>
         </div>
     </section>
 
-
     <div class="container">
-
-        <div class="card-columns publication-list">
-
+        <div class="publication-list">
             {% for publication in publications %}
-                <div class="card">
-                    <img class="card-img-top" src="{{ asset(publication.description)}}" alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">{{ publication.title }}</h4>
-                        <p class="card-text">
-                            <a class="btn btn-primary" href="#">Descripción</a>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">{{ publication.limitDate | date('d/m/Y') }}</small>
-                    </div>
-                </div>
+                {% include 'PublicationBundle:Publications:indexPublication.html.twig' %}
             {% endfor %}
-
         </div>
     </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if page == 1 %} disabled {% endif %}">
+                <a class="page-link" href="{{ path('publication_page', {'page': page - 1}) }}" tabindex="-1">Ant</a>
+            </li>
+            {% for i in 1..pages %}
+                <li class="page-item {% if i == page %} active {% endif %}">
+                    <a class="page-link" href="{{ path('publication_page', {'page': i}) }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+            <li class="page-item {% if page == pages %} disabled {% endif %}">
+                <a class="page-link" href="{{ path('publication_page', {'page': page + 1}) }}">Sig</a>
+            </li>
+        </ul>
+    </nav>
 
 {% endblock %}

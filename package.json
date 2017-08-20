@@ -27,7 +27,10 @@
   },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
+    "daterangepicker": "^2.1.25",
     "jquery": "^3.2.1",
+    "jquery-validation": "^1.16.0",
+    "moment": "^2.18.1",
     "tether": "^1.4.0"
   }
 }

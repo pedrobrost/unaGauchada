@@ -1,0 +1,103 @@
+a.btn.btn-primary {
+    cursor: pointer;
+    color: white;
+}
+
+#myModal {
+    textarea {
+        width: 90%;
+        height: auto;
+        resize: none;
+        outline: none;
+        border-radius: 3px;
+        font-size: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.190);
+    }
+}
+
+.container.publication {
+    padding-top: 40px;
+    #popUpSuccess {
+        position: relative;
+        margin-top: -20px;
+    }
+    .card {
+        .card-img-top.publication {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+        }
+    }
+    .list-group {
+        .header {
+            background-color: #FAFAFA;
+            height: 45px;
+            h6 {
+                margin: 0;
+            }
+        }
+        .list-group-item {
+            .media {
+                width: 100%;
+                img.comment {
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+            .media-body {
+                textarea {
+                    width: 100%;
+                    height: auto;
+                    resize: none;
+                    outline: none;
+                    border-radius: 3px;
+                    font-size: 15px;
+                    border: 1px solid rgba(0, 0, 0, 0.190);
+                }
+                .pull-right.comment {
+                    margin-top: 10px;
+                    button {
+                        width: 72px;
+                    }
+                }
+            }
+        }
+    }
+    .profilePic {
+        img {
+            object-fit: cover;
+            height: 240px;
+            @media(max-width: 1199px) {
+                height: 190px;
+            }
+            @media(max-width: 991px) {
+                height: 140px;
+            }
+        }
+        @media(max-width: 767px) {
+            margin-bottom: 30px;
+            padding-top: 25px;
+            img {
+                height: auto;
+                max-height: 350px;
+            }
+        }
+    }
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    .card {
+        height: 100%;
+    }
+}
+
+.card-header,
+.card-footer {
+    text-align: center;
+}
+
+.date-small {
+    font-size: 13px;
+}

@@ -1,9 +1,57 @@
-.publication-list{
-    .card{
-        img{
+section.gauchadas {
+    padding: 80px 0 40px;
+    background-color: $brand-primary;
+    border-radius: 0;
+    margin-bottom: 20px;
+    .display-3 {
+        color: white;
+    }
+}
+
+#popUpSuccess.popUpLarge {
+    width: 714px;
+    max-width: 714px;
+}
+
+#popUpSuccess {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: block;
+    margin-top: 13px;
+    max-width: 644px;
+}
+
+.publication-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    .card {
+        margin-bottom: 25px;
+        width: 350px;
+        img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            text-align: center;
+        }
+        .card-title {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-bottom: 15px;
+        }
+        .card-block {
+            text-align: center;
+            .btn {
+                height: 40px;
+                margin-top: 10px;
+            }
         }
     }
 }

@@ -1,21 +1,33 @@
 {% import 'header/navItem.html.twig' as navbar %}
 
 <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">
-    <span><img src="{{ asset('img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="Brand"></span>    Una Gauchada
-  </a>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      {{ navbar.item('Gauchadas', '#', 'Gauchadas') }} {{ navbar.item('Buscar', '#') }} {{ navbar.item('Ayuda', '#') }}
-    </ul>
-    <ul class="navbar-nav">
-     {% include 'header/navbarVisitor.html.twig' %}
-    </ul>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+        <span><img src="{{ asset('img/logo.png') }}" width="30" height="30" id="imgNavbar" class="d-inline-block align-top"
+                   alt="Brand"></span> Una Gauchada
+    </a>
     </div>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <form class="form-inline my-2 my-lg-0" method="get" action="{{ path('publication_search') }}">
+                <input class="form-control mr-sm-2" type="text" id="search-navbar" placeholder="Buscar" name="title">
+                <button class="btn btn-outline-primary my-2 my-sm-0" id="btn-search-navbar" type="submit"> <i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </ul>
+        
+        <ul class="navbar-nav">
+            {% if not app.user %}
+                {% include 'header/navbarVisitor.html.twig' %}
+            {% elseif app.user.isAdmin %}
+                {% include 'header/navbarAdmin.html.twig' %}
+            {% else %}
+                {% include 'header/navbarUser.html.twig' %}
+            {% endif %}
+        </ul>
+    </div>
+    </div>
 </nav>

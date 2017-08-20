@@ -1,0 +1,42 @@
+footer {
+        color: #777;
+    .more {
+        color: #ccc;
+        position: relative;
+        z-index: 10;
+        background-color: #252525;
+        
+        .row{
+            padding: 55px 0px;
+            
+        }
+    }
+    .row {
+        padding: 20px 0px;
+        margin-top: 0;
+        margin-bottom: 0;
+        p {
+            margin-top: 3px;
+            padding-bottom: 0px;
+            margin: 0;
+            padding: 0;
+        }
+        ul.socials {
+            float: right;
+            list-style: none;
+            margin: 0;
+            li {
+                float: left;
+                margin-left: 20px;
+                cursor: pointer;
+                i{font-size: 17px;}
+                .tooltip-inner{
+                    background: $brand-primary;
+                }
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+}

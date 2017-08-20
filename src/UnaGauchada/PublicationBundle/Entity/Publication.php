@@ -3,6 +3,15 @@
 namespace UnaGauchada\PublicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
+use UnaGauchada\PublicationBundle\Model\AvailableState;
+use UnaGauchada\PublicationBundle\Model\CaducatedState;
+use UnaGauchada\PublicationBundle\Model\CancelledState;
+use UnaGauchada\PublicationBundle\Model\ClosedState;
+use UnaGauchada\PublicationBundle\Model\WithoutSubmissionsState;
+use UnaGauchada\PublicationBundle\Model\WithSubmissionsState;
+use UnaGauchada\UserBundle\Entity\User;
 
 /**
  * Publication
@@ -31,13 +40,6 @@ class Publication
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
-     */
-    private $slug;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -52,7 +54,7 @@ class Publication
     /**
      * @var string
      *
-     * @ORM\Column(name="imageMime", type="string", length=255, nullable=true)
+     * @ORM\Column(name="imageMime", type="string", length=64, nullable=true)
      */
     private $imageMime;
 
@@ -70,11 +72,49 @@ class Publication
      */
     private $limitDate;
 
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="UnaGauchada\PublicationBundle\Entity\Submission", mappedBy="publication")
+     */
+    private $submissions;
 
-    public function __construct($title, $description, $limitDate){
-        $this->title = $title;
-        $this->description = $description;
-        $this->limitDate = $limitDate;
+    /**
+     * Many Transactions have One User.
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="publications")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
+    /**
+     * Many Transactions have One User.
+     * @ORM\ManyToOne(targetEntity="Department", inversedBy="publications")
+     * @ORM\JoinColumn(name="department_id", referencedColumnName="id")
+     */
+    private $department;
+
+    /**
+     * Many Transactions have One User.
+     * @ORM\ManyToOne(targetEntity="UnaGauchada\UserBundle\Entity\User", inversedBy="publications")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="PublicationComment", mappedBy="publication", cascade={"persist", "remove"})
+     */
+    private $publicationsComments;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isCancelled", type="boolean", nullable=true)
+     */
+    private $isCancelled;
+
+
+    public function __construct(){
+        $this->submissions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sysDate = new \DateTime();
     }
 
@@ -110,30 +150,6 @@ class Publication
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Publication
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 
     /**
@@ -174,6 +190,25 @@ class Publication
         return $this;
     }
 
+    public function setImageBlob($file)
+    {
+        if (!$file){
+            $this->setImage(null);
+            $this->setImageMime(null);
+            return $this;
+        }
+        if(!$file->isValid()){
+            throw new FileException("Invalid File");
+        }
+        $imageFile    = fopen($file->getRealPath(), 'r');
+        $imageContent = fread($imageFile, $file->getClientSize());
+        fclose($imageFile);
+        $this->setImage($imageContent);
+        $this->setImageMime($file->getMimeType());
+        return $this;
+    }
+
+
     /**
      * Get image
      *
@@ -182,30 +217,6 @@ class Publication
     public function getImage()
     {
         return $this->image;
-    }
-
-    /**
-     * Set imageMime
-     *
-     * @param string $imageMime
-     *
-     * @return Publication
-     */
-    public function setImageMime($imageMime)
-    {
-        $this->imageMime = $imageMime;
-
-        return $this;
-    }
-
-    /**
-     * Get imageMime
-     *
-     * @return string
-     */
-    public function getImageMime()
-    {
-        return $this->imageMime;
     }
 
     /**
@@ -255,5 +266,271 @@ class Publication
     {
         return $this->limitDate;
     }
-}
 
+    /**
+     * Set imageMime
+     *
+     * @param string $photoMime
+     *
+     * @return Publication
+     */
+    public function setPhotoMime($photoMime)
+    {
+        $this->imageMime = $photoMime;
+
+        return $this;
+    }
+
+    /**
+     * Get imageMime
+     *
+     * @return string
+     */
+    public function getPhotoMime()
+    {
+        return $this->imageMime;
+    }
+
+
+    /**
+     * Set imageMime
+     *
+     * @param string $imageMime
+     *
+     * @return Publication
+     */
+    public function setImageMime($imageMime)
+    {
+        $this->imageMime = $imageMime;
+
+        return $this;
+    }
+
+    /**
+     * Get imageMime
+     *
+     * @return string
+     */
+    public function getImageMime()
+    {
+        return $this->imageMime;
+    }
+
+    /**
+     * Add submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     *
+     * @return Publication
+     */
+    public function addSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions[] = $submission;
+
+        return $this;
+    }
+
+    /**
+     * Remove submission
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Submission $submission
+     */
+    public function removeSubmission(\UnaGauchada\PublicationBundle\Entity\Submission $submission)
+    {
+        $this->submissions->removeElement($submission);
+    }
+
+    /**
+     * Get submissions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubmissions()
+    {
+        return $this->submissions;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Category $category
+     *
+     * @return Publication
+     */
+    public function setCategory(\UnaGauchada\PublicationBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UnaGauchada\UserBundle\Entity\User $user
+     *
+     * @return Publication
+     */
+    public function setUser(\UnaGauchada\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UnaGauchada\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    /**
+     * Set department
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\Department $department
+     *
+     * @return Publication
+     */
+    public function setDepartment(\UnaGauchada\PublicationBundle\Entity\Department $department = null)
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * Get department
+     *
+     * @return \UnaGauchada\PublicationBundle\Entity\Department
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * Add publicationsComment
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment
+     *
+     * @return Publication
+     */
+    public function addPublicationsComment(\UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment)
+    {
+        $this->publicationsComments[] = $publicationsComment;
+
+        return $this;
+    }
+
+    /**
+     * Remove publicationsComment
+     *
+     * @param \UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment
+     */
+    public function removePublicationsComment(\UnaGauchada\PublicationBundle\Entity\PublicationComment $publicationsComment)
+    {
+        $this->publicationsComments->removeElement($publicationsComment);
+    }
+
+    /**
+     * Get publicationsComments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPublicationsComments()
+    {
+        return $this->publicationsComments;
+    }
+    
+    public function getChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return $submission;
+        }
+        return null;
+    }
+
+    public function hasChosen(){
+        foreach ($this->getSubmissions() as $submission) {
+            if($submission->isChosen())
+                return true;
+        }
+        return false;
+    }
+
+    public function isExpired(){
+        return (new \DateTime() >= $this->getLimitDate());
+    }
+
+    public function getAvailableState(){
+        if($this->isCancelled()){
+            return new CancelledState($this);
+        }elseif($this->isExpired()){
+            return new CaducatedState($this);
+        }else{
+            return new AvailableState($this);
+        }
+    }
+
+    public function getSubmissionsState(){
+        if($this->getSubmissions()->isEmpty()){
+            return new WithoutSubmissionsState($this);
+        }elseif ($this->hasChosen()){
+            return new ClosedState($this);
+        }else{
+            return new WithSubmissionsState($this);
+        }
+    }
+
+    public function addIfActive($activePublications){
+        $this->getAvailableState()->addIfActive($activePublications);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCancelled()
+    {
+        return $this->isCancelled;
+    }
+
+    /**
+     * @param bool $isCancelled
+     *
+     *
+     * @return self
+     */
+    public function setIsCancelled($isCancelled)
+    {
+        $this->isCancelled = $isCancelled;
+        return $this;
+    }
+
+    public function cancel($reason){
+        return $this->getAvailableState()->cancel($reason);
+    }
+
+    public function isClosed(){
+        return $this->getAvailableState()->isClosed($this);
+    }
+
+    public function isActive(){
+        return $this->getAvailableState()->isActive($this);
+    }
+
+}
